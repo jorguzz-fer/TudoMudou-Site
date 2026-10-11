@@ -43,6 +43,6 @@ Health check: `GET /healthz` responde `200 ok`. O `Dockerfile` já declara um `H
 
 ## Antes de ir ao ar
 
-- **WhatsApp**: troque o número placeholder em `index.html` (link `https://wa.me/5511999999999...`, marcado com `data-whatsapp`) pelo número real.
+- **WhatsApp**: os botões "Fale comigo" e "Falar no WhatsApp" abrem `https://wa.me/5511989940404` com mensagem pré-preenchida. Para trocar o número, edite os links em `index.html`.
 - **Links do rodapé**: Política de privacidade, Termos e Área do cliente apontam para `#` até as páginas existirem.
 - **Produtos / Sobre / Blog**: o menu aponta para âncoras da home até as páginas serem criadas.
