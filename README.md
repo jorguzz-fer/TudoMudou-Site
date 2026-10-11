@@ -41,8 +41,14 @@ python3 -m http.server 8080
 
 Health check: `GET /healthz` responde `200 ok`. O `Dockerfile` já declara um `HEALTHCHECK`, e o Coolify o utiliza para marcar o container como saudável.
 
-## Antes de ir ao ar
+## Conteúdo
 
-- **WhatsApp**: os botões "Fale comigo" e "Falar no WhatsApp" abrem `https://wa.me/5511989940404` com mensagem pré-preenchida. Para trocar o número, edite os links em `index.html`.
-- **Links do rodapé**: Política de privacidade, Termos e Área do cliente apontam para `#` até as páginas existirem.
-- **Produtos / Sobre / Blog**: o menu aponta para âncoras da home até as páginas serem criadas.
+A copy da home segue o documento "Tudo Mudou — Copy e diretrizes de implementação" (v1.0, 11/10/2026): hero, diferencial, soluções, projetos, como trabalho, parceria contínua, sobre e CTA final. Um único H1 na página; seções em H2; cartões em H3.
+
+Todos os CTAs abrem o WhatsApp `+55 11 98994-0404` com mensagem pré-preenchida. A seção Parceria usa a mensagem específica de parceria recorrente; as demais usam a mensagem geral.
+
+## Pendências
+
+- **Foto do Fernando**: a seção Sobre usa a assinatura "Uma decisão muda tudo" como imagem provisória. Salve a foto em `assets/fernando.jpg` e troque o `<img>` marcado com comentário em `index.html`.
+- **Tudo Mudou Inside**: a oferta recorrente (seção 4 do documento de copy) ficou fora da home até escopo e preço serem validados.
+- **Prova social**: confirmar "16 projetos entregues" e "6 setores atendidos" antes de divulgar.
