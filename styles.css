@@ -430,6 +430,113 @@ h2 {
   margin-top: 20px;
 }
 
+/* Páginas internas (blog) */
+.site-nav a[aria-current="page"] { color: var(--green); }
+
+.page-hero { padding: 96px 0 64px; border-bottom: 1px solid var(--line); }
+.page-hero .eyebrow { margin-bottom: 24px; }
+.page-hero .eyebrow a:hover { color: var(--green-hover); }
+.page-hero h1 { max-width: 900px; margin-bottom: 24px; }
+.page-hero .lead { max-width: 640px; }
+
+.section-sm { padding-top: 64px; }
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+.posts-grid:empty { display: none; }
+.post-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: background .15s ease;
+}
+.post-card:hover { background: #2a2a2a; }
+.post-card .tag {
+  font-size: 12px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 24px;
+}
+.post-card h2 {
+  font-size: 24px;
+  line-height: 1.2;
+}
+.post-card p { font-size: 14px; line-height: 1.5; color: rgba(255, 255, 255, .65); }
+.post-card time { margin-top: auto; padding-top: 16px; font-size: 13px; color: var(--fg-50); }
+
+.posts-empty {
+  max-width: 560px;
+  padding: 48px 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+}
+.posts-empty .tagline { font-size: 24px; }
+.posts-grid:not(:empty) + .posts-empty { display: none; }
+
+.post-head { padding-bottom: 48px; }
+.post-meta { font-size: 14px; color: var(--fg-50); margin-top: 20px; }
+
+.post-body {
+  max-width: 720px;
+  padding: 56px 0 0;
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--fg-72);
+}
+.post-body > * + * { margin-top: 1.1em; }
+.post-body h2 {
+  font-size: 28px;
+  color: var(--fg);
+  margin-top: 2em;
+}
+.post-body h3 { font-family: var(--font-display); font-size: 21px; color: var(--fg); margin-top: 1.6em; }
+.post-body ul, .post-body ol { padding-left: 1.3em; }
+.post-body li + li { margin-top: .4em; }
+.post-body a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+.post-body a:hover { color: var(--green-hover); }
+.post-body strong { color: var(--fg); }
+.post-body blockquote {
+  margin: 1.5em 0;
+  padding: 4px 0 4px 24px;
+  border-left: 3px solid var(--green);
+  font-family: var(--font-display);
+  font-size: 22px;
+  line-height: 1.35;
+  color: var(--fg);
+}
+.post-body img { border-radius: var(--radius); }
+.post-body pre {
+  background: var(--bg-deep);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  overflow-x: auto;
+  font-size: 14px;
+}
+
+.post-cta {
+  max-width: 720px;
+  margin-top: 64px;
+  padding: 40px;
+  background: var(--card);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: flex-start;
+}
+.post-cta .tagline { font-size: 24px; color: var(--green); }
+.post-back { margin-top: 40px; }
+
 /* Footer */
 .site-footer {
   margin-top: 40px;
@@ -459,10 +566,11 @@ h2 {
   .diff-text { padding-top: 0; }
   .partner-card { padding: 48px 40px; }
   .about-photo { max-width: 360px; }
-  .services-grid, .cases-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .services-grid, .cases-grid, .posts-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .service-wide { grid-column: span 2; }
   .service-highlight { grid-column: span 2; }
   .cta-band { flex-direction: column; align-items: flex-start; padding: 56px 40px; }
+  .page-hero { padding: 64px 0 48px; }
 }
 
 @media (max-width: 720px) {
@@ -491,7 +599,11 @@ h2 {
 
   .section { padding-top: 64px; }
   .section-head-row { flex-direction: column; align-items: flex-start; }
-  .services-grid, .cases-grid { grid-template-columns: 1fr; }
+  .services-grid, .cases-grid, .posts-grid { grid-template-columns: 1fr; }
+  .page-hero { padding: 48px 0 32px; }
+  .post-body { font-size: 17px; padding-top: 40px; }
+  .post-cta { padding: 28px 20px; }
+  .posts-empty .btn, .post-cta .btn { width: 100%; }
   .service-wide, .service-highlight { grid-column: span 1; }
   .service-wide { flex-direction: column; gap: 20px; }
   .service { min-height: 0; padding: 24px 20px; }

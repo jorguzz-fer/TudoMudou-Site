@@ -9,6 +9,7 @@ index.html      Home (hero, 7 frentes, cases, níveis, CTA, rodapé)
 styles.css      Estilos (desktop, tablet e mobile)
 main.js         Menu mobile
 assets/         Logos
+blog/           Listagem do blog (index.html) e modelo de artigo (_modelo-artigo.html)
 Dockerfile      Imagem nginx para produção
 nginx.conf      Config do nginx (gzip, cache, /healthz)
 ```
@@ -46,6 +47,12 @@ Health check: `GET /healthz` responde `200 ok`. O `Dockerfile` já declara um `H
 A copy da home segue o documento "Tudo Mudou — Copy e diretrizes de implementação" (v1.0, 11/10/2026): hero, diferencial, soluções, projetos, como trabalho, parceria contínua, sobre e CTA final. Um único H1 na página; seções em H2; cartões em H3.
 
 Todos os CTAs abrem o WhatsApp `+55 11 98994-0404` com mensagem pré-preenchida. A seção Parceria usa a mensagem específica de parceria recorrente; as demais usam a mensagem geral.
+
+## Publicar um artigo no blog
+
+1. Copie `blog/_modelo-artigo.html` para `blog/<slug>.html` e preencha os campos entre colchetes.
+2. Em `blog/index.html`, adicione um cartão `.post-card` dentro de `.posts-grid` (o mais recente primeiro). O exemplo está comentado no próprio arquivo.
+3. O bloco "Os primeiros artigos estão a caminho" some sozinho quando houver pelo menos um cartão.
 
 ## Ao alterar CSS ou JS
 
