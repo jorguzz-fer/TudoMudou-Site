@@ -47,6 +47,10 @@ A copy da home segue o documento "Tudo Mudou — Copy e diretrizes de implementa
 
 Todos os CTAs abrem o WhatsApp `+55 11 98994-0404` com mensagem pré-preenchida. A seção Parceria usa a mensagem específica de parceria recorrente; as demais usam a mensagem geral.
 
+## Ao alterar CSS ou JS
+
+Atualize o parâmetro `?v=` nas tags `<link>` e `<script>` do `index.html`. Sem isso, navegadores e o Cloudflare continuam servindo a versão antiga.
+
 ## Pendências
 
 - **Foto do Fernando**: a seção Sobre usa a assinatura "Uma decisão muda tudo" como imagem provisória. Salve a foto em `assets/fernando.jpg` e troque o `<img>` marcado com comentário em `index.html`.

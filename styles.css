@@ -227,6 +227,24 @@ h2 {
 .diff-text p { font-size: 17px; line-height: 1.55; color: var(--fg-72); text-wrap: pretty; }
 .diff-text .tagline { color: var(--green); font-size: 20px; margin-top: 8px; }
 
+.checklist { list-style: none; margin: 4px 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.checklist li {
+  position: relative;
+  padding-left: 28px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--fg);
+}
+.checklist li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 14px;
+  height: 2px;
+  background: var(--green);
+}
+
 /* Serviços */
 .services-grid {
   display: grid;
@@ -342,8 +360,20 @@ h2 {
 .partner-head .eyebrow { margin-bottom: 20px; }
 .partner-text { display: flex; flex-direction: column; gap: 18px; align-items: flex-start; }
 .partner-text p { font-size: 16px; line-height: 1.55; color: var(--fg-72); text-wrap: pretty; }
-.partner-text .tagline { color: var(--fg); font-size: 18px; }
+.partner-text .tagline { color: var(--green); font-size: 18px; }
 .partner-text .btn { margin-top: 12px; }
+
+.partner-points { list-style: none; margin: 8px 0; padding: 0; width: 100%; }
+.partner-points li {
+  display: grid;
+  grid-template-columns: 130px minmax(0, 1fr);
+  gap: 16px;
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+}
+.partner-points li:last-child { border-bottom: 1px solid var(--line); }
+.partner-points strong { font-size: 16px; font-weight: 500; color: var(--fg); }
+.partner-points span { font-size: 15px; line-height: 1.5; color: var(--fg-60); }
 
 /* Sobre */
 .about-grid {
@@ -353,7 +383,7 @@ h2 {
   align-items: start;
 }
 .about-photo {
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 4 / 3;
   border-radius: var(--radius);
   background: var(--bg-deep);
   border: 1px solid var(--line);
@@ -364,7 +394,8 @@ h2 {
   overflow: hidden;
 }
 .about-photo img { width: 100%; height: 100%; object-fit: contain; }
-.about-photo img[alt]:not([alt=""]) { object-fit: cover; padding: 0; }
+.about-photo:has(img[alt]:not([alt=""])) { aspect-ratio: 4 / 5; padding: 0; }
+.about-photo img[alt]:not([alt=""]) { object-fit: cover; }
 .about-grid .eyebrow { margin-bottom: 20px; }
 .about-grid h2 { margin-bottom: 28px; }
 .about-text { display: flex; flex-direction: column; gap: 18px; }
@@ -471,6 +502,7 @@ h2 {
   .levels span:last-child { grid-column: 2; }
 
   .partner-card { padding: 32px 20px; }
+  .partner-points li { grid-template-columns: 1fr; gap: 4px; }
   .about-photo { max-width: 100%; aspect-ratio: 3 / 2; }
 
   .cta-band { padding: 40px 24px; }
