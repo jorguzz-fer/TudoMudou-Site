@@ -57,20 +57,19 @@
       <div class="container">
         <!--
           LISTA DE ARTIGOS
-          Para publicar um artigo:
-          1. Copie blog/_modelo-artigo.html para blog/<slug>.html e preencha.
-          2. Adicione um cartão abaixo, dentro de .posts-grid, com o mais recente primeiro.
-          3. Remova o bloco .posts-empty quando houver o primeiro artigo.
-
-          Exemplo de cartão:
+          Os cartões entre POSTS:START e POSTS:END são gerados pelo Content Machine a partir de
+          blog/posts.json a cada publicação. Não edite esse trecho à mão: ele é reescrito inteiro.
+          Para publicar um artigo manualmente, adicione-o em blog/posts.json e insira o cartão
+          entre os marcadores, com o mais recente primeiro:
           <a class="post-card" href="/blog/<slug>.html">
             <p class="tag">Estratégia · 5 min</p>
             <h2>Título do artigo</h2>
             <p>Uma ou duas frases de resumo.</p>
             <time datetime="2026-10-11">11 de outubro de 2026</time>
           </a>
+          O bloco .posts-empty abaixo some sozinho quando houver pelo menos um cartão.
         -->
-        <div class="posts-grid"></div>
+        <div class="posts-grid"><!-- POSTS:START --><!-- POSTS:END --></div>
 
         <div class="posts-empty">
           <p class="tagline">Os primeiros artigos estão a caminho.</p>

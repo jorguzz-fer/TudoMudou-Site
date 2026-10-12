@@ -3,21 +3,27 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- MODELO DE ARTIGO: copie para blog/<slug>.html, preencha os campos marcados com [ ] e adicione o cartão em blog/index.html. -->
-  <title>[Título do artigo] | Blog Tudo Mudou</title>
-  <meta name="description" content="[Resumo de até 160 caracteres.]">
+  <!--
+    MODELO DE ARTIGO.
+    Os campos entre chaves duplas são preenchidos pelo Content Machine na publicação automática.
+    Para publicar à mão: copie para blog/<slug>.html, troque cada campo e adicione o cartão em blog/index.html.
+    Campos: title, description, slug, category, subtitle, author, date_iso, date_human, reading_time, og_image, body_html.
+    Não escreva outros campos entre chaves duplas neste arquivo (nem em comentários): a publicação falha.
+  -->
+  <title>{{title}} | Blog Tudo Mudou</title>
+  <meta name="description" content="{{description}}">
   <meta name="theme-color" content="#1a1a1a">
   <link rel="icon" type="image/png" href="/assets/logo-tudomudou.png">
-  <link rel="canonical" href="https://tudomudou.com.br/blog/[slug].html">
+  <link rel="canonical" href="https://tudomudou.com.br/blog/{{slug}}.html">
 
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://tudomudou.com.br/blog/[slug].html">
-  <meta property="og:title" content="[Título do artigo]">
-  <meta property="og:description" content="[Resumo de até 160 caracteres.]">
-  <meta property="og:image" content="https://tudomudou.com.br/assets/uma-decisao-muda-tudo.png">
+  <meta property="og:url" content="https://tudomudou.com.br/blog/{{slug}}.html">
+  <meta property="og:title" content="{{title}}">
+  <meta property="og:description" content="{{description}}">
+  <meta property="og:image" content="{{og_image}}">
   <meta property="og:locale" content="pt_BR">
-  <meta property="article:published_time" content="[2026-10-11]">
-  <meta property="article:author" content="Fernando">
+  <meta property="article:published_time" content="{{date_iso}}">
+  <meta property="article:author" content="{{author}}">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -50,30 +56,16 @@
     <article class="post">
       <header class="page-hero post-head">
         <div class="container">
-          <p class="eyebrow"><a href="/blog/">Blog</a> · [Categoria]</p>
-          <h1>[Título do artigo]</h1>
-          <p class="lead">[Subtítulo ou resumo em uma frase.]</p>
-          <p class="post-meta">Por Fernando · <time datetime="[2026-10-11]">[11 de outubro de 2026]</time> · [5] min de leitura</p>
+          <p class="eyebrow"><a href="/blog/">Blog</a> · {{category}}</p>
+          <h1>{{title}}</h1>
+          <p class="lead">{{subtitle}}</p>
+          <p class="post-meta">Por {{author}} · <time datetime="{{date_iso}}">{{date_human}}</time> · {{reading_time}} min de leitura</p>
         </div>
       </header>
 
       <div class="container">
         <div class="post-body">
-          <p>[Primeiro parágrafo. Vá direto ao ponto: qual é o problema e por que ele importa para quem dirige uma empresa.]</p>
-
-          <h2>[Subtítulo da primeira seção]</h2>
-          <p>[Texto.]</p>
-          <ul>
-            <li>[Ponto um.]</li>
-            <li>[Ponto dois.]</li>
-          </ul>
-
-          <h2>[Subtítulo da segunda seção]</h2>
-          <p>[Texto.]</p>
-          <blockquote>[Uma frase que resume a ideia central.]</blockquote>
-
-          <h2>[Conclusão]</h2>
-          <p>[Fecho prático: o que fazer a seguir.]</p>
+{{body_html}}
         </div>
 
         <aside class="post-cta">
