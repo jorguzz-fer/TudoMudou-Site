@@ -9,7 +9,7 @@ index.html      Home (hero, 7 frentes, cases, níveis, CTA, rodapé)
 styles.css      Estilos (desktop, tablet e mobile)
 main.js         Menu mobile
 assets/         Logos
-blog/           Listagem do blog (index.html) e modelo de artigo (_modelo-artigo.html)
+blog/           Listagem (index.html), índice dos artigos (posts.json) e modelo de artigo (_modelo-artigo.html)
 Dockerfile      Imagem nginx para produção
 nginx.conf      Config do nginx (gzip, cache, /healthz)
 ```
@@ -48,15 +48,39 @@ A copy da home segue o documento "Tudo Mudou — Copy e diretrizes de implementa
 
 Todos os CTAs abrem o WhatsApp `+55 11 98994-0404` com mensagem pré-preenchida. A seção Parceria usa a mensagem específica de parceria recorrente; as demais usam a mensagem geral.
 
-## Publicar um artigo no blog
+## Blog: publicação automática pelo Content Machine
 
-1. Copie `blog/_modelo-artigo.html` para `blog/<slug>.html` e preencha os campos entre colchetes.
-2. Em `blog/index.html`, adicione um cartão `.post-card` dentro de `.posts-grid` (o mais recente primeiro). O exemplo está comentado no próprio arquivo.
-3. O bloco "Os primeiros artigos estão a caminho" some sozinho quando houver pelo menos um cartão.
+Os artigos do blog são escritos e aprovados no [Content Machine](https://github.com/jorguzz-fer/content)
+(plataforma **Blog** no editor de posts). Ao clicar em **Publicar no blog**, o Content Machine faz **um commit**
+neste repositório, na branch `main`, com três arquivos:
+
+| Arquivo | O que acontece |
+| --- | --- |
+| `blog/<slug>.html` | Artigo gerado a partir de `blog/_modelo-artigo.html` (campos `{{title}}`, `{{body_html}}` etc.). |
+| `blog/posts.json` | Índice de todos os artigos publicados (slug, título, resumo, categoria, data, tempo de leitura). Fonte da verdade da listagem. |
+| `blog/index.html` | Os cartões entre `<!-- POSTS:START -->` e `<!-- POSTS:END -->` são regerados a partir do `posts.json`, mais recente primeiro. |
+
+O Coolify faz o deploy automático a cada push na `main` (item 7 de "Deploy no Coolify"), então o artigo
+aparece no site poucos minutos depois do clique. Republicar o mesmo post reescreve o artigo e o cartão
+no mesmo slug.
+
+Regras que o Content Machine espera deste repositório:
+
+- `blog/_modelo-artigo.html` é buscado no momento da publicação; mudanças de layout aqui valem para os
+  próximos artigos sem mexer no Content Machine. Mantenha os campos `{{...}}` listados no comentário do arquivo.
+- Os marcadores `POSTS:START`/`POSTS:END` precisam continuar dentro de `.posts-grid`. Tudo entre eles é
+  reescrito; o restante do `index.html` não é tocado.
+- O token usado pelo Content Machine (`BLOG_GITHUB_TOKEN`) precisa de permissão de leitura e escrita em
+  **Contents** só deste repositório (fine-grained personal access token).
+
+Para publicar à mão, siga o mesmo contrato: copie o modelo para `blog/<slug>.html` trocando os campos
+`{{...}}`, acrescente a entrada em `blog/posts.json` e insira o cartão entre os marcadores (exemplo no
+comentário de `blog/index.html`). O bloco "Os primeiros artigos estão a caminho" some sozinho quando
+houver pelo menos um cartão.
 
 ## Ao alterar CSS ou JS
 
-Atualize o parâmetro `?v=` nas tags `<link>` e `<script>` do `index.html`. Sem isso, navegadores e o Cloudflare continuam servindo a versão antiga.
+Atualize o parâmetro `?v=` nas tags `<link>` e `<script>` do `index.html`, de `blog/index.html` e de `blog/_modelo-artigo.html` (os artigos já publicados em `blog/*.html` também). Sem isso, navegadores e o Cloudflare continuam servindo a versão antiga.
 
 ## Pendências
 
