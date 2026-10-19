@@ -10,6 +10,7 @@ styles.css      Estilos (desktop, tablet e mobile)
 main.js         Menu mobile
 assets/         Logos
 blog/           Listagem (index.html), índice dos artigos (posts.json) e modelo de artigo (_modelo-artigo.html)
+projects/       Documentos publicados por link, um por pasta (ex.: /projects/canada/). Com noindex, fora do menu.
 Dockerfile      Imagem nginx para produção
 nginx.conf      Config do nginx (gzip, cache, /healthz)
 ```

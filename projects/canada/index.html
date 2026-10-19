@@ -1,0 +1,578 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Custo e Lucro Canadá</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column (72ch) with full-bleed tinted bands for hero and summary; data as tiles, tables and two hand-drawn bar charts. */
+:root{
+  --bg:#F4F6F8; --surface:#FFFFFF; --ink:#15212C; --muted:#5A6774; --line:#D8DEE5; --line-soft:#E8ECF0;
+  --accent:#B5302A; --accent-ink:#8F241F; --accent-soft:#F8E6E3;
+  --data:#2E5C8A; --data-soft:#DCE7F2; --bar:#C6CDD5;
+  --good:#2E7D4F; --good-soft:#E1F1E7; --warn:#B9771C; --warn-soft:#FBEEDA; --bad:#B5302A; --bad-soft:#F8E6E3;
+  --display:"Plus Jakarta Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --body:"Source Sans 3","Source Sans Pro",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --radius:10px; --shadow:0 1px 2px rgba(21,33,44,.06),0 8px 24px -16px rgba(21,33,44,.25);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F151B; --surface:#161E27; --ink:#E6EBF0; --muted:#9AA7B4; --line:#2A3542; --line-soft:#212B36;
+    --accent:#E0574B; --accent-ink:#F08A80; --accent-soft:#3A1F1D;
+    --data:#6FA3DA; --data-soft:#1E2F42; --bar:#3B4753;
+    --good:#5CB97F; --good-soft:#163424; --warn:#E0A24A; --warn-soft:#3A2B12; --bad:#E0574B; --bad-soft:#3A1F1D;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -16px rgba(0,0,0,.7);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F151B; --surface:#161E27; --ink:#E6EBF0; --muted:#9AA7B4; --line:#2A3542; --line-soft:#212B36;
+  --accent:#E0574B; --accent-ink:#F08A80; --accent-soft:#3A1F1D;
+  --data:#6FA3DA; --data-soft:#1E2F42; --bar:#3B4753;
+  --good:#5CB97F; --good-soft:#163424; --warn:#E0A24A; --warn-soft:#3A2B12; --bad:#E0574B; --bad-soft:#3A1F1D;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -16px rgba(0,0,0,.7);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--data);text-decoration:underline;text-decoration-color:color-mix(in srgb,var(--data) 40%,transparent);text-underline-offset:2px}
+a:hover{text-decoration-color:var(--data)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;letter-spacing:-.01em;margin:0}
+h1{font-size:clamp(1.9rem,4.2vw,2.9rem);font-weight:800;line-height:1.12}
+h2{font-size:clamp(1.4rem,2.6vw,1.85rem);font-weight:700;line-height:1.2}
+h3{font-size:1.1rem;font-weight:700;margin-top:1.6rem;margin-bottom:.5rem}
+p{margin:0 0 1rem}
+strong{font-weight:600}
+.wrap{max-width:860px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--display);font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* hero */
+.hero{background:var(--surface);border-bottom:1px solid var(--line)}
+.hero .wrap{padding-block:2.4rem 2rem;display:grid;gap:1.2rem}
+.hero .lead{font-size:1.15rem;color:var(--muted);max-width:68ch;margin:0}
+.byline{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;font-size:.9rem;color:var(--muted)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:.8rem;margin-top:.6rem}
+.tile{border:1px solid var(--line);border-radius:var(--radius);padding:.9rem 1rem;background:var(--bg)}
+.tile .v{font-family:var(--display);font-size:1.75rem;font-weight:800;letter-spacing:-.02em;line-height:1.1;font-variant-numeric:tabular-nums}
+.tile .l{font-size:.86rem;color:var(--muted);margin-top:.25rem;line-height:1.3}
+.tile.accent .v{color:var(--accent)}
+
+/* nav */
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+nav.toc .wrap{display:flex;gap:.2rem;overflow-x:auto;padding-block:.5rem;scrollbar-width:none}
+nav.toc .wrap::-webkit-scrollbar{display:none}
+nav.toc a{white-space:nowrap;font-family:var(--display);font-size:.82rem;font-weight:600;color:var(--muted);text-decoration:none;padding:.35rem .65rem;border-radius:999px}
+nav.toc a:hover{color:var(--ink);background:var(--line-soft)}
+
+/* sections */
+section{padding-block:2.6rem 1rem}
+section .wrap{display:grid;gap:.4rem}
+.sec-head{display:grid;gap:.35rem;margin-bottom:1rem}
+.sec-head .n{font-family:var(--mono);font-size:.8rem;color:var(--muted)}
+.summary{background:var(--surface);border-block:1px solid var(--line)}
+.summary .wrap{padding-block:2.2rem}
+.callout{border-left:3px solid var(--accent);background:var(--accent-soft);padding:.9rem 1.1rem;border-radius:0 var(--radius) var(--radius) 0;margin:.4rem 0 1.2rem}
+.callout p:last-child{margin-bottom:0}
+.note{font-size:.9rem;color:var(--muted)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+@media (max-width:640px){.two{grid-template-columns:1fr}}
+
+/* tables */
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);margin:.4rem 0 1.2rem;min-width:0}
+table{border-collapse:collapse;width:100%;font-size:.93rem;line-height:1.4}
+th,td{text-align:left;vertical-align:top;padding:.6rem .8rem;border-bottom:1px solid var(--line-soft)}
+th{font-family:var(--display);font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);font-weight:600;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.total td{font-weight:600;background:var(--bg)}
+.pill{display:inline-block;font-family:var(--display);font-size:.72rem;font-weight:700;letter-spacing:.04em;padding:.15rem .5rem;border-radius:999px;white-space:nowrap}
+.pill.good{background:var(--good-soft);color:var(--good)}
+.pill.warn{background:var(--warn-soft);color:var(--warn)}
+.pill.bad{background:var(--bad-soft);color:var(--bad)}
+.pill.data{background:var(--data-soft);color:var(--data)}
+.pill.mute{background:var(--line-soft);color:var(--muted)}
+
+/* charts */
+figure{margin:.6rem 0 1.4rem;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:1rem 1rem .6rem;min-width:0}
+figure h3{margin:0 0 .15rem;font-size:1.02rem}
+figure .sub{font-size:.88rem;color:var(--muted);margin:0 0 .6rem}
+figure svg{width:100%;height:auto;display:block;font-family:var(--body)}
+figcaption{font-size:.8rem;color:var(--muted);margin-top:.5rem;font-family:var(--mono)}
+.bar-row text{fill:var(--ink)}
+.bar-row .lbl{font-size:12px}
+.bar-row .val{font-size:12px;font-weight:600}
+.bar-row .ann{font-size:11px;fill:var(--muted)}
+
+/* lists */
+ul,ol{padding-left:1.3rem;margin:0 0 1rem}
+li{margin-bottom:.35rem}
+ul.check{list-style:none;padding-left:0}
+ul.check li{padding-left:1.7rem;position:relative}
+ul.check li::before{content:"";position:absolute;left:0;top:.3em;width:1rem;height:1rem;border:1.5px solid var(--muted);border-radius:4px}
+
+/* plans */
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.9rem;margin:.4rem 0 1.2rem}
+.plan{border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);padding:1rem 1.1rem;display:grid;gap:.4rem;align-content:start}
+.plan.hi{border-color:var(--accent);box-shadow:var(--shadow)}
+.plan .name{font-family:var(--display);font-weight:700}
+.plan .price{font-family:var(--display);font-size:1.9rem;font-weight:800;letter-spacing:-.02em;line-height:1}
+.plan .price small{font-size:.85rem;font-weight:600;color:var(--muted);letter-spacing:0}
+.plan .who{font-size:.88rem;color:var(--muted)}
+.plan ul{font-size:.92rem;margin:.3rem 0 0;padding-left:1.1rem}
+
+/* roadmap */
+.roadmap{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem;margin:.6rem 0 .4rem;align-items:stretch}
+.phase{border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);padding:.9rem .95rem;display:grid;gap:.2rem;align-content:start;position:relative}
+.phase.hi{border-color:var(--data);background:var(--data-soft)}
+.phase .ph{font-family:var(--display);font-weight:700;font-size:.98rem}
+.phase .dur{font-size:.82rem;color:var(--muted);margin-bottom:.3rem}
+.phase ul{font-size:.88rem;padding-left:1rem;margin:0}
+.gates{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem;margin-bottom:1.2rem}
+.gate{font-size:.82rem;color:var(--muted);text-align:right;padding-right:.2rem;font-family:var(--display);font-weight:600}
+.gate::before{content:"◆ ";color:var(--accent)}
+@media (max-width:720px){
+  .roadmap{grid-template-columns:1fr}
+  .gates{grid-template-columns:1fr}
+  .gate{text-align:left}
+}
+
+/* risks */
+.risk{font-size:.85rem}
+footer{border-top:1px solid var(--line);background:var(--surface);margin-top:2rem}
+footer .wrap{padding-block:1.6rem 2.4rem;font-size:.88rem;color:var(--muted)}
+.sources ul{font-size:.92rem}
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Pesquisa de mercado + Spec v0.1 · Canadá</div>
+    <h1>Um app de custo e lucro para o pequeno restaurante canadense</h1>
+    <p class="lead">Quanto custa cada prato, quanto o dono ganha em cada um e o que mudou desde a última compra. Em inglês e francês, por CAD 39–49 por mês, sem trocar o POS.</p>
+    <div class="byline">
+      <span>Preparado por Fernando Jorge para Serena</span>
+      <span>19 de outubro de 2026</span>
+      <span>Fontes abertas e verificadas na data; links no fim</span>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="v num">105.169</div><div class="l">estabelecimentos de alimentação e bebidas no Canadá (2025)</div></div>
+      <div class="tile"><div class="v num">98,7%</div><div class="l">deles têm menos de 100 funcionários</div></div>
+      <div class="tile"><div class="v num">CAD 125 bi</div><div class="l">vendas do setor por ano (3,9% do PIB)</div></div>
+      <div class="tile accent"><div class="v num">41%</div><div class="l">dos operadores no prejuízo ou no zero a zero (ago/2026)</div></div>
+    </div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Seções">
+  <div class="wrap">
+    <a href="#resumo">Resumo</a>
+    <a href="#mercado">Mercado</a>
+    <a href="#cliente">Cliente</a>
+    <a href="#concorrentes">Concorrentes</a>
+    <a href="#gpt">Material do GPT</a>
+    <a href="#posicionamento">Posicionamento</a>
+    <a href="#spec">Spec</a>
+    <a href="#receita">Receita</a>
+    <a href="#riscos">Riscos e próximos passos</a>
+    <a href="#fontes">Fontes</a>
+  </div>
+</nav>
+
+<section class="summary" id="resumo">
+  <div class="wrap">
+    <div class="sec-head"><span class="n">01</span><h2>Resumo executivo</h2></div>
+    <p>O Canadá tem cerca de 105 mil estabelecimentos de alimentação e bebidas (75,4 mil com funcionários), e 98,7% deles têm menos de 100 empregados. O setor fatura CAD 125 bilhões por ano, mas 41% dos operadores estão no prejuízo ou no zero a zero, e 91% apontam o custo dos alimentos como a maior pressão.</p>
+    <p>A tese da Serena se confirma com uma correção importante: POS barato existe (Square é grátis; DineOpen custa cerca de CAD 28). O que quase não existe em preço acessível é o <strong>back-office de custo e lucro</strong>: ficha técnica, food cost, compras e estoque. As ferramentas completas desse tipo (MarketMan, WISK, MarginEdge) custam de CAD 350 a 500 por mês e foram desenhadas para redes; abaixo de CAD 50 só há calculadoras de receita, sem leitura de notas nem vendas.</p>
+    <div class="callout">
+      <p><strong>Recomendação.</strong> Não construir um POS. Construir um app de custo e lucro que roda ao lado de qualquer POS, vendido a CAD 39–49/mês. O gasto médio de um restaurante canadense com tecnologia é CAD 195/mês, então a faixa cabe no orçamento. Mercado alvo: ~51 mil independentes pequenos com funcionários (≈ CAD 26 milhões/ano na nossa faixa de preço). Meta realista: 1.000 clientes pagantes em 3 anos, ≈ CAD 500 mil de receita anual recorrente.</p>
+    </div>
+  </div>
+</section>
+
+<section id="mercado">
+  <div class="wrap">
+    <div class="sec-head"><span class="n">02</span><h2>Tamanho do mercado no Canadá</h2></div>
+    <p>São 105.169 estabelecimentos de alimentação e bebidas (NAICS 722) em 2025: 75.407 com funcionários e 29.762 sem funcionários ou indeterminados, segundo tabulação da Statistics Canada publicada pela <a href="https://ised-isde.canada.ca/app/ixb/cis/businesses-entreprises/722">ISED</a>. O setor vende CAD 125 bilhões por ano, emprega 1,2 milhão de pessoas e recebe 23 milhões de visitas por dia (<a href="https://retail-insider.com/retail-insider/2026/05/high-operating-costs-uneven-consumer-spending-put-restaurants-under-pressure-restaurants-canada/">Restaurants Canada, Q1 2026</a>).</p>
+
+    <div class="table-wrap"><table>
+      <thead><tr><th>Segmento (NAICS, 2025)</th><th class="r">Com funcionários</th><th class="r">Sem funcionários / indeterminado</th><th class="r">Total</th></tr></thead>
+      <tbody>
+        <tr><td>Restaurantes full-service e limited-service, cafés, padarias com consumo (<a href="https://ised-isde.canada.ca/app/ixb/cis/businesses-entreprises/7225">7225</a>)</td><td class="r">68.491</td><td class="r">20.563</td><td class="r">89.054</td></tr>
+        <tr><td>Caterers, food trucks e contratados de alimentação (<a href="https://ised-isde.canada.ca/app/ixb/cis/businesses-entreprises/7223">7223</a>)</td><td class="r">4.350</td><td class="r">8.074</td><td class="r">12.424</td></tr>
+        <tr><td>Bares (<a href="https://ised-isde.canada.ca/app/ixb/cis/businesses-entreprises/7224">7224</a>)</td><td class="r">2.566</td><td class="r">1.125</td><td class="r">3.691</td></tr>
+        <tr class="total"><td>Total (722)</td><td class="r">75.407</td><td class="r">29.762</td><td class="r">105.169</td></tr>
+      </tbody>
+    </table></div>
+
+    <p>Dos 75.407 empregadores, 15.727 (20,9%) têm 1 a 4 funcionários e 58.692 (77,8%) têm 5 a 99. Só 988 (1,3%) passam de 100 funcionários, e é esse 1,3% que os softwares caros atendem bem. A receita média de uma PME do segmento 7225 foi CAD 849 mil em 2024, e só 57,7% deram lucro (<a href="https://ised-isde.canada.ca/app/ixb/cis/summary-sommaire/7225">ISED, resumo 7225</a>).</p>
+
+    <figure>
+      <h3>Quatro províncias concentram 88% dos estabelecimentos com funcionários</h3>
+      <p class="sub">66.523 de 75.407 empregadores NAICS 722 estão em Ontário, Quebec, BC e Alberta</p>
+      <div id="chart-prov"></div>
+      <figcaption>Statistics Canada via ISED, Canadian Industry Statistics · empregadores NAICS 722 por província, 2025</figcaption>
+    </figure>
+    <p>Ontário sozinho tem 29.885 empregadores (40%). Quebec é o segundo mercado, mas exige francês no produto e WEB-SRM se houver emissão de nota. Um back-office sem POS não emite nota, o que simplifica a entrada lá.</p>
+
+    <h3>Independentes</h3>
+    <p>Não há contagem oficial recente. O levantamento da CHD Expert (<a href="https://www.newswire.com/news/foodservice-in-canada-chd-expert-breaks-down-the-current">2015</a>) achou 91% de independentes entre full-service e 43% entre limited-service, o que dá cerca de dois terços do total. Na pesquisa da <a href="https://www.touchbistro.com/wp-content/uploads/2026/01/TouchBistro-2026-Canadian-State-of-Restaurants-Report.pdf">TouchBistro de 2026</a> (600 operadores full-service), 80% eram independentes. Usamos 69% como premissa.</p>
+
+    <h3>TAM / SAM / SOM</h3>
+    <p class="note">Premissa de ticket médio CAD 43/mês (mix 60/40 dos planos de 39 e 49).</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Camada</th><th>Definição</th><th class="r">Estabelecimentos</th><th class="r">Valor anual na nossa faixa (CAD)</th></tr></thead>
+      <tbody>
+        <tr><td><span class="pill mute">TAM</span></td><td>Todos os estabelecimentos NAICS 722</td><td class="r">105.169</td><td class="r">54 milhões</td></tr>
+        <tr><td><span class="pill data">SAM</span></td><td>Empregadores de 1–99 funcionários, independentes (69%)</td><td class="r">~51.000</td><td class="r">26 milhões</td></tr>
+        <tr><td><span class="pill good">SOM (3 anos)</span></td><td>1% a 3% do SAM</td><td class="r">500 a 1.500</td><td class="r">0,26 a 0,77 milhão</td></tr>
+      </tbody>
+    </table></div>
+    <p>Os 29.762 sem funcionários (food trucks e caterers de uma pessoa, em boa parte) ficam como mercado secundário: pagam pouco, mas o produto serve igual.</p>
+
+    <h3>Momento do mercado</h3>
+    <p>Em agosto de 2026, 41% dos operadores estavam no prejuízo ou no zero a zero (36% em março), e a projeção é de perda líquida de 1.500 a 2.500 restaurantes no ano, concentrada em independentes full-service (<a href="https://retail-insider.com/retail-insider/2026/08/canada-could-lose-2500-restaurants-in-2026-as-industry-pressures-mount/">Charlebois / Agri-Food Analytics Lab</a>). Margem média de 10,4%; gasto com insumos subiu 37% em um ano; 71% subiram preços de cardápio (média de 13%); 39% buscam fornecedores mais baratos e 42% tentam reduzir desperdício (TouchBistro 2026). Mercado em aperto compra ferramenta que mostra onde está o dinheiro, desde que seja barata e rápida de usar.</p>
+  </div>
+</section>
+
+<section id="cliente">
+  <div class="wrap">
+    <div class="sec-head"><span class="n">03</span><h2>Perfil do cliente-alvo</h2></div>
+    <p>O cliente é o dono-operador de um estabelecimento independente, de 1 local e 5 a 30 funcionários, que faz a compra, define o cardápio e fecha o caixa ele mesmo. Fatura entre CAD 400 mil e 1,5 milhão por ano (a média das PMEs do setor é CAD 849 mil), opera com margem de um dígito a 10% e não tem gerente financeiro nem controller.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Dimensão</th><th>O que a pesquisa mostra</th><th>Implicação para o produto</th></tr></thead>
+      <tbody>
+        <tr><td>Maior dor</td><td>Custo de alimentos: 91% citam como pressão; 29% dizem ser o maior aperto financeiro; insumos subiram 37% em 12 meses</td><td>O produto começa pelo custo do prato, não pelo estoque</td></tr>
+        <tr><td>O que já fazem</td><td>71% subiram preços (média 13%); 39% procuram fornecedor mais barato; 42% tentam cortar desperdício</td><td>Alertas de margem e histórico de preço de compra resolvem decisões que eles já tomam no escuro</td></tr>
+        <tr><td>Orçamento de tecnologia</td><td>Gasto médio de CAD 195/mês; 68% planejam gastar mais; 24% desses querem software de inventário</td><td>CAD 39–49 é 20–25% do gasto atual; cabe sem substituir nada</td></tr>
+        <tr><td>Tempo e equipe</td><td>79% com falta de pessoal (5,3 vagas abertas em média); turnover de 28%</td><td>Setup em minutos, sem treinamento, celular como tela principal</td></tr>
+        <tr><td>Ferramentas atuais</td><td>POS (Square, TouchBistro, Lightspeed), planilhas, caderno e notas de fornecedor em papel ou e-mail</td><td>Não substituir o POS; ler dele e completar o que ele não faz</td></tr>
+        <tr><td>Quem decide</td><td>O próprio dono; em bistrôs e cafés, o chef ou gerente (perfil da Serena) influencia</td><td>Venda self-service com trial; sem demo obrigatória, sem contrato anual</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">Percentuais: <a href="https://www.touchbistro.com/wp-content/uploads/2026/01/TouchBistro-2026-Canadian-State-of-Restaurants-Report.pdf">TouchBistro, 2026 Canadian State of Restaurants Report</a> (600 operadores full-service, outubro de 2025) e <a href="https://retail-insider.com/retail-insider/2026/05/high-operating-costs-uneven-consumer-spending-put-restaurants-under-pressure-restaurants-canada/">Restaurants Canada Q1 2026</a>.</p>
+    <p><strong>Segmentos prioritários, na ordem:</strong> (1) restaurantes full-service independentes e bistrôs/cafés com cozinha, com maior sensibilidade a food cost e 91% de independentes; (2) padarias, cafeterias e food trucks: cardápio curto, ficha técnica simples, decisão rápida; (3) bares: custo de bebida é um caso à parte (ml por dose) e pode entrar depois. Limited-service de rede (43% de independentes) fica fora: a franquia já entrega o sistema.</p>
+  </div>
+</section>
+
+<section id="concorrentes">
+  <div class="wrap">
+    <div class="sec-head"><span class="n">04</span><h2>Concorrentes reais e preços</h2></div>
+    <p>O concorrente de um app de custo e lucro não é o POS; é o software de back-office. Nesse grupo há um vazio entre CAD 50 e CAD 125 por mês, e as ferramentas que fazem o conjunto completo (ficha técnica + notas de fornecedor + alertas + vendas do POS) começam em CAD 350.</p>
+    <figure>
+      <h3>Abaixo de CAD 50 só há calculadoras; as ferramentas completas começam em CAD 350</h3>
+      <p class="sub">Preço de entrada por mês, 1 local, em CAD (USD convertido a 1,42)</p>
+      <div id="chart-price"></div>
+      <figcaption>páginas de preço abertas em 19/10/2026 · USD a CAD 1,4247 em 02/10/2026</figcaption>
+    </figure>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Produto</th><th>Sede</th><th>Cobrança</th><th>O que falta para o pequeno independente no Canadá</th></tr></thead>
+      <tbody>
+        <tr><td><a href="https://recipecostcalculator.net/pricing">Recipe Cost Calculator</a></td><td>Canadá</td><td>Anual; estoque é add-on de US$107,50</td><td>Sem OCR de nota, sem importar vendas, sem alertas; interface só em inglês (FR não verificado). É o concorrente mais próximo em preço</td></tr>
+        <tr><td><a href="https://www.getmeez.com/pricing">meez</a></td><td>EUA</td><td>Anual; Pro US$89 para estoque</td><td>Ferramenta de chef: receita e custo básico, sem fornecedor nem histórico de preço</td></tr>
+        <tr><td><a href="https://www.dineopen.com/pricing">DineOpen</a></td><td>—</td><td>Mensal; Growth US$50 tem receitas e fornecedores</td><td>É POS: só serve se o dono trocar o sistema de caixa. Bilíngue e com impostos por província</td></tr>
+        <tr><td><a href="https://www.tracrite.net">Optimum Control</a> (TracRite)</td><td>Winnipeg</td><td>Sob cotação; terceiros citam CAD 125</td><td>Produto de mesa de compras para médios; setup e treinamento pesados</td></tr>
+        <tr><td><a href="https://squareup.com/ca/en/point-of-sale/restaurants/pricing">Square Restaurant Inventory by MarketMan</a></td><td>EUA</td><td>CAD 139 por local, só no plano Plus (CAD 60)</td><td>Exige Square Plus; CAD 199 no total</td></tr>
+        <tr><td><a href="https://www.marketman.com/pricing">MarketMan</a></td><td>EUA</td><td>Mensal US$249; 50 notas/mês no Starter</td><td>Desenhado para redes; 6× o nosso preço</td></tr>
+        <tr><td><a href="https://www.wisk.ai/pricing">WISK.ai</a></td><td>Montreal</td><td>US$249 anual ou trimestral + US$750 de setup</td><td>Preço e setup; forte em bebidas. Tem site em francês</td></tr>
+        <tr><td><a href="https://www.yellowdogsoftware.com/pricing">Yellow Dog</a></td><td>EUA</td><td>US$295, contrato de 2 anos</td><td>Contrato longo; foco em inventário</td></tr>
+        <tr><td><a href="https://www.marginedge.com/pricing">MarginEdge</a></td><td>EUA</td><td>US$350 por local</td><td>Preço; sem pagamento de contas para clientes canadenses</td></tr>
+        <tr><td>Restaurant365, Craftable, Apicbase, Supy, Fourth, Nory</td><td>EUA, Bélgica, EAU, UK, Irlanda</td><td>Sob cotação ou a partir de US$250; Apicbase a partir de 5 lojas</td><td>Multi-unidade e enterprise</td></tr>
+        <tr><td>xtraCHEF (Toast), Peachworks, Choco</td><td>EUA, EUA, Alemanha</td><td>—</td><td>Não disponíveis no Canadá (<a href="https://support.toasttab.com/en/article/Toast-Product-Availability-in-Australia-Canada-Ireland-and-the-United-Kingdom">Toast</a>)</td></tr>
+      </tbody>
+    </table></div>
+    <p>No POS, a planilha de benchmark continua válida com três correções verificadas: <a href="https://pos.toasttab.com/ca/pricing">Toast Canadá</a> cobra CAD 120 (Starter) e CAD 220 (Essentials), não $0/$69; <a href="https://www.lightspeedhq.com/pos/restaurant/pricing/">Lightspeed</a> inclui inventário por ingrediente em todos os planos (a partir de US$69); <a href="https://www.touchbistro.com/pricing/">TouchBistro</a> vende inventário e gestão de lucro como add-ons sob cotação. Isso reforça a estratégia: não competir com POS, e sim ler os dados de vendas deles.</p>
+  </div>
+</section>
+
+<section id="gpt">
+  <div class="wrap">
+    <div class="sec-head"><span class="n">05</span><h2>O material do GPT</h2></div>
+    <p>É útil como ponto de partida de produto, mas fraco como análise de mercado: acerta o posicionamento ("custo e lucro, sem POS novo") e erra o conjunto de concorrentes, que é quase só POS. Veredito ponto a ponto:</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Afirmação do GPT</th><th>Veredito</th><th>O que fazer</th></tr></thead>
+      <tbody>
+        <tr><td>Tabela de 10 concorrentes (TouchBistro, Lightspeed, Square, Toast, Clover, Moneris, DineOpen, Saffron, Revel, talech)</td><td><span class="pill warn">Parcial</span> Correta, mas são POS. Nenhum é o concorrente direto de um back-office de custo</td><td>Trocar a lista pela seção de concorrentes acima (MarketMan, MarginEdge, Optimum Control, WISK etc.)</td></tr>
+        <tr><td>"TouchBistro e DineOpen já têm ficha técnica e comparação de fornecedor; não podemos dizer que é único"</td><td><span class="pill good">Correto</span> e importante</td><td>Diferencial é preço + simplicidade + independência de POS, não a feature em si</td></tr>
+        <tr><td>5 diferenciais: independente do POS, comparação de preços locais, lucro em linguagem simples, setup fácil, feito para muito pequenos</td><td><span class="pill good">Bons</span> O segundo é o mais difícil (precisa de dados de preço confiáveis)</td><td>Manter os cinco; comparação de preços entra como fase 3 a partir das próprias notas dos clientes, não de Costco/Walmart</td></tr>
+        <tr><td>MVP: ingredientes, ficha técnica, preços de cardápio, margem, histórico de preço de compra, estoque básico, alertas</td><td><span class="pill warn">Incompleto</span> Falta o mecanismo de entrada de dados</td><td>Foto da nota do fornecedor (OCR) entra no MVP: sem ela, ninguém mantém preço atualizado e o app morre em 60 dias</td></tr>
+        <tr><td>Preços sugeridos: CAD 19 / 29 / 49</td><td><span class="pill bad">Baixo demais</span> para o valor e para a meta de CAD 35–50. CAD 19 atrai quem não paga</td><td>Dois planos: CAD 39 e CAD 49</td></tr>
+        <tr><td>Simulador: 100 clientes × CAD 29 = CAD 2.900/mês</td><td><span class="pill mute">Ilustrativo</span> Não é análise de mercado</td><td>Usar os cenários da seção de receita</td></tr>
+        <tr><td>"xtraCHEF (Toast) é só EUA; oportunidade geográfica"</td><td><span class="pill warn">Verdadeiro, mas fraco</span> Toast opera no Canadá com inventário próprio</td><td>Não apoiar o pitch nisso</td></tr>
+        <tr><td>"Entrevistar 10–15 donos antes de codar"</td><td><span class="pill good">Correto</span></td><td>Serena roda as entrevistas; roteiro na seção de próximos passos</td></tr>
+      </tbody>
+    </table></div>
+    <p>O que o GPT não cobriu e este documento cobre: tamanho do mercado, perfil e orçamento do cliente, os concorrentes reais de back-office (inclusive dois canadenses, Optimum Control em Winnipeg e WISK em Montreal) e as exigências locais: francês, GST/HST/PST/QST nas notas de compra e unidades em sistema métrico e imperial misturados.</p>
+  </div>
+</section>
+
+<section id="posicionamento">
+  <div class="wrap">
+    <div class="sec-head"><span class="n">06</span><h2>Proposta de valor e posicionamento</h2></div>
+    <div class="callout"><p><strong>Mensagem:</strong> "Saiba quanto custa cada prato, quanto você ganha em cada um e onde dá para economizar. Sem trocar o POS."</p></div>
+    <p>A frase do GPT estava boa; só tiramos "software" e colocamos o POS, que é a objeção número um.</p>
+    <div class="plans">
+      <div class="plan">
+        <div class="name">Essencial</div>
+        <div class="price num">CAD 39<small>/mês</small></div>
+        <div class="who">1 local, dono + chef</div>
+        <ul><li>Insumos e fichas ilimitadas</li><li>30 notas por OCR/mês</li><li>Margem por item e alertas por e-mail e push</li><li>EN/FR</li></ul>
+      </div>
+      <div class="plan hi">
+        <div class="name">Pro</div>
+        <div class="price num">CAD 49<small>/mês</small></div>
+        <div class="who">1 local, equipe</div>
+        <ul><li>Tudo do Essencial</li><li>Notas e usuários ilimitados</li><li>Alertas por WhatsApp</li><li>Importação de vendas do POS</li><li>Estoque leve e engenharia de cardápio quando lançados</li></ul>
+      </div>
+      <div class="plan">
+        <div class="name">Multi-local</div>
+        <div class="price num">+19<small>/local extra</small></div>
+        <div class="who">Donos com 2 a 5 casas</div>
+        <ul><li>Fichas compartilhadas</li><li>Preços por local</li><li>Visão consolidada</li></ul>
+      </div>
+    </div>
+    <p class="note">Anual com dois meses grátis (CAD 390 / 490). Trial de 14 dias sem cartão.</p>
+    <h3>Por que CAD 39 e não 29</h3>
+    <p>O dono já gasta CAD 195/mês em tecnologia; 39 é 20% disso e menos do que um único erro de precificação num prato que vende 10 vezes por dia. A CAD 29 o produto parece uma calculadora (meez, Recipe Cost Calculator) e atrai quem cancela no segundo mês. Acima de 59, entra na mesma conversa de "mais um software" e passa a ser comparado com Optimum Control.</p>
+    <h3>Diferenciais que sustentam o preço, em ordem de força</h3>
+    <ol>
+      <li><strong>Entrada por foto da nota do fornecedor.</strong> É o que mantém os preços vivos sem digitação; as ferramentas baratas não têm, e as caras cobram 5× por isso.</li>
+      <li><strong>Independente do POS.</strong> Funciona com Square, TouchBistro, Lightspeed, Clover ou caderno; lê as vendas por CSV ou API, nunca pede troca.</li>
+      <li><strong>Canadense de nascença:</strong> EN/FR, GST/HST/PST/QST separados do custo, lb e kg convivendo, CAD, dados hospedados no país.</li>
+      <li><strong>Linguagem de dono, não de controller:</strong> "o Chicken Wrap ficou CAD 1,20 mais caro de fazer; suba para 15,50 ou troque o fornecedor". Sem relatório de variância.</li>
+      <li><strong>Setup em 15 minutos,</strong> sem demo, sem contrato anual. A barreira que Serena descreveu é de aquisição e implantação, não de feature.</li>
+    </ol>
+    <p>O único diferencial que vira fosso com o tempo é o módulo 8 da spec: a base de preços de insumos por região, construída com as notas dos próprios clientes. Com 300 clientes em Toronto, o app sabe quanto custa o peito de frango em cada fornecedor da cidade esta semana. Nenhum concorrente de CAD 30 consegue isso, e os de CAD 350 não têm densidade de pequenos.</p>
+  </div>
+</section>
+
+<section id="spec">
+  <div class="wrap">
+    <div class="sec-head"><span class="n">07</span><h2>Spec do produto (v0.1)</h2></div>
+    <p><strong>Em uma frase:</strong> um app, em inglês e francês, que mostra ao dono de um pequeno restaurante quanto custa cada prato hoje, quanto ele ganha em cada um e o que mudou desde a última compra, em 15 minutos de setup, por CAD 39–49/mês, sem trocar o POS.</p>
+    <p><strong>Fora de escopo (de propósito):</strong> POS, pagamentos, reservas, mesas, escala de funcionários, folha, KDS, integração com apps de delivery, contabilidade.</p>
+
+    <h3>Módulos</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>#</th><th>Módulo</th><th>O que faz</th><th>Fase</th></tr></thead>
+      <tbody>
+        <tr><td class="num">1</td><td>Insumos e fornecedores</td><td>Cadastro com unidade de compra (caixa, lb, kg) e unidade de uso (g, ml, unidade), fator de conversão e rendimento (yield %). Preço atual e histórico por fornecedor</td><td><span class="pill data">MVP</span></td></tr>
+        <tr><td class="num">2</td><td>Fichas técnicas</td><td>Receitas e sub-receitas (molhos, bases) com custo por porção recalculado automaticamente quando um insumo muda de preço</td><td><span class="pill data">MVP</span></td></tr>
+        <tr><td class="num">3</td><td>Cardápio e margem</td><td>Preço de venda, food cost %, margem bruta em CAD por item e por categoria; meta de food cost por item; semáforo verde/amarelo/vermelho</td><td><span class="pill data">MVP</span></td></tr>
+        <tr><td class="num">4</td><td>Entrada de notas</td><td>Foto ou PDF da nota do fornecedor → OCR → conferência em uma tela → atualiza preços e histórico. Digitação rápida como alternativa. Separa GST/HST/PST/QST do custo</td><td><span class="pill data">MVP</span></td></tr>
+        <tr><td class="num">5</td><td>Alertas e resumo semanal</td><td>"Frango subiu 12% na GFS; 4 pratos afetados; margem do Chicken Wrap caiu de 61% para 55%; novo preço sugerido CAD 15,50". Push, e-mail e WhatsApp</td><td><span class="pill data">MVP</span></td></tr>
+        <tr><td class="num">6</td><td>Estoque leve</td><td>Contagem periódica pelo celular, consumo teórico (vendas × ficha) vs real, variação em CAD</td><td><span class="pill mute">Fase 2</span></td></tr>
+        <tr><td class="num">7</td><td>Engenharia de cardápio</td><td>Popularidade × margem (estrelas, cavalos de batalha, quebra-cabeças, cães) a partir das vendas importadas do POS</td><td><span class="pill mute">Fase 2</span></td></tr>
+        <tr><td class="num">8</td><td>Comparação de preços</td><td>Preço por unidade normalizada do mesmo insumo em fornecedores diferentes, a partir das notas dos próprios clientes, anonimizado por região</td><td><span class="pill mute">Fase 3</span></td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="two">
+      <div>
+        <h3>Fluxo principal (primeira sessão, meta de 15 minutos)</h3>
+        <ol>
+          <li>Cria a conta, escolhe idioma (EN/FR), província e tipo de casa.</li>
+          <li>Carrega insumos: tira foto de 2 ou 3 notas recentes, ou importa o CSV modelo, ou digita 10 itens.</li>
+          <li>Monta a primeira ficha técnica arrastando insumos e informando quantidades.</li>
+          <li>Vê o custo por porção na hora; informa o preço de venda; vê food cost % e margem.</li>
+          <li>Define a meta de food cost (padrão 30%) e recebe a primeira recomendação de preço.</li>
+          <li>Ativa o alerta semanal e, se quiser, convida o chef ou quem compra.</li>
+        </ol>
+      </div>
+      <div>
+        <h3>Requisitos canadenses</h3>
+        <ul>
+          <li>Inglês e francês completos desde o lançamento (Quebec, Lei 96; 21% dos empregadores estão em Quebec).</li>
+          <li>Impostos nas notas de compra: GST/HST/PST/QST separados do custo do insumo; o custo da ficha usa o valor líquido do imposto recuperável.</li>
+          <li>Unidades mistas: fornecedores vendem em lb, oz, caixa e galão; cozinha usa g e ml. Conversão nativa, sem planilha.</li>
+          <li>Dados pessoais sob PIPEDA e Lei 25 (Quebec); hospedagem em região canadense (AWS ca-central-1 ou equivalente).</li>
+          <li>Moeda CAD; cobrança em CAD com cartão (Stripe), sem contrato anual.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="two">
+      <div>
+        <h3>Requisitos não-funcionais</h3>
+        <ul>
+          <li>Mobile-first (PWA instalável), foto de nota direto da câmera; desktop para montar fichas.</li>
+          <li>Setup completo em menos de 15 minutos sem vídeo ou demo; recálculo de custo instantâneo.</li>
+          <li>Multiusuário com papéis: dono, chef, compras; 1 local por plano básico, multi-local no plano superior.</li>
+          <li>Exportação CSV e PDF de fichas e relatórios; importação CSV de vendas (Square, TouchBistro e Lightspeed exportam nativamente).</li>
+          <li>Disponibilidade alvo 99,5%; backup diário; multi-tenant com isolamento por tenant.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Integrações, por ordem</h3>
+        <ol>
+          <li>MVP: importação CSV de vendas e de insumos; OCR de notas (Sysco, GFS Canada, Costco Business, fornecedores locais).</li>
+          <li>Fase 2: API do Square (gratuita e aberta) para vendas diárias; depois Lightspeed e Clover.</li>
+          <li>Fase 3: TouchBistro e Toast via parceria ou exportação agendada.</li>
+        </ol>
+        <h3>Stack sugerida</h3>
+        <p>Next.js (web/PWA) + NestJS + PostgreSQL multi-tenant, a mesma base que já usamos em outros produtos, o que encurta o MVP. OCR com AWS Textract ou Google Document AI, com um modelo de linguagem normalizando linhas de nota em insumos. Stripe Billing em CAD; Resend para e-mail; API do WhatsApp para alertas; hospedagem em ca-central-1.</p>
+      </div>
+    </div>
+
+    <h3>Modelo de dados (entidades principais)</h3>
+    <p class="num" style="font-size:.9rem">Tenant → Location → Supplier · Ingredient (unidade de compra, unidade de uso, conversão, yield) · Invoice → InvoiceLine → PriceHistory · Recipe → RecipeLine (insumo ou sub-receita) · MenuItem (preço, categoria, meta de food cost) · SalesImport · Alert</p>
+
+    <h3>Roadmap: quatro fases, e cada gate decide se a próxima começa</h3>
+    <div class="roadmap">
+      <div class="phase"><div class="ph">Fase 0 · Descoberta</div><div class="dur">4 semanas</div><ul><li>15 entrevistas (Serena)</li><li>Protótipo clicável</li><li>Cartas de intenção</li></ul></div>
+      <div class="phase hi"><div class="ph">Fase 1 · MVP</div><div class="dur">12 semanas</div><ul><li>Módulos 1 a 5</li><li>EN + FR, OCR de notas</li><li>10 betas gratuitos</li></ul></div>
+      <div class="phase"><div class="ph">Fase 2 · Beta pago</div><div class="dur">8 semanas</div><ul><li>30 clientes a CAD 39</li><li>Estoque leve</li><li>API Square</li></ul></div>
+      <div class="phase"><div class="ph">Fase 3 · Escala</div><div class="dur">contínuo</div><ul><li>Engenharia de cardápio</li><li>Lightspeed e Clover</li><li>Comparação de preços</li></ul></div>
+    </div>
+    <div class="gates">
+      <div class="gate">Gate: 10 donos pagariam CAD 39</div>
+      <div class="gate">Gate: 10 betas usam toda semana</div>
+      <div class="gate">Gate: churn mensal abaixo de 5%</div>
+      <div></div>
+    </div>
+    <p>São cerca de 24 semanas da primeira entrevista ao primeiro cliente pagante. Nenhuma fase começa sem o gate anterior: se menos de 10 donos disserem que pagariam CAD 39, o problema é de proposta, não de código.</p>
+  </div>
+</section>
+
+<section id="receita">
+  <div class="wrap">
+    <div class="sec-head"><span class="n">08</span><h2>Modelo de receita e cenários</h2></div>
+    <p>Com dois planos (CAD 39 e CAD 49) e mix de 60/40, o ticket médio fica em CAD 43/mês. O cenário-base é 1.000 clientes pagantes no fim do ano 3 (2% do SAM), ou CAD 516 mil de receita anual recorrente. É um negócio de nicho rentável para dois sócios, não um unicórnio, e o teto só sobe com multi-local, add-ons e EUA.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Cenário (fim do ano 3)</th><th class="r">Clientes</th><th class="r">% do SAM (51 mil)</th><th class="r">MRR (CAD)</th><th class="r">ARR (CAD)</th></tr></thead>
+      <tbody>
+        <tr><td>Conservador</td><td class="r">500</td><td class="r">1,0%</td><td class="r">21.500</td><td class="r">258.000</td></tr>
+        <tr class="total"><td>Base</td><td class="r">1.000</td><td class="r">2,0%</td><td class="r">43.000</td><td class="r">516.000</td></tr>
+        <tr><td>Otimista</td><td class="r">1.500</td><td class="r">2,9%</td><td class="r">64.500</td><td class="r">774.000</td></tr>
+        <tr><td>Expansão (multi-local, add-on de fornecedores, sem funcionários)</td><td class="r">2.500</td><td class="r">—</td><td class="r">107.500</td><td class="r">1.290.000</td></tr>
+      </tbody>
+    </table></div>
+    <p><strong>Unit economics alvo.</strong> Margem bruta de SaaS de 80% (OCR e WhatsApp são os custos variáveis relevantes, ~CAD 3–5 por cliente/mês). Churn mensal de 3% dá vida média de 33 meses e LTV de ~CAD 1.400 em receita (CAD 1.100 em margem). CAC precisa ficar abaixo de CAD 370 para LTV/CAC de 3. Restaurantes pequenos fecham muito (41% no prejuízo ou zero a zero), então parte do churn não é culpa do produto; 3% é ambicioso e precisa ser medido no beta.</p>
+    <p><strong>Canais de aquisição, do mais barato ao mais caro:</strong> rede da Serena e indicação entre donos; calculadora grátis de food cost como isca (SEO em EN e FR); grupos de donos no Facebook e Reddit por cidade; representantes de fornecedores (GFS, Sysco, atacadistas locais) e contadores que atendem restaurantes; Restaurants Canada e associações provinciais; Google Ads só depois de validar conversão do trial.</p>
+    <p><strong>Preço de entrada.</strong> Trial de 14 dias sem cartão, mensal sem fidelidade, desconto de 2 meses no plano anual. Nada de "fale com vendas": essa é exatamente a barreira que os concorrentes criam.</p>
+  </div>
+</section>
+
+<section id="riscos">
+  <div class="wrap">
+    <div class="sec-head"><span class="n">09</span><h2>Riscos, validações pendentes e próximos passos</h2></div>
+    <p>O maior risco não é concorrência; é o dono não manter os dados atualizados e cancelar no terceiro mês. Tudo na spec que custa esforço (OCR, alertas, setup de 15 minutos) existe para atacar esse risco.</p>
+    <div class="table-wrap"><table class="risk">
+      <thead><tr><th>Risco</th><th>Probabilidade</th><th>Como reduzir</th></tr></thead>
+      <tbody>
+        <tr><td>Dados não são mantidos (fichas e preços envelhecem)</td><td><span class="pill bad">Alta</span></td><td>OCR de notas no MVP; alerta semanal que só faz sentido com dados frescos; onboarding assistido pela Serena nos 30 primeiros clientes</td></tr>
+        <tr><td>Churn por fechamento do restaurante (41% no prejuízo ou zero a zero)</td><td><span class="pill bad">Alta</span></td><td>Aceitar no modelo; cobrar mensal para não virar dívida; focar em casas com 2+ anos</td></tr>
+        <tr><td>Square, Lightspeed ou TouchBistro incluem ficha técnica de graça</td><td><span class="pill warn">Média</span></td><td>Lightspeed já inclui inventário. Diferencial é ser multi-POS, bilíngue e falar a língua do dono; migração de POS é rara e cara</td></tr>
+        <tr><td>Recipe Cost Calculator ou meez adicionam OCR e alertas</td><td><span class="pill warn">Média</span></td><td>Velocidade e foco canadense; eles são globais e em USD</td></tr>
+        <tr><td>OCR erra em notas manuscritas ou de fornecedor local</td><td><span class="pill warn">Média</span></td><td>Tela de conferência obrigatória; aprender o layout de cada fornecedor por cliente; digitação rápida como fallback</td></tr>
+        <tr><td>Quebec: francês e Lei 25 mal feitos</td><td><span class="pill warn">Média</span></td><td>FR nativo desde o MVP revisado por falante; hospedagem canadense; política de privacidade em FR</td></tr>
+        <tr><td>Faixa de preço não sustenta aquisição paga</td><td><span class="pill warn">Média</span></td><td>Primeiros 100 clientes por indicação e canais orgânicos; só mídia paga com CAC medido</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="two">
+      <div>
+        <h3>O que ainda não sabemos (15 entrevistas, 3 semanas, Serena conduz)</h3>
+        <ul class="check">
+          <li>Como o dono sabe hoje quanto custa um prato? Quando foi a última vez que calculou?</li>
+          <li>O que fez quando o preço de um insumo subiu? Subiu o preço do prato, trocou fornecedor, absorveu?</li>
+          <li>Quem recebe e confere as notas de fornecedor? Em papel, e-mail ou portal?</li>
+          <li>Que POS usa e consegue exportar vendas por item?</li>
+          <li>Quanto paga hoje em software, somando tudo?</li>
+          <li>Pagaria CAD 39/mês por um app que avisa quando a margem de um prato cai? E CAD 49 com alerta no WhatsApp?</li>
+          <li>Francês é obrigatório, desejável ou indiferente? (perguntar em Montreal e Ottawa)</li>
+          <li>O que faria desinstalar no segundo mês?</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Próximos passos</h3>
+        <ol>
+          <li>Serena valida o perfil e a lista de 15 donos (3 em Quebec), esta semana.</li>
+          <li>Fernando monta o protótipo clicável das 5 telas do fluxo principal para usar nas entrevistas, em 2 semanas.</li>
+          <li>Entrevistas e cartas de intenção ("pago CAD 39 quando lançar") até o fim da fase 0.</li>
+          <li>Decisão de go/no-go pelo gate: 10 de 15 dizem que pagariam.</li>
+          <li>Se go: MVP de 12 semanas com os módulos 1 a 5; 10 betas gratuitos vindos das entrevistas.</li>
+        </ol>
+        <p class="note"><strong>Pendências de pesquisa:</strong> contagem oficial de independentes (a CHD é de 2015); preços em CAD da Lightspeed e TouchBistro no Canadá (os sites mostram USD ou "sob cotação"); se o Recipe Cost Calculator tem interface em francês; custo real do OCR por nota em escala.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="fontes" class="sources">
+  <div class="wrap">
+    <div class="sec-head"><span class="n">10</span><h2>Fontes</h2></div>
+    <h3>Tamanho e situação do mercado</h3>
+    <ul>
+      <li><a href="https://ised-isde.canada.ca/app/ixb/cis/businesses-entreprises/722">ISED, Canadian Industry Statistics, NAICS 722, estabelecimentos por porte e província, 2025</a></li>
+      <li><a href="https://ised-isde.canada.ca/app/ixb/cis/businesses-entreprises/7225">ISED, NAICS 7225, restaurantes full-service e limited-service, 2025</a> e <a href="https://ised-isde.canada.ca/app/ixb/cis/summary-sommaire/7225">resumo com receita média e % lucrativas, 2024</a></li>
+      <li><a href="https://ised-isde.canada.ca/app/ixb/cis/businesses-entreprises/7223">ISED, NAICS 7223, serviços especiais de alimentação, 2025</a> · <a href="https://ised-isde.canada.ca/app/ixb/cis/businesses-entreprises/7224">ISED, NAICS 7224, bares, 2025</a></li>
+      <li><a href="https://retail-insider.com/retail-insider/2026/05/high-operating-costs-uneven-consumer-spending-put-restaurants-under-pressure-restaurants-canada/">Restaurants Canada, relatório Q1 2026 via Retail Insider, maio de 2026</a>: vendas de CAD 125 bi, 1,2 M empregos, 36% no prejuízo ou zero a zero</li>
+      <li><a href="https://retail-insider.com/retail-insider/2026/08/canada-could-lose-2500-restaurants-in-2026-as-industry-pressures-mount/">Charlebois / Agri-Food Analytics Lab via Retail Insider, agosto de 2026</a>: 41% no prejuízo ou zero a zero, perda líquida de 1.500 a 2.500 restaurantes</li>
+      <li><a href="https://www.yahoo.com/news/articles/canada-could-see-net-loss-112304785.html">Verdict / Global News, projeção original de 4.000 fechamentos líquidos</a></li>
+      <li><a href="https://www.touchbistro.com/wp-content/uploads/2026/01/TouchBistro-2026-Canadian-State-of-Restaurants-Report.pdf">TouchBistro, 2026 Canadian State of Restaurants Report (PDF)</a>: 600 operadores, margem 10,4%, gasto em tecnologia CAD 195/mês</li>
+      <li><a href="https://www150.statcan.gc.ca/n1/pub/11-627-m/11-627-m2021025-eng.htm">Statistics Canada, infográfico "Stats are on the menu" (arquivado)</a>: 97.000+ restaurantes, bares e caterers</li>
+      <li><a href="https://www.newswire.com/news/foodservice-in-canada-chd-expert-breaks-down-the-current">CHD Expert, panorama do foodservice canadense, outubro de 2015</a>: 91% de independentes em full-service, 43% em limited-service</li>
+    </ul>
+    <h3>Concorrentes (páginas de preço abertas em 19/10/2026)</h3>
+    <ul>
+      <li><a href="https://www.marketman.com/pricing">MarketMan</a> · <a href="https://www.marginedge.com/pricing">MarginEdge</a> · <a href="https://www.wisk.ai/pricing">WISK.ai</a> · <a href="https://www.yellowdogsoftware.com/pricing">Yellow Dog</a> · <a href="https://supy.io/supy-pricing">Supy</a> · <a href="https://www.restaurant365.com/pricing/">Restaurant365</a> · <a href="https://www.craftable.com/pricing/">Craftable</a> · <a href="https://get.apicbase.com/pricing">Apicbase</a></li>
+      <li><a href="https://recipecostcalculator.net/pricing">Recipe Cost Calculator</a> · <a href="https://www.getmeez.com/pricing">meez</a> · <a href="https://www.getbackbar.com/pricing">Backbar</a> · <a href="https://www.bevspot.com/pricing">BevSpot</a> · <a href="https://www.cheftec.com/cheftec-basic">ChefTec</a></li>
+      <li><a href="https://www.tracrite.net">Optimum Control / TracRite</a> e <a href="https://www.capterra.com/p/12406/Optimum-Control/">preço de terceiros no Capterra</a> · <a href="https://www.sculpturehospitality.com/sculpture-hospitality-pricing">Sculpture Hospitality</a></li>
+      <li><a href="https://squareup.com/ca/en/point-of-sale/restaurants/pricing">Square for Restaurants Canadá</a> · <a href="https://pos.toasttab.com/ca/pricing">Toast Canadá</a> · <a href="https://www.lightspeedhq.com/pos/restaurant/pricing/">Lightspeed Restaurant</a> · <a href="https://www.touchbistro.com/pricing/">TouchBistro</a> · <a href="https://www.dineopen.com/pricing">DineOpen</a></li>
+      <li><a href="https://support.toasttab.com/en/article/Toast-Product-Availability-in-Australia-Canada-Ireland-and-the-United-Kingdom">Toast, disponibilidade de produtos no Canadá (xtraCHEF só EUA)</a> · <a href="https://www.lightspeedhq.com/blog/web-srm-qc/">Lightspeed, WEB-SRM em Quebec</a></li>
+      <li><a href="https://www.exchange-rates.org/exchange-rate-history/cad-usd-2026-10-02">Câmbio USD/CAD 1,4247 em 02/10/2026</a></li>
+    </ul>
+    <p class="note">Material interno: planilha de benchmark de software de restaurante no Canadá (Fernando, 18/10/2026) e a conversa da Serena com o GPT.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Pesquisa e spec v0.1 · Fernando Jorge · Tudo Mudou Tech &amp; Marketing · Números verificados nas fontes listadas em 19 de outubro de 2026; os cenários de receita são premissas, não previsões.</div>
+</footer>
+
+<script>
+(function(){
+  var fmt = function(n){ return n.toLocaleString('pt-BR'); };
+  function hbar(id, rows, opts){
+    var left = opts.left, rh = 28, bw = 760 - left - opts.right, y0 = 8;
+    var max = Math.max.apply(null, rows.map(function(r){return r.v;}));
+    var H = y0 + rows.length * rh + 8;
+    var s = '<svg viewBox="0 0 760 '+H+'" role="img" aria-label="'+opts.label+'" class="bar-row">';
+    rows.forEach(function(r,i){
+      var y = y0 + i*rh, w = Math.max((r.v/max)*bw, 1.5), x2 = left + w;
+      var fill = r.hi ? 'var(--data)' : 'var(--bar)';
+      var fw = r.hi ? 'font-weight="700"' : '';
+      s += '<text class="lbl" x="'+(left-10)+'" y="'+(y+14)+'" text-anchor="end" '+fw+'>'+r.n+'</text>';
+      s += '<rect x="'+left+'" y="'+y+'" width="'+w.toFixed(1)+'" height="18" rx="2" fill="'+fill+'"><title>'+r.n+': '+fmt(r.v)+(r.a?' · '+r.a:'')+'</title></rect>';
+      s += '<text class="val" x="'+(x2+6).toFixed(1)+'" y="'+(y+14)+'" '+fw+'>'+fmt(r.v)+'</text>';
+      if (r.a) s += '<text class="ann" x="'+(x2+6+String(fmt(r.v)).length*7.2+8).toFixed(1)+'" y="'+(y+14)+'">'+r.a+'</text>';
+    });
+    s += '</svg>';
+    document.getElementById(id).innerHTML = s;
+  }
+  hbar('chart-prov', [
+    {n:'Ontário',v:29885,hi:true},{n:'Quebec',v:16068,hi:true},{n:'Colúmbia Britânica',v:11466,hi:true},{n:'Alberta',v:9104,hi:true},
+    {n:'Saskatchewan',v:2270},{n:'Manitoba',v:2104},{n:'Nova Escócia',v:1854},{n:'New Brunswick',v:1339},{n:'Terra Nova e Labrador',v:817},
+    {n:'Ilha do Príncipe Eduardo',v:341},{n:'Yukon',v:78},{n:'Territórios do Noroeste',v:59},{n:'Nunavut',v:22}
+  ], {left:196, right:70, label:'Empregadores NAICS 722 por província, 2025'});
+  hbar('chart-price', [
+    {n:'meez Starter',v:27,a:'US$19 · receitas, sem fornecedor'},
+    {n:'Recipe Cost Calculator',v:34,a:'US$24 · sem OCR, sem vendas'},
+    {n:'Este app',v:49,hi:true,a:'CAD 39 a 49 · custo, compras, alertas'},
+    {n:'DineOpen Growth (POS)',v:71,a:'US$50 · exige trocar o POS'},
+    {n:'Optimum Control',v:125,a:'CAD 125 · Winnipeg, preço de terceiros'},
+    {n:'Square Plus + MarketMan',v:199,a:'CAD 60 + 139 · preso ao Square'},
+    {n:'MarketMan Starter',v:354,a:'US$249'},
+    {n:'WISK.ai',v:354,a:'US$249 + US$750 de setup · Montreal'},
+    {n:'Yellow Dog',v:419,a:'US$295 · contrato de 2 anos'},
+    {n:'MarginEdge',v:497,a:'US$350 por local'}
+  ], {left:200, right:260, label:'Preço de entrada mensal em CAD por produto'});
+})();
+</script>
+
+</body></html>
