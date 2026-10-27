@@ -11,6 +11,7 @@ main.js         Menu mobile
 assets/         Logos
 blog/           Listagem (index.html), índice dos artigos (posts.json) e modelo de artigo (_modelo-artigo.html)
 projects/       Documentos publicados por link, um por pasta (ex.: /projects/canada/). Com noindex, fora do menu.
+planopet/       Estrutura do projeto da plataforma de planos veterinários (/planopet/). Com noindex, fora do menu.
 Dockerfile      Imagem nginx para produção
 nginx.conf      Config do nginx (gzip, cache, /healthz)
 ```

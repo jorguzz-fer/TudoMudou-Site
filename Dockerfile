@@ -9,6 +9,7 @@ COPY index.html styles.css main.js /usr/share/nginx/html/
 COPY assets/ /usr/share/nginx/html/assets/
 COPY blog/ /usr/share/nginx/html/blog/
 COPY projects/ /usr/share/nginx/html/projects/
+COPY planopet/ /usr/share/nginx/html/planopet/
 
 EXPOSE 80
 
