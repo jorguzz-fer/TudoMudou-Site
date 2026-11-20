@@ -283,9 +283,10 @@ button.primary{background:var(--main);border-color:var(--main);color:#fff}
 <!-- SIMULADO -->
 <section id="s-simulado">
 <h2 style="margin-top:0">Simulado</h2>
+<h3 id="stitle"></h3>
 <p><b>Parte 1 · Marque a alternativa certa.</b> A resposta aparece na hora, com a explicação.</p>
 <div class="card" style="margin-bottom:18px"><div class="score" id="score">0 de 0</div><div class="meter"><i id="qbar"></i></div>
-<div class="row" style="justify-content:flex-start"><button id="qagain">Refazer tudo</button><button id="qwrong">Refazer as que errei</button></div></div>
+<div class="row" style="justify-content:flex-start"><button class="primary" id="qnew">Novo simulado (questões novas)</button><button id="qagain">Refazer tudo</button><button id="qwrong">Refazer as que errei</button></div></div>
 <div id="quiz"></div>
 <h2>Parte 2 · Perguntas para escrever</h2>
 <p>Iguais às da apostila. Ela responde no caderno ou em voz alta, depois confere a resposta modelo.</p>
@@ -453,19 +454,48 @@ const OPEN=[
 ['Descreva as fases do desenvolvimento de um peixe.','Os ovos são colocados na água; os embriões se desenvolvem dentro dos ovos; nascem os alevinos; eles crescem e viram peixes jovens; depois ficam adultos e podem se reproduzir.'],
 ['Como uma serpente e uma tartaruga marinha se locomovem na areia? O que no corpo ajuda?','A serpente rasteja, porque não tem pernas. A tartaruga marinha se arrasta usando os membros em forma de nadadeira (remos).'],
 ['O que acontece quando usamos critérios diferentes para classificar os mesmos animais?','Formamos grupos diferentes.']];
-let ans={},only=null;
+/* Gerador de questões novas: animais citados na apostila */
+const AN={peixe:['tubarão','cavalo-marinho','moreia','peixe-palhaço','raia','tubarão-baleia'],anfíbio:['sapo','rã','perereca','salamandra'],réptil:['jacaré','tartaruga','jabuti','cágado','lagartixa','iguana','camaleão','teiú','cascavel','crocodilo'],ave:['pinguim','flamingo','gaivota','beija-flor','urubu','coruja','pardal','bem-te-vi','avestruz','martim-pescador','pica-pau','sanhaço'],mamífero:['golfinho','morcego','cavalo','canguru','baleia','raposa-do-ártico','macaco','cachorro','ser humano'],invertebrado:['borboleta','minhoca','polvo','caranguejo','formiga','joaninha','aranha','tatuzinho-de-jardim']};
+const GW={peixe:'peixe',anfíbio:'anfíbio',réptil:'réptil',ave:'ave',mamífero:'mamífero',invertebrado:'invertebrado'};
+const WHY={peixe:'Vive na água, tem escamas e nadadeiras e respira por brânquias.',anfíbio:'Tem pele fina e úmida e passa por metamorfose.',réptil:'Tem pele grossa e seca com escamas e respira só por pulmões.',ave:'Tem bico e penas e bota ovos.',mamífero:'Tem pelos e o filhote mama leite.',invertebrado:'Não tem coluna vertebral.'};
+const BIRDS=[['pardal','granívora (come grãos e sementes)'],['sanhaço','frugívora (come frutos)'],['beija-flor','nectarívora (come néctar)'],['pica-pau','insetívora (come insetos)'],['urubu','necrófaga (come animais mortos)'],['martim-pescador','piscívora (come peixes)'],['bem-te-vi','onívora (come de tudo)']];
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const others=(k,n)=>shuffle(Object.keys(AN).filter(x=>x!==k)).slice(0,n);
+const mk=(q,right,wrong,exp)=>{const o=shuffle([right,...wrong]);return [q,o,o.indexOf(right),exp]};
+const ART={peixe:'um peixe',anfíbio:'um anfíbio',réptil:'um réptil',ave:'uma ave',mamífero:'um mamífero',invertebrado:'um invertebrado'};
+const DO={peixe:'um vertebrado do grupo dos peixes',anfíbio:'um vertebrado do grupo dos anfíbios',réptil:'um vertebrado do grupo dos répteis',ave:'um vertebrado do grupo das aves',mamífero:'um vertebrado do grupo dos mamíferos',invertebrado:'um invertebrado'};
+const cap=t=>t[0].toUpperCase()+t.slice(1);
+const GEN=[
+()=>{const g=pick(Object.keys(AN)),a=pick(AN[g]);return mk(`Animal: ${a}. Ele é...`,DO[g],others(g,2).map(x=>DO[x]),`${cap(a)} é ${ART[g]}. ${WHY[g]}`)},
+()=>{const g=pick(Object.keys(AN)),a=pick(AN[g]);return mk(`Qual destes animais é ${ART[g]}?`,a,others(g,2).map(x=>pick(AN[x])),`${cap(a)}. ${WHY[g]}`)},
+()=>{const g=pick(Object.keys(AN)),a=pick(AN[g]),t=Math.random()<.5,f=t?g:pick(others(g,1));return [`Verdadeiro ou falso: ${a} é ${ART[f]}.`,['Verdadeiro','Falso'],t?0:1,`${cap(a)} é ${ART[g]}. ${WHY[g]}`]},
+()=>{const b=pick(BIRDS);return mk(`Pelo bico e pela alimentação, o ${b[0]} é uma ave...`,b[1],shuffle(BIRDS.filter(x=>x!==b)).slice(0,2).map(x=>x[1]),`O ${b[0]} é uma ave ${b[1]}.`)},
+()=>{const g=pick(['ave','peixe','anfíbio']),a=pick(AN[g]);return mk(`Animal: ${a}. Como o filhote se desenvolve?`,'Dentro de um ovo: é ovíparo',['Dentro do corpo da mãe: é vivíparo','Dentro de um casulo'],`${cap(a)} é ${ART[g]}, e os filhotes se desenvolvem dentro de ovos.`)},
+()=>{const a=pick(AN.mamífero.filter(x=>x!=='ser humano'));return mk(`Animal: ${a}. Como o filhote se desenvolve?`,'Dentro do corpo da mãe: é vivíparo',['Dentro de um ovo: é ovíparo','Dentro de um casulo'],`${cap(a)} é um mamífero: o filhote cresce no corpo da mãe e depois mama leite.`)}];
+const fromC=()=>{const c=pick(C);if(Math.random()<.5)return mk(c.m[0],c.m[1],[c.m[2],c.m[3]],c.o[3]);return [`Verdadeiro ou falso: ${c.v[0]}`,['Verdadeiro','Falso'],c.v[1]?0:1,c.o[3]]};
+let SQ=Q,SO=OPEN,snum=1,ans={},only=null;
 const quiz=document.getElementById('quiz');
-const renderQ=()=>{const idx=only||Q.map((_,i)=>i);
-quiz.innerHTML=idx.map(i=>{const q=Q[i];return `<div class="q card" data-i="${i}"><div class="num">Questão ${i+1}</div><b>${q[0]}</b><div class="opts">${q[1].map((o,j)=>`<button data-j="${j}">${'abc'[j]}) ${o}</button>`).join('')}</div><div class="exp">${q[3]}</div></div>`}).join('');upd()};
-const upd=()=>{const idx=only||Q.map((_,i)=>i),n=idx.filter(i=>i in ans).length,ok=idx.filter(i=>ans[i]===Q[i][2]).length;
+const renderQ=()=>{const idx=only||SQ.map((_,i)=>i);
+document.getElementById('stitle').textContent=snum===1?'Simulado 1 · questões da apostila':`Simulado ${snum} · questões novas`;
+quiz.innerHTML=idx.map(i=>{const q=SQ[i];return `<div class="q card" data-i="${i}"><div class="num">Questão ${i+1}</div><b>${q[0]}</b><div class="opts">${q[1].map((o,j)=>`<button data-j="${j}">${'abcd'[j]}) ${o}</button>`).join('')}</div><div class="exp">${q[3]}</div></div>`}).join('');upd()};
+const upd=()=>{const idx=only||SQ.map((_,i)=>i),n=idx.filter(i=>i in ans).length,ok=idx.filter(i=>ans[i]===SQ[i][2]).length;
 document.getElementById('score').textContent=`${ok} certas de ${n} respondidas · ${idx.length} no total`;document.getElementById('qbar').style.width=(n?ok/idx.length*100:0)+'%'};
 quiz.addEventListener('click',e=>{const b=e.target.closest('.opts button');if(!b)return;const box=b.closest('.q'),i=+box.dataset.i;if(i in ans)return;
-const j=+b.dataset.j;ans[i]=j;box.querySelectorAll('.opts button').forEach((x,k)=>{if(k===Q[i][2])x.classList.add('ok');else if(k===j)x.classList.add('no')});
-box.querySelector('.exp').classList.add('show');box.querySelector('.exp').insertAdjacentHTML('afterbegin',j===Q[i][2]?'<b>Isso aí!</b> ':'<b>Quase!</b> ');upd()});
+const j=+b.dataset.j;ans[i]=j;box.querySelectorAll('.opts button').forEach((x,k)=>{if(k===SQ[i][2])x.classList.add('ok');else if(k===j)x.classList.add('no')});
+box.querySelector('.exp').classList.add('show');box.querySelector('.exp').insertAdjacentHTML('afterbegin',j===SQ[i][2]?'<b>Isso aí!</b> ':'<b>Quase!</b> ');upd()});
 document.getElementById('qagain').addEventListener('click',()=>{ans={};only=null;renderQ()});
-document.getElementById('qwrong').addEventListener('click',()=>{const w=Object.keys(ans).map(Number).filter(i=>ans[i]!==Q[i][2]);if(!w.length)return;only=w;w.forEach(i=>delete ans[i]);renderQ()});
-renderQ();
-document.getElementById('open').innerHTML=OPEN.map((o,i)=>`<div class="q card"><div class="num">Pergunta ${i+1}</div><b>${o[0]}</b><div class="row" style="justify-content:flex-start"><button data-o="${i}">Ver resposta modelo</button></div><div class="ans" id="ans${i}">${o[1]}</div></div>`).join('');
+document.getElementById('qwrong').addEventListener('click',()=>{const w=Object.keys(ans).map(Number).filter(i=>ans[i]!==SQ[i][2]);if(!w.length)return;only=w;w.forEach(i=>delete ans[i]);renderQ()});
+const renderOpen=()=>{document.getElementById('open').innerHTML=SO.map((o,i)=>`<div class="q card"><div class="num">Pergunta ${i+1}</div><b>${o[0]}</b><div class="row" style="justify-content:flex-start"><button data-o="${i}">Ver resposta modelo</button></div><div class="ans" id="ans${i}">${o[1]}</div></div>`).join('')};
+document.getElementById('qnew').addEventListener('click',()=>{
+ const seen=new Set(),out=[];const add=q=>{if(q&&!seen.has(q[0])){seen.add(q[0]);out.push(q)}};
+ let guard=0;while(out.length<12&&guard++<200)add(pick(GEN)());
+ guard=0;while(out.length<18&&guard++<200)add(fromC());
+ shuffle([...Q]).slice(0,7).forEach(q=>{const o=shuffle(q[1].map((t,j)=>[t,j===q[2]]));add([q[0],o.map(x=>x[0]),o.findIndex(x=>x[1]),q[3]])});
+ guard=0;while(out.length<25&&guard++<300)add(pick(GEN)());
+ SQ=shuffle(out).slice(0,25);
+ SO=shuffle([...OPEN,...C.map(c=>[c.o[0],c.o[3]])]).slice(0,8);
+ snum++;ans={};only=null;renderQ();renderOpen();window.scrollTo(0,document.getElementById('s-simulado').offsetTop)});
+renderQ();renderOpen();
 document.getElementById('open').addEventListener('click',e=>{const b=e.target.closest('button[data-o]');if(b){document.getElementById('ans'+b.dataset.o).classList.toggle('show')}});
 
 /* PROVA
