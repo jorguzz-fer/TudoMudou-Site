@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Ciências da Fiorella</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+/* VOICE: caderno de campo alegre para uma menina do 3º ano, claro e encorajador
+   IDEA: o "mapa dos vertebrados" da apostila — cada grupo tem sua cor e seu cartão
+   PICTURE: estação central clicável com os 5 grupos + desenhos (peixe, coluna, metamorfose)
+   COLOUR and TYPE: branco; azul-peixe, verde-anfíbio, laranja-réptil, amarelo-ave, vinho-mamífero; Baloo 2 + Nunito
+   LAYOUT: abas Plano · Entender · Flashcards · Simulado; uma coluna larga, cartões que empilham no celular */
+:root{color-scheme:light dark;
+--bg:light-dark(#ffffff,#11151d);--ink:light-dark(#1d2433,#eef1f6);--soft:light-dark(#5a6375,#a9b2c3);
+--line:light-dark(#e3e7ee,#2a3140);--card:light-dark(#f6f8fb,#1a202b);
+--pe:#1f78c1;--an:#2f9a45;--re:#c9661a;--av:#d99a00;--ma:#a8384f;--ok:#2f9a45;--no:#d0433a;--main:#5b3fd0}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 Nunito,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:"Baloo 2",Nunito,sans-serif;line-height:1.08;margin:0 0 .4em;text-wrap:balance}
+h1{font-size:clamp(32px,6vw,50px)}h2{font-size:clamp(26px,4vw,34px);margin-top:1.2em}h3{font-size:22px}
+p{margin:.3em 0 .8em;max-width:70ch}
+.wrap{max-width:1100px;margin:0 auto;padding:0 max(4vw,16px)}
+header{background:var(--main);color:#fff;padding:28px 0 0}
+header p{color:#e8e3ff;margin:0 0 18px}
+nav{display:flex;gap:6px;flex-wrap:wrap}
+nav a{flex:none;color:#fff;text-decoration:none;font:800 17px "Baloo 2",sans-serif;padding:10px 18px 8px;border-radius:14px 14px 0 0;background:rgba(255,255,255,.14);min-height:44px}
+nav a.on{background:var(--bg);color:var(--ink)}
+section{display:none;padding:26px 0 60px}section.on{display:block}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 18px}
+.tag{display:inline-block;font-weight:800;font-size:14px;padding:2px 10px;border-radius:99px;color:#fff;margin-bottom:6px}
+.day h3{margin-bottom:.1em}.day .when{color:var(--soft);font-weight:700;font-size:15px}
+.day ol{margin:.5em 0 0;padding-left:1.2em}.day li{margin:.25em 0}
+.warn{border-left:6px solid var(--av);background:light-dark(#fff7df,#2a2414);padding:12px 16px;border-radius:12px;margin:14px 0}
+.fig{position:relative}
+svg text{font-family:Nunito,sans-serif}
+.hub{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:20px;align-items:center}
+@media(max-width:700px){.hub{grid-template-columns:1fr}}
+.gbtn{cursor:pointer}.gbtn:focus{outline:none}.gbtn:focus circle,.gbtn:hover circle{stroke:var(--ink);stroke-width:4}
+#gcard{min-height:260px}
+#gcard ul{margin:.4em 0 0;padding-left:1.1em}#gcard li{margin:.2em 0}
+table{border-collapse:collapse;width:100%;font-size:15px}.scroll table{min-width:660px}
+th,td{border-bottom:1px solid var(--line);padding:8px 8px;text-align:left;vertical-align:top}
+th{font-family:"Baloo 2",sans-serif;font-size:17px}
+.scroll{overflow-x:auto}
+.c-pe{color:var(--pe)}.c-an{color:var(--an)}.c-re{color:var(--re)}.c-av{color:var(--av)}.c-ma{color:var(--ma)}
+.b-pe{background:var(--pe)}.b-an{background:var(--an)}.b-re{background:var(--re)}.b-av{background:#b98200}.b-ma{background:var(--ma)}.b-cl{background:var(--main)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:18px;align-items:start}
+.pill{display:inline-block;border:2px solid var(--line);border-radius:99px;padding:2px 10px;margin:2px;font-weight:700;font-size:15px}
+button{font:800 16px Nunito,sans-serif;min-height:44px;padding:8px 16px;border-radius:12px;border:2px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+button:focus-visible,a:focus-visible{outline:3px solid var(--main);outline-offset:2px}
+button.primary{background:var(--main);border-color:var(--main);color:#fff}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 16px}
+.filters button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.flash{perspective:1200px;max-width:560px;margin:0 auto}
+.fc{position:relative;height:280px;transition:transform .5s;transform-style:preserve-3d;cursor:pointer}
+.fc.flip{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:22px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:24px;border:3px solid var(--line);background:var(--card)}
+.face.back{transform:rotateY(180deg);background:var(--bg)}
+.face .big{font:800 clamp(22px,4.5vw,30px)/1.2 "Baloo 2",sans-serif}
+.face small{color:var(--soft);font-weight:700;margin-top:10px}
+.row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:14px}
+.meter{height:12px;background:var(--line);border-radius:99px;overflow:hidden;margin:8px 0}
+.meter i{display:block;height:100%;background:var(--ok);width:0;transition:width .3s}
+.q{margin:0 0 18px}
+.q .num{font:800 15px Nunito;color:var(--soft)}
+.q .opts{display:grid;gap:8px;margin-top:8px}
+.q .opts button{text-align:left;font-weight:700}
+.q .opts button.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.q .opts button.no{background:var(--no);border-color:var(--no);color:#fff}
+.exp{display:none;margin-top:8px;padding:10px 14px;border-radius:12px;background:light-dark(#eef7f0,#16261b)}
+.exp.show{display:block}
+.score{font:800 clamp(30px,6vw,44px) "Baloo 2",sans-serif}
+.ans{display:none;margin-top:8px;padding:10px 14px;border-radius:12px;background:light-dark(#f1eefe,#211c35)}
+.ans.show{display:block}
+.rule{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.rule .eight{font:800 64px/1 "Baloo 2",sans-serif;color:var(--main)}
+.modes{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.modes button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.fmt{display:inline-block;font-weight:800;font-size:13px;padding:2px 9px;border-radius:99px;background:var(--line);margin-left:6px;vertical-align:2px}
+.pq{margin:0 0 16px}.pq.right{border-color:var(--ok);border-width:2px}.pq.half{border-color:var(--av);border-width:2px}.pq.wrong{border-color:var(--no);border-width:2px}
+.pq .opts{display:grid;gap:8px;margin-top:10px}
+.pq .opts button{text-align:left;font-weight:700}
+.pq .opts button.sel{background:var(--main);border-color:var(--main);color:#fff}
+.pq .opts button.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.pq .opts button.no{background:var(--no);border-color:var(--no);color:#fff}
+.pq textarea{width:100%;min-height:96px;font:16px/1.5 Nunito,sans-serif;padding:10px 12px;border-radius:12px;border:2px solid var(--line);background:var(--bg);color:var(--ink);margin-top:10px;resize:vertical}
+.mic{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.mic button.rec{background:var(--no);border-color:var(--no);color:#fff}
+.mic .hint{color:var(--soft);font-size:15px;font-weight:700}
+.fb{margin-top:10px;padding:10px 14px;border-radius:12px;background:light-dark(#f1eefe,#211c35)}
+.ov{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:8px;font-size:15px;font-weight:700}
+.ov button{min-height:38px;padding:4px 12px;font-size:15px}
+.ov button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.result{border-radius:22px;padding:22px;color:#fff;margin:6px 0 18px}
+.result.pass{background:var(--ok)}.result.fail{background:var(--re)}
+.result .grade{font:800 clamp(48px,10vw,76px)/1 "Baloo 2",sans-serif}
+.result button{background:#fff;color:#1d2433;border-color:#fff}
+.hist td,.hist th{font-size:15px}
+@media (prefers-reduced-motion:reduce){.fc{transition:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1>Prova de Ciências da Fiorella</h1>
+<p>Apostila 4 · Classificação dos animais, peixes, anfíbios, répteis, aves e mamíferos (págs. 132 a 174)</p>
+<nav class="scroll" id="tabs">
+<a href="#plano">Plano</a><a href="#entender">Entender</a><a href="#flashcards">Flashcards</a><a href="#simulado">Simulado</a><a href="#prova">Prova</a>
+</nav></div></header>
+
+<main class="wrap">
+
+<!-- PLANO -->
+<section id="s-plano">
+<h2>Plano de estudos</h2>
+<div class="warn"><b>Atenção à data:</b> o calendário da escola (3º A/B) marca a prova de <b>Ciências em 25/11, quarta-feira</b>. O plano deixa a Fiorella pronta na segunda e usa a terça para a revisão final. Se a prova for mesmo na segunda, junte o dia 4 com o dia 3.</div>
+<p>Cada dia: <b>2 blocos de 20 minutos</b> com 5 minutos de pausa entre eles. Primeiro lê na apostila, depois vê aqui na aba <b>Entender</b>, e fecha com os <b>Flashcards</b> do assunto.</p>
+<div class="grid">
+<div class="card day"><span class="tag b-cl">Dia 1</span><h3>Sábado 21/11</h3><div class="when">Classificar + vertebrados + peixes · págs. 132–142</div>
+<ol><li>O que é classificar; herbívoro, carnívoro, onívoro; ovíparo e vivíparo.</li><li>Coluna vertebral: vertebrados x invertebrados.</li><li>Os 5 grupos de vertebrados.</li><li>Peixes: corpo, brânquias, ciclo de vida.</li><li>Flashcards: <i>Classificar</i> e <i>Peixes</i>.</li></ol></div>
+<div class="card day"><span class="tag b-an">Dia 2</span><h3>Domingo 22/11</h3><div class="when">Anfíbios + répteis · págs. 143–161</div>
+<ol><li>Anfíbios: pele úmida, sapo/rã/perereca/salamandra.</li><li>Metamorfose (desenhar as 6 fases!).</li><li>Répteis: pele, temperatura, locomoção, alimentação.</li><li>Troca de pele, chocalho, Butantan.</li><li>Flashcards: <i>Anfíbios</i> e <i>Répteis</i>.</li></ol></div>
+<div class="card day"><span class="tag b-av">Dia 3</span><h3>Segunda 23/11</h3><div class="when">Aves + mamíferos · págs. 166, 168–174</div>
+<ol><li>Aves: penas, bicos e a tabela de alimentação.</li><li>Ninhos, incubação, pinguim-imperador.</li><li>Mamíferos: pelos, glândulas mamárias, troca de pelagem.</li><li>Tabela comparando os 5 grupos.</li><li>Flashcards: todos (modo "Tudo").</li></ol></div>
+<div class="card day"><span class="tag b-ma">Dia 4</span><h3>Terça 24/11</h3><div class="when">Revisão final</div>
+<ol><li>Fazer o <b>Simulado</b> inteiro sem olhar a apostila.</li><li>Fazer a <b>Prova</b>: nota mínima 8. Abaixo disso, refaz em outro formato.</li><li>Responder em voz alta as perguntas para escrever.</li><li>Dormir cedo!</li></ol></div>
+</div>
+<h2>Dicas para quem ajuda</h2>
+<p>Peça para ela <b>explicar com as próprias palavras</b>, como se fosse a professora: é o jeito mais rápido de descobrir o que ainda não ficou claro. As perguntas abertas do simulado imitam as atividades da apostila, então valem ouro.</p>
+<p>Na página 157 da apostila, o <b>teiú-vermelho</b> foi marcado como carnívoro, mas a legenda diz que ele come insetos, pequenos vertebrados, ovos <b>e frutos</b>: então ele é <b>onívoro</b>. Vale corrigir junto com ela.</p>
+</section>
+
+<!-- ENTENDER -->
+<section id="s-entender">
+<h2 style="margin-top:0">Os 5 grupos de vertebrados</h2>
+<p>Toque em um grupo para ver o resumo dele.</p>
+<div class="hub">
+<div class="fig"><svg viewBox="0 0 400 380" width="100%" role="img" aria-label="Mapa dos vertebrados">
+<g stroke="var(--line)" stroke-width="5"><line x1="200" y1="190" x2="95" y2="80"/><line x1="200" y1="190" x2="305" y2="80"/><line x1="200" y1="190" x2="70" y2="245"/><line x1="200" y1="190" x2="330" y2="245"/><line x1="200" y1="190" x2="200" y2="320"/></g>
+<circle cx="200" cy="190" r="56" fill="var(--main)"/><text x="200" y="196" text-anchor="middle" fill="#fff" font-weight="800" font-size="13">VERTEBRADOS</text>
+<g id="hubg"></g></svg></div>
+<div class="card" id="gcard"></div>
+</div>
+
+<h2>Classificar = separar em grupos</h2>
+<p>Classificar é organizar as coisas em grupos usando um <b>critério de semelhança</b>, como no supermercado, na livraria ou na loja de brinquedos. Com os animais, o critério pode ser: o que comem, onde vivem, como se locomovem, como o filhote se desenvolve, o corpo... <b>Critérios diferentes formam grupos diferentes.</b></p>
+<div class="two">
+<div class="card"><h3>Pelo que comem</h3>
+<p><span class="pill">Herbívoro</span> só vegetais (raiz, folha, fruto, semente)</p>
+<p><span class="pill">Carnívoro</span> só outros animais</p>
+<p><span class="pill">Onívoro</span> animais <b>e</b> vegetais</p></div>
+<div class="card"><h3>Como o filhote se desenvolve</h3>
+<p><span class="pill">Ovíparo</span> se desenvolve dentro do <b>ovo</b> (peixes, anfíbios, aves, maioria dos répteis)</p>
+<p><span class="pill">Vivíparo</span> se desenvolve dentro do <b>corpo da mãe</b> (mamíferos)</p>
+<p><b>Embrião</b> = o filhote no começo, antes de nascer.</p></div>
+</div>
+
+<h2>Vertebrado ou invertebrado?</h2>
+<div class="two">
+<div class="fig"><svg viewBox="0 0 360 220" width="100%" role="img" aria-label="Coluna vertebral formada por vértebras">
+<rect x="0" y="0" width="360" height="220" rx="18" fill="var(--card)"/>
+<g id="spine"></g>
+<text x="180" y="200" text-anchor="middle" font-weight="800" font-size="15" fill="var(--ink)">Coluna vertebral = várias vértebras (ossos) em fila</text>
+</svg></div>
+<div>
+<p><b>Vertebrados</b> têm <b>coluna vertebral</b> (espinha dorsal), formada por ossos chamados <b>vértebras</b>, e um <b>esqueleto interno</b>. A coluna dá <b>sustentação</b> ao corpo. Ex.: ser humano, cachorro, crocodilo, avestruz, macaco, peixe, sapo.</p>
+<p><b>Invertebrados</b> <b>não</b> têm coluna vertebral. <b>A maioria dos animais do planeta é invertebrada!</b> Ex.: borboleta, minhoca, polvo, caranguejo, formiga, joaninha, aranha, tatuzinho-de-jardim.</p>
+</div></div>
+
+<h2>Tabela que resolve a prova</h2>
+<div class="scroll"><table>
+<thead><tr><th></th><th class="c-pe">Peixes</th><th class="c-an">Anfíbios</th><th class="c-re">Répteis</th><th class="c-av">Aves</th><th class="c-ma">Mamíferos</th></tr></thead>
+<tbody>
+<tr><th>Onde vivem</th><td>Água doce ou salgada</td><td>Lugares úmidos, perto de água doce</td><td>Terra e água; mais em lugares quentes</td><td>Ambientes naturais e cidades</td><td>Terra, água e ar</td></tr>
+<tr><th>Corpo coberto de</th><td>Escamas (pele escorregadia)</td><td>Pele fina e úmida</td><td>Pele grossa, seca, com escamas e placas ósseas</td><td>Penas</td><td>Pelos</td></tr>
+<tr><th>Respiram por</th><td>Brânquias</td><td>Pulmões e pele (girino: brânquias)</td><td>Só pulmões</td><td>Pulmões</td><td>Pulmões</td></tr>
+<tr><th>Temperatura</th><td>—</td><td>—</td><td><b>Não</b> mantêm constante (tomam sol)</td><td>Sempre igual</td><td>Sempre igual</td></tr>
+<tr><th>Filhotes</th><td>Ovos na água</td><td>Ovos na água (gelatina ou espuma)</td><td>Maioria ovípara</td><td>Ovíparas, ninho</td><td>Mamam leite</td></tr>
+<tr><th>Marca registrada</th><td>Nadadeiras</td><td>Metamorfose</td><td>Troca de pele</td><td>Bico e penas</td><td>Glândulas mamárias</td></tr>
+</tbody></table></div>
+
+<h2 class="c-pe">Peixes por dentro e por fora</h2>
+<div class="fig"><svg viewBox="0 0 640 300" width="100%" role="img" aria-label="Partes do corpo do peixe">
+<rect width="640" height="300" rx="18" fill="var(--card)"/>
+<path d="M120 150 C170 70 330 60 420 110 L520 60 L500 150 L520 240 L420 190 C330 240 170 230 120 150Z" fill="#5fa3db" stroke="var(--pe)" stroke-width="4"/>
+<path d="M250 85 L300 40 L360 90Z" fill="#3b86c6"/><path d="M260 210 L290 255 L330 205Z" fill="#3b86c6"/><path d="M220 160 L265 190 L230 150Z" fill="#3b86c6"/>
+<path d="M195 105 C220 130 220 170 195 195" fill="none" stroke="var(--pe)" stroke-width="5"/>
+<g fill="none" stroke="#ffffff88" stroke-width="2"><path d="M260 120 q12 10 0 20"/><path d="M290 120 q12 10 0 20"/><path d="M320 120 q12 10 0 20"/><path d="M275 145 q12 10 0 20"/><path d="M305 145 q12 10 0 20"/><path d="M335 145 q12 10 0 20"/></g>
+<circle cx="160" cy="130" r="9" fill="#fff"/><circle cx="162" cy="130" r="5" fill="#111"/>
+<g font-size="15" font-weight="800" fill="var(--ink)" stroke="var(--ink)" stroke-width="1.5">
+<line x1="125" y1="152" x2="60" y2="180"/><text x="10" y="198" stroke="none">Boca</text>
+<line x1="160" y1="122" x2="120" y2="60"/><text x="98" y="52" stroke="none">Olho</text>
+<line x1="200" y1="190" x2="170" y2="265"/><text x="70" y="285" stroke="none">Opérculo (tampa das brânquias)</text>
+<line x1="300" y1="135" x2="370" y2="20"/><text x="372" y="25" stroke="none">Escamas</text>
+<line x1="300" y1="50" x2="250" y2="20"/><text x="170" y="22" stroke="none">Nadadeira</text>
+<line x1="515" y1="200" x2="560" y2="260"/><text x="470" y="285" stroke="none">Nadadeira caudal</text>
+</g></svg></div>
+<div class="two">
+<div><p>O peixe <b>nada mexendo o corpo e a nadadeira caudal</b> (do rabo). As outras nadadeiras ajudam na <b>direção</b>. A pele solta uma substância que deixa o corpo <b>liso e escorregadio</b>.</p>
+<p>Dentro do opérculo ficam as <b>brânquias</b>: com elas o peixe tira o <b>gás oxigênio da água</b>. As bolhinhas são o gás carbônico que ele solta.</p></div>
+<div class="card"><h3>Ciclo de vida do peixe</h3><p><b>1</b> Ovos → <b>2</b> Embriões → <b>3</b> Alevinos (filhotes) → <b>4</b> Peixes jovens → <b>5</b> Peixes adultos</p>
+<p><b>Curiosidades:</b> tubarão-baleia é o maior peixe (15 m). Tubarão e raia têm esqueleto de <b>cartilagem</b>, não de osso. Cavalo-marinho e moreia também são peixes! Peixes nadando juntos = <b>cardume</b>.</p></div></div>
+
+<h2 class="c-an">Anfíbios e a metamorfose</h2>
+<div class="two">
+<div class="fig"><svg viewBox="0 0 360 340" width="100%" role="img" aria-label="Metamorfose da perereca em 6 fases">
+<rect width="360" height="340" rx="18" fill="var(--card)"/><g id="meta"></g></svg></div>
+<div>
+<p><b>Metamorfose</b> = mudança completa da forma do corpo durante a vida.</p>
+<p><b>Girino</b> (filhote): vive na <b>água</b>, respira por <b>brânquias</b>, nada com a <b>cauda</b> e come <b>vegetais</b>. Parece um peixe!</p>
+<p><b>Adulto</b>: vive na <b>terra</b> (perto da água), sem cauda, anda por <b>saltos</b> (também nada) e come <b>insetos</b> e pequenos invertebrados.</p>
+<p><b>Pele fina e úmida:</b> parte da respiração é pela pele. Se a pele secar, o oxigênio não entra e eles morrem sufocados. Por isso a perereca entra no banheiro (e ainda come os pernilongos!).</p>
+<p>Na reprodução, o <b>macho coaxa</b> para atrair a fêmea. Os ovos ficam na água, protegidos por gelatina ou espuma.</p>
+</div></div>
+<div class="grid">
+<div class="card"><h3>Perereca</h3><p><b>Ventosas</b> (discos adesivos) nas pontas dos dedos: gruda em galhos e azulejos. Menos de 10 cm.</p></div>
+<div class="card"><h3>Sapo</h3><p>Pele bem <b>rugosa</b>, sem ventosas.</p></div>
+<div class="card"><h3>Rã</h3><p>Pele <b>lisa</b>, dedos <b>longos</b>, sem ventosas.</p></div>
+<div class="card"><h3>Salamandra</h3><p>Tem <b>cauda</b> quando adulta. Sapo, rã e perereca são <b>anuros</b> (sem cauda no adulto).</p></div>
+</div>
+
+<h2 class="c-re">Répteis</h2>
+<div class="two">
+<div><p>Pele <b>grossa, seca e impermeável</b> (escamas e placas ósseas): não desidrata. Respiram <b>só pelos pulmões</b>, então não dependem tanto da água como os anfíbios.</p>
+<p><b>Não mantêm a temperatura constante:</b> no frio o corpo esfria, no calor esquenta. Por isso tomam sol, vivem mais em lugares quentes e, no museu, o <b>terrário tem lâmpada</b> para aquecê-los.</p>
+<p><b>Alimentação</b> varia: jabuti-piranga é onívoro, iguana-verde herbívora, lagartixa e tartaruga-cabeçuda carnívoras, teiú-vermelho onívoro.</p></div>
+<div class="card"><h3>Como se locomovem</h3>
+<p><b>4 pernas:</b> jacarés e lagartos caminham (lagartos são ágeis). Na água, jacaré nada balançando a cauda.</p>
+<p><b>Pernas de nadadeira:</b> tartaruga marinha usa como remos; na areia, rasteja.</p>
+<p><b>Sem pernas:</b> cobras <b>rastejam</b>.</p>
+<p><b>Tartarugas:</b> cágado (solo e água doce), jabuti (só terra, esconde a cabeça no casco), tartaruga marinha (mar; vai à praia botar ovos).</p></div></div>
+<div class="grid">
+<div class="card"><h3>Troca de pele</h3><p>As escamas <b>não crescem</b> com o animal, então ele troca a camada de fora para poder crescer. Cobra troca a pele <b>inteira</b>; lagarto, aos pedaços.</p></div>
+<div class="card"><h3>Chocalho da cascavel</h3><p>Feito de <b>restos das mudas de pele</b>. Contar os anéis <b>não</b> mostra a idade. Serve para <b>espantar inimigos</b>.</p></div>
+<div class="card"><h3>Filhotes</h3><p>A maioria é <b>ovípara</b> (tartaruga, jacaré, crocodilo). Algumas cobras e lagartos são vivíparos.</p></div>
+<div class="card"><h3>Instituto Butantan</h3><p>Em São Paulo. Faz <b>soros e vacinas</b>; o Museu Biológico mostra animais como cobras e aranhas. Para evitar picadas: botas, não pôr a mão em buracos, quintal limpo (ratos atraem cobras).</p></div>
+</div>
+
+<h2 class="c-av">Aves</h2>
+<div class="two">
+<div><p>Vertebradas, <b>bípedes</b>, <b>ovíparas</b>, respiram por <b>pulmões</b>, têm <b>bico e penas</b> e mantêm a <b>temperatura sempre igual</b>.</p>
+<p><b>Penas:</b> aquecem, protegem e permitem o voo. A cor serve de <b>camuflagem</b> (se esconder no ambiente, para atacar ou se defender) ou para chamar atenção no acasalamento. A plumagem muda enquanto a ave cresce (gaivota: filhote escuro → adulto branco).</p>
+<p><b>Ninhos:</b> feitos com o que tem no ambiente (galhos, barro, folhas). João-de-barro usa palha e barro. Tempo do ovo antes de nascer = <b>incubação</b>. <b>Pinguim-imperador</b>: não voa, não faz ninho, e é o <b>pai</b> que choca o ovo em cima dos pés.</p></div>
+<div class="card"><h3>O bico mostra o que a ave come</h3>
+<table><tbody>
+<tr><td><b>Granívora</b></td><td>grãos, sementes</td><td>Pardal</td></tr>
+<tr><td><b>Frugívora</b></td><td>frutos</td><td>Sanhaço</td></tr>
+<tr><td><b>Nectarívora</b></td><td>néctar</td><td>Beija-flor</td></tr>
+<tr><td><b>Insetívora</b></td><td>insetos</td><td>Pica-pau</td></tr>
+<tr><td><b>Necrófaga</b></td><td>animais mortos</td><td>Urubu</td></tr>
+<tr><td><b>Piscívora</b></td><td>peixes</td><td>Martim-pescador</td></tr>
+<tr><td><b>Várias presas</b></td><td>vários animais</td><td>Corujinha</td></tr>
+<tr><td><b>Onívora</b></td><td>de tudo</td><td>Bem-te-vi</td></tr>
+</tbody></table>
+<p style="margin-top:8px">Granívora, frugívora e nectarívora são tipos de <b>herbívoras</b>; as outras (menos onívora) são <b>carnívoras</b>.</p></div></div>
+
+<h2 class="c-ma">Mamíferos</h2>
+<div class="two">
+<div><p>Corpo coberto de <b>pelos</b>: protegem contra cortes e queimaduras do sol e mantêm o animal aquecido.</p>
+<p>Têm <b>glândulas mamárias</b> que produzem <b>leite</b>: é isso que dá o nome ao grupo! Mantêm a <b>temperatura constante</b> e respiram por <b>pulmões</b>. <b>Nós, seres humanos, somos mamíferos.</b></p></div>
+<div class="card"><p><b>Troca de pelagem:</b> como nosso cabelo, os pelos caem e nascem outros, mais grossos no inverno e mais finos no verão. A <b>raposa-do-ártico</b> fica branca no inverno (neve) e cinzenta no verão: camuflagem!</p>
+<p><b>Pegadinhas:</b> golfinho e morcego são mamíferos. Pinguim é ave. Tubarão é peixe.</p></div></div>
+</section>
+
+<!-- FLASHCARDS -->
+<section id="s-flashcards">
+<h2 style="margin-top:0">Flashcards</h2>
+<p>Toque no cartão para virar. Depois diga se acertou: os que ela errar voltam no final da pilha.</p>
+<div class="filters" id="ffil"></div>
+<div class="flash">
+<div class="meter"><i id="fbar"></i></div>
+<div style="text-align:center;font-weight:800;color:var(--soft)" id="fcount"></div>
+<div class="fc" id="fc" tabindex="0" role="button" aria-label="Virar cartão"><div class="face"><span class="tag" id="ftag"></span><div class="big" id="ffront"></div><small>toque para ver a resposta</small></div><div class="face back"><div class="big" id="fback" style="font-size:clamp(19px,3.6vw,24px)"></div></div></div>
+<div class="row"><button id="fno">Ainda não sei</button><button class="primary" id="fyes">Acertei!</button></div>
+<div class="row"><button id="fre">Embaralhar e recomeçar</button></div>
+</div>
+</section>
+
+<!-- SIMULADO -->
+<section id="s-simulado">
+<h2 style="margin-top:0">Simulado</h2>
+<p><b>Parte 1 · Marque a alternativa certa.</b> A resposta aparece na hora, com a explicação.</p>
+<div class="card" style="margin-bottom:18px"><div class="score" id="score">0 de 0</div><div class="meter"><i id="qbar"></i></div>
+<div class="row" style="justify-content:flex-start"><button id="qagain">Refazer tudo</button><button id="qwrong">Refazer as que errei</button></div></div>
+<div id="quiz"></div>
+<h2>Parte 2 · Perguntas para escrever</h2>
+<p>Iguais às da apostila. Ela responde no caderno ou em voz alta, depois confere a resposta modelo.</p>
+<div id="open"></div>
+</section>
+
+<!-- PROVA -->
+<section id="s-prova">
+<div class="rule"><div class="eight">8</div><div><h2 style="margin:0">Prova de verdade</h2><p style="margin:0">10 questões, cada uma vale 1 ponto. A nota mínima é <b>8</b>. Se ficar abaixo, ela faz uma <b>prova de recuperação</b>: as questões que errou voltam <b>em outro formato</b>.</p></div></div>
+<div id="pstart" class="card" style="margin-top:16px">
+<h3>Como ela quer responder?</h3>
+<div class="modes" id="pmodes">
+<button data-m="misto" class="on">Misturado</button><button data-m="optativa">Marcar alternativa</button><button data-m="escrita">Escrever</button><button data-m="audio">Falar (áudio)</button></div>
+<p id="pmodehint" style="color:var(--soft);font-weight:700"></p>
+<button class="primary" id="pgo">Começar a prova</button>
+</div>
+<div id="pres"></div>
+<div id="pexam"></div>
+<div class="row" style="justify-content:flex-start"><button class="primary" id="psend" hidden>Entregar a prova</button></div>
+<h2>Histórico de provas</h2>
+<p style="color:var(--soft)">Fica salvo neste aparelho.</p>
+<div class="scroll"><table class="hist"><thead><tr><th>Quando</th><th>Prova</th><th>Formato</th><th style="text-align:right">Nota</th></tr></thead><tbody id="phist"></tbody></table></div>
+<div class="row" style="justify-content:flex-start"><button id="pclear">Apagar histórico</button></div>
+</section>
+</main>
+
+<script>
+{
+const G={pe:['Peixes','var(--pe)'],an:['Anfíbios','var(--an)'],re:['Répteis','var(--re)'],av:['Aves','#b98200'],ma:['Mamíferos','var(--ma)'],cl:['Classificar','var(--main)']};
+const groups=[
+ {k:'ma',x:95,y:80,ex:'cavalo, morcego, canguru, golfinho, ser humano',li:['Corpo coberto de pelos','Glândulas mamárias: os filhotes mamam leite','Temperatura do corpo sempre igual','Respiram por pulmões']},
+ {k:'av',x:305,y:80,ex:'pinguim, flamingo, gaivota, beija-flor, pardal',li:['Corpo coberto de penas e têm bico','Bípedes e ovíparas (ninhos)','Temperatura do corpo sempre igual','Respiram por pulmões']},
+ {k:'pe',x:70,y:245,ex:'tubarão, peixe-palhaço, cavalo-marinho, atum',li:['Vivem na água doce ou salgada','Escamas e nadadeiras','Respiram por brânquias','Botam ovos na água; filhotes = alevinos']},
+ {k:'re',x:330,y:245,ex:'cobra, jacaré, tartaruga, lagarto, camaleão',li:['Pele grossa, seca, com escamas','Não mantêm a temperatura: tomam sol','Respiram só por pulmões','Maioria ovípara; trocam de pele']},
+ {k:'an',x:200,y:320,ex:'sapo, rã, perereca, salamandra',li:['Pele fina e úmida','Respiram por pulmões e pela pele','Girino vive na água e tem cauda','Passam por metamorfose']}];
+const hub=document.getElementById('hubg'),gc=document.getElementById('gcard');
+hub.innerHTML=groups.map((g,i)=>`<g class="gbtn" tabindex="0" role="button" data-i="${i}"><circle cx="${g.x}" cy="${g.y}" r="48" fill="${G[g.k][1]}"/><text x="${g.x}" y="${g.y+6}" text-anchor="middle" fill="#fff" font-weight="800" font-size="15">${G[g.k][0]}</text></g>`).join('');
+const showG=i=>{const g=groups[i];gc.innerHTML=`<span class="tag" style="background:${G[g.k][1]}">${G[g.k][0]}</span><h3>Como reconhecer</h3><ul>${g.li.map(l=>`<li>${l}</li>`).join('')}</ul><p style="margin-top:10px"><b>Exemplos:</b> ${g.ex}</p>`};
+hub.querySelectorAll('.gbtn').forEach(b=>{b.addEventListener('click',()=>showG(+b.dataset.i));b.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();showG(+b.dataset.i)}})});
+showG(2);
+
+document.getElementById('spine').innerHTML=Array.from({length:11},(_,i)=>`<rect x="${26+i*29}" y="70" width="24" height="44" rx="8" fill="#7b6ad8"/><rect x="${33+i*29}" y="58" width="10" height="14" rx="3" fill="#a99cf0"/>`).join('')+`<text x="40" y="150" font-size="14" font-weight="700" fill="var(--soft)">↑ cada pedacinho é uma vértebra</text>`;
+
+const ms=[['1','Ovos com embriões'],['2','Girino: brânquias e cauda'],['3','Nascem as pernas de trás'],['4','Pernas da frente também'],['5','A cauda começa a diminuir'],['6','Perereca adulta']];
+document.getElementById('meta').innerHTML=`<circle cx="180" cy="170" r="105" fill="none" stroke="var(--an)" stroke-width="4" stroke-dasharray="8 8"/>`+ms.map((m,i)=>{const a=-Math.PI/2+i*Math.PI/3,x=180+105*Math.cos(a),y=170+105*Math.sin(a);const tx=x>200?x-6:x<160?x+6:x,anc=x>200?'end':x<160?'start':'middle',ty=y<170?y+44:y-34;return `<circle cx="${x}" cy="${y}" r="20" fill="var(--an)"/><text x="${x}" y="${y+6}" text-anchor="middle" fill="#fff" font-weight="800" font-size="17">${m[0]}</text><text x="${tx}" y="${ty}" text-anchor="${anc}" font-size="12.5" font-weight="700" fill="var(--ink)">${m[1]}</text>`}).join('')+`<text x="180" y="166" text-anchor="middle" font-weight="800" font-size="18" fill="var(--an)">Metamorfose</text><text x="180" y="186" text-anchor="middle" font-size="13" fill="var(--soft)">da água para a terra</text>`;
+
+/* FLASHCARDS */
+const cards=[
+['cl','O que é classificar?','Separar e organizar em grupos usando um critério de semelhança.'],
+['cl','Animal herbívoro come...','Só vegetais e suas partes (raízes, folhas, frutos, sementes).'],
+['cl','Animal carnívoro come...','Só outros animais.'],
+['cl','Animal onívoro come...','Animais e vegetais.'],
+['cl','O que é um animal ovíparo?','O filhote se desenvolve dentro do ovo.'],
+['cl','O que é um animal vivíparo?','O filhote se desenvolve dentro do corpo da mãe.'],
+['cl','O que é embrião?','O ser vivo no começo do desenvolvimento, antes de nascer.'],
+['cl','De que é formada a coluna vertebral?','De ossos chamados vértebras. Ela dá sustentação ao corpo.'],
+['cl','O que é um animal vertebrado?','Tem coluna vertebral e esqueleto interno.'],
+['cl','O que é um invertebrado? Dê exemplos.','Não tem coluna vertebral. Borboleta, minhoca, polvo, caranguejo, formiga.'],
+['cl','A maioria dos animais do planeta é...','Invertebrada!'],
+['cl','Quais são os 5 grupos de vertebrados?','Peixes, anfíbios, répteis, aves e mamíferos.'],
+['pe','Por onde os peixes respiram?','Pelas brânquias, que tiram o oxigênio da água.'],
+['pe','Onde ficam as brânquias?','Dentro do opérculo (a "tampa" do lado da cabeça).'],
+['pe','Como o peixe se locomove?','Mexendo o corpo e a nadadeira caudal. As outras nadadeiras dão a direção.'],
+['pe','Do que é coberto o corpo do peixe?','De escamas. A pele deixa o corpo liso e escorregadio.'],
+['pe','Como se chamam os filhotes de peixe?','Alevinos.'],
+['pe','Ordem do ciclo de vida do peixe','Ovos → embriões → alevinos → jovens → adultos.'],
+['pe','O que é um cardume?','Um grupo de peixes nadando juntos.'],
+['pe','Qual é o maior peixe?','O tubarão-baleia (até 15 m).'],
+['pe','Do que é feito o esqueleto de tubarões e raias?','De cartilagem, não de osso.'],
+['an','Como é a pele dos anfíbios?','Fina e úmida.'],
+['an','Por que o anfíbio precisa da pele úmida?','Porque respira também pela pele. Se secar, o oxigênio não entra e ele morre.'],
+['an','O que é metamorfose?','Mudança completa da forma do corpo durante a vida.'],
+['an','Como é o girino?','Vive na água, respira por brânquias, tem cauda e come vegetais.'],
+['an','O que são anfíbios anuros?','Os que não têm cauda quando adultos: sapo, rã e perereca.'],
+['an','Qual anfíbio tem ventosas nos dedos?','A perereca.'],
+['an','Sapo, rã ou salamandra: qual tem cauda?','A salamandra.'],
+['an','Sapo x rã','Sapo: pele bem rugosa. Rã: pele lisa e dedos longos.'],
+['an','Por que o macho coaxa?','Para atrair a fêmea para o acasalamento.'],
+['re','Como é a pele dos répteis?','Grossa, seca e impermeável, com escamas e placas ósseas.'],
+['re','Por onde os répteis respiram?','Só pelos pulmões.'],
+['re','Por que os répteis tomam sol?','Não mantêm a temperatura do corpo constante, então se aquecem no sol.'],
+['re','Por que o terrário tem lâmpada?','Para aquecer os répteis, que não controlam a temperatura do corpo.'],
+['re','Por que cobras trocam de pele?','As escamas não crescem; elas trocam a pele para poder crescer.'],
+['re','Pra que serve o chocalho da cascavel?','Para espantar inimigos (defesa). Ele não mostra a idade.'],
+['re','Cágado x jabuti x tartaruga marinha','Cágado: solo e água doce. Jabuti: só terra. Tartaruga marinha: mar.'],
+['re','Como a cobra se locomove?','Rastejando (não tem pernas).'],
+['re','Como a tartaruga marinha nada?','Com membros parecidos com remos (nadadeiras).'],
+['re','O Instituto Butantan produz...','Soros e vacinas. Fica em São Paulo.'],
+['av','Duas coisas que só as aves têm','Bico e penas.'],
+['av','Para que servem as penas?','Aquecer, proteger e voar. A cor ajuda na camuflagem ou no acasalamento.'],
+['av','O que é camuflagem?','Quando o animal se parece com o ambiente e consegue se esconder.'],
+['av','O que é período de incubação?','O tempo em que o filhote fica dentro do ovo antes de nascer.'],
+['av','Ave granívora come...','Grãos e sementes. Ex.: pardal.'],
+['av','Ave nectarívora come...','Néctar das flores. Ex.: beija-flor.'],
+['av','Ave necrófaga come...','Animais mortos. Ex.: urubu.'],
+['av','Ave piscívora come...','Peixes. Ex.: martim-pescador.'],
+['av','Bem-te-vi é...','Onívoro: come insetos, pequenos animais, sementes e frutos.'],
+['av','Quem choca o ovo do pinguim-imperador?','O pai, que segura o ovo em cima dos pés.'],
+['ma','Do que é coberto o corpo dos mamíferos?','De pelos.'],
+['ma','Por que eles se chamam mamíferos?','Porque têm glândulas mamárias que produzem leite.'],
+['ma','Para que servem os pelos?','Proteger de cortes e do sol e manter o corpo aquecido.'],
+['ma','O ser humano é de qual grupo?','Mamífero!'],
+['ma','Por que a raposa-do-ártico muda de cor?','Para se camuflar: branca na neve do inverno, cinza no verão.'],
+['ma','Quais grupos mantêm a temperatura constante?','Aves e mamíferos.']];
+let fset='tudo',deck=[],pos=0,okc=0;
+const fil=document.getElementById('ffil'),fc=document.getElementById('fc');
+const keys=['tudo','cl','pe','an','re','av','ma'];
+fil.innerHTML=keys.map(k=>`<button data-k="${k}">${k==='tudo'?'Tudo':G[k][0]}</button>`).join('');
+const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const startF=()=>{deck=shuffle(cards.filter(c=>fset==='tudo'||c[0]===fset));pos=0;okc=0;fil.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.k===fset));drawF()};
+const drawF=()=>{fc.classList.remove('flip');const done=pos>=deck.length;const c=done?null:deck[pos];
+document.getElementById('ftag').textContent=done?'Fim!':G[c[0]][0];document.getElementById('ftag').style.background=done?'var(--ok)':G[c[0]][1];
+document.getElementById('ffront').textContent=done?`Você acertou ${okc} cartões!`:c[1];
+document.getElementById('fback').textContent=done?'Toque em "Embaralhar e recomeçar" para treinar de novo.':c[2];
+const total=cards.filter(c=>fset==='tudo'||c[0]===fset).length;
+document.getElementById('fcount').textContent=`${Math.min(okc,total)} de ${total} sabidos`;document.getElementById('fbar').style.width=(okc/total*100)+'%'};
+fc.addEventListener('click',()=>fc.classList.toggle('flip'));
+fc.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();fc.classList.toggle('flip')}});
+document.getElementById('fyes').addEventListener('click',()=>{if(pos<deck.length){okc++;pos++;drawF()}});
+document.getElementById('fno').addEventListener('click',()=>{if(pos<deck.length){deck.push(deck[pos]);pos++;drawF()}});
+document.getElementById('fre').addEventListener('click',startF);
+fil.addEventListener('click',e=>{const b=e.target.closest('button');if(b){fset=b.dataset.k;startF()}});
+startF();
+
+/* SIMULADO */
+const Q=[
+['Classificar os animais é...',['Dar nome a cada animal','Separar em grupos por critérios de semelhança','Contar quantos animais existem'],1,'Classificar é organizar em grupos usando um critério.'],
+['O que diferencia um vertebrado de um invertebrado?',['O tamanho','A cor','Ter ou não coluna vertebral'],2,'Vertebrados têm coluna vertebral, formada por vértebras.'],
+['Qual destes é um invertebrado?',['Polvo','Avestruz','Crocodilo'],0,'O polvo não tem coluna vertebral. Avestruz e crocodilo têm.'],
+['A coluna vertebral é formada por ossos chamados...',['Escamas','Vértebras','Brânquias'],1,'Vértebras, que dão sustentação ao corpo.'],
+['Um animal que se alimenta de animais e de vegetais é...',['Herbívoro','Carnívoro','Onívoro'],2,'Onívoro come os dois.'],
+['Os peixes respiram por...',['Pulmões','Brânquias','Pele'],1,'As brânquias tiram o oxigênio da água. Ficam dentro do opérculo.'],
+['Qual parte do corpo ajuda o peixe a se mover para frente?',['Nadadeira caudal','Opérculo','Narinas'],0,'Ele mexe o corpo e a nadadeira caudal; as outras dão direção.'],
+['Os filhotes de peixe são chamados de...',['Girinos','Alevinos','Embriões adultos'],1,'Alevinos. Girinos são filhotes de anfíbios.'],
+['O tubarão-baleia é...',['Um mamífero','O maior de todos os peixes','Um réptil'],1,'É peixe, e o maior deles (até 15 m).'],
+['Por que os anfíbios precisam manter a pele úmida?',['Para ficarem bonitos','Porque respiram também pela pele','Para não sentir frio'],1,'Se a pele secar, o oxigênio não entra e eles morrem sufocados.'],
+['A mudança completa do corpo do girino até virar adulto chama-se...',['Metamorfose','Incubação','Camuflagem'],0,'Metamorfose.'],
+['O girino vive na água e respira por...',['Pulmões','Brânquias','Pelos'],1,'Por isso ele se parece com um peixe.'],
+['Qual anfíbio tem ventosas na ponta dos dedos?',['Sapo','Rã','Perereca'],2,'As ventosas deixam a perereca grudar em galhos e azulejos.'],
+['Qual destes anfíbios tem cauda quando adulto?',['Salamandra','Sapo','Perereca'],0,'Sapo, rã e perereca são anuros: sem cauda no adulto.'],
+['Como é a pele dos répteis?',['Fina e úmida','Coberta de penas','Grossa, seca e com escamas'],2,'Ela é impermeável e impede a desidratação.'],
+['Por que os lagartos ficam tomando sol?',['Para se aquecer, pois não mantêm a temperatura do corpo','Para dormir melhor','Para trocar de pele'],0,'Répteis esfriam no frio e esquentam no calor.'],
+['Por que as serpentes trocam de pele?',['Porque ficam sujas','Porque as escamas não crescem junto com o corpo','Porque sentem calor'],1,'Elas trocam a pele para poder crescer.'],
+['O chocalho da cascavel serve para...',['Contar a idade','Espantar os inimigos','Ajudar a nadar'],1,'É defesa. Contar os anéis não mostra a idade.'],
+['Qual tartaruga vive SÓ em terra?',['Jabuti','Cágado','Tartaruga marinha'],0,'Cágado vive no solo e na água doce; a marinha, no mar.'],
+['A maioria dos répteis é...',['Vivípara','Ovípara','Mamífera'],1,'Botam ovos, como tartarugas e jacarés.'],
+['O que só as aves têm?',['Bico e penas','Escamas','Pelos'],0,'Bico e penas diferenciam as aves.'],
+['O beija-flor é uma ave...',['Granívora','Nectarívora','Necrófaga'],1,'Seu bico fino e comprido alcança o néctar das flores.'],
+['O urubu se alimenta de...',['Néctar','Sementes','Animais mortos'],2,'Ele é necrófago.'],
+['O período em que o filhote fica no ovo até nascer chama-se...',['Incubação','Metamorfose','Cardume'],0,'Incubação.'],
+['No pinguim-imperador, quem cuida do ovo?',['A mãe','O pai','Ninguém'],1,'O pai segura o ovo em cima dos pés enquanto a mãe busca alimento.'],
+['O nome "mamífero" vem de...',['Ter pelos','Ter glândulas mamárias que produzem leite','Viver na terra'],1,'As glândulas mamárias produzem o leite dos filhotes.'],
+['Quais grupos mantêm a temperatura do corpo sempre igual?',['Peixes e répteis','Aves e mamíferos','Anfíbios e répteis'],1,'Aves e mamíferos.'],
+['O golfinho é...',['Peixe','Mamífero','Anfíbio'],1,'Apesar de viver no mar, o golfinho mama leite e respira por pulmões.'],
+['A raposa-do-ártico fica branca no inverno para...',['Se camuflar na neve','Ficar com mais frio','Trocar de pele'],0,'Camuflagem: parecer com o ambiente para se esconder.'],
+['O teiú-vermelho come insetos, pequenos vertebrados, ovos e frutos. Ele é...',['Herbívoro','Carnívoro','Onívoro'],2,'Come animais e frutos, então é onívoro.']];
+const OPEN=[
+['Os estudantes viram que os terrários dos répteis tinham lâmpadas. Por que é preciso luz ali?','Para aquecer os répteis, porque eles não conseguem manter a temperatura do corpo constante.'],
+['Maria viu uma fêmea de jabuti colocando ovos num ninho na terra. Como é classificada essa espécie quanto ao desenvolvimento dos filhotes? Explique.','Ovípara, porque os filhotes se desenvolvem dentro dos ovos.'],
+['Um texto dos bombeiros diz: não ande descalço na mata, não ponha a mão em buracos e mantenha o quintal limpo para não atrair ratos. De qual animal ele fala?','Das serpentes (cobras), que se alimentam de ratos.'],
+['Preencha a ficha dos répteis: ambiente, cobertura do corpo, temperatura, locomoção, respiração e filhotes.','Ambiente: terrestre e aquático, mais em lugares quentes. Cobertura: pele grossa e seca com escamas e placas ósseas. Temperatura: não mantêm constante. Locomoção: caminham, nadam ou rastejam. Respiração: pulmões. Filhotes: a maioria se desenvolve dentro de ovos.'],
+['Um comedouro tem alpiste, mamão e banana. Quais aves da tabela devem aparecer? Por quê?','O pardal (granívoro) vem pelo alpiste, o sanhaço (frugívoro) pelo mamão e banana, e o bem-te-vi (onívoro) também come frutos.'],
+['Como o bico da garça combina com o que ela come?','É longo e pontudo, bom para pegar peixes na água.'],
+['Como o bico do beija-flor combina com o que ele come?','É fino e comprido, alcança o néctar dentro das flores.'],
+['Descreva as fases do desenvolvimento de um peixe.','Os ovos são colocados na água; os embriões se desenvolvem dentro dos ovos; nascem os alevinos; eles crescem e viram peixes jovens; depois ficam adultos e podem se reproduzir.'],
+['Como uma serpente e uma tartaruga marinha se locomovem na areia? O que no corpo ajuda?','A serpente rasteja, porque não tem pernas. A tartaruga marinha se arrasta usando os membros em forma de nadadeira (remos).'],
+['O que acontece quando usamos critérios diferentes para classificar os mesmos animais?','Formamos grupos diferentes.']];
+let ans={},only=null;
+const quiz=document.getElementById('quiz');
+const renderQ=()=>{const idx=only||Q.map((_,i)=>i);
+quiz.innerHTML=idx.map(i=>{const q=Q[i];return `<div class="q card" data-i="${i}"><div class="num">Questão ${i+1}</div><b>${q[0]}</b><div class="opts">${q[1].map((o,j)=>`<button data-j="${j}">${'abc'[j]}) ${o}</button>`).join('')}</div><div class="exp">${q[3]}</div></div>`}).join('');upd()};
+const upd=()=>{const idx=only||Q.map((_,i)=>i),n=idx.filter(i=>i in ans).length,ok=idx.filter(i=>ans[i]===Q[i][2]).length;
+document.getElementById('score').textContent=`${ok} certas de ${n} respondidas · ${idx.length} no total`;document.getElementById('qbar').style.width=(n?ok/idx.length*100:0)+'%'};
+quiz.addEventListener('click',e=>{const b=e.target.closest('.opts button');if(!b)return;const box=b.closest('.q'),i=+box.dataset.i;if(i in ans)return;
+const j=+b.dataset.j;ans[i]=j;box.querySelectorAll('.opts button').forEach((x,k)=>{if(k===Q[i][2])x.classList.add('ok');else if(k===j)x.classList.add('no')});
+box.querySelector('.exp').classList.add('show');box.querySelector('.exp').insertAdjacentHTML('afterbegin',j===Q[i][2]?'<b>Isso aí!</b> ':'<b>Quase!</b> ');upd()});
+document.getElementById('qagain').addEventListener('click',()=>{ans={};only=null;renderQ()});
+document.getElementById('qwrong').addEventListener('click',()=>{const w=Object.keys(ans).map(Number).filter(i=>ans[i]!==Q[i][2]);if(!w.length)return;only=w;w.forEach(i=>delete ans[i]);renderQ()});
+renderQ();
+document.getElementById('open').innerHTML=OPEN.map((o,i)=>`<div class="q card"><div class="num">Pergunta ${i+1}</div><b>${o[0]}</b><div class="row" style="justify-content:flex-start"><button data-o="${i}">Ver resposta modelo</button></div><div class="ans" id="ans${i}">${o[1]}</div></div>`).join('');
+document.getElementById('open').addEventListener('click',e=>{const b=e.target.closest('button[data-o]');if(b){document.getElementById('ans'+b.dataset.o).classList.toggle('show')}});
+
+/* PROVA
+   Cada conceito existe em 4 formatos: m = optativa (3 alternativas, a 1ª é a certa), v = verdadeiro ou falso,
+   o = pergunta aberta (vale para escrita e áudio). k = grupos de palavras-chave; n = quantos grupos precisam aparecer. */
+const C=[
+{t:'cl',m:['Classificar os animais é...','separá-los em grupos por critérios de semelhança','dar um nome a cada animal','contar quantos animais existem'],v:['Classificar é separar em grupos usando critérios de semelhança.',1],o:['O que é classificar?',[['grup','separ','organiz','junt']],1,'Separar e organizar em grupos usando um critério de semelhança.']},
+{t:'cl',m:['O que diferencia um vertebrado de um invertebrado?','ter ou não coluna vertebral','o tamanho do animal','a cor do animal'],v:['Os invertebrados têm coluna vertebral.',0],o:['O que é um animal vertebrado?',[['coluna','vertebra','espinha']],1,'É o animal que tem coluna vertebral (e esqueleto interno).']},
+{t:'cl',m:['Qual destes animais é invertebrado?','polvo','avestruz','crocodilo'],v:['A maioria dos animais do planeta é invertebrada.',1],o:['Dê dois exemplos de animais invertebrados.',[['borbolet'],['minhoc'],['polvo'],['caranguej','siri'],['formig'],['joaninh'],['aranh'],['tatuzinh'],['inset'],['mosc','mosquit','pernilong'],['lesm','caracol'],['abelh'],['barat'],['agua-viva','agua viva','medusa','estrela']],2,'Por exemplo: borboleta, minhoca, polvo, caranguejo, formiga, aranha.']},
+{t:'cl',m:['Um animal que come animais e também vegetais é...','onívoro','herbívoro','carnívoro'],v:['O animal onívoro come somente vegetais.',0],o:['O que come um animal onívoro?',[['anima','carne','inset'],['vegeta','planta','frut','semente','folha','raiz']],2,'Come animais e vegetais.']},
+{t:'cl',m:['O animal cujo filhote se desenvolve dentro do ovo é...','ovíparo','vivíparo','invertebrado'],v:['Nos animais ovíparos, o filhote se desenvolve dentro do corpo da mãe.',0],o:['O que é um animal ovíparo?',[['ovo']],1,'É o animal cujo filhote se desenvolve dentro do ovo até nascer.']},
+{t:'cl',m:['Qual destes NÃO é um dos 5 grupos de vertebrados?','insetos','anfíbios','répteis'],v:['Os cinco grupos de vertebrados são peixes, anfíbios, répteis, aves e mamíferos.',1],o:['Quais são os 5 grupos de vertebrados?',[['peix'],['anfib'],['reptil','repteis'],['ave'],['mamif']],4,'Peixes, anfíbios, répteis, aves e mamíferos.']},
+{t:'pe',m:['Os peixes respiram por meio das...','brânquias','narinas','escamas'],v:['Os peixes respiram por pulmões.',0],o:['Como os peixes respiram?',[['branqui','guelra']],1,'Pelas brânquias, que tiram o gás oxigênio da água.']},
+{t:'pe',m:['O que ajuda o peixe a nadar para a frente?','o corpo e a nadadeira caudal','o opérculo','as escamas'],v:['O peixe nada mexendo o corpo e a nadadeira caudal; as outras nadadeiras dão a direção.',1],o:['Como o peixe se locomove na água?',[['nadadeira','barbatana','cauda','rabo']],1,'Mexendo o corpo e a nadadeira caudal; as outras nadadeiras ajudam na direção.']},
+{t:'pe',m:['Os filhotes de peixe são chamados de...','alevinos','girinos','embriões'],v:['Os filhotes de peixe são chamados de girinos.',0],o:['Como se chamam os filhotes de peixe?',[['alevin']],1,'Alevinos.']},
+{t:'an',m:['Por que os anfíbios precisam da pele úmida?','porque também respiram pela pele','para ficarem brilhantes','para não sentirem fome'],v:['Os anfíbios respiram também pela pele, por isso ela precisa ficar úmida.',1],o:['Por que os anfíbios precisam manter a pele úmida?',[['respir','oxigeni']],1,'Porque respiram também pela pele: se ela secar, o oxigênio não entra e eles morrem.']},
+{t:'an',m:['A mudança completa do corpo do girino até virar adulto chama-se...','metamorfose','incubação','camuflagem'],v:['Metamorfose é a mudança completa da forma do corpo durante a vida.',1],o:['O que é metamorfose?',[['mud','transform','vir'],['corpo','forma','girino','sapo','perereca','adult']],2,'É a mudança completa da forma do corpo durante a vida, como o girino que vira perereca.']},
+{t:'an',m:['O girino vive na água e respira por...','brânquias','pulmões','penas'],v:['O girino vive na água, tem cauda e respira por brânquias.',1],o:['Como é o girino?',[['agua'],['cauda','rabo','branqui','nad','vegeta']],2,'Vive na água, respira por brânquias, nada com a cauda e come vegetais.']},
+{t:'an',m:['Qual anfíbio tem ventosas na ponta dos dedos?','perereca','sapo','rã'],v:['O sapo tem ventosas na ponta dos dedos.',0],o:['O que a perereca tem de diferente do sapo?',[['ventos','gruda','adesiv','disco']],1,'A perereca tem ventosas (discos adesivos) nos dedos; o sapo tem pele rugosa e não tem ventosas.']},
+{t:'re',m:['Por que os lagartos ficam tomando sol?','para se aquecer, pois não mantêm a temperatura do corpo','para trocar de pele','para dormir'],v:['Os répteis conseguem manter a temperatura do corpo sempre igual.',0],o:['Por que o terrário dos répteis precisa de lâmpada?',[['aquec','quent','calor','esquent','temperatura']],1,'Para aquecer os répteis, que não mantêm a temperatura do corpo constante.']},
+{t:'re',m:['Por que as serpentes trocam de pele?','porque as escamas não crescem junto com o corpo','porque ficam sujas','porque sentem frio'],v:['As serpentes trocam de pele porque as escamas não crescem junto com o corpo.',1],o:['Por que as serpentes trocam de pele?',[['cresc']],1,'Porque as escamas não crescem: elas trocam a pele para poder crescer.']},
+{t:'re',m:['O chocalho da cascavel serve para...','espantar os inimigos','contar a idade','ajudar a nadar'],v:['Contando os anéis do chocalho sabemos a idade da cascavel.',0],o:['Para que serve o chocalho da cascavel?',[['espant','defe','assust','inimig','proteg','afast']],1,'Para espantar os inimigos (defesa). Ele não mostra a idade.']},
+{t:'re',m:['Como é a pele dos répteis?','grossa, seca e com escamas','fina e úmida','coberta de penas'],v:['A pele dos répteis é fina e úmida.',0],o:['Como é a pele dos répteis?',[['gross','dura'],['sec','imperme'],['escam','placa']],2,'Grossa, seca e impermeável, com escamas e placas ósseas.']},
+{t:'av',m:['O que só as aves têm?','bico e penas','escamas','pelos'],v:['Bico e penas são características das aves.',1],o:['Quais são duas características que só as aves têm?',[['bico'],['pena']],2,'Bico e penas.']},
+{t:'av',m:['Para que servem as penas?','aquecer, proteger e permitir o voo','respirar debaixo da água','produzir leite'],v:['As penas servem para aquecer, proteger e permitir o voo.',1],o:['Para que servem as penas das aves?',[['aquec','quent','calor','frio'],['proteg'],['voa','voo']],2,'Aquecem o corpo, protegem e permitem o voo. A cor pode servir de camuflagem.']},
+{t:'av',m:['O beija-flor é uma ave...','nectarívora','granívora','necrófaga'],v:['O urubu é uma ave que se alimenta de animais mortos.',1],o:['Como o bico do beija-flor ajuda na alimentação dele?',[['fino','comprid','long'],['nectar','flor']],2,'O bico é fino e comprido e alcança o néctar dentro das flores.']},
+{t:'av',m:['O tempo em que o filhote fica no ovo até nascer chama-se...','período de incubação','metamorfose','cardume'],v:['No pinguim-imperador, é a mãe que choca o ovo.',0],o:['O que é o período de incubação?',[['ovo'],['nasc','tempo','dentro']],2,'É o tempo em que o filhote fica dentro do ovo antes de nascer.']},
+{t:'ma',m:['O nome "mamífero" vem de...','ter glândulas mamárias que produzem leite','ter pelos','viver na terra'],v:['Os mamíferos têm glândulas mamárias que produzem leite.',1],o:['Por que esse grupo se chama mamíferos?',[['leite','mama','glandul']],1,'Porque têm glândulas mamárias que produzem leite para os filhotes.']},
+{t:'ma',m:['Para que servem os pelos dos mamíferos?','proteger e manter o corpo aquecido','respirar','voar'],v:['Os pelos ajudam a manter o corpo dos mamíferos aquecido.',1],o:['Para que servem os pelos dos mamíferos?',[['aquec','quent','calor','frio','proteg','corte','queimad','sol']],1,'Protegem contra cortes e queimaduras do sol e mantêm o corpo aquecido.']},
+{t:'ma',m:['Quais grupos mantêm a temperatura do corpo sempre igual?','aves e mamíferos','peixes e répteis','anfíbios e répteis'],v:['Aves e mamíferos mantêm a temperatura do corpo sempre igual.',1],o:['Quais grupos de vertebrados mantêm a temperatura do corpo constante?',[['ave','passaro'],['mamif']],2,'Aves e mamíferos.']},
+{t:'ma',m:['A raposa-do-ártico fica branca no inverno para...','se camuflar na neve','sentir menos fome','trocar de pele'],v:['A raposa-do-ártico fica branca no inverno para se camuflar na neve.',1],o:['O que é camuflagem?',[['parec','igual','cor','mistur','semelh'],['escond','ambient','nao ve','nao enxerg']],1,'É quando o animal fica parecido com o ambiente e consegue se esconder.']}];
+const FN={m:'Marcar alternativa',v:'Verdadeiro ou falso',o:'Escrever',a:'Falar'};
+const MODES={misto:['m','m','v','v','o','o','o','a','a','a'],optativa:['m','v','m','v','m','v','m','v','m','v'],escrita:Array(10).fill('o'),audio:Array(10).fill('a')};
+const MODEHINT={misto:'4 de marcar, 3 de escrever e 3 de falar.',optativa:'Alternativas e verdadeiro ou falso.',escrita:'Ela escreve as respostas com as próprias palavras.',audio:'Ela fala a resposta no microfone e o texto aparece sozinho. Funciona melhor no Chrome ou Safari.'};
+const ROT={m:'a',v:'o',o:'m',a:'v'}; /* recuperação: formato diferente do que ela errou */
+const PICK={cl:2,pe:1,an:2,re:2,av:2,ma:1};
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+const norm=s=>' '+(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9 -]/g,' ')+' ';
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const st={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let mode='misto',P=st.get('fio-prova',null),hist=st.get('fio-hist',[]),rec=null;
+const pexam=document.getElementById('pexam'),pres=document.getElementById('pres'),psend=document.getElementById('psend'),pstart=document.getElementById('pstart');
+
+const build=(fmts,force,num,label)=>{
+ const ids=[...force];
+ const pool=shuffle(C.map((_,i)=>i).filter(i=>!ids.includes(i)));
+ const need={...PICK};ids.forEach(i=>need[C[i].t]--);
+ pool.forEach(i=>{if(ids.length<10&&need[C[i].t]>0){ids.push(i);need[C[i].t]--}});
+ pool.forEach(i=>{if(ids.length<10&&!ids.includes(i))ids.push(i)});
+ shuffle(ids);
+ const f=typeof fmts==='function'?null:shuffle([...fmts]);
+ return {id:Date.now(),num,label,done:false,items:ids.map((c,j)=>{const fm=typeof fmts==='function'?fmts(c):f[j];return {c,f:fm,order:shuffle([0,1,2]),a:null,auto:null,ov:null}})};
+};
+const qScore=it=>it.ov!=null?it.ov:it.auto;
+const total=()=>Math.round(P.items.reduce((s,it)=>s+(qScore(it)||0),0)*10)/10;
+const gradeIt=it=>{const c=C[it.c];
+ if(it.f==='m')return it.a===0?1:0;
+ if(it.f==='v')return it.a===c.v[1]?1:0;
+ const t=norm(it.a);if(!t.trim())return 0;
+ const hit=c.o[1].filter(g=>g.some(w=>t.includes(w))).length;
+ return hit>=c.o[2]?1:hit>0?.5:0};
+
+const render=()=>{
+ if(!P){pexam.innerHTML='';pres.innerHTML='';psend.hidden=true;pstart.hidden=false;return}
+ pstart.hidden=true;
+ const head=`<h3 style="margin-top:18px">${esc(P.label)}</h3>`;
+ pexam.innerHTML=head+P.items.map((it,i)=>{const c=C[it.c],d=P.done;let body='',q='';
+  const cls=d?(qScore(it)>=1?'right':qScore(it)>0?'half':'wrong'):'';
+  if(it.f==='m'){q=c.m[0];body=`<div class="opts">${it.order.map(k=>{let x='';if(d){if(k===0)x='ok';else if(it.a===k)x='no'}else if(it.a===k)x='sel';return `<button data-i="${i}" data-k="${k}" class="${x}"${d?' disabled':''}>${esc(c.m[k+1])}</button>`}).join('')}</div>`}
+  else if(it.f==='v'){q=c.v[0];body=`<div class="opts" style="grid-template-columns:1fr 1fr">${[1,0].map(k=>{let x='';if(d){if(k===c.v[1])x='ok';else if(it.a===k)x='no'}else if(it.a===k)x='sel';return `<button data-i="${i}" data-k="${k}" class="${x}"${d?' disabled':''}>${k?'Verdadeiro':'Falso'}</button>`}).join('')}</div>`}
+  else{q=c.o[0];body=`<textarea data-i="${i}" placeholder="${it.f==='a'?'Aperte Falar e responda em voz alta. Dá para corrigir o texto aqui.':'Escreva sua resposta aqui.'}"${d?' readonly':''}>${esc(it.a||'')}</textarea>`;
+   if(it.f==='a'&&!d)body=`<div class="mic"><button data-say="${i}">Ouvir a pergunta</button><button class="primary" data-rec="${i}">Falar</button><span class="hint" id="h${i}">${SR?'':'Este navegador não ouve. Escreva a resposta.'}</span></div>`+body}
+  let fb='';
+  if(d){
+   fb=`<div class="fb"><b>${qScore(it)>=1?'Certo!':qScore(it)>0?'Meio certo.':'Não foi dessa vez.'}</b> Resposta: ${esc(it.f==='o'||it.f==='a'?c.o[3]:it.f==='m'?c.m[1]:(c.v[1]?'Verdadeiro':'Falso'))}</div>`;
+   if(it.f==='o'||it.f==='a')fb+=`<div class="ov">Correção do adulto: ${[[1,'Certa'],[.5,'Meio'],[0,'Errada']].map(([v,l])=>`<button data-ov="${i}" data-v="${v}" class="${qScore(it)===v?'on':''}">${l}</button>`).join('')}</div>`}
+  return `<div class="card pq ${cls}"><div class="num">Questão ${i+1}<span class="fmt">${FN[it.f]}</span></div><b>${esc(q)}</b>${body}${fb}</div>`}).join('');
+ psend.hidden=P.done;
+ if(P.done){const g=total(),ok=g>=8;
+  const miss=P.items.filter(it=>(qScore(it)||0)<1);
+  const tops=[...new Set(miss.map(it=>G[C[it.c].t][0]))];
+  pres.innerHTML=`<div class="result ${ok?'pass':'fail'}"><div class="grade">${g.toLocaleString('pt-BR')}</div><p style="color:#fff;font-weight:800;font-size:20px;margin:.3em 0">${ok?'Aprovada! Passou da nota 8.':'Ficou abaixo de 8. Vamos refazer em outro formato.'}</p>${tops.length?`<p style="color:#fff">Revisar na aba Entender: ${tops.join(', ')}.</p>`:''}<div class="row" style="justify-content:flex-start">${ok?'':'<button id="pretry">Fazer a recuperação</button>'}<button id="pnew">${ok?'Fazer outra prova':'Começar do zero'}</button></div></div>`;
+  document.getElementById('pnew').onclick=()=>{P=null;st.set('fio-prova',null);render();window.scrollTo(0,document.getElementById('s-prova').offsetTop)};
+  const r=document.getElementById('pretry');if(r)r.onclick=()=>{
+   const missIdx=miss.map(it=>it.c),fm={};miss.forEach(it=>fm[it.c]=ROT[it.f]);
+   P=build(c=>fm[c]||MODES.misto[Math.floor(Math.random()*10)],missIdx,P.num+1,`Prova ${P.num+1} · Recuperação: as que errou voltam em outro formato`);
+   save();render();window.scrollTo(0,pres.offsetTop-80)};
+ }else pres.innerHTML='';
+};
+const save=()=>st.set('fio-prova',P);
+const logHist=()=>{const i=hist.findIndex(h=>h.id===P.id);const row={id:P.id,when:new Date().toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}),label:'Prova '+P.num+(P.num>1?' (recuperação)':''),fmt:[...new Set(P.items.map(it=>FN[it.f]))].join(', '),nota:total()};if(i>=0)hist[i]=row;else hist.unshift(row);st.set('fio-hist',hist);drawHist()};
+const drawHist=()=>{document.getElementById('phist').innerHTML=hist.length?hist.map(h=>`<tr><td>${esc(h.when)}</td><td>${esc(h.label)}</td><td>${esc(h.fmt)}</td><td style="text-align:right;font-weight:800;color:${h.nota>=8?'var(--ok)':'var(--no)'}">${h.nota.toLocaleString('pt-BR')}</td></tr>`).join(''):'<tr><td colspan="4" style="color:var(--soft)">Nenhuma prova feita ainda.</td></tr>'};
+
+document.getElementById('pmodes').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;mode=b.dataset.m;document.querySelectorAll('#pmodes button').forEach(x=>x.classList.toggle('on',x===b));document.getElementById('pmodehint').textContent=MODEHINT[mode]});
+document.getElementById('pmodehint').textContent=MODEHINT.misto;
+document.getElementById('pgo').addEventListener('click',()=>{const n=(hist.length?Math.max(...hist.map(h=>parseInt(h.label.split(' ')[1])||0)):0)+1;P=build(MODES[mode],[],n,`Prova ${n} · ${mode==='misto'?'Formatos misturados':FN[MODES[mode][0]]+(mode==='optativa'?' e verdadeiro ou falso':'')}`);save();render()});
+pexam.addEventListener('click',e=>{
+ const b=e.target.closest('button');if(!b||!P)return;
+ if(b.dataset.k!=null&&!P.done){P.items[+b.dataset.i].a=+b.dataset.k;save();render();return}
+ if(b.dataset.ov!=null){const it=P.items[+b.dataset.ov];it.ov=+b.dataset.v;save();render();logHist();return}
+ if(b.dataset.say!=null){try{const u=new SpeechSynthesisUtterance(C[P.items[+b.dataset.say].c].o[0]);u.lang='pt-BR';speechSynthesis.cancel();speechSynthesis.speak(u)}catch(err){}return}
+ if(b.dataset.rec!=null){const i=+b.dataset.rec,h=document.getElementById('h'+i),ta=pexam.querySelector(`textarea[data-i="${i}"]`);
+  if(!SR){h.textContent='Este navegador não ouve. Escreva a resposta.';ta.focus();return}
+  if(rec){rec.stop();return}
+  rec=new SR();rec.lang='pt-BR';rec.interimResults=true;rec.continuous=false;const base=ta.value?ta.value.trim()+' ':'';
+  rec.onresult=ev=>{let t='';for(const r of ev.results)t+=r[0].transcript;ta.value=base+t;P.items[i].a=ta.value;save()};
+  rec.onerror=ev=>{h.textContent=ev.error==='not-allowed'||ev.error==='service-not-allowed'?'O microfone foi bloqueado. Libere o microfone ou escreva.':'Não deu para ouvir. Tente de novo.'};
+  rec.onend=()=>{rec=null;b.textContent='Falar';b.classList.remove('rec');if(!h.textContent.startsWith('O mic')&&!h.textContent.startsWith('Não'))h.textContent=ta.value?'Pronto! Confira o texto.':''};
+  try{rec.start();b.textContent='Parar';b.classList.add('rec');h.textContent='Ouvindo...'}catch(err){rec=null;h.textContent='Não deu para usar o microfone aqui. Escreva a resposta.'}}
+});
+pexam.addEventListener('input',e=>{const t=e.target.closest('textarea');if(t&&P&&!P.done){P.items[+t.dataset.i].a=t.value;save()}});
+psend.addEventListener('click',()=>{
+ const blank=P.items.filter(it=>it.a==null||(typeof it.a==='string'&&!it.a.trim())).length;
+ if(blank&&psend.dataset.sure!=='1'){psend.dataset.sure='1';psend.textContent=`Faltam ${blank} sem resposta. Entregar mesmo assim?`;return}
+ psend.dataset.sure='';psend.textContent='Entregar a prova';
+ if(rec)rec.stop();
+ P.items.forEach(it=>it.auto=gradeIt(it));P.done=true;if(!P.id)P.id=Date.now();save();logHist();render();window.scrollTo(0,pres.offsetTop-80)});
+const pclear=document.getElementById('pclear');
+pclear.addEventListener('click',()=>{if(pclear.dataset.sure!=='1'){pclear.dataset.sure='1';pclear.textContent='Clique de novo para apagar';return}hist=[];st.set('fio-hist',hist);drawHist();pclear.dataset.sure='';pclear.textContent='Apagar histórico'});
+drawHist();render();
+
+/* ABAS */
+const tabs=['plano','entender','flashcards','simulado','prova'];
+const route=()=>{const h=location.hash.slice(1),t=tabs.includes(h)?h:'plano';tabs.forEach(x=>document.getElementById('s-'+x).classList.toggle('on',x===t));document.querySelectorAll('#tabs a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+t))};
+window.addEventListener('hashchange',()=>{route();window.scrollTo(0,0)});route();
+}
+</script>
+</body>
+</html>
