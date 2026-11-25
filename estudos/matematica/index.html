@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Prova de Matemática</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+/* Mesmo molde da página de Ciências. Cores por assunto: slogan, til/M/N, E-I/O-U, substantivos, verbos, fábula. */
+:root{color-scheme:light dark;
+--bg:light-dark(#ffffff,#11151d);--ink:light-dark(#1d2433,#eef1f6);--soft:light-dark(#5a6375,#a9b2c3);
+--line:light-dark(#e3e7ee,#2a3140);--card:light-dark(#f6f8fb,#1a202b);
+--in:#c9661a;--dd:#2f9a45;--mu:#1f78c1;--li:#a8384f;--mu:#c9661a;--md:#a8384f;--dv:#1f78c1;--de:#5b3fd0;--dt:#2f9a45;--pi:#0e7c86;--gr:#8a6200;--sl:#c9661a;--mn:#2f9a45;--ei:#1f78c1;--su:#a8384f;--ve:#8a6200;--fa:#0e7c86;--av:#d99a00;--ok:#2f9a45;--no:#d0433a;--main:#5b3fd0}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 Nunito,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:"Baloo 2",Nunito,sans-serif;line-height:1.08;margin:0 0 .4em;text-wrap:balance}
+h1{font-size:clamp(32px,6vw,50px)}h2{font-size:clamp(26px,4vw,34px);margin-top:1.2em}h3{font-size:22px}
+p{margin:.3em 0 .8em;max-width:70ch}
+.wrap{max-width:1100px;margin:0 auto;padding:0 max(4vw,16px)}
+header{background:var(--main);color:#fff;padding:18px 0 0}
+header p{color:#e8e3ff;margin:0 0 18px}
+.back{display:inline-block;color:#fff;font-weight:800;text-decoration:none;margin-bottom:8px;padding:8px 0;min-height:44px}
+nav{display:flex;gap:6px;flex-wrap:wrap}
+nav a{flex:none;color:#fff;text-decoration:none;font:800 17px "Baloo 2",sans-serif;padding:10px 18px 8px;border-radius:14px 14px 0 0;background:rgba(255,255,255,.14);min-height:44px}
+nav a.on{background:var(--bg);color:var(--ink)}
+section{display:none;padding:26px 0 60px}section.on{display:block}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 18px}
+.tag{display:inline-block;font-weight:800;font-size:14px;padding:2px 10px;border-radius:99px;color:#fff;margin-bottom:6px}
+.day h3{margin-bottom:.1em}.day .when{color:var(--soft);font-weight:700;font-size:15px}
+.day ol{margin:.5em 0 0;padding-left:1.2em}.day li{margin:.25em 0}
+.warn{border-left:6px solid var(--av);background:light-dark(#fff7df,#2a2414);padding:12px 16px;border-radius:12px;margin:14px 0}
+.fig{position:relative}
+svg text{font-family:Nunito,sans-serif}
+.hub{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:20px;align-items:center}
+@media(max-width:700px){.hub{grid-template-columns:1fr}}
+.gbtn{cursor:pointer}.gbtn:focus{outline:none}.gbtn:focus circle,.gbtn:hover circle{stroke:var(--ink);stroke-width:4}
+#gcard{min-height:260px}
+#gcard ul{margin:.4em 0 0;padding-left:1.1em}#gcard li{margin:.2em 0}
+table{border-collapse:collapse;width:100%;font-size:15px}.scroll table{min-width:560px}
+th,td{border-bottom:1px solid var(--line);padding:8px 8px;text-align:left;vertical-align:top}
+th{font-family:"Baloo 2",sans-serif;font-size:17px}
+.scroll{overflow-x:auto}
+.c-in{color:var(--in)}.c-dd{color:var(--dd)}.c-mu{color:var(--mu)}.c-li{color:var(--li)}
+.b-in{background:var(--in)}.b-dd{background:var(--dd)}.b-mu{background:var(--mu)}.b-li{background:var(--li)}.b-cl{background:var(--main)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:18px;align-items:start}
+.pill{display:inline-block;border:2px solid var(--line);border-radius:99px;padding:2px 10px;margin:2px;font-weight:700;font-size:15px}
+button,select{font:800 16px Nunito,sans-serif;min-height:44px;padding:8px 16px;border-radius:12px;border:2px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+button:focus-visible,a:focus-visible,select:focus-visible{outline:3px solid var(--main);outline-offset:2px}
+button.primary{background:var(--main);border-color:var(--main);color:#fff}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 16px}
+.filters button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.flash{perspective:1200px;max-width:560px;margin:0 auto}
+.fc{position:relative;height:280px;transition:transform .5s;transform-style:preserve-3d;cursor:pointer}
+.fc.flip{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:22px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:24px;border:3px solid var(--line);background:var(--card)}
+.face.back{transform:rotateY(180deg);background:var(--bg)}
+.face .big{font:800 clamp(22px,4.5vw,30px)/1.2 "Baloo 2",sans-serif}
+.face small{color:var(--soft);font-weight:700;margin-top:10px}
+.row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:14px}
+.meter{height:12px;background:var(--line);border-radius:99px;overflow:hidden;margin:8px 0}
+.meter i{display:block;height:100%;background:var(--ok);width:0;transition:width .3s}
+.q{margin:0 0 18px}
+.q .num{font:800 15px Nunito;color:var(--soft)}
+.q .opts{display:grid;gap:8px;margin-top:8px}
+.q .opts button{text-align:left;font-weight:700}
+.q .opts button.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.q .opts button.no{background:var(--no);border-color:var(--no);color:#fff}
+.exp{display:none;margin-top:8px;padding:10px 14px;border-radius:12px;background:light-dark(#eef7f0,#16261b)}
+.exp.show{display:block}
+.score{font:800 clamp(30px,6vw,44px) "Baloo 2",sans-serif}
+.ans{display:none;margin-top:8px;padding:10px 14px;border-radius:12px;background:light-dark(#f1eefe,#211c35)}
+.ans.show{display:block}
+.rule{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.rule .eight{font:800 64px/1 "Baloo 2",sans-serif;color:var(--main)}
+.modes{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.modes button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.fmt{display:inline-block;font-weight:800;font-size:13px;padding:2px 9px;border-radius:99px;background:var(--line);margin-left:6px;vertical-align:2px}
+.pq{margin:0 0 16px}.pq.right{border-color:var(--ok);border-width:2px}.pq.half{border-color:var(--av);border-width:2px}.pq.wrong{border-color:var(--no);border-width:2px}
+.pq .opts{display:grid;gap:8px;margin-top:10px}
+.pq .opts button{text-align:left;font-weight:700}
+.pq .opts button.sel{background:var(--main);border-color:var(--main);color:#fff}
+.pq .opts button.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.pq .opts button.no{background:var(--no);border-color:var(--no);color:#fff}
+.pq textarea{width:100%;min-height:96px;font:16px/1.5 Nunito,sans-serif;padding:10px 12px;border-radius:12px;border:2px solid var(--line);background:var(--bg);color:var(--ink);margin-top:10px;resize:vertical}
+.mic{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.mic button.rec{background:var(--no);border-color:var(--no);color:#fff}
+.mic .hint{color:var(--soft);font-size:15px;font-weight:700}
+.fb{margin-top:10px;padding:10px 14px;border-radius:12px;background:light-dark(#f1eefe,#211c35)}
+.ov{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:8px;font-size:15px;font-weight:700}
+.ov button{min-height:38px;padding:4px 12px;font-size:15px}
+.ov button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.result{border-radius:22px;padding:22px;color:#fff;margin:6px 0 18px}
+.result.pass{background:var(--ok)}.result.fail{background:var(--in)}
+.result .grade{font:800 clamp(48px,10vw,76px)/1 "Baloo 2",sans-serif}
+.result button{background:#fff;color:#1d2433;border-color:#fff}
+.hist td,.hist th{font-size:15px}
+/* peças novas desta matéria */
+.word{display:inline-block;border:2px solid var(--line);border-radius:12px;padding:6px 10px;margin:3px;font-weight:800;font-size:15px;color:#fff}
+.peek{width:100%;text-align:left;font-weight:700;font-size:15px;min-height:44px;padding:6px 10px;border-style:dashed;color:var(--soft)}
+.peek.open{border-style:solid;color:var(--ink);background:var(--bg)}
+.paints{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.paints button{color:#fff;border-width:3px}
+.paints button.on{border-color:var(--ink);box-shadow:0 0 0 2px var(--bg) inset}
+.words{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px}
+.words button{font-size:15px;padding:8px 6px;text-align:center}
+.words button.ok{outline:3px solid var(--ok);outline-offset:1px}
+.words button.no{outline:3px dashed var(--no);outline-offset:1px}
+.steps{display:grid;gap:8px;margin:10px 0}
+.step{display:flex;gap:12px;align-items:center;border:2px solid var(--line);border-radius:14px;padding:10px 14px;background:var(--card)}
+.step b.n{flex:none;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:#fff;background:var(--mu);font-size:18px}
+.bars{display:grid;gap:6px}
+.bar{display:grid;grid-template-columns:110px 1fr 34px;gap:8px;align-items:center;font-weight:700;font-size:15px}
+.bar i{display:block;height:18px;border-radius:6px;background:var(--in)}
+.bar i.me{background:var(--main)}
+.quote{border-left:6px solid var(--li);padding:8px 16px;margin:10px 0;font-style:italic}
+.b-sl{background:var(--sl)}.b-mn{background:var(--mn)}.b-ei{background:var(--ei)}.b-su{background:var(--su)}.b-ve{background:var(--ve)}.b-fa{background:var(--fa)}
+.c-sl{color:var(--sl)}.c-mn{color:var(--mn)}.c-ei{color:var(--ei)}.c-su{color:var(--su)}.c-ve{color:var(--ve)}.c-fa{color:var(--fa)}
+.chips{display:flex;flex-wrap:wrap;gap:4px}
+.idea{display:flex;gap:8px;align-items:flex-start;padding:6px 0;border-bottom:1px solid var(--line);font-weight:700}
+.idea.hit{color:var(--ok)}
+.readbox{max-height:none;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin:8px 0}
+@media (prefers-reduced-motion:reduce){.fc{transition:none}}
+.b-mu{background:var(--mu)}.b-dv{background:var(--dv)}.b-de{background:var(--de)}.b-dt{background:var(--dt)}.b-gr{background:var(--gr)}
+.c-mu{color:var(--mu)}.c-md{color:var(--md)}.c-dv{color:var(--dv)}.c-de{color:var(--de)}.c-dt{color:var(--dt)}.c-pi{color:var(--pi)}.c-gr{color:var(--gr)}
+.bigq{font:800 26px/1.35 "Baloo 2",Nunito,sans-serif;margin:10px 0}
+.ans2{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin:8px 0}
+.ans2 label{display:flex;flex-direction:column;font-weight:800;font-size:14px;color:var(--soft)}
+.numin{width:150px;font:800 26px Nunito,sans-serif;text-align:center;padding:8px;border-radius:12px;border:3px solid var(--line);background:var(--bg);color:var(--ink);min-height:52px}
+.numin:focus{outline:none;border-color:var(--main)}
+.pq .num .tag{margin:0 0 0 6px;font-size:12px}
+.tabm{min-width:420px}.tabm th,.tabm td{padding:2px;text-align:center}
+.cell{min-height:36px;width:100%;padding:4px;font-size:15px;border-radius:8px;border-width:1px}
+.cell.hl{background:light-dark(#dde9f7,#1b2b40);border-color:var(--dv)}
+details summary{cursor:pointer;min-height:32px;font-size:18px}
+button:disabled{opacity:.4;cursor:not-allowed}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<a class="back" href="../">← Todas as matérias</a>
+<h1>Prova de Matemática</h1>
+<p>Apostila 4 · Multiplicação, divisão, estimativas, dobro e triplo, par ou ímpar e gráficos</p>
+<nav class="scroll" id="tabs">
+<a href="#plano">Plano</a><a href="#entender">Entender</a><a href="#contas">Contas ✏️</a><a href="#simulado">Simulado</a><a href="#prova">Prova</a>
+</nav></div></header>
+
+<main class="wrap">
+
+<!-- PLANO -->
+<section id="s-plano">
+<h2>Plano de estudos</h2>
+<div class="warn"><b>A prova é na terça, 01/12.</b> Antes dela tem História e Geografia (26), Ética (27) e Português (30). Por isso os blocos de Matemática nesses dias são curtos.</div>
+<div class="card" style="margin:14px 0"><h3>✏️ Regra de ouro desta matéria</h3><p style="margin:0">Toda conta é feita <b>no caderno</b>, armando a conta. Na página, o aluno digita <b>só o resultado</b>. Cada conta só pode ser respondida <b>uma vez</b>: se errar, a página mostra a resposta certa e explica onde costuma estar o erro.</p></div>
+<div class="grid">
+<div class="card day"><span class="tag b-mu">Dia 1</span><h3>Quinta 26/11</h3><div class="when">Multiplicação · págs. 10–19 (1 bloco)</div>
+<ol><li>Aba Entender: multiplicação com "vai um".</li><li>Multiplicar por 10, 100 e 1000.</li><li>Contas: <i>Multiplicação</i> e <i>× 10, 100, 1000</i>.</li><li>⚡ Tabuada relâmpago: 1 rodada.</li></ol></div>
+<div class="card day"><span class="tag b-dv">Dia 2</span><h3>Sexta 27/11</h3><div class="when">Divisão · págs. 24–29 (1 bloco)</div>
+<ol><li>As duas ideias da divisão.</li><li>Tabela de multiplicação para dividir.</li><li>Divisão exata e não exata (resto).</li><li>Contas: <i>Divisão</i>.</li></ol></div>
+<div class="card day"><span class="tag b-de">Dia 3</span><h3>Sábado 28/11</h3><div class="when">Estimar e dividir · págs. 39–46</div>
+<ol><li>Algoritmo da divisão por estimativas.</li><li>Estimativas maiores (grupos de 10).</li><li>Contas: <i>Divisão por estimativas</i> (quociente e resto).</li></ol></div>
+<div class="card day"><span class="tag b-dt">Dia 4</span><h3>Domingo 29/11</h3><div class="when">Dobro, par ou ímpar, gráficos · págs. 84–87, 95–96, 113–116</div>
+<ol><li>Dobro, triplo, quádruplo e quíntuplo.</li><li>Par ou ímpar.</li><li>Ler gráficos de barras.</li><li>Fazer um <b>Simulado</b>.</li><li>⚡ Tabuada relâmpago (aba Contas).</li></ol></div>
+<div class="card day"><span class="tag b-gr">Dia 5</span><h3>Segunda 30/11</h3><div class="when">Revisão (depois da prova de Português)</div>
+<ol><li>Fazer a <b>Prova</b>: nota mínima 8.</li><li>Se ficar abaixo, fazer a recuperação.</li><li>Dormir cedo!</li></ol></div>
+</div>
+
+<h2>Respostas da apostila para conferir</h2>
+<p>O que ficou em branco ou errado nas páginas da prova. Toque em cada assunto.</p>
+<details class="card" style="margin-bottom:10px"><summary><b>Ampliando a multiplicação</b></summary>
+<ul><li><b>Ex. 1b:</b> 6 × 123 = <b>738</b> (faltou escrever o resultado).</li>
+<li><b>Ex. 4:</b> quem acertou foi o <b>Leonardo (1515 m)</b>. O Murilo esqueceu de somar o "vai 1".</li>
+<li><b>Ex. 5:</b> a) <b>R$ 820,00</b> b) <b>20h45</b> c) <b>R$ 1.640,00</b>.</li>
+<li><b>Ex. 6b:</b> 194 × 4 = <b>776</b>, então a resposta é <b>sim</b>. Ela achou 866 por causa do "vai 3": 9 × 4 = 36 + 1 = <b>37</b>.</li>
+<li><b>× 10, 100, 1000, ex. 3:</b> quadro A 60 a 130; B 600 a 1300; C 6000 a 13000.</li>
+<li><b>Ex. 4:</b> 9, 90, 9000 · 3, 30, 300.</li>
+<li><b>Ex. 5:</b> por 10: 1100, 400, 640, 3000, 2040, 6000 · por 100: 1100, 400, 3000, 6000 · por 1000 e pelos três: 3000 e 6000.</li>
+<li><b>Desafio do bicho-preguiça:</b> <b>3 dias</b>.</li></ul></details>
+<details class="card" style="margin-bottom:10px"><summary><b>A divisão</b></summary>
+<ul><li><b>Ideias da divisão, ex. 1:</b> a) 30 : 6 = <b>5 bolinhas</b>, ideia de <b>repartir</b> · b) <b>5 amigos</b>, ideia de <b>quantos grupos cabem</b>.</li>
+<li><b>Ex. 2:</b> a) 3 alunos (repartir) b) 4 grupos c) 6 grupos d) 4 alunos (repartir).</li>
+<li><b>Tabela para dividir, ex. 1:</b> 36 : 4 = <b>9</b>, 28 : 4 = <b>7</b>, 40 : 8 = <b>5</b>. <b>Ex. 2:</b> 35 : 5 = <b>7</b>, 35 : 7 = <b>5</b>, 100 : 10 = <b>10</b>.</li>
+<li><b>Pág. 35, ex. 1:</b> 54 : 9 = 6, 72 : 8 = 9, 100 : 10 = 10. <b>Ex. 2:</b> produtos 15, 42, 36, 40, 32, 27 (ex.: 15 : 3 = 5 e 15 : 5 = 3).</li>
+<li><b>Divisão exata e não exata, ex. 1:</b> a) exata, possível · b) sobram 4, não exata, impossível · c) exata, possível · d) sobra 1, não exata, impossível. <b>Ex. 2:</b> a) 6 alunos b) 5 equipes.</li></ul></details>
+<details class="card" style="margin-bottom:10px"><summary><b>Estimar e dividir</b></summary>
+<ul><li><b>Estimativas, ex. 1d:</b> 250 passos em 10 m é demais; o realista é uns 15 a 20.</li>
+<li><b>Algoritmo por estimativas:</b> 29 : 4 = <b>7 e resto 1</b> · 168 : 14 = <b>12 e resto 0</b> (faltou escrever os dois).</li>
+<li><b>187 : 5 = 37 e resto 2</b> (ela escreveu 17). O erro foi a primeira subtração: <b>187 − 50 = 137</b>, não 37.</li>
+<li><b>Estimativas maiores (refazer no caderno):</b> 85 : 3 = <b>28 r 1</b> · 146 : 5 = <b>29 r 1</b> · 178 : 5 = <b>35 r 3</b> · 239 : 16 = <b>14 r 15</b>.</li></ul></details>
+<details class="card" style="margin-bottom:10px"><summary><b>Dobro, triplo, quádruplo e quíntuplo</b></summary>
+<ul><li><b>Ex. 2a:</b> resposta: <b>42 sanduíches</b>.</li>
+<li><b>Ex. 3b:</b> 18 bolinhas → quádruplo <b>72</b>, quíntuplo <b>90</b>.</li>
+<li><b>Ex. 4:</b> chocolate para 1 receita = <b>250 g</b> (ela escreveu 2).</li>
+<li><b>Ex. 6a:</b> dobro de 214 = <b>428</b> (ela copiou 928). <b>Ex. 6d:</b> quíntuplo de 75 = <b>375</b> (ela pôs 355: esqueceu o "vai 2").</li>
+<li><b>Ex. 7:</b> só <b>65 répteis e 130 mamíferos</b> (ela marcou duas).</li>
+<li><b>Ex. 8:</b> figura 5 = <b>16</b>, figura 6 = <b>32</b> (cada figura é o dobro da anterior).</li>
+<li><b>Poema "Caranguejada":</b> 1 quinto de 55 = 11 no jantar, <b>44</b> no mercado.</li></ul></details>
+<details class="card" style="margin-bottom:10px"><summary><b>Par ou ímpar</b></summary>
+<ul><li><b>Ex. 2c:</b> pares: 74, 90, 136, 200, 418. <b>2d:</b> ímpares: 121, 143, 255, 301, 339, 433.</li>
+<li><b>Ex. 3:</b> João fez <b>7 pontos</b> e Thais <b>6</b>: <b>João ganhou</b>.</li>
+<li><b>Ex. 4:</b> a) pares, de 2 em 2 · b) ímpares, diminui de 4 em 4.</li></ul></details>
+<details class="card" style="margin-bottom:10px"><summary><b>Gráficos</b></summary>
+<ul><li><b>Tempo na internet:</b> votaram <b>26 alunos</b> (4 + 8 + 9 + 5); até 1 hora: <b>12</b> (4 + 8).</li>
+<li><b>IBGE:</b> b) Centro-Oeste (81,5) · c) Nordeste (58,4) · d) Sudeste: 81,1 − 76,5 = <b>4,6</b>.</li>
+<li><b>Regiões (TIC Kids):</b> gráfico de <b>barras horizontais</b>; maior: <b>Sul e Sudeste</b> (44); menor: <b>Norte</b> (24).</li>
+<li><b>Computador por faixa etária:</b> gráfico de <b>colunas</b> (barras verticais); maior: <b>13 a 14 anos</b>; menor: <b>15 a 17 anos</b>.</li>
+<li><b>Aparelho para acesso:</b> barras <b>múltiplas</b>; compara computador, celular ou os dois em cada faixa etária.</li>
+<li><b>Em casa (Pedro):</b> 40 + 30 = 70 min, <b>mais de 1 hora</b>; ainda pode ficar <b>20 minutos</b>.</li></ul></details>
+</section>
+
+<!-- ENTENDER -->
+<section id="s-entender">
+<h2 style="margin-top:0" class="c-mu">Multiplicação com "vai um"</h2>
+<div class="two">
+<div><p>Na conta armada, começamos pela <b>unidade</b>. Se o resultado passar de 9, escrevemos só a unidade e o resto <b>"vai"</b> para a próxima casa, onde é <b>somado depois</b> de multiplicar.</p>
+<p>Também dá para <b>decompor</b>: 123 × 6 = 100 × 6 + 20 × 6 + 3 × 6 = 600 + 120 + 18 = <b>738</b>.</p>
+<div class="warn"><b>O erro mais comum:</b> esquecer de somar o número que "foi". Em 75 × 5: 5 × 5 = 25, fica 5 e <b>vai 2</b>; 7 × 5 = 35, <b>mais 2 = 37</b>. Resultado: <b>375</b>.</div></div>
+<div class="card"><h3>Passo a passo</h3><div class="filters" id="rx"></div><div class="steps" id="rsteps"></div>
+<div class="row" style="justify-content:flex-start"><button class="primary" id="rnext">Próximo passo</button><button id="rreset">Recomeçar</button></div></div></div>
+
+<h2 class="c-md">Multiplicar por 10, 100 e 1000</h2>
+<div class="two">
+<div><p>× <b>10</b>: acrescenta <b>1 zero</b> · × <b>100</b>: <b>2 zeros</b> · × <b>1000</b>: <b>3 zeros</b>.</p>
+<p>O algarismo <b>muda de ordem</b> e passa a valer 10, 100 ou 1000 vezes mais: no número <b>5000</b>, o 5 vale 5000.</p>
+<p>Multiplicar por 100 = multiplicar por 10 e de novo por 10. Por 1000 = 10 × 10 × 10.</p></div>
+<div class="card"><table><thead><tr><th>Unid. de milhar</th><th>Centena</th><th>Dezena</th><th>Unidade</th></tr></thead><tbody>
+<tr><td></td><td></td><td></td><td><b>5</b></td></tr><tr><td></td><td></td><td><b>5</b></td><td>0</td></tr><tr><td></td><td><b>5</b></td><td>0</td><td>0</td></tr><tr><td><b>5</b></td><td>0</td><td>0</td><td>0</td></tr></tbody></table></div></div>
+
+<h2 class="c-dv">As duas ideias da divisão</h2>
+<div class="two">
+<div class="card"><h3>Repartir igualmente</h3><p><b>"Quantos em cada grupo?"</b></p><p>30 bolinhas para 6 amigos: 30 : 6 = <b>5 bolinhas para cada um</b>.</p></div>
+<div class="card"><h3>Quantos grupos cabem</h3><p><b>"Quantos grupos?"</b></p><p>30 bolinhas, 6 para cada amigo: 30 : 6 = <b>5 amigos</b>.</p></div></div>
+<p style="margin-top:12px"><span class="pill">Dividendo</span> o total · <span class="pill">Divisor</span> por quanto divide · <span class="pill">Quociente</span> o resultado · <span class="pill">Resto</span> o que sobra.</p>
+<p><b>Divisão exata:</b> resto 0 (28 : 4 = 7). <b>Não exata:</b> sobra alguma coisa (28 : 3 = 9 e <b>sobra 1</b>). Para conferir: quociente × divisor + resto = dividendo (9 × 3 + 1 = 28).</p>
+
+<h3 style="margin-top:16px">Tabela de multiplicação para dividir</h3>
+<p>Toque em um número da tabela para ver as duas divisões que ele esconde.</p>
+<div class="scroll"><table id="tab" class="tabm"></table></div>
+<p id="tabout" style="font-weight:800;font-size:19px;min-height:1.6em"></p>
+
+<h2 class="c-de">Algoritmo da divisão por estimativas</h2>
+<div class="two">
+<div><p>Pergunte: <b>"quantos grupos do divisor cabem?"</b> Tire esses grupos, veja quanto sobrou e continue até sobrar menos que o divisor. No fim, <b>some todas as estimativas</b>: é o quociente. O que sobrou é o <b>resto</b>.</p>
+<p>O <b>repertório</b> é a lista de multiplicações que você vai usando (5 × 10 = 50, 5 × 2 = 10...).</p>
+<p><b>Estimativas maiores</b> (grupos de 10, 20, 30) deixam a conta mais curta.</p>
+<div class="warn"><b>Cuidado:</b> confira cada subtração! 187 − 50 = <b>137</b> (e não 37).</div></div>
+<div class="card"><h3>Passo a passo</h3><div class="filters" id="dx"></div><div class="steps" id="dsteps"></div>
+<div class="row" style="justify-content:flex-start"><button class="primary" id="dnext">Próximo passo</button><button id="dreset">Recomeçar</button></div></div></div>
+
+<h2 class="c-dt">Dobro, triplo, quádruplo e quíntuplo</h2>
+<div class="scroll"><table><thead><tr><th>Nome</th><th>Quer dizer</th><th>Exemplo com 18 bolinhas</th></tr></thead><tbody>
+<tr><td><b>Dobro</b></td><td>× 2 (duas vezes)</td><td>18 × 2 = 36</td></tr>
+<tr><td><b>Triplo</b></td><td>× 3</td><td>18 × 3 = 54</td></tr>
+<tr><td><b>Quádruplo</b></td><td>× 4</td><td>18 × 4 = 72</td></tr>
+<tr><td><b>Quíntuplo</b></td><td>× 5</td><td>18 × 5 = 90</td></tr></tbody></table></div>
+<p style="margin-top:10px">Para <b>dobrar uma receita</b>, cada ingrediente vira o dobro; para <b>triplicar</b>, o triplo (250 g de chocolate → 500 g → 750 g).</p>
+
+<h2 class="c-pi">Par ou ímpar</h2>
+<div class="two">
+<div><p><b>Par:</b> termina em <b>0, 2, 4, 6 ou 8</b>. Dividindo por 2, <b>não sobra nada</b>.</p>
+<p><b>Ímpar:</b> termina em <b>1, 3, 5, 7 ou 9</b>. Dividindo por 2, <b>sobra 1</b>.</p>
+<p>Só o <b>último algarismo</b> importa: 32139 é ímpar porque termina em 9.</p></div>
+<div class="card"><h3>Sequências</h3><p>0, 2, 4, 6, 8... → <b>pares</b>, de 2 em 2.</p><p>29, 25, 21, 17, 13... → <b>ímpares</b>, diminuindo de 4 em 4. Próximo: <b>9</b>.</p></div></div>
+
+<h2 class="c-gr">Gráficos de barras</h2>
+<div class="two">
+<div class="card"><div id="gchart"></div></div>
+<div><p><b>Colunas</b> (barras em pé) ou <b>barras horizontais</b> (deitadas): o tamanho da barra mostra a quantidade. Barras <b>múltiplas</b> comparam mais de uma coisa em cada grupo.</p>
+<p>Todo gráfico tem <b>título</b>, <b>eixo horizontal</b> e <b>eixo vertical</b> com nomes.</p>
+<p>Com os números do gráfico fazemos contas: <b>total</b> (somar todas as barras), <b>diferença</b> (maior − menor), <b>quantos a mais</b>.</p>
+<p><b>Neste gráfico:</b> votaram 4 + 8 + 9 + 5 = <b>26 alunos</b>. Até 1 hora: 4 + 8 = <b>12</b>.</p></div></div>
+</section>
+
+<!-- CONTAS -->
+<section id="s-contas">
+<h2 style="margin-top:0">Contas ✏️</h2>
+<p><b>Faça a conta no caderno</b> e digite só o resultado. Cada conta só pode ser respondida uma vez.</p>
+<div class="filters" id="tfil"></div>
+<div class="flash" style="max-width:620px">
+<div class="meter"><i id="tbar"></i></div>
+<div style="text-align:center;font-weight:800;color:var(--soft)" id="tcount"></div>
+<div id="tq"></div>
+</div>
+<h2>⚡ Tabuada relâmpago</h2>
+<p>Desafio de <b>60 segundos</b> de cabeça: quantas contas da tabuada você acerta? A tabuada na ponta da língua deixa a multiplicação e a divisão muito mais rápidas. Tente bater o seu recorde!</p>
+<div class="card" style="max-width:620px;margin:0 auto;text-align:center">
+<div class="filters" id="zmode" style="justify-content:center"><button data-m="x" class="on">Multiplicar ×</button><button data-m="d">Dividir :</button><button data-m="m">Misturado</button></div>
+<div style="display:flex;justify-content:space-around;font-weight:800;font-size:18px"><span>⏱ <span id="ztime">60</span>s</span><span>✅ <span id="zok">0</span></span><span>🏆 Recorde: <span id="zbest">0</span></span></div>
+<div class="bigq" id="zq" style="font-size:44px;min-height:1.4em">Pronta?</div>
+<input class="numin" id="zin" inputmode="numeric" disabled style="max-width:180px;margin:0 auto">
+<p id="zfb" style="font-weight:800;min-height:1.4em;margin:8px 0"></p>
+<button class="primary" id="zgo">Começar!</button>
+</div>
+</section>
+
+<!-- SIMULADO -->
+<section id="s-simulado">
+<h2 style="margin-top:0">Simulado</h2>
+<p>20 contas com números novos. Faça no caderno, digite o resultado e aperte <b>Conferir</b> (ou Enter). Não dá para mudar depois de conferir.</p>
+<div class="card" style="margin-bottom:18px"><div class="score" id="score"></div><div class="meter"><i id="qbar"></i></div>
+<div class="row" style="justify-content:flex-start"><button class="primary" id="qnew">Novo simulado (contas novas)</button></div></div>
+<div id="quiz"></div>
+</section>
+
+<!-- PROVA -->
+<section id="s-prova">
+<div class="rule"><div class="eight">8</div><div><h2 style="margin:0">Prova de verdade</h2><p style="margin:0">10 contas, cada uma vale 1 ponto. Faça tudo no caderno e entregue no final. A nota mínima é <b>8</b>. Abaixo disso, ela faz a <b>recuperação</b>, com números novos nos assuntos que errou.</p></div></div>
+<div id="pstart" class="card" style="margin-top:16px"><p style="margin-top:0">A correção só aparece depois de entregar.</p><button class="primary" id="pgo">Começar a prova</button></div>
+<div id="pres"></div>
+<div id="pexam"></div>
+<div class="row" style="justify-content:flex-start"><button class="primary" id="psend" hidden>Entregar a prova</button></div>
+<h2>Histórico de provas</h2>
+<p style="color:var(--soft)">Fica salvo neste aparelho.</p>
+<div class="scroll"><table class="hist"><thead><tr><th>Quando</th><th>Prova</th><th style="text-align:right">Nota</th></tr></thead><tbody id="phist"></tbody></table></div>
+<div class="row" style="justify-content:flex-start"><button id="pclear">Apagar histórico</button></div>
+</section>
+</main>
+
+<script>
+{
+const T={mu:['Multiplicação','var(--mu)'],md:['× 10, 100, 1000','var(--md)'],dv:['Divisão','var(--dv)'],de:['Divisão por estimativas','var(--de)'],dt:['Dobro e triplo','var(--dt)'],pi:['Par ou ímpar','var(--pi)'],gr:['Gráficos','var(--gr)']};
+const R=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const fmt=n=>Number(n).toLocaleString('pt-BR');
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const st={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+
+/* ---------- ENTENDER: vai um ---------- */
+const placeN=['unidade','dezena','centena','milhar'];
+const multSteps=(a,b)=>{const ds=String(a).split('').reverse().map(Number);let c=0,out='',S=[`Armar a conta: <b>${a} × ${b}</b>. Começa pela unidade.`];
+ ds.forEach((d,i)=>{const p=d*b+c,last=i===ds.length-1;let t=`<b>${cap(placeN[i])}:</b> ${d} × ${b} = ${d*b}`;if(c)t+=` <b>+ ${c}</b> que foi = ${p}`;
+  if(last){out=p+out;t+=` → escreve <b>${p}</b>.`}else{out=(p%10)+out;const nc=Math.floor(p/10);t+=` → escreve <b>${p%10}</b>${nc?`, <b style="color:var(--no)">vai ${nc}</b>`:''}.`;c=nc}
+  S.push(t+` <span style="color:var(--soft)">(até aqui: ${out})</span>`)});
+ S.push(`Resultado: <b>${a} × ${b} = ${fmt(a*b)}</b>`);return S};
+function cap(t){return t[0].toUpperCase()+t.slice(1)}
+const RX=[[194,4],[75,5],[123,6],[214,2],[367,8]];let rsel=0,rk=1;
+const rsx=document.getElementById('rx'),rz=document.getElementById('rsteps');
+rsx.innerHTML=RX.map((x,i)=>`<button data-i="${i}">${x[0]} × ${x[1]}</button>`).join('');
+const drawR=()=>{const S=multSteps(...RX[rsel]);rsx.querySelectorAll('button').forEach((b,i)=>b.classList.toggle('on',i===rsel));rz.innerHTML=S.slice(0,rk).map((s,i)=>`<div class="step"><b class="n" style="background:var(--mu)">${i+1}</b><span>${s}</span></div>`).join('');document.getElementById('rnext').disabled=rk>=S.length};
+rsx.onclick=e=>{const b=e.target.closest('button');if(b){rsel=+b.dataset.i;rk=1;drawR()}};
+document.getElementById('rnext').onclick=()=>{rk++;drawR()};document.getElementById('rreset').onclick=()=>{rk=1;drawR()};drawR();
+
+/* ---------- ENTENDER: tabela ---------- */
+const tab=document.getElementById('tab');
+tab.innerHTML='<tr><th>×</th>'+Array.from({length:10},(_,c)=>`<th>${c+1}</th>`).join('')+'</tr>'+Array.from({length:10},(_,r)=>`<tr><th>${r+1}</th>`+Array.from({length:10},(_,c)=>`<td><button class="cell" data-r="${r+1}" data-c="${c+1}">${(r+1)*(c+1)}</button></td>`).join('')+'</tr>').join('');
+tab.addEventListener('click',e=>{const b=e.target.closest('.cell');if(!b)return;const r=+b.dataset.r,c=+b.dataset.c,v=r*c;tab.querySelectorAll('.cell').forEach(x=>x.classList.toggle('hl',(+x.dataset.r===r&&+x.dataset.c<=c)||(+x.dataset.c===c&&+x.dataset.r<=r)));
+ document.getElementById('tabout').innerHTML=`${r} × ${c} = ${v} &nbsp;→&nbsp; ${v} : ${r} = <span class="c-dv">${c}</span> &nbsp;e&nbsp; ${v} : ${c} = <span class="c-dv">${r}</span>`});
+
+/* ---------- ENTENDER: divisão por estimativas ---------- */
+const divSteps=(n,d)=>{let r=n,tot=0,S=[`Dividir <b>${n} : ${d}</b>. Quantos grupos de ${d} cabem em ${n}?`];
+ while(r>=d){let k=r>=10*d?Math.floor(r/(10*d))*10:Math.floor(r/d);const s=k*d;S.push(`Cabem <b>${k}</b> grupos: ${d} × ${k} = ${s}. &nbsp; ${r} − ${s} = <b>${r-s}</b>`);r-=s;tot+=k}
+ S.push(`Sobrou ${r}, que é menor que ${d}: parou. Somando as estimativas: <b>quociente ${tot}</b> e <b>resto ${r}</b>. Conferindo: ${d} × ${tot} + ${r} = ${n} ✅`);return S};
+const DX=[[72,4],[187,5],[159,13],[239,16],[17,2]];let dsel=0,dk=1;
+const dsx=document.getElementById('dx'),dz=document.getElementById('dsteps');
+dsx.innerHTML=DX.map((x,i)=>`<button data-i="${i}">${x[0]} : ${x[1]}</button>`).join('');
+const drawD=()=>{const S=divSteps(...DX[dsel]);dsx.querySelectorAll('button').forEach((b,i)=>b.classList.toggle('on',i===dsel));dz.innerHTML=S.slice(0,dk).map((s,i)=>`<div class="step"><b class="n" style="background:var(--de)">${i+1}</b><span>${s}</span></div>`).join('');document.getElementById('dnext').disabled=dk>=S.length};
+dsx.onclick=e=>{const b=e.target.closest('button');if(b){dsel=+b.dataset.i;dk=1;drawD()}};
+document.getElementById('dnext').onclick=()=>{dk++;drawD()};document.getElementById('dreset').onclick=()=>{dk=1;drawD()};drawD();
+
+/* ---------- gráfico SVG ---------- */
+const chart=(title,cats,vals,yName,xName)=>{const max=Math.ceil(Math.max(...vals)/5)*5||5,W=360,H=230,x0=42,y0=180,ch=150,bw=Math.min(48,240/cats.length);
+ const step=max<=20?(max<=10?2:5):10;let g='';for(let v=0;v<=max;v+=step){const y=y0-v/max*ch;g+=`<line x1="${x0}" x2="${W-8}" y1="${y}" y2="${y}" stroke="var(--line)"/><text x="${x0-6}" y="${y+4}" text-anchor="end" font-size="11" fill="var(--soft)">${v}</text>`}
+ const gap=(W-x0-10)/cats.length;const bars=cats.map((c,i)=>{const h=vals[i]/max*ch,x=x0+gap*i+(gap-bw)/2;return `<rect x="${x}" y="${y0-h}" width="${bw}" height="${h}" rx="4" fill="var(--gr)"/><text x="${x+bw/2}" y="${y0-h-5}" text-anchor="middle" font-size="13" font-weight="800" fill="var(--ink)">${vals[i]}</text><text x="${x+bw/2}" y="${y0+15}" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--ink)">${esc(c)}</text>`}).join('');
+ return `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="${esc(title)}"><text x="${W/2}" y="14" text-anchor="middle" font-weight="800" font-size="13" fill="var(--ink)">${esc(title)}</text>${g}${bars}<line x1="${x0}" x2="${x0}" y1="24" y2="${y0}" stroke="var(--ink)"/><line x1="${x0}" x2="${W-8}" y1="${y0}" y2="${y0}" stroke="var(--ink)"/><text x="12" y="${y0-ch/2}" transform="rotate(-90 12 ${y0-ch/2})" text-anchor="middle" font-size="11" fill="var(--soft)">${esc(yName)}</text><text x="${(W+x0)/2}" y="${H-6}" text-anchor="middle" font-size="11" fill="var(--soft)">${esc(xName)}</text></svg>`};
+document.getElementById('gchart').innerHTML=chart('Tempo diário na internet',['Até 30 min','30 min a 1 h','1 a 2 h','Mais de 2 h'],[4,8,9,5],'Total de alunos','Tempo');
+
+/* ---------- GERADORES DE CONTAS ---------- */
+const carry=(a,b)=>String(a).split('').some(d=>d*b>=10);
+const decomp=(a,b)=>{const p=String(a).split('').map((d,i,arr)=>d*10**(arr.length-1-i)).filter(Boolean);return `${a} × ${b} = ${p.map(x=>`${x} × ${b}`).join(' + ')} = ${p.map(x=>fmt(x*b)).join(' + ')} = <b>${fmt(a*b)}</b>. Confira o "vai um" em cada casa!`};
+const divExp=(n,d)=>`${n} : ${d} = <b>${Math.floor(n/d)}</b> e resto <b>${n%d}</b>. Confira: ${d} × ${Math.floor(n/d)} + ${n%d} = ${n}. Revise cada subtração.`;
+const NAME={2:'dobro',3:'triplo',4:'quádruplo',5:'quíntuplo'};
+const G={
+ mu:[()=>{let a,b;do{a=R(102,489);b=R(3,9)}while(!carry(a,b));return {q:`${a} × ${b}`,a:a*b,exp:decomp(a,b)}},
+  ()=>{let a,b;do{a=R(23,98);b=R(3,9)}while(!carry(a,b));return {q:`${a} × ${b}`,a:a*b,exp:decomp(a,b)}},
+  ()=>{const a=R(112,395),b=R(3,8);return {q:`Uma caixa tem ${a} lápis. Quantos lápis há em ${b} caixas?`,a:a*b,exp:decomp(a,b)}},
+  ()=>{const a=R(105,285),b=R(2,6);return {q:`Um ônibus percorre ${a} km por dia. Quantos quilômetros ele percorre em ${b} dias?`,a:a*b,exp:decomp(a,b)}},
+  ()=>{const a=R(15,95),b=R(3,9);return {q:`Um ingresso custa R$ ${a},00. Quantos reais custam ${b} ingressos?`,a:a*b,exp:decomp(a,b)}}],
+ md:[()=>{const n=R(6,99),m=pick([10,100,1000]);return {q:`${n} × ${fmt(m)}`,a:n*m,exp:`× ${fmt(m)}: acrescenta ${String(m).length-1} zero${m>10?'s':''}. ${n} × ${fmt(m)} = <b>${fmt(n*m)}</b>.`}},
+  ()=>{let ds;do{ds=shuffle([1,2,3,4,5,6,7,8,9]).slice(0,4)}while(false);const i=R(0,3),v=ds[i]*10**(3-i);return {q:`No número <b>${ds.map((d,j)=>j===i?`<span style="color:var(--no);font-size:1.15em">${d}</span>`:d).join('')}</b>, quanto vale o algarismo vermelho?`,a:v,exp:`O ${ds[i]} está na ordem da ${['unidade de milhar','centena','dezena','unidade'][i]}, então vale <b>${fmt(v)}</b>.`}},
+  ()=>{const n=R(12,85);return {q:`Quanto é ${n} × 10 × 10?`,a:n*100,exp:`× 10 × 10 é o mesmo que × 100: <b>${fmt(n*100)}</b>.`}}],
+ dv:[()=>{const b=R(2,10),c=R(2,10);return {q:`${b*c} : ${b}`,a:c,exp:`Na tabela: ${b} × ${c} = ${b*c}, então ${b*c} : ${b} = <b>${c}</b>.`}},
+  ()=>{const b=R(3,9),c=R(3,9);return {q:`Eduardo quer dividir ${b*c} bolinhas igualmente entre ${b} amigos. Quantas bolinhas cada um recebe?`,a:c,exp:`Ideia de <b>repartir</b>: ${b*c} : ${b} = <b>${c}</b>.`}},
+  ()=>{const b=R(3,9),c=R(3,9);return {q:`A turma tem ${b*c} alunos. Quantas equipes com ${b} alunos cada podem ser formadas?`,a:c,exp:`Ideia de <b>quantos grupos cabem</b>: ${b*c} : ${b} = <b>${c}</b>.`}},
+  ()=>{let n,d;do{n=R(20,59);d=R(3,9)}while(n%d===0);return {q:`${n} alunos vão formar equipes de ${d}. Quantos alunos <b>sobram</b> sem equipe?`,a:n%d,exp:`${n} : ${d} = ${Math.floor(n/d)} e <b>sobra ${n%d}</b>. É uma divisão não exata.`}},
+  ()=>{let n,d;do{n=R(15,49);d=R(2,8)}while(n%d===0);return {q:`Em ${n}, cabem quantos grupos de ${d}? E quanto sobra?`,a:[Math.floor(n/d),n%d],exp:divExp(n,d)}}],
+ de:[()=>{const d=R(2,9),n=R(100,299);return {q:`${n} : ${d}`,a:[Math.floor(n/d),n%d],exp:divExp(n,d)}},
+  ()=>{const d=R(11,16),n=R(120,260);return {q:`${n} : ${d}`,a:[Math.floor(n/d),n%d],exp:divExp(n,d)}},
+  ()=>{const d=R(3,6),n=R(60,98);return {q:`${n} : ${d}`,a:[Math.floor(n/d),n%d],exp:divExp(n,d)}},
+  ()=>{const d=R(4,8),k=R(12,30);return {q:`É preciso guardar ${d*k} bolinhas em embalagens com ${d} cada. Quantas embalagens serão usadas?`,a:k,exp:`${d*k} : ${d} = <b>${k}</b> embalagens, sem sobrar nada.`}}],
+ dt:[()=>{const k=R(2,5),n=R(12,240);return {q:`O ${NAME[k]} de ${n}`,a:n*k,exp:`${cap(NAME[k])} = × ${k}. ${n} × ${k} = <b>${fmt(n*k)}</b>.`}},
+  ()=>{const k=R(2,5),n=R(11,48);return {q:`Roberto tem ${n} canetas e a irmã dele tem o ${NAME[k]} dessa quantidade. Quantas canetas a irmã tem?`,a:n*k,exp:`${n} × ${k} = <b>${n*k}</b>.`}},
+  ()=>{const a=R(11,19);return {q:`Um zoológico tem ${a} espécies de anfíbios. O número de répteis é o quíntuplo do de anfíbios. Quantos répteis há?`,a:a*5,exp:`Quíntuplo = × 5. ${a} × 5 = <b>${a*5}</b>.`}},
+  ()=>{const g=pick([100,150,250,300,125]),k=pick([2,3]);return {q:`Uma receita usa ${g} g de manteiga. Quantos gramas são necessários para ${k===2?'dobrar':'triplicar'} a receita?`,a:g*k,exp:`${g} × ${k} = <b>${g*k}</b> g.`}}],
+ pi:[()=>{const n=R(101,899),odd=Math.random()<.5;return {q:`Qual é o próximo número <b>${odd?'ímpar':'par'}</b> depois de ${n}?`,a:odd?(n%2?n+2:n+1):(n%2?n+1:n+2),exp:`Pares terminam em 0, 2, 4, 6, 8; ímpares em 1, 3, 5, 7, 9. Resposta: <b>${odd?(n%2?n+2:n+1):(n%2?n+1:n+2)}</b>.`}},
+  ()=>{const L=Array.from({length:8},()=>R(10,999)),c=L.filter(x=>x%2===0).length,par=Math.random()<.5;return {q:`Quantos números <b>${par?'pares':'ímpares'}</b> há nesta lista?<br><span style="font-size:1.1em;letter-spacing:.5px">${L.join(', ')}</span>`,a:par?c:8-c,exp:`Olhe só o último algarismo. ${par?'Pares':'Ímpares'}: <b>${L.filter(x=>(x%2===0)===par).join(', ')}</b> → ${par?c:8-c}.`}},
+  ()=>{const s=R(1,40),k=pick([2,4,6,-2,-4]),start=k<0?s+40:s,seq=[0,1,2,3,4].map(i=>start+k*i);return {q:`Qual é o próximo número da sequência?<br><b>${seq.join(', ')}, ...</b>`,a:start+k*5,exp:`A sequência ${k>0?'aumenta':'diminui'} de ${Math.abs(k)} em ${Math.abs(k)}: o próximo é <b>${start+k*5}</b>.`}},
+  ()=>{const n=R(21,999);return {q:`Dividindo ${n} por 2, quanto <b>sobra</b>?`,a:n%2,exp:`${n} termina em ${n%10}: é ${n%2?'ímpar, sobra <b>1</b>':'par, sobra <b>0</b>'}.`}}],
+ gr:[()=>{const C=pick([['Futebol','Vôlei','Natação','Basquete'],['Maçã','Banana','Uva','Manga'],['Cachorro','Gato','Peixe','Pássaro']]),v=C.map(()=>R(2,14)),tot=v.reduce((a,b)=>a+b,0);return {q:`${chart('Preferidos da turma',C,v,'Total de alunos','Opção')}Quantos alunos responderam à pesquisa?`,a:tot,exp:`Soma de todas as barras: ${v.join(' + ')} = <b>${tot}</b>.`}},
+  ()=>{const C=['Norte','Nordeste','Sul','Sudeste','Centro-Oeste'],v=C.map(()=>R(5,45)),mx=Math.max(...v),mn=Math.min(...v);return {q:`${chart('Acesso à internet (a cada 100)',C,v,'Total','Região')}Qual é a diferença entre a maior e a menor barra?`,a:mx-mn,exp:`Maior ${mx} − menor ${mn} = <b>${mx-mn}</b>.`}},
+  ()=>{const C=['Seg','Ter','Qua','Qui','Sex'],v=C.map(()=>R(3,20)),i=R(0,4);let j;do{j=R(0,4)}while(j===i||v[j]===v[i]);const [a,b]=v[i]>v[j]?[i,j]:[j,i];return {q:`${chart('Sanduíches vendidos na cantina',C,v,'Sanduíches','Dia')}Quantos sanduíches foram vendidos a mais na ${C[a]} do que na ${C[b]}?`,a:v[a]-v[b],exp:`${v[a]} − ${v[b]} = <b>${v[a]-v[b]}</b>.`}}]};
+const gen=t=>{const q=pick(G[t])();q.t=t;return q};
+
+/* ---------- componente de resposta ---------- */
+const parse=s=>{s=String(s??'').trim().replace(/[.\s]/g,'');return s===''||!/^\d+$/.test(s)?null:Number(s)};
+const isDiv=q=>Array.isArray(q.a);
+const ansTxt=q=>isDiv(q)?`quociente ${q.a[0]} e resto ${q.a[1]}`:fmt(q.a);
+const inputs=(q,i,val,dis)=>isDiv(q)?`<div class="ans2"><label>Quociente<input class="numin" inputmode="numeric" data-i="${i}" data-k="0" value="${esc(val?.[0]??'')}"${dis?' disabled':''}></label><label>Resto<input class="numin" inputmode="numeric" data-i="${i}" data-k="1" value="${esc(val?.[1]??'')}"${dis?' disabled':''}></label></div>`:`<div class="ans2"><label>Resultado<input class="numin" inputmode="numeric" data-i="${i}" value="${esc(val??'')}"${dis?' disabled':''}></label></div>`;
+const readVal=(box,q)=>{const ins=[...box.querySelectorAll('.numin')];return isDiv(q)?ins.map(x=>x.value):ins[0].value};
+const right=(q,v)=>isDiv(q)?parse(v?.[0])===q.a[0]&&parse(v?.[1])===q.a[1]:parse(v)===q.a;
+const filled=(q,v)=>isDiv(q)?parse(v?.[0])!=null&&parse(v?.[1])!=null:parse(v)!=null;
+const tagH=t=>`<span class="tag" style="background:${T[t][1]}">${T[t][0]}</span>`;
+
+/* ---------- CONTAS (treino) ---------- */
+let tset='tudo',tcur=null,tok=0,tn=0,tdone=false;
+const tfil=document.getElementById('tfil'),tqz=document.getElementById('tq');
+tfil.innerHTML=['tudo',...Object.keys(T)].map(k=>`<button data-k="${k}">${k==='tudo'?'Tudo':T[k][0]}</button>`).join('');
+const nextT=()=>{const t=tset==='tudo'?pick(Object.keys(T)):tset;tcur=gen(t);tdone=false;drawT()};
+const drawT=()=>{tfil.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.k===tset));
+ document.getElementById('tcount').textContent=`${tok} certas de ${tn} feitas`;document.getElementById('tbar').style.width=(tn?tok/tn*100:0)+'%';
+ tqz.innerHTML=`<div class="card pq" style="text-align:center">${tagH(tcur.t)}<div class="bigq">${tcur.q}</div><p style="color:var(--soft);font-weight:700;margin:6px 0">Faça no caderno ✏️ e digite só o resultado.</p>${inputs(tcur,0,null,false)}<p id="thint" style="color:var(--no);font-weight:800;min-height:1.4em;margin:6px 0 0"></p><div class="row"><button class="primary" id="tchk">Conferir</button></div><div id="tfb"></div></div>`;
+ tqz.querySelector('.numin').focus({preventScroll:true})};
+const checkT=()=>{if(tdone){nextT();return}const box=tqz.querySelector('.pq'),v=readVal(box,tcur);if(!filled(tcur,v)){document.getElementById('thint').textContent=isDiv(tcur)?'Digite o quociente e o resto (só números).':'Digite só o número do resultado.';return}
+ tdone=true;tn++;const ok=right(tcur,v);if(ok)tok++;box.querySelectorAll('.numin').forEach(x=>x.disabled=true);box.classList.add(ok?'right':'wrong');document.getElementById('thint').textContent='';
+ document.getElementById('tfb').innerHTML=`<div class="fb" style="text-align:left"><b>${ok?'Isso aí! ✅':'Não foi dessa vez. ❌'}</b> ${ok?'':`Resposta certa: <b>${ansTxt(tcur)}</b>.<br>`}${tcur.exp}</div>`;
+ const b=document.getElementById('tchk');b.textContent='Próxima conta →';drawCount()};
+const drawCount=()=>{document.getElementById('tcount').textContent=`${tok} certas de ${tn} feitas`;document.getElementById('tbar').style.width=(tn?tok/tn*100:0)+'%'};
+tqz.addEventListener('click',e=>{if(e.target.id==='tchk')checkT()});
+tqz.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();checkT()}});
+tfil.addEventListener('click',e=>{const b=e.target.closest('button');if(b){tset=b.dataset.k;tok=0;tn=0;nextT()}});
+nextT();
+
+/* ---------- TABUADA RELÂMPAGO ---------- */
+let zm='x',zt=0,zc=0,zcur=null,ztimer=null;const zbest=()=>st.get('fio-mt-relampago-'+zm,0);
+const zEl=id=>document.getElementById(id);
+const zNew=()=>{const a=R(2,10),b=R(2,10),m=zm==='m'?pick(['x','d']):zm;zcur=m==='x'?{q:`${a} × ${b}`,a:a*b}:{q:`${a*b} : ${a}`,a:b};zEl('zq').textContent=zcur.q;zEl('zin').value=''};
+const zEnd=()=>{clearInterval(ztimer);ztimer=null;zEl('zin').disabled=true;zEl('zgo').disabled=false;zEl('zgo').textContent='Jogar de novo';const rec=zc>zbest();if(rec)st.set('fio-mt-relampago-'+zm,zc);zEl('zbest').textContent=zbest();zEl('zq').textContent=`${zc} acertos!`;zEl('zfb').textContent=rec&&zc?'🎉 Novo recorde!':'Fim do tempo. Tente de novo!'};
+zEl('zgo').onclick=()=>{zt=60;zc=0;zEl('zok').textContent=0;zEl('ztime').textContent=60;zEl('zfb').textContent='';zEl('zgo').disabled=true;zEl('zin').disabled=false;zNew();zEl('zin').focus();ztimer=setInterval(()=>{zt--;zEl('ztime').textContent=zt;if(zt<=0)zEnd()},1000)};
+zEl('zin').addEventListener('keydown',e=>{if(e.key!=='Enter'||!ztimer)return;e.preventDefault();const v=parse(zEl('zin').value);if(v==null)return;if(v===zcur.a){zc++;zEl('zok').textContent=zc;zEl('zfb').textContent='✅';}else zEl('zfb').textContent=`❌ ${zcur.q} = ${zcur.a}`;zNew()});
+zEl('zmode').onclick=e=>{const b=e.target.closest('button');if(!b||ztimer)return;zm=b.dataset.m;zEl('zmode').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));zEl('zbest').textContent=zbest()};
+zEl('zbest').textContent=zbest();
+
+/* ---------- SIMULADO ---------- */
+const SIMT=['mu','mu','mu','mu','md','md','dv','dv','dv','de','de','de','dt','dt','dt','pi','pi','gr','gr','md'];
+let SQ=[],SA={},snum=0;
+const quiz=document.getElementById('quiz');
+const newSim=()=>{SQ=shuffle(SIMT.map(gen));SA={};snum++;renderS()};
+const renderS=()=>{quiz.innerHTML=SQ.map((q,i)=>{const a=SA[i];const cls=a?(a.ok?'right':'wrong'):'';return `<div class="q card pq ${cls}" data-i="${i}"><div class="num">Conta ${i+1} ${tagH(q.t)}</div><div class="bigq" style="font-size:20px">${q.q}</div>${inputs(q,i,a?.v,!!a)}${a?`<div class="fb"><b>${a.ok?'Isso aí! ✅':'Quase. ❌'}</b> ${a.ok?'':`Resposta certa: <b>${ansTxt(q)}</b>.<br>`}${q.exp}</div>`:`<p class="sh" style="color:var(--no);font-weight:800;min-height:1.2em;margin:4px 0"></p><button class="primary schk">Conferir</button>`}</div>`}).join('');updS()};
+const updS=()=>{const n=Object.keys(SA).length,ok=Object.values(SA).filter(a=>a.ok).length;document.getElementById('score').textContent=`Simulado ${snum} · ${ok} certas de ${n} feitas · ${SQ.length} no total`;document.getElementById('qbar').style.width=ok/SQ.length*100+'%'};
+const checkS=box=>{const i=+box.dataset.i,q=SQ[i];if(SA[i])return;const v=readVal(box,q);if(!filled(q,v)){box.querySelector('.sh').textContent='Digite só o número.';return}SA[i]={v,ok:right(q,v)};renderS();const nb=quiz.querySelector(`[data-i="${i+1}"] .numin`);if(nb)nb.focus({preventScroll:true})};
+quiz.addEventListener('click',e=>{if(e.target.closest('.schk'))checkS(e.target.closest('.q'))});
+quiz.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.closest('.numin')){e.preventDefault();checkS(e.target.closest('.q'))}});
+document.getElementById('qnew').onclick=()=>{newSim();window.scrollTo(0,document.getElementById('s-simulado').offsetTop)};
+newSim();
+
+/* ---------- PROVA ---------- */
+const PT=['mu','mu','md','dv','de','de','dt','dt','pi','gr'];
+let P=st.get('fio-mt-prova',null),hist=st.get('fio-mt-hist',[]);
+const pexam=document.getElementById('pexam'),pres=document.getElementById('pres'),psend=document.getElementById('psend'),pstart=document.getElementById('pstart');
+const save=()=>st.set('fio-mt-prova',P);
+const build=(topics,num,label)=>({id:Date.now(),num,label,done:false,items:shuffle(topics.map(t=>({q:gen(t),v:null,ok:null})))});
+const total=()=>P.items.filter(it=>it.ok).length;
+const renderP=()=>{
+ if(!P){pexam.innerHTML='';pres.innerHTML='';psend.hidden=true;pstart.hidden=false;return}
+ pstart.hidden=true;const d=P.done;
+ pexam.innerHTML=`<h3 style="margin-top:18px">${esc(P.label)}</h3>`+P.items.map((it,i)=>`<div class="card pq ${d?(it.ok?'right':'wrong'):''}" data-i="${i}"><div class="num">Questão ${i+1} ${tagH(it.q.t)}</div><div class="bigq" style="font-size:20px">${it.q.q}</div>${inputs(it.q,i,it.v,d)}${d?`<div class="fb"><b>${it.ok?'Certo! ✅':'Errado. ❌'}</b> ${it.ok?'':`Resposta certa: <b>${ansTxt(it.q)}</b>.<br>`}${it.q.exp}</div>`:''}</div>`).join('');
+ psend.hidden=d;
+ if(d){const g=total(),ok=g>=8,miss=P.items.filter(it=>!it.ok);const tops=[...new Set(miss.map(it=>T[it.q.t][0]))];
+  pres.innerHTML=`<div class="result ${ok?'pass':'fail'}"><div class="grade">${g}</div><p style="color:#fff;font-weight:800;font-size:20px;margin:.3em 0">${ok?'Aprovada! Passou da nota 8.':'Ficou abaixo de 8. Vamos para a recuperação.'}</p>${tops.length?`<p style="color:#fff">Revisar na aba Entender: ${tops.join(', ')}.</p>`:''}<div class="row" style="justify-content:flex-start">${ok?'':'<button id="pretry">Fazer a recuperação</button>'}<button id="pnew">${ok?'Fazer outra prova':'Começar do zero'}</button></div></div>`;
+  document.getElementById('pnew').onclick=()=>{P=null;save();renderP();window.scrollTo(0,document.getElementById('s-prova').offsetTop)};
+  const r=document.getElementById('pretry');if(r)r.onclick=()=>{const tl=miss.map(it=>it.q.t);const extra=shuffle([...PT]);while(tl.length<10)tl.push(extra.pop());P=build(tl,P.num+1,`Prova ${P.num+1} · Recuperação: os assuntos que errou, com números novos`);save();renderP();window.scrollTo(0,pres.offsetTop-80)};
+ }else pres.innerHTML=''};
+const logHist=()=>{hist.unshift({id:P.id,when:new Date().toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}),label:'Prova '+P.num+(P.num>1?' (recuperação)':''),nota:total()});st.set('fio-mt-hist',hist);drawHist()};
+const drawHist=()=>{document.getElementById('phist').innerHTML=hist.length?hist.map(h=>`<tr><td>${esc(h.when)}</td><td>${esc(h.label)}</td><td style="text-align:right;font-weight:800;color:${h.nota>=8?'var(--ok)':'var(--no)'}">${h.nota}</td></tr>`).join(''):'<tr><td colspan="3" style="color:var(--soft)">Nenhuma prova feita ainda.</td></tr>'};
+document.getElementById('pgo').onclick=()=>{const n=(hist.length?Math.max(...hist.map(h=>parseInt(h.label.split(' ')[1])||0)):0)+1;P=build(PT,n,`Prova ${n}`);save();renderP()};
+pexam.addEventListener('input',e=>{const x=e.target.closest('.numin');if(!x||!P||P.done)return;const it=P.items[+x.dataset.i];if(isDiv(it.q)){it.v=it.v||['',''];it.v[+x.dataset.k]=x.value}else it.v=x.value;save()});
+psend.addEventListener('click',()=>{const blank=P.items.filter(it=>!filled(it.q,it.v)).length;
+ if(blank&&psend.dataset.sure!=='1'){psend.dataset.sure='1';psend.textContent=`Faltam ${blank} sem resposta. Entregar mesmo assim?`;return}
+ psend.dataset.sure='';psend.textContent='Entregar a prova';P.items.forEach(it=>it.ok=right(it.q,it.v));P.done=true;save();logHist();renderP();window.scrollTo(0,pres.offsetTop-80)});
+const pclear=document.getElementById('pclear');
+pclear.addEventListener('click',()=>{if(pclear.dataset.sure!=='1'){pclear.dataset.sure='1';pclear.textContent='Clique de novo para apagar';return}hist=[];st.set('fio-mt-hist',hist);drawHist();pclear.dataset.sure='';pclear.textContent='Apagar histórico'});
+drawHist();renderP();
+
+/* ABAS */
+const tabs=['plano','entender','contas','simulado','prova'];
+const route=()=>{const h=location.hash.slice(1),t=tabs.includes(h)?h:'plano';tabs.forEach(x=>document.getElementById('s-'+x).classList.toggle('on',x===t));document.querySelectorAll('#tabs a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+t))};
+window.addEventListener('hashchange',()=>{route();window.scrollTo(0,0)});route();
+}
+</script>
+</body>
+</html>
