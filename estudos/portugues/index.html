@@ -125,6 +125,7 @@ button.primary{background:var(--main);border-color:var(--main);color:#fff}
 .idea.hit{color:var(--ok)}
 .readbox{max-height:none;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin:8px 0}
 @media (prefers-reduced-motion:reduce){.fc{transition:none}}
+button:disabled{opacity:.4;cursor:not-allowed}
 </style>
 </head>
 <body>
@@ -294,12 +295,15 @@ button.primary{background:var(--main);border-color:var(--main);color:#fff}
 <!-- FLASHCARDS -->
 <section id="s-flashcards">
 <h2 style="margin-top:0">Flashcards</h2>
-<p>Toque no cartão para virar. Depois diga se acertou: os que ela errar voltam no final da pilha.</p>
+<p>Leia a pergunta, <b>escreva a resposta</b> e só então vire o cartão para conferir. Depois diga se acertou: os que errar voltam no final da pilha.</p>
 <div class="filters" id="ffil"></div>
 <div class="flash">
 <div class="meter"><i id="fbar"></i></div>
 <div style="text-align:center;font-weight:800;color:var(--soft)" id="fcount"></div>
-<div class="fc" id="fc" tabindex="0" role="button" aria-label="Virar cartão"><div class="face"><span class="tag" id="ftag"></span><div class="big" id="ffront"></div><small>toque para ver a resposta</small></div><div class="face back"><div class="big" id="fback" style="font-size:clamp(19px,3.6vw,24px)"></div></div></div>
+<div class="fc" id="fc" tabindex="0" role="button" aria-label="Virar cartão"><div class="face"><span class="tag" id="ftag"></span><div class="big" id="ffront"></div><small>escreva sua resposta embaixo para poder virar</small></div><div class="face back"><div class="big" id="fback" style="font-size:clamp(19px,3.6vw,24px)"></div><small id="fmine" style="margin-top:14px"></small></div></div>
+<textarea id="fans" placeholder="Escreva aqui a sua resposta antes de virar o cartão." style="width:100%;min-height:80px;font:17px/1.5 Nunito,sans-serif;padding:10px 12px;border-radius:12px;border:2px solid var(--line);background:var(--bg);color:var(--ink);margin-top:14px;resize:vertical"></textarea>
+<div class="row"><button class="primary" id="fshow">Virar e conferir</button></div>
+<p id="fhint" style="text-align:center;font-weight:800;color:var(--no);min-height:1.4em;margin:6px 0 0"></p>
 <div class="row"><button id="fno">Ainda não sei</button><button class="primary" id="fyes">Acertei!</button></div>
 <div class="row"><button id="fre">Embaralhar e recomeçar</button></div>
 </div>
@@ -506,14 +510,22 @@ const fil=document.getElementById('ffil'),fc=document.getElementById('fc');
 const keys=['tudo','sl','mn','ei','su','ve','fa'];
 fil.innerHTML=keys.map(k=>`<button data-k="${k}">${k==='tudo'?'Tudo':G[k][0]}</button>`).join('');
 const startF=()=>{deck=shuffle(cards.filter(c=>fset==='tudo'||c[0]===fset));fpos=0;okc=0;fil.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.k===fset));drawF()};
-const drawF=()=>{fc.classList.remove('flip');const done=fpos>=deck.length;const c=done?null:deck[fpos];
+const fans=document.getElementById('fans'),fhint=document.getElementById('fhint'),fmine=document.getElementById('fmine'),fyesB=document.getElementById('fyes'),fnoB=document.getElementById('fno'),fshow=document.getElementById('fshow');
+function resetAns(){fans.value='';fans.disabled=false;fhint.textContent='';fmine.textContent='';fyesB.disabled=true;fnoB.disabled=true;fshow.disabled=false}
+function flipF(){if(fc.classList.contains('flip'))return;const fim=document.getElementById('ftag').textContent==='Fim!';
+ if(!fim&&fans.value.trim().length<3){fhint.textContent='Primeiro escreva a sua resposta aqui embaixo.';fans.focus();return}
+ fmine.textContent=fim?'':'Você escreveu: '+fans.value.trim();fans.disabled=true;fshow.disabled=true;fhint.textContent='';fc.classList.add('flip');fyesB.disabled=false;fnoB.disabled=false}
+fans.addEventListener('input',()=>{if(fans.value.trim().length>=3)fhint.textContent=''});
+fans.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();flipF()}});
+fshow.addEventListener('click',flipF);
+const drawF=()=>{fc.classList.remove('flip');resetAns();const done=fpos>=deck.length;const c=done?null:deck[fpos];
 document.getElementById('ftag').textContent=done?'Fim!':G[c[0]][0];document.getElementById('ftag').style.background=done?'var(--ok)':G[c[0]][1];
 document.getElementById('ffront').textContent=done?`Você acertou ${okc} cartões!`:c[1];
 document.getElementById('fback').textContent=done?'Toque em "Embaralhar e recomeçar" para treinar de novo.':c[2];
 const total=cards.filter(c=>fset==='tudo'||c[0]===fset).length;
 document.getElementById('fcount').textContent=`${Math.min(okc,total)} de ${total} sabidos`;document.getElementById('fbar').style.width=(okc/total*100)+'%'};
-fc.addEventListener('click',()=>fc.classList.toggle('flip'));
-fc.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();fc.classList.toggle('flip')}});
+fc.addEventListener('click',flipF);
+fc.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();flipF()}});
 document.getElementById('fyes').addEventListener('click',()=>{if(fpos<deck.length){okc++;fpos++;drawF()}});
 document.getElementById('fno').addEventListener('click',()=>{if(fpos<deck.length){deck.push(deck[fpos]);fpos++;drawF()}});
 document.getElementById('fre').addEventListener('click',startF);
