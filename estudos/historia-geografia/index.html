@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>História e Geografia da Fiorella</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+/* Mesmo molde da página de Ciências.
+   Cores por assunto: laranja-urucum = comunidades indígenas, verde = influência no dia a dia,
+   azul = município (prefeito e vereadores), vinho = líderes (cacique e líder comunitário). */
+:root{color-scheme:light dark;
+--bg:light-dark(#ffffff,#11151d);--ink:light-dark(#1d2433,#eef1f6);--soft:light-dark(#5a6375,#a9b2c3);
+--line:light-dark(#e3e7ee,#2a3140);--card:light-dark(#f6f8fb,#1a202b);
+--in:#c9661a;--dd:#2f9a45;--mu:#1f78c1;--li:#a8384f;--av:#d99a00;--ok:#2f9a45;--no:#d0433a;--main:#5b3fd0}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 Nunito,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:"Baloo 2",Nunito,sans-serif;line-height:1.08;margin:0 0 .4em;text-wrap:balance}
+h1{font-size:clamp(32px,6vw,50px)}h2{font-size:clamp(26px,4vw,34px);margin-top:1.2em}h3{font-size:22px}
+p{margin:.3em 0 .8em;max-width:70ch}
+.wrap{max-width:1100px;margin:0 auto;padding:0 max(4vw,16px)}
+header{background:var(--main);color:#fff;padding:18px 0 0}
+header p{color:#e8e3ff;margin:0 0 18px}
+.back{display:inline-block;color:#fff;font-weight:800;text-decoration:none;margin-bottom:8px;padding:8px 0;min-height:44px}
+nav{display:flex;gap:6px;flex-wrap:wrap}
+nav a{flex:none;color:#fff;text-decoration:none;font:800 17px "Baloo 2",sans-serif;padding:10px 18px 8px;border-radius:14px 14px 0 0;background:rgba(255,255,255,.14);min-height:44px}
+nav a.on{background:var(--bg);color:var(--ink)}
+section{display:none;padding:26px 0 60px}section.on{display:block}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 18px}
+.tag{display:inline-block;font-weight:800;font-size:14px;padding:2px 10px;border-radius:99px;color:#fff;margin-bottom:6px}
+.day h3{margin-bottom:.1em}.day .when{color:var(--soft);font-weight:700;font-size:15px}
+.day ol{margin:.5em 0 0;padding-left:1.2em}.day li{margin:.25em 0}
+.warn{border-left:6px solid var(--av);background:light-dark(#fff7df,#2a2414);padding:12px 16px;border-radius:12px;margin:14px 0}
+.fig{position:relative}
+svg text{font-family:Nunito,sans-serif}
+.hub{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:20px;align-items:center}
+@media(max-width:700px){.hub{grid-template-columns:1fr}}
+.gbtn{cursor:pointer}.gbtn:focus{outline:none}.gbtn:focus circle,.gbtn:hover circle{stroke:var(--ink);stroke-width:4}
+#gcard{min-height:260px}
+#gcard ul{margin:.4em 0 0;padding-left:1.1em}#gcard li{margin:.2em 0}
+table{border-collapse:collapse;width:100%;font-size:15px}.scroll table{min-width:560px}
+th,td{border-bottom:1px solid var(--line);padding:8px 8px;text-align:left;vertical-align:top}
+th{font-family:"Baloo 2",sans-serif;font-size:17px}
+.scroll{overflow-x:auto}
+.c-in{color:var(--in)}.c-dd{color:var(--dd)}.c-mu{color:var(--mu)}.c-li{color:var(--li)}
+.b-in{background:var(--in)}.b-dd{background:var(--dd)}.b-mu{background:var(--mu)}.b-li{background:var(--li)}.b-cl{background:var(--main)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:18px;align-items:start}
+.pill{display:inline-block;border:2px solid var(--line);border-radius:99px;padding:2px 10px;margin:2px;font-weight:700;font-size:15px}
+button,select{font:800 16px Nunito,sans-serif;min-height:44px;padding:8px 16px;border-radius:12px;border:2px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+button:focus-visible,a:focus-visible,select:focus-visible{outline:3px solid var(--main);outline-offset:2px}
+button.primary{background:var(--main);border-color:var(--main);color:#fff}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 16px}
+.filters button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.flash{perspective:1200px;max-width:560px;margin:0 auto}
+.fc{position:relative;height:280px;transition:transform .5s;transform-style:preserve-3d;cursor:pointer}
+.fc.flip{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:22px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:24px;border:3px solid var(--line);background:var(--card)}
+.face.back{transform:rotateY(180deg);background:var(--bg)}
+.face .big{font:800 clamp(22px,4.5vw,30px)/1.2 "Baloo 2",sans-serif}
+.face small{color:var(--soft);font-weight:700;margin-top:10px}
+.row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:14px}
+.meter{height:12px;background:var(--line);border-radius:99px;overflow:hidden;margin:8px 0}
+.meter i{display:block;height:100%;background:var(--ok);width:0;transition:width .3s}
+.q{margin:0 0 18px}
+.q .num{font:800 15px Nunito;color:var(--soft)}
+.q .opts{display:grid;gap:8px;margin-top:8px}
+.q .opts button{text-align:left;font-weight:700}
+.q .opts button.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.q .opts button.no{background:var(--no);border-color:var(--no);color:#fff}
+.exp{display:none;margin-top:8px;padding:10px 14px;border-radius:12px;background:light-dark(#eef7f0,#16261b)}
+.exp.show{display:block}
+.score{font:800 clamp(30px,6vw,44px) "Baloo 2",sans-serif}
+.ans{display:none;margin-top:8px;padding:10px 14px;border-radius:12px;background:light-dark(#f1eefe,#211c35)}
+.ans.show{display:block}
+.rule{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.rule .eight{font:800 64px/1 "Baloo 2",sans-serif;color:var(--main)}
+.modes{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.modes button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.fmt{display:inline-block;font-weight:800;font-size:13px;padding:2px 9px;border-radius:99px;background:var(--line);margin-left:6px;vertical-align:2px}
+.pq{margin:0 0 16px}.pq.right{border-color:var(--ok);border-width:2px}.pq.half{border-color:var(--av);border-width:2px}.pq.wrong{border-color:var(--no);border-width:2px}
+.pq .opts{display:grid;gap:8px;margin-top:10px}
+.pq .opts button{text-align:left;font-weight:700}
+.pq .opts button.sel{background:var(--main);border-color:var(--main);color:#fff}
+.pq .opts button.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.pq .opts button.no{background:var(--no);border-color:var(--no);color:#fff}
+.pq textarea{width:100%;min-height:96px;font:16px/1.5 Nunito,sans-serif;padding:10px 12px;border-radius:12px;border:2px solid var(--line);background:var(--bg);color:var(--ink);margin-top:10px;resize:vertical}
+.mic{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.mic button.rec{background:var(--no);border-color:var(--no);color:#fff}
+.mic .hint{color:var(--soft);font-size:15px;font-weight:700}
+.fb{margin-top:10px;padding:10px 14px;border-radius:12px;background:light-dark(#f1eefe,#211c35)}
+.ov{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:8px;font-size:15px;font-weight:700}
+.ov button{min-height:38px;padding:4px 12px;font-size:15px}
+.ov button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.result{border-radius:22px;padding:22px;color:#fff;margin:6px 0 18px}
+.result.pass{background:var(--ok)}.result.fail{background:var(--in)}
+.result .grade{font:800 clamp(48px,10vw,76px)/1 "Baloo 2",sans-serif}
+.result button{background:#fff;color:#1d2433;border-color:#fff}
+.hist td,.hist th{font-size:15px}
+/* peças novas desta matéria */
+.word{display:inline-block;border:2px solid var(--line);border-radius:12px;padding:6px 10px;margin:3px;font-weight:800;font-size:15px;color:#fff}
+.peek{width:100%;text-align:left;font-weight:700;font-size:15px;min-height:44px;padding:6px 10px;border-style:dashed;color:var(--soft)}
+.peek.open{border-style:solid;color:var(--ink);background:var(--bg)}
+.paints{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.paints button{color:#fff;border-width:3px}
+.paints button.on{border-color:var(--ink);box-shadow:0 0 0 2px var(--bg) inset}
+.words{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px}
+.words button{font-size:15px;padding:8px 6px;text-align:center}
+.words button.ok{outline:3px solid var(--ok);outline-offset:1px}
+.words button.no{outline:3px dashed var(--no);outline-offset:1px}
+.steps{display:grid;gap:8px;margin:10px 0}
+.step{display:flex;gap:12px;align-items:center;border:2px solid var(--line);border-radius:14px;padding:10px 14px;background:var(--card)}
+.step b.n{flex:none;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:#fff;background:var(--mu);font-size:18px}
+.bars{display:grid;gap:6px}
+.bar{display:grid;grid-template-columns:110px 1fr 34px;gap:8px;align-items:center;font-weight:700;font-size:15px}
+.bar i{display:block;height:18px;border-radius:6px;background:var(--in)}
+.bar i.me{background:var(--main)}
+.quote{border-left:6px solid var(--li);padding:8px 16px;margin:10px 0;font-style:italic}
+@media (prefers-reduced-motion:reduce){.fc{transition:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<a class="back" href="../">← Todas as matérias</a>
+<h1>Prova de História e Geografia da Fiorella</h1>
+<p>Apostila 4 · Comunidades indígenas (págs. 116 a 121), influência indígena (126 a 128) e lideranças no município (134 a 145)</p>
+<nav class="scroll" id="tabs">
+<a href="#plano">Plano</a><a href="#entender">Entender</a><a href="#flashcards">Flashcards</a><a href="#simulado">Simulado</a><a href="#prova">Prova</a>
+</nav></div></header>
+
+<main class="wrap">
+
+<!-- PLANO -->
+<section id="s-plano">
+<h2>Plano de estudos</h2>
+<div class="warn"><b>Data da prova:</b> confira no calendário da escola o dia da prova de História e Geografia. O plano tem 4 dias; se faltar menos tempo, junte o dia 1 com o 2.</div>
+<p>Cada dia: <b>2 blocos de 20 minutos</b> com 5 minutos de pausa entre eles. Primeiro lê na apostila, depois vê aqui na aba <b>Entender</b>, e fecha com os <b>Flashcards</b> do assunto.</p>
+<div class="grid">
+<div class="card day"><span class="tag b-in">Dia 1</span><h3>Comunidades indígenas</h3><div class="when">Págs. 115–121</div>
+<ol><li>O mapa dos povos indígenas no Brasil.</li><li>O que é comunidade tradicional e terra indígena.</li><li>Pataxó x Yanomami: onde vivem e como são as moradias.</li><li>Indígenas nas cidades.</li><li>Flashcards: <i>Comunidades</i>.</li></ol></div>
+<div class="card day"><span class="tag b-dd">Dia 2</span><h3>Influência indígena</h3><div class="when">Págs. 126–128</div>
+<ol><li>O que aprendemos com os indígenas (rede, canoa, banho, tapioca).</li><li>Tupi, guarani e as palavras de origem indígena.</li><li>Jogo das palavras (aba Entender).</li><li>Flashcards: <i>Dia a dia</i>.</li></ol></div>
+<div class="card day"><span class="tag b-mu">Dia 3</span><h3>Lideranças</h3><div class="when">Págs. 134–145</div>
+<ol><li>Cacique e conselho munduruku.</li><li>Prefeito, prefeitura e dinheiro público.</li><li>Vereadores, Câmara Municipal e leis.</li><li>Líder comunitário.</li><li>Flashcards: <i>Município</i> e <i>Líderes</i>.</li></ol></div>
+<div class="card day"><span class="tag b-li">Dia 4</span><h3>Revisão final</h3><div class="when">Véspera da prova</div>
+<ol><li>Fazer o <b>Simulado</b> inteiro sem olhar a apostila.</li><li>Fazer a <b>Prova</b>: nota mínima 8. Abaixo disso, refaz em outro formato.</li><li>Responder em voz alta as perguntas para escrever.</li><li>Dormir cedo!</li></ol></div>
+</div>
+<h2>Dicas para quem ajuda</h2>
+<p>Peça para ela <b>explicar com as próprias palavras</b>, como se fosse a professora. As perguntas abertas do simulado imitam as atividades da apostila.</p>
+<p>Olhando a apostila, vale completar junto com ela:</p>
+<ul>
+<li><b>Pág. 143, atividade 2:</b> a linha da <b>semelhança</b> ficou em branco. Resposta: prefeito e vereadores são <b>eleitos pela população a cada 4 anos</b> (e recebem salário). Na diferença do vereador, falta "<b>fiscaliza o prefeito</b>".</li>
+<li><b>Pág. 145, esquema:</b> a caixa das lideranças comunitárias está vazia. Resposta: <b>ajudam os moradores do bairro sem salário e correm atrás para que os pedidos deles sejam atendidos</b>. Nos vereadores, dá para completar: elaboram, <b>discutem e votam</b> as leis.</li>
+<li><b>Pág. 121, quadro:</b> na moradia pataxó, além de barro, falta a <b>cobertura de palha</b> (algumas casas são de tijolo). A última linha, "Como é a aldeia", ficou em branco para os Pataxó: as aldeias ficam na <b>Bahia e em Minas Gerais</b>, com casas pequenas, uma para cada família.</li>
+</ul>
+</section>
+
+<!-- ENTENDER -->
+<section id="s-entender">
+<h2 style="margin-top:0">Quem cuida de quem?</h2>
+<p>Toque em cada liderança para ver como ela é escolhida e o que faz.</p>
+<div class="hub">
+<div class="fig"><svg viewBox="0 0 400 380" width="100%" role="img" aria-label="Mapa das lideranças">
+<g stroke="var(--line)" stroke-width="5"><line x1="200" y1="190" x2="95" y2="80"/><line x1="200" y1="190" x2="305" y2="80"/><line x1="200" y1="190" x2="70" y2="245"/><line x1="200" y1="190" x2="330" y2="245"/><line x1="200" y1="190" x2="200" y2="320"/></g>
+<circle cx="200" cy="190" r="56" fill="var(--main)"/><text x="200" y="196" text-anchor="middle" fill="#fff" font-weight="800" font-size="13">LIDERANÇAS</text>
+<g id="hubg"></g></svg></div>
+<div class="card" id="gcard"></div>
+</div>
+
+<h2 class="c-in">Povos indígenas pelo Brasil</h2>
+<p>Há povos indígenas <b>espalhados por todo o Brasil</b>. Eles são <b>comunidades tradicionais</b>: cada povo preserva o modo de vida que herdou dos seus <b>ancestrais</b> (jeito de aprender e ensinar, alimentação, casamento, roupas, pinturas corporais, danças, rituais e moradias). Por isso têm <b>direito às terras que ocupam</b>.</p>
+<div class="two">
+<div class="card"><h3>Quantos povos em cada estado</h3>
+<div class="bars" id="bars"></div>
+<p style="margin-top:12px"><b>E no seu estado?</b> <select id="uf" aria-label="Escolha o estado"></select></p>
+<p id="ufout" style="font-weight:800"></p>
+<p style="color:var(--soft);font-size:15px">Fonte do mapa: Daniel Munduruku, <i>Coisas de índio</i>.</p></div>
+<div>
+<p><b>Aldeia</b> é um <b>conjunto de moradias</b>. Cada povo organiza a sua aldeia do seu jeito, de acordo com as necessidades, a cultura e o lugar onde vive.</p>
+<p>Cada povo tem a <b>própria língua</b>, mas para quase todos a <b>Mãe Terra é sagrada</b>: é ela que dá a vida e os recursos naturais. Por isso pedem permissão a ela antes de caçar, colher, plantar ou tirar o barro para a cerâmica, e agradecem por tudo.</p>
+<p>Os lugares onde vivem os povos indígenas são as <b>terras indígenas</b>. A existência delas é <b>garantida pela lei</b>.</p>
+</div></div>
+
+<h2 class="c-in">Pataxó x Yanomami</h2>
+<p>É o quadro da página 121. Tente lembrar e toque em cada quadradinho para conferir.</p>
+<div class="scroll"><table id="ptab"><thead><tr><th></th><th class="c-in">Pataxó</th><th class="c-dd">Yanomami</th></tr></thead><tbody></tbody></table></div>
+<div class="row" style="justify-content:flex-start"><button id="pall">Mostrar tudo</button><button id="phide">Esconder tudo</button></div>
+<div class="grid" style="margin-top:14px">
+<div class="card"><h3 class="c-in">Palavras em patxohã</h3><p><span class="pill">Kijeme</span> casa</p><p><span class="pill">Tschauam</span> criança</p><p>Os Pataxó se esforçam para manter viva a sua língua, o <b>patxohã</b>.</p></div>
+<div class="card"><h3 class="c-dd">Palavras em yanomami</h3><p><span class="pill">Yano</span> casa</p><p><span class="pill">Awery</span> obrigada / obrigado</p><p><span class="pill">Ihiru</span> menino</p></div>
+<div class="card"><h3>Defensores da floresta</h3><p>Os Yanomami lutam contra quem quer <b>derrubar árvores</b> ou <b>poluir os rios</b> em busca de <b>ouro</b>.</p></div>
+</div>
+
+<h2 class="c-in">Indígenas nas cidades</h2>
+<div class="two">
+<div><p>Pelo <b>Censo de 2010</b>, cerca de <b>13 mil indígenas</b> viviam na cidade de <b>São Paulo</b>, o 4º município com mais indígenas do país. Eles vão à escola, ao mercado, ao médico, andam de ônibus e metrô... e <b>continuam preservando suas tradições</b>.</p>
+<p><b>Por que estão na cidade?</b> A cidade cresceu e <b>chegou até as aldeias</b>, e muitos indígenas vieram de outras regiões <b>buscando melhores oportunidades</b>.</p></div>
+<div class="card"><h3>A frase certa da pág. 120</h3><p>✅ <b>Mesmo vivendo nas cidades, os indígenas preservam sua cultura.</b></p><p>Eles lutam pela <b>posse das suas terras</b> e por escolas, alimentação e moradias.</p></div></div>
+
+<h2 class="c-dd">A influência indígena no nosso dia a dia</h2>
+<div class="two">
+<div><p>Os europeus aprenderam muito com os indígenas: usar <b>plantas, frutas e vegetais</b> como <b>alimento e remédio</b>, tomar <b>banho todos os dias</b>, dormir na <b>rede</b> e andar de <b>canoa</b> (feita de <b>tronco de árvore</b>).</p>
+<p>Os <b>guarani</b> (hoje mais de 50 mil no Brasil) foram os primeiros a ter contato com os portugueses, e o <b>tupi</b> virou a principal língua de conversa entre eles. Por isso usamos <b>muitas palavras de origem tupi</b> até hoje!</p></div>
+<div class="card"><h3>Você já comeu tapioca?</h3><p>Também chamada de <b>beiju</b>, é feita com <b>goma da mandioca</b> aquecida na frigideira. Vira um disco e pode ter recheio doce ou salgado.</p><p><span class="pill">tapi</span> = pão &nbsp;+&nbsp; <span class="pill">oca</span> = casa</p></div></div>
+
+<h3 style="margin-top:18px">Jogo: pinte as palavras indígenas</h3>
+<p>Escolha uma cor e toque nas palavras. Depois aperte <b>Conferir</b>. Frutas valem como alimento <b>ou</b> como planta.</p>
+<div class="paints" id="paints"></div>
+<div class="words" id="words"></div>
+<div class="row" style="justify-content:flex-start"><button class="primary" id="wcheck">Conferir</button><button id="wreset">Limpar</button><span id="wres" style="font-weight:800;align-self:center"></span></div>
+
+<div class="card" style="margin-top:18px"><h3 class="c-dd">Você sabia? Jogos dos Povos Indígenas</h3><p>Em <b>2015</b>, em <b>Palmas (Tocantins)</b>, aconteceram os primeiros <b>Jogos Mundiais dos Povos Indígenas</b>: mais de 2 mil pessoas, em <b>16 esportes tradicionais</b>, como arco e flecha, arremesso de lança, canoagem, cabo de força, corrida com tora e natação. O objetivo é <b>valorizar as práticas esportivas tradicionais</b>.</p></div>
+
+<h2 class="c-li">Liderança na aldeia: o povo Munduruku</h2>
+<div class="two">
+<div><p>Cada aldeia tem um <b>líder</b>. Ele encontra soluções para os problemas da comunidade e <b>luta pelos direitos do seu povo junto ao governo</b>.</p>
+<p><b>Não basta ser filho do chefe</b> para virar chefe: é preciso ser <b>respeitado</b> pela maior parte do grupo.</p>
+<p>Entre alguns povos, quem chefia é um grupo chamado <b>conselho</b>. Uma pessoa desse grupo é escolhida como líder: o <b>cacique</b>. O conselho e o cacique são <b>indicados pela comunidade</b>.</p>
+<div class="quote">"Um chefe nunca age sozinho. [...] Ele chefia uma aldeia e é chefiado por ela." <span style="font-style:normal">— Daniel Munduruku</span></div>
+<p>Quer dizer: o chefe <b>não faz o que quer</b>. Ele decide pensando no povo, e se o povo não ficar satisfeito ele <b>perde o prestígio</b>.</p></div>
+<div class="card"><h3>Qualidades de um chefe</h3><ol style="padding-left:1.2em;margin:.3em 0"><li>Ser respeitado.</li><li>Conhecer a história e as tradições do povo e saber contá-las.</li><li>Saber falar em público e convencer as pessoas.</li><li>Ser trabalhador e dar o exemplo.</li><li>Ser generoso.</li></ol></div></div>
+
+<h2 class="c-mu">O município: prefeito e vereadores</h2>
+<div class="two">
+<div><p>O município é administrado por <b>um prefeito</b> e <b>vários vereadores</b>, escolhidos pela população numa <b>eleição a cada 4 anos</b>. Trocar os representantes é bom: pessoas diferentes podem contribuir.</p>
+<p>Quem vota é o <b>eleitor</b>: pode votar a partir dos <b>16 anos</b>, e dos <b>18 aos 70 anos</b> votar é <b>obrigatório</b>.</p>
+<p>O prefeito trabalha na <b>prefeitura</b>, a <b>sede do município</b>, na zona urbana. Ali trabalham também os <b>secretários</b> e muitos <b>servidores públicos</b>. Os prefeitos mudam, mas a prefeitura continua com as mesmas funções.</p></div>
+<div class="card"><h3>O que faz o prefeito?</h3><p><b>Administra o município e executa obras</b>, de acordo com as necessidades da população: escolas, hospitais, tratamento de água e esgoto, asfalto e iluminação das ruas, parques, praças, transporte público.</p>
+<p>Cuida dos espaços públicos e do <b>dinheiro público</b> (o dinheiro dos <b>impostos</b> pagos por cidadãos, empresas e comércio). Precisa ser <b>transparente</b>: mostrar onde e como o dinheiro é usado. Se não cumprir as leis, <b>pode perder o cargo</b>.</p></div></div>
+
+<div class="two" style="margin-top:14px">
+<div><h3>A Câmara Municipal</h3>
+<p>Ouvir todos os moradores ao mesmo tempo seria <b>lento e cansativo</b> (imagine um estádio cheio!). Por isso existem <b>representantes</b>: os <b>vereadores</b>. Eles trabalham por 4 anos na <b>Câmara Municipal</b>.</p>
+<p>Cada município tem <b>1 prefeito</b> e <b>vários vereadores</b>: quanto maior a população, mais vereadores.</p>
+<p>Os vereadores <b>elaboram, discutem e votam as leis</b> e <b>fiscalizam as ações do prefeito</b>.</p>
+<p><b>Leis</b> são regras escritas que dizem o que é e o que não é permitido, para o <b>bem comum</b> e a <b>segurança</b> dos moradores. No município, ficam na <b>Lei Orgânica do Município</b>. Exemplo famoso: as <b>vagas para idosos e cadeirantes</b> nos estacionamentos.</p></div>
+<div class="card"><h3>Como nasce uma lei?</h3>
+<div class="steps" id="steps"></div>
+<div class="row" style="justify-content:flex-start"><button class="primary" id="snext">Próximo passo</button><button id="sreset">Recomeçar</button></div></div></div>
+
+<div class="warn"><b>Você sabia?</b> Prefeitos e vereadores <b>não podem beneficiar parentes e amigos</b>, dando emprego ou protegendo suas empresas, nem usar coisas e funcionários da prefeitura em serviços particulares. Isso combate a <b>corrupção</b>.</div>
+
+<h2 class="c-li">Líder comunitário</h2>
+<div class="two">
+<div><p>Prefeitos e vereadores são <b>eleitos</b> e <b>recebem salário</b>. Mas há <b>voluntários</b> que ajudam as pessoas de um bairro ou comunidade <b>sem serem eleitos e sem salário</b>: são os <b>líderes comunitários</b>.</p>
+<p>Em Mato Grosso do Sul, existe o <b>Dia Estadual do Líder Comunitário</b>, em <b>25 de agosto</b>.</p>
+<div class="quote">"O líder não tem poder para decidir, mas é ele quem corre atrás para fazer com que os anseios dos moradores sejam atendidos." <span style="font-style:normal">— Nei Pretinho</span></div>
+<p>Essa é a <b>principal atribuição</b> do líder comunitário (a frase para grifar na pág. 144).</p></div>
+<div class="card"><h3>Esquema da pág. 145</h3>
+<p><span class="tag b-mu">Eleitos</span><br><b>Prefeito:</b> administra o município, auxiliado pelos secretários.<br><b>Vereadores:</b> elaboram, discutem e votam as leis e fiscalizam o prefeito.</p>
+<p><span class="tag b-li">Voluntários</span><br><b>Lideranças comunitárias:</b> ajudam os moradores do bairro sem salário e correm atrás para que os pedidos deles sejam atendidos.</p></div></div>
+
+<h2>Prefeito x cacique x vereador</h2>
+<div class="scroll"><table>
+<thead><tr><th></th><th class="c-mu">Prefeito</th><th class="c-mu">Vereador</th><th class="c-li">Cacique</th><th class="c-li">Líder comunitário</th></tr></thead>
+<tbody>
+<tr><th>Quem escolhe</th><td>Eleitores, a cada 4 anos</td><td>Eleitores, a cada 4 anos</td><td>Indicado pela comunidade</td><td>Ninguém: é voluntário</td></tr>
+<tr><th>Onde trabalha</th><td>Prefeitura</td><td>Câmara Municipal</td><td>Aldeia (com o conselho)</td><td>Bairro</td></tr>
+<tr><th>O que faz</th><td>Administra e faz obras</td><td>Faz leis e fiscaliza o prefeito</td><td>Resolve problemas e luta pelos direitos da aldeia</td><td>Corre atrás dos pedidos dos moradores</td></tr>
+<tr><th>Salário</th><td>Sim</td><td>Sim</td><td>—</td><td>Não</td></tr>
+<tr><th>Se não agradar</th><td>Não é reeleito; pode perder o cargo se não cumprir as leis</td><td>Não é reeleito</td><td>Perde o prestígio</td><td>—</td></tr>
+</tbody></table></div>
+<p style="margin-top:10px"><b>Semelhanças entre prefeito e cacique (pág. 139):</b> os dois são <b>escolhidos pelo povo</b>, cuidam do <b>bem-estar</b> de quem vive no lugar e <b>resolvem problemas</b>. E os dois "chefiam e são chefiados": precisam agradar o povo.</p>
+</section>
+
+<!-- FLASHCARDS -->
+<section id="s-flashcards">
+<h2 style="margin-top:0">Flashcards</h2>
+<p>Toque no cartão para virar. Depois diga se acertou: os que ela errar voltam no final da pilha.</p>
+<div class="filters" id="ffil"></div>
+<div class="flash">
+<div class="meter"><i id="fbar"></i></div>
+<div style="text-align:center;font-weight:800;color:var(--soft)" id="fcount"></div>
+<div class="fc" id="fc" tabindex="0" role="button" aria-label="Virar cartão"><div class="face"><span class="tag" id="ftag"></span><div class="big" id="ffront"></div><small>toque para ver a resposta</small></div><div class="face back"><div class="big" id="fback" style="font-size:clamp(19px,3.6vw,24px)"></div></div></div>
+<div class="row"><button id="fno">Ainda não sei</button><button class="primary" id="fyes">Acertei!</button></div>
+<div class="row"><button id="fre">Embaralhar e recomeçar</button></div>
+</div>
+</section>
+
+<!-- SIMULADO -->
+<section id="s-simulado">
+<h2 style="margin-top:0">Simulado</h2>
+<h3 id="stitle"></h3>
+<p><b>Parte 1 · Marque a alternativa certa.</b> A resposta aparece na hora, com a explicação.</p>
+<div class="card" style="margin-bottom:18px"><div class="score" id="score">0 de 0</div><div class="meter"><i id="qbar"></i></div>
+<div class="row" style="justify-content:flex-start"><button class="primary" id="qnew">Novo simulado (questões novas)</button><button id="qagain">Refazer tudo</button><button id="qwrong">Refazer as que errei</button></div></div>
+<div id="quiz"></div>
+<h2>Parte 2 · Perguntas para escrever</h2>
+<p>Iguais às da apostila. Ela responde no caderno ou em voz alta, depois confere a resposta modelo.</p>
+<div id="open"></div>
+</section>
+
+<!-- PROVA -->
+<section id="s-prova">
+<div class="rule"><div class="eight">8</div><div><h2 style="margin:0">Prova de verdade</h2><p style="margin:0">10 questões, cada uma vale 1 ponto. A nota mínima é <b>8</b>. Se ficar abaixo, ela faz uma <b>prova de recuperação</b>: as questões que errou voltam <b>em outro formato</b>.</p></div></div>
+<div id="pstart" class="card" style="margin-top:16px">
+<h3>Como ela quer responder?</h3>
+<div class="modes" id="pmodes">
+<button data-m="misto" class="on">Misturado</button><button data-m="optativa">Marcar alternativa</button><button data-m="escrita">Escrever</button><button data-m="audio">Falar (áudio)</button></div>
+<p id="pmodehint" style="color:var(--soft);font-weight:700"></p>
+<button class="primary" id="pgo">Começar a prova</button>
+</div>
+<div id="pres"></div>
+<div id="pexam"></div>
+<div class="row" style="justify-content:flex-start"><button class="primary" id="psend" hidden>Entregar a prova</button></div>
+<h2>Histórico de provas</h2>
+<p style="color:var(--soft)">Fica salvo neste aparelho.</p>
+<div class="scroll"><table class="hist"><thead><tr><th>Quando</th><th>Prova</th><th>Formato</th><th style="text-align:right">Nota</th></tr></thead><tbody id="phist"></tbody></table></div>
+<div class="row" style="justify-content:flex-start"><button id="pclear">Apagar histórico</button></div>
+</section>
+</main>
+
+<script>
+{
+const G={in:['Comunidades','var(--in)'],dd:['Dia a dia','var(--dd)'],mu:['Município','var(--mu)'],li:['Líderes','var(--li)']};
+const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* HUB DAS LIDERANÇAS */
+const roles=[
+ {n:'Prefeito',c:'var(--mu)',x:95,y:80,li:['Escolhido pelos eleitores, a cada 4 anos','Trabalha na prefeitura, a sede do município','Administra o município e faz obras: escolas, hospitais, ruas, parques','Cuida do dinheiro público e deve ser transparente'],ex:'É ajudado pelos secretários e servidores públicos. Recebe salário.'},
+ {n:'Vereadores',c:'var(--mu)',x:305,y:80,li:['Escolhidos pelos eleitores, a cada 4 anos','Trabalham na Câmara Municipal','Elaboram, discutem e votam as leis','Fiscalizam as ações do prefeito'],ex:'São vários: quanto maior a população, mais vereadores. Recebem salário.'},
+ {n:'Eleitores',c:'var(--main)',x:70,y:245,li:['São os moradores que votam','Podem votar a partir dos 16 anos','Dos 18 aos 70 anos, votar é obrigatório','Analisam as propostas e votam no candidato que acham melhor'],ex:'A população também pode propor leis!'},
+ {n:'Cacique',c:'var(--li)',x:330,y:245,li:['Indicado pela comunidade','Escolhido entre as pessoas do conselho','Resolve os problemas da aldeia','Luta pelos direitos da aldeia junto ao governo'],ex:'"Ele chefia uma aldeia e é chefiado por ela." Um chefe nunca age sozinho.'},
+ {n:'Líder comunitário',c:'var(--li)',x:200,y:320,li:['Voluntário: ninguém elege','Não recebe salário','Ajuda os moradores do bairro em tudo','Corre atrás para os pedidos dos moradores serem atendidos'],ex:'Não tem poder para decidir, mas é o representante mais próximo do povo.'}];
+const hub=document.getElementById('hubg'),gc=document.getElementById('gcard');
+hub.innerHTML=roles.map((g,i)=>`<g class="gbtn" tabindex="0" role="button" data-i="${i}"><circle cx="${g.x}" cy="${g.y}" r="48" fill="${g.c}"/><text x="${g.x}" y="${g.y+(g.n.includes(' ')?-2:5)}" text-anchor="middle" fill="#fff" font-weight="800" font-size="15">${g.n.split(' ').map((w,k)=>`<tspan x="${g.x}" dy="${k?17:0}">${w}</tspan>`).join('')}</text></g>`).join('');
+const showG=i=>{const g=roles[i];gc.innerHTML=`<span class="tag" style="background:${g.c}">${g.n}</span><h3>Como é</h3><ul>${g.li.map(l=>`<li>${l}</li>`).join('')}</ul><p style="margin-top:10px">${g.ex}</p>`};
+hub.querySelectorAll('.gbtn').forEach(b=>{b.addEventListener('click',()=>showG(+b.dataset.i));b.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();showG(+b.dataset.i)}})});
+showG(0);
+
+/* POVOS POR ESTADO (mapa da pág. 115) */
+const UF=[['Amazonas',62],['Mato Grosso',40],['Pará',36],['Rondônia',28],['Bahia',13],['Acre',12],['Pernambuco',12],['Maranhão',10],['Tocantins',10],['Roraima',9],['Mato Grosso do Sul',9],['Ceará',8],['Alagoas',8],['Minas Gerais',8],['São Paulo',7],['Amapá',5],['Paraná',5],['Santa Catarina',5],['Goiás',4],['Rio Grande do Sul',4],['Espírito Santo',3],['Rio Grande do Norte',2],['Rio de Janeiro',2],['Piauí',1],['Paraíba',1],['Sergipe',1]];
+const bars=document.getElementById('bars'),uf=document.getElementById('uf'),ufout=document.getElementById('ufout');
+let me='São Paulo';
+const drawBars=()=>{const top=UF.slice(0,6);if(!top.some(u=>u[0]===me))top.push(UF.find(u=>u[0]===me));
+ bars.innerHTML=top.map(u=>`<div class="bar"><span>${u[0]}</span><i class="${u[0]===me?'me':''}" style="width:${u[1]/62*100}%"></i><span>${u[1]}</span></div>`).join('');
+ const u=UF.find(x=>x[0]===me);ufout.textContent=`${u[0]}: ${u[1]} ${u[1]===1?'povo indígena':'povos indígenas'}.`};
+uf.innerHTML=[...UF].sort((a,b)=>a[0].localeCompare(b[0])).map(u=>`<option${u[0]===me?' selected':''}>${u[0]}</option>`).join('');
+uf.addEventListener('change',()=>{me=uf.value;drawBars()});drawBars();
+
+/* QUADRO PATAXÓ x YANOMAMI (pág. 121) */
+const PT=[['Localização do povo','Bahia e Minas Gerais','Floresta Amazônica (só se chega a pé ou de barco)'],['Nome da moradia','Kijeme','Yano'],['Como é a moradia','Pequena, de um cômodo, onde vive uma família','Grande, onde vivem todos os habitantes da aldeia'],['Material','Paredes de barro e cobertura de palha (algumas de tijolo)','Madeira e folha de palmeira'],['Como é a aldeia','Várias casas pequenas, uma para cada família','Formada por grandes moradias, onde vive todo mundo junto']];
+const ptb=document.querySelector('#ptab tbody');
+ptb.innerHTML=PT.map(r=>`<tr><th>${r[0]}</th>${[1,2].map(k=>`<td><button class="peek" data-t="${esc(r[k])}">toque para ver</button></td>`).join('')}</tr>`).join('');
+const peek=(b,o)=>{b.classList.toggle('open',o);b.textContent=o?b.dataset.t:'toque para ver'};
+ptb.addEventListener('click',e=>{const b=e.target.closest('.peek');if(b)peek(b,!b.classList.contains('open'))});
+document.getElementById('pall').onclick=()=>ptb.querySelectorAll('.peek').forEach(b=>peek(b,true));
+document.getElementById('phide').onclick=()=>ptb.querySelectorAll('.peek').forEach(b=>peek(b,false));
+
+/* JOGO DAS PALAVRAS (pág. 132) */
+const PAINT={planta:['Verde: plantas','#2f9a45'],alimento:['Azul: alimentos','#1f78c1'],animal:['Marrom: animais','#8a5a2b'],local:['Vermelho: lugares','#d0433a']};
+const FRUTA=['alimento','planta'];
+const WORDS=[['abacaxi',FRUTA],['macaco',['animal']],['Ubatuba',['local']],['Itu',['local']],['jabuticaba',FRUTA],['mandioca',FRUTA],['jabuti',['animal']],['sucuri',['animal']],['pitanga',FRUTA],['Anhangabaú',['local']],['Amapá',['local']],['Paraná',['local']],['cutia',['animal']],['Goiás',['local']],['pequi',FRUTA],['Acre',['local']],['tamanduá',['animal']],['Ipiranga',['local']],['jacaré',['animal']],['urubu',['animal']],['peroba',['planta']],['capivara',['animal']],['ipê',['planta']],['maracujá',FRUTA],['Aracaju',['local']],['jequitibá',['planta']],['amendoim',FRUTA],['cupuaçu',FRUTA],['capim',['planta']],['tatu',['animal']],['arara',['animal']],['siri',['animal']],['tucano',['animal']],['pamonha',['alimento']],['pipoca',['alimento']],['Butantã',['local']]];
+let brush='planta',painted={};
+const pz=document.getElementById('paints'),wz=document.getElementById('words'),wres=document.getElementById('wres');
+pz.innerHTML=Object.entries(PAINT).map(([k,v])=>`<button data-p="${k}" style="background:${v[1]};border-color:${v[1]}">${v[0]}</button>`).join('');
+const drawW=(check)=>{pz.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.p===brush));
+ wz.innerHTML=WORDS.map(([w,ok],i)=>{const p=painted[i];const cls=check&&p?(ok.includes(p)?'ok':'no'):'';const st=p?`background:${PAINT[p][1]};border-color:${PAINT[p][1]};color:#fff`:'';return `<button data-w="${i}" class="${cls}" style="${st}">${w.toUpperCase()}</button>`}).join('')};
+pz.addEventListener('click',e=>{const b=e.target.closest('button');if(b){brush=b.dataset.p;drawW(false)}});
+wz.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const i=+b.dataset.w;painted[i]=painted[i]===brush?undefined:brush;wres.textContent='';drawW(false)});
+document.getElementById('wcheck').onclick=()=>{const n=Object.values(painted).filter(Boolean).length,ok=WORDS.filter((w,i)=>painted[i]&&w[1].includes(painted[i])).length;wres.textContent=`${ok} certas de ${n} pintadas · ${WORDS.length} palavras`;drawW(true)};
+document.getElementById('wreset').onclick=()=>{painted={};wres.textContent='';drawW(false)};
+drawW(false);
+
+/* COMO NASCE UMA LEI */
+const STEPS=['Alguém propõe uma lei: o prefeito, um vereador ou a população.','Os vereadores discutem o projeto na Câmara Municipal.','Os vereadores votam.','Se for aprovado, o projeto vira lei e entra na Lei Orgânica do Município.','Todos precisam cumprir. Os vereadores fiscalizam o prefeito.'];
+let sk=1;const sz=document.getElementById('steps'),sn=document.getElementById('snext');
+const drawS=()=>{sz.innerHTML=STEPS.slice(0,sk).map((s,i)=>`<div class="step"><b class="n">${i+1}</b><span>${s}</span></div>`).join('');sn.disabled=sk>=STEPS.length};
+sn.onclick=()=>{if(sk<STEPS.length){sk++;drawS()}};document.getElementById('sreset').onclick=()=>{sk=1;drawS()};drawS();
+
+/* FLASHCARDS */
+const cards=[
+['in','O que são comunidades tradicionais?','Povos que preservam o modo de vida herdado dos ancestrais: tradições, jeito de se organizar e cultura.'],
+['in','Por que os indígenas têm direito às terras que ocupam?','Porque são comunidades tradicionais e precisam da terra para preservar sua cultura.'],
+['in','O que são terras indígenas?','Os lugares onde vivem os povos indígenas. A existência delas é garantida pela lei.'],
+['in','O que é uma aldeia?','Um conjunto de moradias indígenas.'],
+['in','Qual estado tem mais povos indígenas?','O Amazonas, com 62 povos.'],
+['in','Onde vivem os Pataxó?','Principalmente na Bahia e em Minas Gerais.'],
+['in','Como são as casas pataxós?','Pequenas, de um cômodo, uma para cada família. Paredes de barro e cobertura de palha (algumas de tijolo).'],
+['in','Qual é a língua dos Pataxó?','O patxohã.'],
+['in','Kijeme e Tschauam','Kijeme = casa. Tschauam = criança. (patxohã)'],
+['in','Onde vivem os Yanomami?','Na Floresta Amazônica. Só se chega a pé ou de barco.'],
+['in','Como é a moradia yanomami?','Grande, onde vivem todos os habitantes. Feita de madeira e folha de palmeira.'],
+['in','Yano, Awery e Ihiru','Yano = casa. Awery = obrigada/obrigado. Ihiru = menino.'],
+['in','Por que os Yanomami defendem a floresta?','Lutam contra quem derruba árvores ou polui os rios em busca de ouro.'],
+['in','O que é a Mãe Terra para os indígenas?','É sagrada: dá a vida e os recursos naturais. Eles pedem permissão a ela e agradecem.'],
+['in','Indígenas que moram na cidade deixam de ser indígenas?','Não! Mesmo vivendo nas cidades, eles preservam sua cultura.'],
+['in','Quantos indígenas viviam na cidade de São Paulo em 2010?','Cerca de 13 mil.'],
+['in','Por que há indígenas nas cidades?','A cidade cresceu e chegou às aldeias, e muitos vieram de outras regiões buscando oportunidades.'],
+['dd','O que os europeus aprenderam com os indígenas?','Usar plantas e frutas como alimento e remédio, tomar banho todo dia, dormir em rede, usar canoa.'],
+['dd','De que é feita a canoa indígena?','De tronco de árvore.'],
+['dd','O que é tapioca?','Também chamada beiju: goma de mandioca aquecida na frigideira, com recheio doce ou salgado.'],
+['dd','O que significa "tapioca" em tupi?','tapi = pão + oca = casa.'],
+['dd','Qual língua indígena deu muitas palavras ao português?','O tupi.'],
+['dd','Quem foram os primeiros indígenas a ter contato com os portugueses?','Os guarani. Hoje são mais de 50 mil no Brasil.'],
+['dd','Diga 3 animais com nome indígena','Tatu, capivara, jacaré, tucano, arara, jabuti, tamanduá...'],
+['dd','Diga 3 lugares com nome indígena','Ubatuba, Itu, Ipiranga, Paraná, Goiás, Aracaju, Butantã...'],
+['dd','Jogos Mundiais dos Povos Indígenas','Em 2015, em Palmas (Tocantins), com 16 esportes tradicionais, como arco e flecha e corrida com tora.'],
+['mu','Quem administra o município?','O prefeito, ajudado pelos secretários e servidores públicos.'],
+['mu','De quanto em quanto tempo tem eleição municipal?','A cada 4 anos.'],
+['mu','A partir de que idade pode votar?','16 anos. Dos 18 aos 70 anos, votar é obrigatório.'],
+['mu','O que é eleitor?','A pessoa que vota e escolhe os representantes.'],
+['mu','O que é a prefeitura?','A sede do município, na zona urbana. Lá trabalham o prefeito, os secretários e servidores.'],
+['mu','O que faz o prefeito?','Administra o município e executa obras: escolas, hospitais, água e esgoto, ruas, parques.'],
+['mu','O que é dinheiro público?','O dinheiro dos impostos pagos por cidadãos, empresas e comércio. Paga os custos do município.'],
+['mu','Por que o prefeito deve ser transparente?','Para todos saberem onde e como o dinheiro público é usado.'],
+['mu','O que acontece se o prefeito não cumprir as leis?','Ele pode perder o cargo.'],
+['mu','Onde trabalham os vereadores?','Na Câmara Municipal.'],
+['mu','O que fazem os vereadores?','Elaboram, discutem e votam as leis, e fiscalizam o prefeito.'],
+['mu','Quem pode propor leis?','O prefeito, os vereadores e a população.'],
+['mu','Quantos prefeitos e vereadores tem um município?','1 prefeito e vários vereadores (depende do tamanho da população).'],
+['mu','O que são leis?','Regras escritas do que é e do que não é permitido, para o bem comum e a segurança.'],
+['mu','Como se chama o documento das leis do município?','Lei Orgânica do Município.'],
+['mu','Exemplo de lei municipal bem conhecida','Vagas reservadas para idosos e cadeirantes nos estacionamentos.'],
+['mu','Por que existem vereadores (representantes)?','Ouvir todos ao mesmo tempo seria lento demais. Eles ouvem as pessoas e buscam soluções.'],
+['mu','Prefeito pode dar emprego para parentes e amigos?','Não! Isso é proibido para combater a corrupção.'],
+['li','Como alguém vira chefe munduruku?','Não basta ser filho do chefe: precisa ser respeitado pela maior parte do grupo.'],
+['li','Qualidades de um chefe indígena','Ser respeitado, conhecer a história do povo, falar bem em público, ser trabalhador e generoso.'],
+['li','"Ele chefia uma aldeia e é chefiado por ela." O que quer dizer?','O chefe não faz o que quer: decide pensando no povo, ou perde o prestígio.'],
+['li','Quem é o cacique?','O líder escolhido entre as pessoas do conselho, indicado pela comunidade.'],
+['li','O que fazem o conselho e o cacique?','Resolvem os problemas da aldeia e lutam pelos direitos dela junto ao governo.'],
+['li','O que é um líder comunitário?','Um morador voluntário que ajuda o bairro, sem ser eleito e sem salário.'],
+['li','Principal atribuição do líder comunitário','Correr atrás para que os pedidos (anseios) dos moradores sejam atendidos.'],
+['li','Quando é o Dia do Líder Comunitário em MS?','25 de agosto.'],
+['li','Semelhança entre prefeito e cacique','Os dois são escolhidos pelo povo, cuidam do bem-estar e resolvem problemas.'],
+['li','Semelhança entre prefeito e vereador','Os dois são eleitos pela população, a cada 4 anos, e recebem salário.']];
+let fset='tudo',deck=[],pos=0,okc=0;
+const fil=document.getElementById('ffil'),fc=document.getElementById('fc');
+const keys=['tudo','in','dd','mu','li'];
+fil.innerHTML=keys.map(k=>`<button data-k="${k}">${k==='tudo'?'Tudo':G[k][0]}</button>`).join('');
+const startF=()=>{deck=shuffle(cards.filter(c=>fset==='tudo'||c[0]===fset));pos=0;okc=0;fil.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.k===fset));drawF()};
+const drawF=()=>{fc.classList.remove('flip');const done=pos>=deck.length;const c=done?null:deck[pos];
+document.getElementById('ftag').textContent=done?'Fim!':G[c[0]][0];document.getElementById('ftag').style.background=done?'var(--ok)':G[c[0]][1];
+document.getElementById('ffront').textContent=done?`Você acertou ${okc} cartões!`:c[1];
+document.getElementById('fback').textContent=done?'Toque em "Embaralhar e recomeçar" para treinar de novo.':c[2];
+const total=cards.filter(c=>fset==='tudo'||c[0]===fset).length;
+document.getElementById('fcount').textContent=`${Math.min(okc,total)} de ${total} sabidos`;document.getElementById('fbar').style.width=(okc/total*100)+'%'};
+fc.addEventListener('click',()=>fc.classList.toggle('flip'));
+fc.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();fc.classList.toggle('flip')}});
+document.getElementById('fyes').addEventListener('click',()=>{if(pos<deck.length){okc++;pos++;drawF()}});
+document.getElementById('fno').addEventListener('click',()=>{if(pos<deck.length){deck.push(deck[pos]);pos++;drawF()}});
+document.getElementById('fre').addEventListener('click',startF);
+fil.addEventListener('click',e=>{const b=e.target.closest('button');if(b){fset=b.dataset.k;startF()}});
+startF();
+
+/* SIMULADO */
+const Q=[
+['Comunidades tradicionais são povos que...',['Moram só nas grandes cidades','Preservam o modo de vida herdado dos seus ancestrais','Mudam de costumes todo ano'],1,'Eles preservam tradições, a forma de se organizar e a cultura.'],
+['Por que os povos indígenas têm direito às terras que ocupam?',['Porque compraram as terras','Porque são comunidades tradicionais e precisam delas para preservar sua cultura','Porque o prefeito deu'],1,'A terra é parte da cultura deles, e a lei garante as terras indígenas.'],
+['Qual estado brasileiro tem mais povos indígenas?',['São Paulo','Bahia','Amazonas'],2,'O Amazonas tem 62 povos.'],
+['Uma aldeia é...',['Um conjunto de moradias indígenas','Uma cidade grande','Uma escola'],0,'Cada povo organiza a aldeia do seu jeito.'],
+['Os Pataxó vivem principalmente...',['Na Floresta Amazônica','Na Bahia e em Minas Gerais','No Rio Grande do Sul'],1,'As aldeias pataxós ficam na Bahia e em Minas Gerais.'],
+['Como são as casas pataxós?',['Pequenas, de um cômodo, com paredes de barro e cobertura de palha','Grandes, onde vive a aldeia toda','Feitas de gelo'],0,'Em cada casa vive uma família. Algumas são de tijolo.'],
+['Em patxohã, "Kijeme" quer dizer...',['Criança','Obrigado','Casa'],2,'Kijeme = casa. Tschauam = criança.'],
+['Os Yanomami vivem...',['Na Floresta Amazônica','No litoral da Bahia','Na cidade de São Paulo'],0,'Em lugares onde só se chega a pé ou de barco.'],
+['A moradia yanomami é...',['Pequena, para uma família só','Grande, onde vivem todos os habitantes','Feita de tijolos'],1,'É feita de madeira e folha de palmeira.'],
+['Por que os Yanomami são defensores da floresta?',['Porque lutam contra quem derruba árvores e polui rios em busca de ouro','Porque plantam soja','Porque vendem madeira'],0,'Eles protegem a floresta onde vivem.'],
+['Sobre os indígenas nas cidades, qual frase é correta?',['Quando vão para a cidade, deixam de ser indígenas','Mesmo vivendo nas cidades, preservam sua cultura','Na cidade, deixam suas tradições'],1,'Essa é a frase certa da pág. 120.'],
+['Para muitos povos indígenas, a Mãe Terra é...',['Sagrada','Só um lugar para construir','Perigosa'],0,'Ela é responsável pela vida. Eles pedem permissão e agradecem.'],
+['O que os europeus aprenderam com os indígenas?',['Andar de carro','Tomar banho todos os dias e dormir em rede','Usar celular'],1,'E também usar plantas como alimento e remédio, e andar de canoa.'],
+['A tapioca é feita com...',['Farinha de trigo','Goma da mandioca','Milho de pipoca'],1,'Também se chama beiju.'],
+['Em tupi, "tapi" quer dizer pão e "oca" quer dizer...',['Casa','Água','Fogo'],0,'tapi = pão, oca = casa.'],
+['Qual palavra de origem indígena é nome de ANIMAL?',['Ubatuba','Capivara','Pipoca'],1,'Ubatuba é cidade e pipoca é alimento.'],
+['A canoa indígena é feita de...',['Plástico','Tronco de árvore','Ferro'],1,'É mais uma herança indígena.'],
+['Quem administra o município?',['O prefeito','O cacique','O líder comunitário'],0,'Ele é ajudado pelos secretários e servidores públicos.'],
+['Prefeito e vereadores são eleitos a cada...',['2 anos','4 anos','10 anos'],1,'A eleição municipal é a cada 4 anos.'],
+['A partir de que idade a pessoa pode votar?',['12 anos','16 anos','25 anos'],1,'Dos 18 aos 70 anos, votar é obrigatório.'],
+['A sede do município, onde trabalha o prefeito, é...',['A Câmara Municipal','A prefeitura','A escola'],1,'Fica na zona urbana.'],
+['Os vereadores trabalham...',['Na Câmara Municipal','Na aldeia','No hospital'],0,'Lá eles elaboram, discutem e votam as leis.'],
+['Quem pode apresentar projetos de lei?',['Apenas os vereadores','Apenas o prefeito','Os vereadores, o prefeito e a população'],2,'Atividade 1 da pág. 143.'],
+['Uma função do vereador é...',['Fiscalizar as ações do prefeito','Construir hospitais','Escolher o cacique'],0,'Quem executa as obras é o prefeito.'],
+['O dinheiro público vem...',['Dos impostos pagos por cidadãos, empresas e comércio','Do bolso do prefeito','Da venda da prefeitura'],0,'Ele paga os custos da administração do município.'],
+['As leis do município ficam escritas na...',['Constituição da aldeia','Lei Orgânica do Município','Lista de compras'],1,'Leis são regras para o bem comum e a segurança.'],
+['Para virar chefe munduruku, é preciso...',['Ser filho do chefe','Ser respeitado pela maior parte do grupo','Ser o mais alto'],1,'Não basta ser filho do chefe.'],
+['Quem indica o conselho e o cacique?',['O prefeito','Os membros da comunidade','O governo'],1,'E eles lutam pelos direitos da aldeia junto ao governo.'],
+['O líder comunitário...',['É eleito e recebe salário','É voluntário e não recebe salário','Trabalha na Câmara Municipal'],1,'Ele ajuda os moradores do bairro por vontade própria.'],
+['Prefeitos e vereadores podem dar emprego a parentes e amigos?',['Sim, sempre','Não, isso é proibido para combater a corrupção','Só no Natal'],1,'Também não podem usar as coisas da prefeitura para si.']];
+const OPEN=[
+['Observe o mapa da pág. 115. O que as imagens dos povos têm em comum? E de diferente?','Em comum: são povos indígenas que preservam sua cultura (enfeites, pinturas, roupas tradicionais). Diferente: cada povo tem seus próprios costumes, enfeites e vive num estado diferente.'],
+['Preencha o quadro: localização, nome e material da moradia dos Pataxó e dos Yanomami.','Pataxó: Bahia e Minas Gerais; Kijeme; casa pequena de barro com cobertura de palha (algumas de tijolo). Yanomami: Floresta Amazônica; Yano; casa grande de madeira e folha de palmeira, onde vivem todos.'],
+['Por que muitos indígenas vivem hoje na cidade de São Paulo?','Porque a cidade cresceu até chegar às aldeias e porque muitos vieram de outras regiões em busca de melhores oportunidades.'],
+['Cite três coisas que aprendemos com os povos indígenas.','Por exemplo: dormir na rede, andar de canoa, tomar banho todos os dias, comer tapioca e mandioca, usar plantas como remédio.'],
+['De onde vem a palavra tapioca e o que ela significa?','Do tupi: tapi (pão) + oca (casa).'],
+['Na comunidade munduruku, como é chamado o líder?','Cacique.'],
+['Segundo Daniel Munduruku, "um chefe nunca age sozinho". Como as principais decisões são tomadas na aldeia?','A comunidade indica um conselho, e o conselho com o cacique decide e resolve os problemas da aldeia.'],
+['Releia: "Ele chefia uma aldeia e é chefiado por ela". Isso também vale para o prefeito? Por quê?','Sim. O prefeito é escolhido pelo povo e precisa trabalhar pelas necessidades dele; se não cumprir as leis pode perder o cargo e, se não agradar, não é reeleito.'],
+['Compare o prefeito e o cacique munduruku. Cite duas semelhanças.','Os dois são escolhidos pelo povo e cuidam do bem-estar de quem vive no lugar, resolvendo os problemas.'],
+['Escreva uma semelhança e uma diferença entre prefeito e vereador.','Semelhança: os dois são eleitos pela população a cada 4 anos. Diferença: o prefeito administra o município e faz obras; o vereador elabora, discute e vota as leis e fiscaliza o prefeito.'],
+['O que é um líder comunitário?','É um morador voluntário, comprometido com os problemas do bairro, que ajuda as pessoas sem ser eleito e sem receber salário.'],
+['Por que existem representantes, como os vereadores?','Porque ouvir todos os moradores ao mesmo tempo seria muito lento e cansativo; os representantes ouvem as pessoas e buscam soluções.']];
+/* Gerador de questões novas */
+const WK={animal:'um animal',local:'um lugar (cidade, bairro, estado ou rio)',planta:'uma planta',alimento:'um alimento'};
+const WBY={animal:WORDS.filter(w=>w[1][0]==='animal').map(w=>w[0]),local:WORDS.filter(w=>w[1][0]==='local').map(w=>w[0]),planta:WORDS.filter(w=>w[1].length===1&&w[1][0]==='planta').map(w=>w[0]),alimento:WORDS.filter(w=>w[1][0]==='alimento').map(w=>w[0])};
+const WD={animal:['local','planta'],local:['animal','alimento'],planta:['animal','local'],alimento:['animal','local']};
+const ROLEQ=[['administra o município e executa obras','o prefeito'],['elabora, discute e vota as leis','os vereadores'],['fiscaliza as ações do prefeito','os vereadores'],['ajuda o bairro sem salário e sem ser eleito','o líder comunitário'],['luta pelos direitos da aldeia junto ao governo','o cacique e o conselho'],['vota e escolhe os representantes','os eleitores'],['trabalha na prefeitura, a sede do município','o prefeito'],['trabalha na Câmara Municipal','os vereadores']];
+const ROLES=['o prefeito','os vereadores','o líder comunitário','o cacique e o conselho','os eleitores'];
+const POVO=[['vive na Floresta Amazônica','Yanomami'],['vive na Bahia e em Minas Gerais','Pataxó'],['fala o patxohã','Pataxó'],['chama a casa de Yano','Yanomami'],['chama a casa de Kijeme','Pataxó'],['mora em uma casa grande para todos','Yanomami'],['mora em casas pequenas de barro e palha','Pataxó'],['luta contra quem polui os rios em busca de ouro','Yanomami']];
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const mk=(q,right,wrong,exp)=>{const o=shuffle([right,...wrong]);return [q,o,o.indexOf(right),exp]};
+const cap=t=>t[0].toUpperCase()+t.slice(1);
+const GEN=[
+()=>{const k=pick(Object.keys(WBY)),w=pick(WBY[k]);return mk(`A palavra "${w}", de origem indígena, é nome de...`,WK[k],WD[k].map(x=>WK[x]),`${cap(w)} é ${WK[k]}.`)},
+()=>{const k=pick(['animal','local','alimento']),w=pick(WBY[k]);return mk(`Qual destas palavras de origem indígena é nome de ${WK[k]}?`,w,WD[k].map(x=>pick(WBY[x])),`${cap(w)} é ${WK[k]}.`)},
+()=>{const r=pick(ROLEQ);return mk(`Quem ${r[0]}?`,cap(r[1]),shuffle(ROLES.filter(x=>x!==r[1])).slice(0,2).map(cap),`${cap(r[1])} ${r[0]}.`)},
+()=>{const r=pick(ROLEQ),t=Math.random()<.5,who=t?r[1]:pick(ROLES.filter(x=>x!==r[1]));return [`Verdadeiro ou falso: ${who} ${r[0]}.`,['Verdadeiro','Falso'],t?0:1,`Quem ${r[0]} é ${r[1]}.`]},
+()=>{const p=pick(POVO);return mk(`Qual povo ${p[0]}?`,p[1],[p[1]==='Pataxó'?'Yanomami':'Pataxó','Munduruku'],`Os ${p[1]}.`)}];
+const fromC=()=>{const c=pick(C);if(Math.random()<.5)return mk(c.m[0],c.m[1],[c.m[2],c.m[3]],c.o[3]);return [`Verdadeiro ou falso: ${c.v[0]}`,['Verdadeiro','Falso'],c.v[1]?0:1,c.o[3]]};
+let SQ=Q,SO=OPEN,snum=1,ans={},only=null;
+const quiz=document.getElementById('quiz');
+const renderQ=()=>{const idx=only||SQ.map((_,i)=>i);
+document.getElementById('stitle').textContent=snum===1?'Simulado 1 · questões da apostila':`Simulado ${snum} · questões novas`;
+quiz.innerHTML=idx.map(i=>{const q=SQ[i];return `<div class="q card" data-i="${i}"><div class="num">Questão ${i+1}</div><b>${q[0]}</b><div class="opts">${q[1].map((o,j)=>`<button data-j="${j}">${'abcd'[j]}) ${o}</button>`).join('')}</div><div class="exp">${q[3]}</div></div>`}).join('');upd()};
+const upd=()=>{const idx=only||SQ.map((_,i)=>i),n=idx.filter(i=>i in ans).length,ok=idx.filter(i=>ans[i]===SQ[i][2]).length;
+document.getElementById('score').textContent=`${ok} certas de ${n} respondidas · ${idx.length} no total`;document.getElementById('qbar').style.width=(n?ok/idx.length*100:0)+'%'};
+quiz.addEventListener('click',e=>{const b=e.target.closest('.opts button');if(!b)return;const box=b.closest('.q'),i=+box.dataset.i;if(i in ans)return;
+const j=+b.dataset.j;ans[i]=j;box.querySelectorAll('.opts button').forEach((x,k)=>{if(k===SQ[i][2])x.classList.add('ok');else if(k===j)x.classList.add('no')});
+box.querySelector('.exp').classList.add('show');box.querySelector('.exp').insertAdjacentHTML('afterbegin',j===SQ[i][2]?'<b>Isso aí!</b> ':'<b>Quase!</b> ');upd()});
+document.getElementById('qagain').addEventListener('click',()=>{ans={};only=null;renderQ()});
+document.getElementById('qwrong').addEventListener('click',()=>{const w=Object.keys(ans).map(Number).filter(i=>ans[i]!==SQ[i][2]);if(!w.length)return;only=w;w.forEach(i=>delete ans[i]);renderQ()});
+const renderOpen=()=>{document.getElementById('open').innerHTML=SO.map((o,i)=>`<div class="q card"><div class="num">Pergunta ${i+1}</div><b>${o[0]}</b><div class="row" style="justify-content:flex-start"><button data-o="${i}">Ver resposta modelo</button></div><div class="ans" id="ans${i}">${o[1]}</div></div>`).join('')};
+document.getElementById('qnew').addEventListener('click',()=>{
+ const seen=new Set(),out=[];const add=q=>{if(q&&!seen.has(q[0])){seen.add(q[0]);out.push(q)}};
+ let guard=0;while(out.length<12&&guard++<200)add(pick(GEN)());
+ guard=0;while(out.length<18&&guard++<200)add(fromC());
+ shuffle([...Q]).slice(0,7).forEach(q=>{const o=shuffle(q[1].map((t,j)=>[t,j===q[2]]));add([q[0],o.map(x=>x[0]),o.findIndex(x=>x[1]),q[3]])});
+ guard=0;while(out.length<25&&guard++<300)add(pick(GEN)());
+ SQ=shuffle(out).slice(0,25);
+ SO=shuffle([...OPEN,...C.map(c=>[c.o[0],c.o[3]])]).slice(0,8);
+ snum++;ans={};only=null;renderQ();renderOpen();window.scrollTo(0,document.getElementById('s-simulado').offsetTop)});
+document.getElementById('open').addEventListener('click',e=>{const b=e.target.closest('button[data-o]');if(b){document.getElementById('ans'+b.dataset.o).classList.toggle('show')}});
+
+/* PROVA
+   Cada conceito existe em 4 formatos: m = optativa (3 alternativas, a 1ª é a certa), v = verdadeiro ou falso,
+   o = pergunta aberta (vale para escrita e áudio). k = grupos de palavras-chave (sem acento); n = quantos grupos precisam aparecer. */
+const C=[
+{t:'in',m:['Comunidades tradicionais são povos que...','preservam o modo de vida herdado dos ancestrais','moram só nas grandes cidades','mudam de costumes todo ano'],v:['Os povos indígenas são comunidades tradicionais.',1],o:['O que é uma comunidade tradicional?',[['ancestra','antepassad','avos','herd','tradic','costum','cultura','modo de vida','preserv']],1,'Um povo que preserva o modo de vida, as tradições e a cultura herdados dos ancestrais.']},
+{t:'in',m:['Por que os indígenas têm direito às terras que ocupam?','para preservar sua cultura, e a lei garante','porque compraram as terras','porque o prefeito deu'],v:['A existência das terras indígenas é garantida pela lei.',1],o:['O que são terras indígenas?',[['lugar','onde vivem','onde moram','terra','aldeia'],['lei','direito','garant']],1,'São os lugares onde vivem os povos indígenas. Sua existência é garantida pela lei.']},
+{t:'in',m:['Os Pataxó vivem principalmente...','na Bahia e em Minas Gerais','na Floresta Amazônica','no Rio Grande do Sul'],v:['Os Pataxó vivem principalmente na Floresta Amazônica.',0],o:['Onde vivem os Pataxó?',[['bahia'],['minas']],1,'Principalmente na Bahia e em Minas Gerais.']},
+{t:'in',m:['Como são as casas pataxós?','pequenas, de barro e cobertura de palha','grandes, para a aldeia toda','de madeira e folha de palmeira'],v:['Nas casas pataxós vive uma família em cada casa.',1],o:['Como são as moradias pataxós?',[['pequen','comodo','familia'],['barro','palha','tijolo']],2,'Pequenas, de um cômodo, uma para cada família, com paredes de barro e cobertura de palha (algumas de tijolo).']},
+{t:'in',m:['Os Yanomami vivem...','na Floresta Amazônica','no litoral da Bahia','na cidade de São Paulo'],v:['Às aldeias yanomamis só se chega a pé ou de barco.',1],o:['Onde vivem os Yanomami?',[['amazon','floresta']],1,'Na Floresta Amazônica, onde só se chega a pé ou de barco.']},
+{t:'in',m:['Como é a moradia yanomami?','grande, onde vivem todos os habitantes','pequena, para uma família','feita de tijolos'],v:['A moradia yanomami é feita de madeira e folha de palmeira.',1],o:['Como é a moradia yanomami?',[['grand','todos','todo mundo'],['madeira','palmeira','folha']],2,'Grande, onde vivem todos os habitantes, feita de madeira e folha de palmeira.']},
+{t:'in',m:['Sobre os indígenas nas cidades, é correto dizer que...','mesmo na cidade, preservam sua cultura','na cidade, deixam de ser indígenas','na cidade, deixam suas tradições'],v:['Quando vão morar na cidade, os indígenas deixam de ser indígenas.',0],o:['Os indígenas que vivem nas cidades continuam indígenas? Explique.',[['sim','continu','preserv','mant','cultura','tradic']],1,'Sim. Mesmo vivendo nas cidades, eles preservam sua cultura e tradições.']},
+{t:'in',m:['Por que os Yanomami são defensores da floresta?','lutam contra quem derruba árvores e polui rios atrás de ouro','plantam soja na floresta','vendem madeira'],v:['Os Yanomami lutam contra quem polui os rios em busca de ouro.',1],o:['Por que dizemos que os Yanomami defendem a floresta?',[['arvore','derrub','rio','polu','ouro','garimp']],1,'Porque lutam contra quem quer derrubar árvores ou poluir os rios em busca de ouro.']},
+{t:'dd',m:['A tapioca é feita com...','goma da mandioca','farinha de trigo','milho'],v:['A tapioca também é chamada de beiju.',1],o:['O que é tapioca?',[['mandioca','goma','beiju']],1,'Um alimento feito com goma da mandioca aquecida na frigideira, também chamado beiju.']},
+{t:'dd',m:['Em tupi, "tapioca" quer dizer...','pão (tapi) + casa (oca)','água + fogo','peixe + rio'],v:['Tapioca é uma palavra de origem tupi.',1],o:['O que quer dizer a palavra tapioca em tupi?',[['pao'],['casa']],2,'tapi = pão + oca = casa.']},
+{t:'dd',m:['O que aprendemos com os indígenas?','dormir na rede e tomar banho todo dia','andar de carro','usar celular'],v:['Usar plantas como remédio é uma herança dos povos indígenas.',1],o:['Cite duas coisas que aprendemos com os povos indígenas.',[['rede'],['canoa'],['banho'],['tapioca','mandioca','beiju'],['planta','remedio','frut','vegeta'],['palavra']],2,'Dormir na rede, andar de canoa, tomar banho todo dia, comer tapioca, usar plantas como alimento e remédio.']},
+{t:'dd',m:['Qual destas palavras indígenas é nome de um lugar?','Ubatuba','capivara','pipoca'],v:['Tatu, arara e tucano são nomes de animais de origem indígena.',1],o:['Escreva duas palavras de origem indígena que você usa no dia a dia.',[['abacaxi','macaco','ubatuba','itu','jabuticaba','mandioca','jabuti','sucuri','pitanga','anhangabau','amapa','parana','cutia','goias','pequi','acre','tamandua','ipiranga','jacare','urubu','peroba','capivara','ipe','maracuja','aracaju','jequitiba','amendoim','cupuacu','capim','tatu','arara','siri','tucano','pamonha','pipoca','butanta','tapioca','beiju','oca','pereba','caju','mingau']],1,'Por exemplo: pipoca, mandioca, abacaxi, capivara, tatu, jacaré, Ipiranga, Paraná.']},
+{t:'dd',m:['Qual língua indígena deixou muitas palavras no português?','o tupi','o inglês','o patxohã'],v:['Os guarani foram os primeiros a ter contato com os portugueses.',1],o:['Por que usamos tantas palavras indígenas no português?',[['tupi','guarani'],['portug','contato','convers','comunic']],1,'Porque os guarani tiveram contato com os portugueses e o tupi virou a principal língua de conversa entre eles.']},
+{t:'mu',m:['Quem administra o município?','o prefeito','o cacique','o líder comunitário'],v:['O prefeito é auxiliado pelos secretários e servidores públicos.',1],o:['O que faz o prefeito?',[['administr','govern','cuida'],['obra','escola','hospital','rua','parque','praca','esgoto']],1,'Administra o município e executa obras, como escolas, hospitais, ruas e parques.']},
+{t:'mu',m:['Prefeito e vereadores são eleitos a cada...','4 anos','2 anos','10 anos'],v:['A eleição para prefeito e vereadores acontece a cada 4 anos.',1],o:['Como são escolhidos o prefeito e os vereadores?',[['elei','vot','eleitor','escolh'],['4','quatro']],1,'Pelos eleitores, numa eleição que acontece a cada 4 anos.']},
+{t:'mu',m:['Votar é obrigatório para quem tem...','de 18 a 70 anos','de 10 a 15 anos','mais de 90 anos'],v:['Crianças de 12 anos já podem votar.',0],o:['Quem pode ser eleitor?',[['16','dezesseis'],['18','70','obrigat']],1,'Quem tem a partir de 16 anos. Dos 18 aos 70 anos, votar é obrigatório.']},
+{t:'mu',m:['O que fazem os vereadores?','elaboram, discutem e votam as leis','constroem hospitais','escolhem o cacique'],v:['Os vereadores fiscalizam as ações do prefeito.',1],o:['O que fazem os vereadores?',[['lei','projeto'],['fiscaliz','vigi','discut','vot']],1,'Elaboram, discutem e votam as leis e fiscalizam as ações do prefeito.']},
+{t:'mu',m:['Quem pode apresentar projetos de lei?','os vereadores, o prefeito e a população','apenas os vereadores','apenas o prefeito'],v:['Somente os vereadores podem propor leis.',0],o:['Quem pode propor a criação de uma lei no município?',[['prefeit'],['vereador'],['popula','povo','eleitor','morador','pessoa']],3,'O prefeito, os vereadores e a população.']},
+{t:'mu',m:['O dinheiro público vem...','dos impostos','do bolso do prefeito','da venda da prefeitura'],v:['O prefeito deve mostrar a todos onde e como o dinheiro público é usado.',1],o:['O que é dinheiro público?',[['imposto','arrecad','cidad','empresa','comercio']],1,'É o dinheiro arrecadado dos cidadãos, empresas e comércio em forma de impostos.']},
+{t:'mu',m:['As leis do município ficam escritas na...','Lei Orgânica do Município','agenda do prefeito','Câmara dos Deputados'],v:['Leis são regras escritas que dizem o que é e o que não é permitido.',1],o:['O que são leis?',[['regra'],['permit','pode','proib','bem comum','seguran']],1,'Regras escritas que dizem o que é e o que não é permitido, para o bem comum e a segurança.']},
+{t:'li',m:['Para virar chefe munduruku é preciso...','ser respeitado pela maior parte do grupo','ser filho do chefe','ser o mais velho'],v:['Basta ser filho do chefe para virar chefe.',0],o:['Como alguém se torna chefe de uma aldeia munduruku?',[['respeit','qualidad','escolh','indic','comunidade','grupo']],1,'Precisa ser respeitado pela maior parte do grupo; não basta ser filho do chefe.']},
+{t:'li',m:['Na comunidade munduruku, o líder é chamado de...','cacique','prefeito','vereador'],v:['O cacique e o conselho são indicados pela comunidade.',1],o:['O que fazem o cacique e o conselho?',[['problem','soluc','resolv','decid'],['direito','governo','luta']],1,'Resolvem os problemas da aldeia e lutam pelos direitos dela junto ao governo.']},
+{t:'li',m:['"Ele chefia uma aldeia e é chefiado por ela" quer dizer que...','o chefe decide pensando no povo','o chefe faz o que quer','o chefe não fala com ninguém'],v:['O chefe munduruku pode fazer tudo o que quiser.',0],o:['O que quer dizer: "Ele chefia uma aldeia e é chefiado por ela"?',[['nao pode','nao faz','o que quer','sozinho','povo','comunidade','aldeia','agradar','satisf','prestigio','ouvir']],1,'Que o chefe não faz o que quer: decide pensando no povo, e se o povo não fica satisfeito ele perde o prestígio.']},
+{t:'li',m:['O líder comunitário...','é voluntário e não recebe salário','é eleito e recebe salário','trabalha na Câmara'],v:['O líder comunitário é eleito pelos moradores e recebe salário.',0],o:['O que é um líder comunitário?',[['volunt','sem salario','nao ganha','de graca','ajuda'],['bairro','morador','comunidade','pessoas']],2,'Um morador voluntário que ajuda as pessoas do bairro, sem ser eleito e sem receber salário.']},
+{t:'li',m:['Uma semelhança entre prefeito e vereador é que...','os dois são eleitos pela população a cada 4 anos','os dois fazem obras','os dois são voluntários'],v:['Prefeito e cacique são escolhidos pelo povo.',1],o:['Escreva uma semelhança entre o prefeito e o cacique.',[['escolh','elei','indic','vot','povo'],['cuid','problem','bem-estar','bem estar','resolv','lider','administr']],1,'Os dois são escolhidos pelo povo e cuidam do bem-estar de quem vive no lugar, resolvendo os problemas.']}];
+renderQ();renderOpen();
+const FN={m:'Marcar alternativa',v:'Verdadeiro ou falso',o:'Escrever',a:'Falar'};
+const MODES={misto:['m','m','v','v','o','o','o','a','a','a'],optativa:['m','v','m','v','m','v','m','v','m','v'],escrita:Array(10).fill('o'),audio:Array(10).fill('a')};
+const MODEHINT={misto:'4 de marcar, 3 de escrever e 3 de falar.',optativa:'Alternativas e verdadeiro ou falso.',escrita:'Ela escreve as respostas com as próprias palavras.',audio:'Ela fala a resposta no microfone e o texto aparece sozinho. Funciona melhor no Chrome ou Safari.'};
+const ROT={m:'a',v:'o',o:'m',a:'v'}; /* recuperação: formato diferente do que ela errou */
+const PICK={in:3,dd:2,mu:3,li:2};
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+const norm=s=>' '+(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9 -]/g,' ')+' ';
+const st={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let mode='misto',P=st.get('fio-hg-prova',null),hist=st.get('fio-hg-hist',[]),rec=null;
+const pexam=document.getElementById('pexam'),pres=document.getElementById('pres'),psend=document.getElementById('psend'),pstart=document.getElementById('pstart');
+
+const build=(fmts,force,num,label)=>{
+ const ids=[...force];
+ const pool=shuffle(C.map((_,i)=>i).filter(i=>!ids.includes(i)));
+ const need={...PICK};ids.forEach(i=>need[C[i].t]--);
+ pool.forEach(i=>{if(ids.length<10&&need[C[i].t]>0){ids.push(i);need[C[i].t]--}});
+ pool.forEach(i=>{if(ids.length<10&&!ids.includes(i))ids.push(i)});
+ shuffle(ids);
+ const f=typeof fmts==='function'?null:shuffle([...fmts]);
+ return {id:Date.now(),num,label,done:false,items:ids.map((c,j)=>{const fm=typeof fmts==='function'?fmts(c):f[j];return {c,f:fm,order:shuffle([0,1,2]),a:null,auto:null,ov:null}})};
+};
+const qScore=it=>it.ov!=null?it.ov:it.auto;
+const total=()=>Math.round(P.items.reduce((s,it)=>s+(qScore(it)||0),0)*10)/10;
+const gradeIt=it=>{const c=C[it.c];
+ if(it.f==='m')return it.a===0?1:0;
+ if(it.f==='v')return it.a===c.v[1]?1:0;
+ const t=norm(it.a);if(!t.trim())return 0;
+ const hit=c.o[1].filter(g=>g.some(w=>t.includes(w))).length;
+ return hit>=c.o[2]?1:hit>0?.5:0};
+
+const render=()=>{
+ if(!P){pexam.innerHTML='';pres.innerHTML='';psend.hidden=true;pstart.hidden=false;return}
+ pstart.hidden=true;
+ const head=`<h3 style="margin-top:18px">${esc(P.label)}</h3>`;
+ pexam.innerHTML=head+P.items.map((it,i)=>{const c=C[it.c],d=P.done;let body='',q='';
+  const cls=d?(qScore(it)>=1?'right':qScore(it)>0?'half':'wrong'):'';
+  if(it.f==='m'){q=c.m[0];body=`<div class="opts">${it.order.map(k=>{let x='';if(d){if(k===0)x='ok';else if(it.a===k)x='no'}else if(it.a===k)x='sel';return `<button data-i="${i}" data-k="${k}" class="${x}"${d?' disabled':''}>${esc(c.m[k+1])}</button>`}).join('')}</div>`}
+  else if(it.f==='v'){q=c.v[0];body=`<div class="opts" style="grid-template-columns:1fr 1fr">${[1,0].map(k=>{let x='';if(d){if(k===c.v[1])x='ok';else if(it.a===k)x='no'}else if(it.a===k)x='sel';return `<button data-i="${i}" data-k="${k}" class="${x}"${d?' disabled':''}>${k?'Verdadeiro':'Falso'}</button>`}).join('')}</div>`}
+  else{q=c.o[0];body=`<textarea data-i="${i}" placeholder="${it.f==='a'?'Aperte Falar e responda em voz alta. Dá para corrigir o texto aqui.':'Escreva sua resposta aqui.'}"${d?' readonly':''}>${esc(it.a||'')}</textarea>`;
+   if(it.f==='a'&&!d)body=`<div class="mic"><button data-say="${i}">Ouvir a pergunta</button><button class="primary" data-rec="${i}">Falar</button><span class="hint" id="h${i}">${SR?'':'Este navegador não ouve. Escreva a resposta.'}</span></div>`+body}
+  let fb='';
+  if(d){
+   fb=`<div class="fb"><b>${qScore(it)>=1?'Certo!':qScore(it)>0?'Meio certo.':'Não foi dessa vez.'}</b> Resposta: ${esc(it.f==='o'||it.f==='a'?c.o[3]:it.f==='m'?c.m[1]:(c.v[1]?'Verdadeiro':'Falso'))}</div>`;
+   if(it.f==='o'||it.f==='a')fb+=`<div class="ov">Correção do adulto: ${[[1,'Certa'],[.5,'Meio'],[0,'Errada']].map(([v,l])=>`<button data-ov="${i}" data-v="${v}" class="${qScore(it)===v?'on':''}">${l}</button>`).join('')}</div>`}
+  return `<div class="card pq ${cls}"><div class="num">Questão ${i+1}<span class="fmt">${FN[it.f]}</span></div><b>${esc(q)}</b>${body}${fb}</div>`}).join('');
+ psend.hidden=P.done;
+ if(P.done){const g=total(),ok=g>=8;
+  const miss=P.items.filter(it=>(qScore(it)||0)<1);
+  const tops=[...new Set(miss.map(it=>G[C[it.c].t][0]))];
+  pres.innerHTML=`<div class="result ${ok?'pass':'fail'}"><div class="grade">${g.toLocaleString('pt-BR')}</div><p style="color:#fff;font-weight:800;font-size:20px;margin:.3em 0">${ok?'Aprovada! Passou da nota 8.':'Ficou abaixo de 8. Vamos refazer em outro formato.'}</p>${tops.length?`<p style="color:#fff">Revisar na aba Entender: ${tops.join(', ')}.</p>`:''}<div class="row" style="justify-content:flex-start">${ok?'':'<button id="pretry">Fazer a recuperação</button>'}<button id="pnew">${ok?'Fazer outra prova':'Começar do zero'}</button></div></div>`;
+  document.getElementById('pnew').onclick=()=>{P=null;st.set('fio-hg-prova',null);render();window.scrollTo(0,document.getElementById('s-prova').offsetTop)};
+  const r=document.getElementById('pretry');if(r)r.onclick=()=>{
+   const missIdx=miss.map(it=>it.c),fm={};miss.forEach(it=>fm[it.c]=ROT[it.f]);
+   P=build(c=>fm[c]||MODES.misto[Math.floor(Math.random()*10)],missIdx,P.num+1,`Prova ${P.num+1} · Recuperação: as que errou voltam em outro formato`);
+   save();render();window.scrollTo(0,pres.offsetTop-80)};
+ }else pres.innerHTML='';
+};
+const save=()=>st.set('fio-hg-prova',P);
+const logHist=()=>{const i=hist.findIndex(h=>h.id===P.id);const row={id:P.id,when:new Date().toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}),label:'Prova '+P.num+(P.num>1?' (recuperação)':''),fmt:[...new Set(P.items.map(it=>FN[it.f]))].join(', '),nota:total()};if(i>=0)hist[i]=row;else hist.unshift(row);st.set('fio-hg-hist',hist);drawHist()};
+const drawHist=()=>{document.getElementById('phist').innerHTML=hist.length?hist.map(h=>`<tr><td>${esc(h.when)}</td><td>${esc(h.label)}</td><td>${esc(h.fmt)}</td><td style="text-align:right;font-weight:800;color:${h.nota>=8?'var(--ok)':'var(--no)'}">${h.nota.toLocaleString('pt-BR')}</td></tr>`).join(''):'<tr><td colspan="4" style="color:var(--soft)">Nenhuma prova feita ainda.</td></tr>'};
+
+document.getElementById('pmodes').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;mode=b.dataset.m;document.querySelectorAll('#pmodes button').forEach(x=>x.classList.toggle('on',x===b));document.getElementById('pmodehint').textContent=MODEHINT[mode]});
+document.getElementById('pmodehint').textContent=MODEHINT.misto;
+document.getElementById('pgo').addEventListener('click',()=>{const n=(hist.length?Math.max(...hist.map(h=>parseInt(h.label.split(' ')[1])||0)):0)+1;P=build(MODES[mode],[],n,`Prova ${n} · ${mode==='misto'?'Formatos misturados':FN[MODES[mode][0]]+(mode==='optativa'?' e verdadeiro ou falso':'')}`);save();render()});
+pexam.addEventListener('click',e=>{
+ const b=e.target.closest('button');if(!b||!P)return;
+ if(b.dataset.k!=null&&!P.done){P.items[+b.dataset.i].a=+b.dataset.k;save();render();return}
+ if(b.dataset.ov!=null){const it=P.items[+b.dataset.ov];it.ov=+b.dataset.v;save();render();logHist();return}
+ if(b.dataset.say!=null){try{const u=new SpeechSynthesisUtterance(C[P.items[+b.dataset.say].c].o[0]);u.lang='pt-BR';speechSynthesis.cancel();speechSynthesis.speak(u)}catch(err){}return}
+ if(b.dataset.rec!=null){const i=+b.dataset.rec,h=document.getElementById('h'+i),ta=pexam.querySelector(`textarea[data-i="${i}"]`);
+  if(!SR){h.textContent='Este navegador não ouve. Escreva a resposta.';ta.focus();return}
+  if(rec){rec.stop();return}
+  rec=new SR();rec.lang='pt-BR';rec.interimResults=true;rec.continuous=false;const base=ta.value?ta.value.trim()+' ':'';
+  rec.onresult=ev=>{let t='';for(const r of ev.results)t+=r[0].transcript;ta.value=base+t;P.items[i].a=ta.value;save()};
+  rec.onerror=ev=>{h.textContent=ev.error==='not-allowed'||ev.error==='service-not-allowed'?'O microfone foi bloqueado. Libere o microfone ou escreva.':'Não deu para ouvir. Tente de novo.'};
+  rec.onend=()=>{rec=null;b.textContent='Falar';b.classList.remove('rec');if(!h.textContent.startsWith('O mic')&&!h.textContent.startsWith('Não'))h.textContent=ta.value?'Pronto! Confira o texto.':''};
+  try{rec.start();b.textContent='Parar';b.classList.add('rec');h.textContent='Ouvindo...'}catch(err){rec=null;h.textContent='Não deu para usar o microfone aqui. Escreva a resposta.'}}
+});
+pexam.addEventListener('input',e=>{const t=e.target.closest('textarea');if(t&&P&&!P.done){P.items[+t.dataset.i].a=t.value;save()}});
+psend.addEventListener('click',()=>{
+ const blank=P.items.filter(it=>it.a==null||(typeof it.a==='string'&&!it.a.trim())).length;
+ if(blank&&psend.dataset.sure!=='1'){psend.dataset.sure='1';psend.textContent=`Faltam ${blank} sem resposta. Entregar mesmo assim?`;return}
+ psend.dataset.sure='';psend.textContent='Entregar a prova';
+ if(rec)rec.stop();
+ P.items.forEach(it=>it.auto=gradeIt(it));P.done=true;if(!P.id)P.id=Date.now();save();logHist();render();window.scrollTo(0,pres.offsetTop-80)});
+const pclear=document.getElementById('pclear');
+pclear.addEventListener('click',()=>{if(pclear.dataset.sure!=='1'){pclear.dataset.sure='1';pclear.textContent='Clique de novo para apagar';return}hist=[];st.set('fio-hg-hist',hist);drawHist();pclear.dataset.sure='';pclear.textContent='Apagar histórico'});
+drawHist();render();
+
+/* ABAS */
+const tabs=['plano','entender','flashcards','simulado','prova'];
+const route=()=>{const h=location.hash.slice(1),t=tabs.includes(h)?h:'plano';tabs.forEach(x=>document.getElementById('s-'+x).classList.toggle('on',x===t));document.querySelectorAll('#tabs a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+t))};
+window.addEventListener('hashchange',()=>{route();window.scrollTo(0,0)});route();
+}
+</script>
+</body>
+</html>
