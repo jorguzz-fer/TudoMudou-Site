@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Português da Fiorella</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+/* Mesmo molde da página de Ciências. Cores por assunto: slogan, til/M/N, E-I/O-U, substantivos, verbos, fábula. */
+:root{color-scheme:light dark;
+--bg:light-dark(#ffffff,#11151d);--ink:light-dark(#1d2433,#eef1f6);--soft:light-dark(#5a6375,#a9b2c3);
+--line:light-dark(#e3e7ee,#2a3140);--card:light-dark(#f6f8fb,#1a202b);
+--in:#c9661a;--dd:#2f9a45;--mu:#1f78c1;--li:#a8384f;--sl:#c9661a;--mn:#2f9a45;--ei:#1f78c1;--su:#a8384f;--ve:#8a6200;--fa:#0e7c86;--av:#d99a00;--ok:#2f9a45;--no:#d0433a;--main:#5b3fd0}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 Nunito,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:"Baloo 2",Nunito,sans-serif;line-height:1.08;margin:0 0 .4em;text-wrap:balance}
+h1{font-size:clamp(32px,6vw,50px)}h2{font-size:clamp(26px,4vw,34px);margin-top:1.2em}h3{font-size:22px}
+p{margin:.3em 0 .8em;max-width:70ch}
+.wrap{max-width:1100px;margin:0 auto;padding:0 max(4vw,16px)}
+header{background:var(--main);color:#fff;padding:18px 0 0}
+header p{color:#e8e3ff;margin:0 0 18px}
+.back{display:inline-block;color:#fff;font-weight:800;text-decoration:none;margin-bottom:8px;padding:8px 0;min-height:44px}
+nav{display:flex;gap:6px;flex-wrap:wrap}
+nav a{flex:none;color:#fff;text-decoration:none;font:800 17px "Baloo 2",sans-serif;padding:10px 18px 8px;border-radius:14px 14px 0 0;background:rgba(255,255,255,.14);min-height:44px}
+nav a.on{background:var(--bg);color:var(--ink)}
+section{display:none;padding:26px 0 60px}section.on{display:block}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 18px}
+.tag{display:inline-block;font-weight:800;font-size:14px;padding:2px 10px;border-radius:99px;color:#fff;margin-bottom:6px}
+.day h3{margin-bottom:.1em}.day .when{color:var(--soft);font-weight:700;font-size:15px}
+.day ol{margin:.5em 0 0;padding-left:1.2em}.day li{margin:.25em 0}
+.warn{border-left:6px solid var(--av);background:light-dark(#fff7df,#2a2414);padding:12px 16px;border-radius:12px;margin:14px 0}
+.fig{position:relative}
+svg text{font-family:Nunito,sans-serif}
+.hub{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:20px;align-items:center}
+@media(max-width:700px){.hub{grid-template-columns:1fr}}
+.gbtn{cursor:pointer}.gbtn:focus{outline:none}.gbtn:focus circle,.gbtn:hover circle{stroke:var(--ink);stroke-width:4}
+#gcard{min-height:260px}
+#gcard ul{margin:.4em 0 0;padding-left:1.1em}#gcard li{margin:.2em 0}
+table{border-collapse:collapse;width:100%;font-size:15px}.scroll table{min-width:560px}
+th,td{border-bottom:1px solid var(--line);padding:8px 8px;text-align:left;vertical-align:top}
+th{font-family:"Baloo 2",sans-serif;font-size:17px}
+.scroll{overflow-x:auto}
+.c-in{color:var(--in)}.c-dd{color:var(--dd)}.c-mu{color:var(--mu)}.c-li{color:var(--li)}
+.b-in{background:var(--in)}.b-dd{background:var(--dd)}.b-mu{background:var(--mu)}.b-li{background:var(--li)}.b-cl{background:var(--main)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:18px;align-items:start}
+.pill{display:inline-block;border:2px solid var(--line);border-radius:99px;padding:2px 10px;margin:2px;font-weight:700;font-size:15px}
+button,select{font:800 16px Nunito,sans-serif;min-height:44px;padding:8px 16px;border-radius:12px;border:2px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+button:focus-visible,a:focus-visible,select:focus-visible{outline:3px solid var(--main);outline-offset:2px}
+button.primary{background:var(--main);border-color:var(--main);color:#fff}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 16px}
+.filters button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.flash{perspective:1200px;max-width:560px;margin:0 auto}
+.fc{position:relative;height:280px;transition:transform .5s;transform-style:preserve-3d;cursor:pointer}
+.fc.flip{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:22px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:24px;border:3px solid var(--line);background:var(--card)}
+.face.back{transform:rotateY(180deg);background:var(--bg)}
+.face .big{font:800 clamp(22px,4.5vw,30px)/1.2 "Baloo 2",sans-serif}
+.face small{color:var(--soft);font-weight:700;margin-top:10px}
+.row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:14px}
+.meter{height:12px;background:var(--line);border-radius:99px;overflow:hidden;margin:8px 0}
+.meter i{display:block;height:100%;background:var(--ok);width:0;transition:width .3s}
+.q{margin:0 0 18px}
+.q .num{font:800 15px Nunito;color:var(--soft)}
+.q .opts{display:grid;gap:8px;margin-top:8px}
+.q .opts button{text-align:left;font-weight:700}
+.q .opts button.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.q .opts button.no{background:var(--no);border-color:var(--no);color:#fff}
+.exp{display:none;margin-top:8px;padding:10px 14px;border-radius:12px;background:light-dark(#eef7f0,#16261b)}
+.exp.show{display:block}
+.score{font:800 clamp(30px,6vw,44px) "Baloo 2",sans-serif}
+.ans{display:none;margin-top:8px;padding:10px 14px;border-radius:12px;background:light-dark(#f1eefe,#211c35)}
+.ans.show{display:block}
+.rule{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.rule .eight{font:800 64px/1 "Baloo 2",sans-serif;color:var(--main)}
+.modes{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.modes button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.fmt{display:inline-block;font-weight:800;font-size:13px;padding:2px 9px;border-radius:99px;background:var(--line);margin-left:6px;vertical-align:2px}
+.pq{margin:0 0 16px}.pq.right{border-color:var(--ok);border-width:2px}.pq.half{border-color:var(--av);border-width:2px}.pq.wrong{border-color:var(--no);border-width:2px}
+.pq .opts{display:grid;gap:8px;margin-top:10px}
+.pq .opts button{text-align:left;font-weight:700}
+.pq .opts button.sel{background:var(--main);border-color:var(--main);color:#fff}
+.pq .opts button.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.pq .opts button.no{background:var(--no);border-color:var(--no);color:#fff}
+.pq textarea{width:100%;min-height:96px;font:16px/1.5 Nunito,sans-serif;padding:10px 12px;border-radius:12px;border:2px solid var(--line);background:var(--bg);color:var(--ink);margin-top:10px;resize:vertical}
+.mic{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.mic button.rec{background:var(--no);border-color:var(--no);color:#fff}
+.mic .hint{color:var(--soft);font-size:15px;font-weight:700}
+.fb{margin-top:10px;padding:10px 14px;border-radius:12px;background:light-dark(#f1eefe,#211c35)}
+.ov{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:8px;font-size:15px;font-weight:700}
+.ov button{min-height:38px;padding:4px 12px;font-size:15px}
+.ov button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.result{border-radius:22px;padding:22px;color:#fff;margin:6px 0 18px}
+.result.pass{background:var(--ok)}.result.fail{background:var(--in)}
+.result .grade{font:800 clamp(48px,10vw,76px)/1 "Baloo 2",sans-serif}
+.result button{background:#fff;color:#1d2433;border-color:#fff}
+.hist td,.hist th{font-size:15px}
+/* peças novas desta matéria */
+.word{display:inline-block;border:2px solid var(--line);border-radius:12px;padding:6px 10px;margin:3px;font-weight:800;font-size:15px;color:#fff}
+.peek{width:100%;text-align:left;font-weight:700;font-size:15px;min-height:44px;padding:6px 10px;border-style:dashed;color:var(--soft)}
+.peek.open{border-style:solid;color:var(--ink);background:var(--bg)}
+.paints{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.paints button{color:#fff;border-width:3px}
+.paints button.on{border-color:var(--ink);box-shadow:0 0 0 2px var(--bg) inset}
+.words{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px}
+.words button{font-size:15px;padding:8px 6px;text-align:center}
+.words button.ok{outline:3px solid var(--ok);outline-offset:1px}
+.words button.no{outline:3px dashed var(--no);outline-offset:1px}
+.steps{display:grid;gap:8px;margin:10px 0}
+.step{display:flex;gap:12px;align-items:center;border:2px solid var(--line);border-radius:14px;padding:10px 14px;background:var(--card)}
+.step b.n{flex:none;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:#fff;background:var(--mu);font-size:18px}
+.bars{display:grid;gap:6px}
+.bar{display:grid;grid-template-columns:110px 1fr 34px;gap:8px;align-items:center;font-weight:700;font-size:15px}
+.bar i{display:block;height:18px;border-radius:6px;background:var(--in)}
+.bar i.me{background:var(--main)}
+.quote{border-left:6px solid var(--li);padding:8px 16px;margin:10px 0;font-style:italic}
+.b-sl{background:var(--sl)}.b-mn{background:var(--mn)}.b-ei{background:var(--ei)}.b-su{background:var(--su)}.b-ve{background:var(--ve)}.b-fa{background:var(--fa)}
+.c-sl{color:var(--sl)}.c-mn{color:var(--mn)}.c-ei{color:var(--ei)}.c-su{color:var(--su)}.c-ve{color:var(--ve)}.c-fa{color:var(--fa)}
+.chips{display:flex;flex-wrap:wrap;gap:4px}
+.idea{display:flex;gap:8px;align-items:flex-start;padding:6px 0;border-bottom:1px solid var(--line);font-weight:700}
+.idea.hit{color:var(--ok)}
+.readbox{max-height:none;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin:8px 0}
+@media (prefers-reduced-motion:reduce){.fc{transition:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<a class="back" href="../">← Todas as matérias</a>
+<h1>Prova de Português da Fiorella</h1>
+<p>Apostila 4 · Slogan (págs. 18 a 22), til, M ou N (39 a 42), substantivos e verbos (53 a 57) e fábula (64 a 69)</p>
+<nav class="scroll" id="tabs">
+<a href="#plano">Plano</a><a href="#entender">Entender</a><a href="#contar">Contar 🎤</a><a href="#flashcards">Flashcards</a><a href="#simulado">Simulado</a><a href="#prova">Prova</a>
+</nav></div></header>
+
+<main class="wrap">
+
+<!-- PLANO -->
+<section id="s-plano">
+<h2>Plano de estudos</h2>
+<div class="warn"><b>A prova é na segunda, 30/11.</b> Tem prova de História e Geografia na quinta (26) e de Ética na sexta (27), então os blocos de Português desses dias são curtos. O fim de semana fica para o grosso do estudo.</div>
+<p>Cada dia: <b>2 blocos de 20 minutos</b> com 5 minutos de pausa entre eles. Primeiro lê na apostila, depois faz os joguinhos da aba <b>Entender</b>, e fecha com os <b>Flashcards</b> do assunto.</p>
+<div class="grid">
+<div class="card day"><span class="tag b-sl">Dia 1</span><h3>Quinta 26/11</h3><div class="when">Slogan e leitura · págs. 18–22 (1 bloco só)</div>
+<ol><li>O que é slogan e para que serve.</li><li>O anúncio do leite Ninho e a Copa de 2002.</li><li>Jogo: qual é o produto do slogan?</li><li>Aba <b>Contar 🎤</b>: gravar o anúncio do Ninho.</li><li>Flashcards: <i>Slogan</i>.</li></ol></div>
+<div class="card day"><span class="tag b-ei">Dia 2</span><h3>Sexta 27/11</h3><div class="when">Ortografia · págs. 39–42 (1 bloco só)</div>
+<ol><li>Til, M ou N: vogais nasais.</li><li>M antes de P e B.</li><li>E ou I? O ou U?</li><li>Os 3 joguinhos de ortografia.</li><li>Flashcards: <i>Til, M, N</i> e <i>E/I O/U</i>.</li></ol></div>
+<div class="card day"><span class="tag b-su">Dia 3</span><h3>Sábado 28/11</h3><div class="when">Estudo da língua · págs. 53–57</div>
+<ol><li>Substantivos: gênero, número, diminutivo e aumentativo.</li><li>Artigos: o, a, os, as, um, uma, uns, umas.</li><li>Verbos: agente, ação e objeto da ação.</li><li>O poema "Duelo".</li><li>Flashcards: <i>Substantivos</i> e <i>Verbos</i>.</li></ol></div>
+<div class="card day"><span class="tag b-fa">Dia 4</span><h3>Domingo 29/11</h3><div class="when">Fábula + revisão final · págs. 64–69</div>
+<ol><li>Reler "O sapo e o cordeiro" e a moral.</li><li>Aba <b>Contar 🎤</b>: gravar a fábula até tirar 8.</li><li>Fazer o <b>Simulado</b> inteiro.</li><li>Fazer a <b>Prova</b>: nota mínima 8.</li><li>Dormir cedo!</li></ol></div>
+</div>
+<h2>Dicas para quem ajuda</h2>
+<p>Peça para ela <b>explicar com as próprias palavras</b>. Em Português, ler em voz alta ajuda muito: pares como <i>sobra/sombra</i> e <i>bolo/bolu</i> ficam fáceis quando ela ouve a diferença.</p>
+<p>Olhando a apostila, vale conferir junto com ela:</p>
+<ul>
+<li><b>Pág. 22, questão 3:</b> ela marcou a <b>b</b> e a <b>c</b>. A resposta esperada é a <b>c</b>: as cores da bandeira estão no anúncio porque ele saiu na <b>época da Copa do Mundo</b>.</li>
+<li><b>Pág. 22, questão 5:</b> o slogan é "<b>O Brasil é Ninho desde pequenininho</b>". Faltou contornar as palavras que rimam: <b>Ninho</b> e <b>pequenininho</b>.</li>
+<li><b>Pág. 42:</b> só se corrigem as palavras com a vogal trocada (azeite, último, sapo, compadre, macaco, leite, encantado, tombo). <b>Abacaxi, Bauru, juriti, foguete, peru, sentimento, urubu e Nanci já estão certas</b> e não precisam mudar.</li>
+<li><b>Pág. 57, item c:</b> ficou em branco. Resposta: nos versos 1, 3 e 5, "bola" é substantivo e <b>objeto da ação</b>; nos versos 2, 4 e 6, é substantivo e <b>agente da ação</b>.</li>
+</ul>
+</section>
+
+<!-- ENTENDER -->
+<section id="s-entender">
+<h2 style="margin-top:0">O que cai na prova</h2>
+<p>Toque em cada assunto para ver o resumo.</p>
+<div class="hub">
+<div class="fig"><svg viewBox="0 0 400 380" width="100%" role="img" aria-label="Mapa dos assuntos da prova">
+<g stroke="var(--line)" stroke-width="5" id="hubl"></g>
+<circle cx="200" cy="190" r="54" fill="var(--main)"/><text x="200" y="196" text-anchor="middle" fill="#fff" font-weight="800" font-size="14">PORTUGUÊS</text>
+<g id="hubg"></g></svg></div>
+<div class="card" id="gcard"></div>
+</div>
+
+<h2 class="c-sl">Um bom slogan ninguém esquece!</h2>
+<div class="two">
+<div><p>O <b>slogan</b> é uma <b>frase curta e criativa</b> que faz parte dos <b>textos publicitários</b> (anúncios). A finalidade dele é <b>convencer</b> os leitores a <b>comprar um produto ou serviço</b>.</p>
+<p>Um bom slogan é fácil de lembrar: muitas vezes tem <b>rima</b>, como em "Tomou Doril, a <b>dor</b> sumiu" ou "O Brasil é <b>Ninho</b> desde pequen<b>ininho</b>".</p>
+<p>Num anúncio, vale prestar atenção em: <b>produto</b> (o que é vendido), <b>anunciante</b> (a empresa que paga o anúncio), <b>veículo</b> (onde ele aparece: revista, TV...) e <b>data</b>.</p></div>
+<div class="card"><h3>Jogo: de quem é o slogan?</h3><div id="slg"></div><p id="slres" style="font-weight:800;margin:8px 0 0"></p></div></div>
+
+<h3 style="margin-top:18px">O anúncio do leite Ninho (pág. 20)</h3>
+<div class="two">
+<div class="fig"><svg viewBox="0 0 360 220" width="100%" role="img" aria-label="Esquema do anúncio: bandeira do Brasil com uma lata amarela de Ninho">
+<rect width="360" height="220" rx="18" fill="#1d7a3a"/>
+<path d="M0 205 C110 120 220 95 360 70 L360 220 L0 220Z" fill="#f2c200"/>
+<path d="M150 220 C230 160 300 140 360 132 L360 220Z" fill="#1f4fa8"/>
+<text x="22" y="40" fill="#fff" font-weight="800" font-size="15">O BRASIL É NINHO DESDE PEQUENININHO</text>
+<text x="22" y="190" fill="#fff" font-weight="800" font-size="13">BOA SORTE, BRASIL</text>
+<g transform="translate(232 86) rotate(-14)"><rect width="78" height="96" rx="10" fill="#ffd400" stroke="#8a6a00" stroke-width="2"/><text x="39" y="38" text-anchor="middle" fill="#1f4fa8" font-weight="900" font-size="19">NINHO</text><text x="39" y="54" text-anchor="middle" fill="#1d7a3a" font-weight="800" font-size="9">leite em pó</text><rect x="20" y="62" width="38" height="24" rx="4" fill="#fff"/></g>
+</svg>
+<p style="color:var(--soft);font-size:15px">Desenho simplificado do anúncio da revista Veja, junho de 2002.</p></div>
+<div>
+<p><b>Produto:</b> leite Ninho · <b>Anunciante:</b> Nestlé · <b>Veículo:</b> revista Veja · <b>Data:</b> junho de 2002.</p>
+<p>Em junho de 2002 estava acontecendo a <b>Copa do Mundo</b>. A frase "<b>Boa sorte, Brasil</b>" mostra que a seleção <b>ainda não tinha ganhado</b> (ela foi pentacampeã depois!).</p>
+<p>O anúncio usa as <b>quatro cores da bandeira</b>: verde, amarelo, azul e branco. A lata é <b>amarela</b>, o nome NINHO é <b>azul</b> e o leite no copo é <b>branco</b>.</p>
+<p><b>Ninho</b> lembra <b>berço, proteção e aconchego</b>: o anúncio quer que a gente acredite que o leite <b>cuida das crianças desde pequenininhas</b>, como um ninho.</p>
+</div></div>
+
+<div class="card" style="margin-top:14px"><h3 class="c-sl">Você sabia? A Copa do Mundo</h3>
+<p>Organizada pela <b>FIFA</b> a cada <b>4 anos</b>. A primeira foi no <b>Uruguai, em 1930</b> (o presidente da FIFA era Jules Rimet). O Brasil foi campeão <b>5 vezes</b>:</p>
+<div class="chips" id="copas"></div>
+<p style="margin-top:8px">Em <b>2014</b> a Copa foi no Brasil, mas não ficamos com a taça. Em <b>2018</b>, na Rússia, a <b>França</b> venceu.</p></div>
+
+<h2 class="c-mn">É com til, M ou N?</h2>
+<div class="two">
+<div><p>Nas <b>vogais nasais</b>, o ar sai <b>pela boca e pelo nariz</b> ao mesmo tempo. Para marcar esse som, usamos o <b>til</b>, o <b>m</b> ou o <b>n</b>: AM-bi-EN-tal, PON-tos, do-a-ÇÕES.</p>
+<p>O <b>til</b> só vai em cima do <b>a</b> e do <b>o</b>, e só na <b>última sílaba</b> (doação, corações). Fora da regra: diminutivos, como <b>coraçãozinho</b> e <b>irmãzinha</b>.</p>
+<div class="card"><h3>A regra do M</h3><p style="font-size:20px;font-weight:800;margin:.2em 0">M antes de <span class="pill">P</span> e <span class="pill">B</span></p><p>tampa, bomba, lembre, limpo, sombra</p><p style="font-size:20px;font-weight:800;margin:.2em 0">N antes das outras</p><p>anta, senta, ponte, quinta, mundo, linda</p></div></div>
+<div>
+<div class="card"><h3>Jogo: M ou N?</h3><p style="margin:0 0 6px">Toque na letra que completa a palavra.</p><div id="mn"></div><div class="row" style="justify-content:flex-start"><button id="mnnew">Outras palavras</button><span id="mnres" style="font-weight:800;align-self:center"></span></div></div>
+<div class="card" style="margin-top:14px"><h3>Jogo: precisa de til?</h3><p style="margin:0 0 6px">É a atividade 3 da pág. 40. Toque nas palavras que precisam de til e aperte <b>Conferir</b>.</p><div class="words" id="til"></div><div class="row" style="justify-content:flex-start"><button class="primary" id="tilchk">Conferir</button><button id="tilrst">Limpar</button><span id="tilres" style="font-weight:800;align-self:center"></span></div></div>
+</div></div>
+<p style="margin-top:12px"><b>Pares que mudam de sentido</b> (pág. 40): sobra → so<b>m</b>bra, catar → ca<b>n</b>tar, boba → bo<b>m</b>ba, tapa → ta<b>m</b>pa, mito → mi<b>n</b>to, maca → ma<b>n</b>ca, sabe → sa<b>m</b>be, frete → fre<b>n</b>te. A letra nova deixa a vogal <b>nasal</b> e muda a <b>pronúncia, a escrita e o significado</b>.</p>
+
+<h2 class="c-ei">E ou I? O ou U?</h2>
+<div class="two">
+<div><p>Muitas vezes a gente <b>fala</b> diferente do que <b>escreve</b>: "julh<b>u</b> n<b>u</b>s seguint<b>i</b>s pont<b>u</b>s".</p>
+<p>Na <b>sílaba tônica</b> (a mais forte), o <b>e</b> e o <b>o</b> soam como se escrevem. Na <b>sílaba átona</b> (mais fraca), podem soar como <b>i</b> e <b>u</b>, mas <b>continuam escritos com e e o</b>:</p>
+<p><span class="pill">LE-ve</span> fala "levi", escreve <b>leve</b> · <span class="pill">BO-lo</span> fala "bolu", escreve <b>bolo</b></p>
+<p>Mas, quando a <b>última sílaba é a mais forte</b> e tem som de i ou u, ela é <b>escrita com i ou u</b>: ca<b>QUI</b>, ca<b>JU</b>, pe<b>RU</b>, uru<b>BU</b>, abaca<b>XI</b>.</p></div>
+<div class="card"><h3>Jogo: certa ou trocada?</h3><p style="margin:0 0 6px">A palavra está escrita certo, ou trocaram o <b>e</b>/<b>o</b> por <b>i</b>/<b>u</b>?</p><div id="ei"></div><div class="row" style="justify-content:flex-start"><button id="einew">Outras palavras</button><span id="eires" style="font-weight:800;align-self:center"></span></div></div></div>
+
+<h2 class="c-su">Substantivos e artigos</h2>
+<div class="two">
+<div><p><b>Substantivos</b> são as palavras que <b>dão nome</b> aos seres reais e imaginários, objetos, lugares, ideias e sentimentos: mosquito, dengue, cartaz, água, pedra, gato, Maria, menina, noite, fada, <b>amor</b>.</p>
+<p>A terminação muda para mostrar:</p>
+<p><b>Gênero:</b> masculino (gat<b>o</b>) ou feminino (gat<b>a</b>)<br><b>Número:</b> singular (gato) ou plural (gat<b>os</b>)<br><b>Grau:</b> diminutivo (gat<b>inho</b>) ou aumentativo (gat<b>ão</b>)</p>
+<p><b>Artigos</b> vêm antes do substantivo: <span class="pill">o</span><span class="pill">os</span><span class="pill">um</span><span class="pill">uns</span> com masculinos e <span class="pill">a</span><span class="pill">as</span><span class="pill">uma</span><span class="pill">umas</span> com femininos.</p>
+<div class="warn" style="margin-top:6px"><b>Truque:</b> é substantivo se <b>aceita artigo</b>. "<b>A</b> lua apareceu" funciona, então <i>lua</i> é substantivo. "<b>O</b> ler apareceu" não funciona, então <i>ler</i> não é.</div></div>
+<div class="card"><h3>Jogo: o truque do artigo</h3><p style="margin:0 0 6px">Escolha o artigo que combina. Se nenhum combinar, não é substantivo!</p><div id="art"></div><div class="row" style="justify-content:flex-start"><button id="artnew">Outras palavras</button><span id="artres" style="font-weight:800;align-self:center"></span></div></div></div>
+
+<h2 class="c-ve">Verbos: agente, ação e objeto</h2>
+<div class="two">
+<div><p><b>Verbos</b> são as palavras que indicam as <b>ações</b> que os seres realizam: trazer, correr, vencer, jogar, estudar, sorrir, construir.</p>
+<p>Na frase "O mosquito traz a dengue":</p>
+<p><span class="word" style="background:var(--ei);border-color:var(--ei)">O mosquito</span> <span class="word" style="background:var(--ve);border-color:var(--ve)">traz</span> <span class="word" style="background:var(--su);border-color:var(--su)">a dengue</span><br><small style="font-weight:800"><span class="c-ei">agente</span> (quem faz) · <span class="c-ve">ação</span> (o verbo) · <span class="c-su">objeto</span> (o que recebe a ação)</small></p>
+<p>A terminação do verbo muda de acordo com <b>quem</b> faz a ação e <b>quando</b>: O mosquito vo<b>a</b>. O mosquito vo<b>ou</b>. Os mosquitos vo<b>am</b>.</p>
+<div class="card"><h3>Poema "Duelo" (Leo Cunha)</h3><p style="margin:0">o beque <b>tranca</b> a bola / a bola <b>canta</b> o craque<br>o beque <b>taca</b> a bola / a bola <b>cata</b> o craque<br>o beque <b>ataca</b> a bola / a bola <b>acata</b> o craque</p>
+<p style="margin-top:8px">Verbos em negrito. Nos versos 1, 3 e 5, a <b>bola</b> é <b>objeto</b>; nos versos 2, 4 e 6, a <b>bola</b> é <b>agente</b>. <b>Beque</b> = zagueiro; <b>craque</b> = esportista excelente; <b>acata</b> = aceita.</p></div></div>
+<div class="card"><h3>Jogo: ache o verbo</h3><p style="margin:0 0 6px">Toque no <b>verbo</b>. Depois aparecem o agente e o objeto.</p><div id="vb"></div><div class="row" style="justify-content:flex-start"><button class="primary" id="vbnext">Próxima frase</button><span id="vbres" style="font-weight:800;align-self:center"></span></div></div></div>
+
+<h2 class="c-fa">Fábula: O sapo e o cordeiro</h2>
+<div class="two">
+<div><p><b>Fábula</b> é uma <b>história curta</b> em que os <b>personagens são animais</b> que falam e agem <b>como gente</b>. No final, ela ensina uma lição: a <b>moral da história</b>.</p>
+<p>Esta fábula é de <b>Rachel Gazolla de Andrade</b>, do livro <i>Fábulas nuas e cruas</i>. Os parágrafos são numerados com o sinal <b>§</b>.</p>
+<div class="steps" id="fab"></div>
+<div class="row" style="justify-content:flex-start"><button class="primary" id="fnext">Próximo pedaço</button><button id="freset">Recomeçar</button></div>
+<div class="card" style="margin-top:14px"><h3>Parágrafo e as 3 partes (pág. 69)</h3>
+<p>Cada <b>ideia</b> do texto forma um <b>parágrafo</b>. Ele começa com <b>letra maiúscula</b> e com um <b>recuo</b> (o espacinho entre a margem e o começo da primeira linha), e pode terminar com ponto-final, de exclamação ou de interrogação.</p>
+<p><span class="tag b-fa">Parte 1 · §1 a §4</span> encontro na lagoa e tristeza do cordeiro<br><span class="tag b-fa">Parte 2 · §5 e §6</span> viagem do sapo e chegada da ovelha<br><span class="tag b-fa">Parte 3 · §7 a §11</span> felicidade do cordeiro e satisfação do sapo</p></div></div>
+<div>
+<div class="quote" style="font-size:19px">Moral da história: "Quem não tem bons olhos, faça amigos para tê-los em seu lugar."</div>
+<p>Quer dizer: um <b>bom amigo</b> enxerga o que a gente sozinho não consegue ver, e ajuda.</p>
+<div class="card"><h3>Palavras da fábula</h3>
+<p><span class="pill">batráquio</span> o sapo (grupo de animais a que ele pertence)</p>
+<p><span class="pill">cabisbaixo</span> de cabeça baixa, triste</p>
+<p><span class="pill">ponderava</span> pensava, comparava</p>
+<p><span class="pill">o amigo</span> no "§5", o amigo é o <b>cordeiro</b></p></div>
+<div class="card" style="margin-top:14px"><h3>Sapo ou cordeiro? (pág. 68)</h3>
+<p><span class="tag b-fa">Sapo</span> bem-humorado, livre, ágil, generoso</p>
+<p><span class="tag b-su">Cordeiro</span> triste, de rebanho</p>
+<p><b>ponderava</b> = examinava com atenção · <b>cabisbaixo</b> = de cabeça baixa · <b>ágil</b> = ligeiro</p></div>
+<div class="card" style="margin-top:14px"><h3>Ver e enxergar (pág. 68)</h3>
+<p>No <b>início</b>, "ver" é usar os olhos: o sapo disse que o <b>cordeiro</b> enxergava melhor. No <b>final</b>, "ver" é <b>entender as coisas como são</b>: quem entendeu melhor foi o <b>sapo</b>. Na moral, "ter bons olhos" quer dizer <b>entender mais</b>.</p></div>
+<div class="card" style="margin-top:14px"><h3>Respostas da pág. 67</h3>
+<p>O cordeiro se queixava porque <b>não entendia o humor do sapo</b>. O objetivo da viagem do sapo era <b>encontrar uma companheira para o cordeiro</b>. A ideia principal: <b>bons amigos podem ver o que nossos olhos não veem</b>.</p></div>
+</div></div>
+</section>
+
+<!-- CONTAR -->
+<section id="s-contar">
+<h2 style="margin-top:0">Conte o que você entendeu 🎤</h2>
+<p>Leia o texto na apostila (ou o resumo aqui), aperte <b>Gravar</b> e conte <b>com suas palavras</b> o que entendeu. Depois aperte <b>Avaliar</b>: a página confere quais ideias importantes você falou e dá uma nota. Um adulto pode ouvir a gravação e ajustar a nota.</p>
+<div class="filters" id="cfil"></div>
+<div class="two">
+<div class="card"><span class="tag" id="ctag"></span><h3 id="ctitle"></h3><p id="cwhere" style="color:var(--soft);font-weight:700;margin:0"></p><div class="readbox" id="ctext"></div><p style="margin:0"><b>Para contar:</b> <span id="cask"></span></p></div>
+<div class="card">
+<div class="mic"><button class="primary" id="crec">🎤 Gravar</button><button id="csay">Ouvir a pergunta</button><span class="hint" id="chint"></span></div>
+<audio id="caudio" controls hidden style="width:100%;margin-top:10px"></audio>
+<textarea id="cta" placeholder="O que você falar aparece aqui. Dá para corrigir ou escrever também." style="width:100%;min-height:130px;font:16px/1.5 Nunito,sans-serif;padding:10px 12px;border-radius:12px;border:2px solid var(--line);background:var(--bg);color:var(--ink);margin-top:10px"></textarea>
+<div class="row" style="justify-content:flex-start"><button class="primary" id="ceval">Avaliar</button><button id="cclear">Apagar e gravar de novo</button></div>
+<div id="cout"></div>
+</div></div>
+<h2>Histórico das gravações</h2>
+<p style="color:var(--soft)">Fica salvo neste aparelho (só o texto e a nota; o áudio some ao sair da página).</p>
+<div class="scroll"><table class="hist"><thead><tr><th>Quando</th><th>Texto</th><th>Ideias</th><th style="text-align:right">Nota</th></tr></thead><tbody id="chist"></tbody></table></div>
+</section>
+
+<!-- FLASHCARDS -->
+<section id="s-flashcards">
+<h2 style="margin-top:0">Flashcards</h2>
+<p>Toque no cartão para virar. Depois diga se acertou: os que ela errar voltam no final da pilha.</p>
+<div class="filters" id="ffil"></div>
+<div class="flash">
+<div class="meter"><i id="fbar"></i></div>
+<div style="text-align:center;font-weight:800;color:var(--soft)" id="fcount"></div>
+<div class="fc" id="fc" tabindex="0" role="button" aria-label="Virar cartão"><div class="face"><span class="tag" id="ftag"></span><div class="big" id="ffront"></div><small>toque para ver a resposta</small></div><div class="face back"><div class="big" id="fback" style="font-size:clamp(19px,3.6vw,24px)"></div></div></div>
+<div class="row"><button id="fno">Ainda não sei</button><button class="primary" id="fyes">Acertei!</button></div>
+<div class="row"><button id="fre">Embaralhar e recomeçar</button></div>
+</div>
+</section>
+
+<!-- SIMULADO -->
+<section id="s-simulado">
+<h2 style="margin-top:0">Simulado</h2>
+<h3 id="stitle"></h3>
+<p><b>Parte 1 · Marque a alternativa certa.</b> A resposta aparece na hora, com a explicação.</p>
+<div class="card" style="margin-bottom:18px"><div class="score" id="score">0 de 0</div><div class="meter"><i id="qbar"></i></div>
+<div class="row" style="justify-content:flex-start"><button class="primary" id="qnew">Novo simulado (questões novas)</button><button id="qagain">Refazer tudo</button><button id="qwrong">Refazer as que errei</button></div></div>
+<div id="quiz"></div>
+<h2>Parte 2 · Perguntas para escrever</h2>
+<p>Iguais às da apostila. Ela responde no caderno ou em voz alta, depois confere a resposta modelo.</p>
+<div id="open"></div>
+</section>
+
+<!-- PROVA -->
+<section id="s-prova">
+<div class="rule"><div class="eight">8</div><div><h2 style="margin:0">Prova de verdade</h2><p style="margin:0">10 questões, cada uma vale 1 ponto. A nota mínima é <b>8</b>. Se ficar abaixo, ela faz uma <b>prova de recuperação</b>: as questões que errou voltam <b>em outro formato</b>.</p></div></div>
+<div id="pstart" class="card" style="margin-top:16px">
+<h3>Como ela quer responder?</h3>
+<div class="modes" id="pmodes">
+<button data-m="misto" class="on">Misturado</button><button data-m="optativa">Marcar alternativa</button><button data-m="escrita">Escrever</button><button data-m="audio">Falar (áudio)</button></div>
+<p id="pmodehint" style="color:var(--soft);font-weight:700"></p>
+<button class="primary" id="pgo">Começar a prova</button>
+</div>
+<div id="pres"></div>
+<div id="pexam"></div>
+<div class="row" style="justify-content:flex-start"><button class="primary" id="psend" hidden>Entregar a prova</button></div>
+<h2>Histórico de provas</h2>
+<p style="color:var(--soft)">Fica salvo neste aparelho.</p>
+<div class="scroll"><table class="hist"><thead><tr><th>Quando</th><th>Prova</th><th>Formato</th><th style="text-align:right">Nota</th></tr></thead><tbody id="phist"></tbody></table></div>
+<div class="row" style="justify-content:flex-start"><button id="pclear">Apagar histórico</button></div>
+</section>
+</main>
+
+<script>
+{
+const G={sl:['Slogan','var(--sl)'],mn:['Til, M, N','var(--mn)'],ei:['E/I O/U','var(--ei)'],su:['Substantivos','var(--su)'],ve:['Verbos','var(--ve)'],fa:['Fábula','var(--fa)']};
+const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const cap=t=>t[0].toUpperCase()+t.slice(1);
+
+/* HUB */
+const topics=[
+ {k:'sl',li:['Frase curta e criativa dos anúncios','Serve para convencer a comprar','Muitas vezes tem rima','Ex.: "O Brasil é Ninho desde pequenininho"']},
+ {k:'mn',li:['Vogal nasal: ar pela boca e pelo nariz','Til só no a e no o, na última sílaba','M antes de P e B','N antes das outras consoantes']},
+ {k:'ei',li:['Fala "bolu", escreve bolo','Sílaba fraca: e e o podem soar i e u','Última sílaba forte com som de i/u: escreve i/u','Ex.: caqui, caju, peru, urubu']},
+ {k:'su',li:['Dão nome a seres, objetos, lugares, sentimentos','Gênero, número e grau','Aceitam artigo: o, a, os, as, um, uma, uns, umas','Truque: "a lua" sim, "o ler" não']},
+ {k:'ve',li:['Indicam ações: correr, jogar, estudar','Agente = quem faz a ação','Objeto = o que recebe a ação','Mudam com quem faz e quando: voa, voou, voam']},
+ {k:'fa',li:['História curta com animais que falam','Termina com uma moral','O sapo ajuda o cordeiro triste','Bons amigos veem o que nossos olhos não veem']}];
+const ang=[-90,-30,30,90,150,210],hub=document.getElementById('hubg'),gc=document.getElementById('gcard');
+const pos=ang.map(a=>[200+132*Math.cos(a*Math.PI/180),190+128*Math.sin(a*Math.PI/180)]);
+document.getElementById('hubl').innerHTML=pos.map(p=>`<line x1="200" y1="190" x2="${p[0].toFixed(0)}" y2="${p[1].toFixed(0)}"/>`).join('');
+hub.innerHTML=topics.map((t,i)=>{const [x,y]=pos[i],n=G[t.k][0];return `<g class="gbtn" tabindex="0" role="button" data-i="${i}"><circle cx="${x}" cy="${y}" r="46" fill="${G[t.k][1]}"/><text x="${x}" y="${y+5}" text-anchor="middle" fill="#fff" font-weight="800" font-size="${n.length>9?12.5:15}">${n}</text></g>`}).join('');
+const showG=i=>{const t=topics[i];gc.innerHTML=`<span class="tag" style="background:${G[t.k][1]}">${G[t.k][0]}</span><h3>Resumo</h3><ul>${t.li.map(l=>`<li>${l}</li>`).join('')}</ul>`};
+hub.querySelectorAll('.gbtn').forEach(b=>{b.addEventListener('click',()=>showG(+b.dataset.i));b.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();showG(+b.dataset.i)}})});
+showG(0);
+
+/* COPAS */
+document.getElementById('copas').innerHTML=[['1958','Suécia','1ª vez'],['1962','Chile','bi'],['1970','México','tri'],['1994','EUA','tetra'],['2002','Japão e Coreia do Sul','penta']].map(c=>`<span class="pill"><b>${c[0]}</b> ${c[1]} · ${c[2]}</span>`).join('');
+
+/* JOGO SLOGAN */
+const SLOG=[['Vale por um bifinho.','Danoninho'],['Tomou Doril, a dor sumiu.','Doril (remédio)'],['Não esqueça a minha Caloi.','Caloi (bicicleta)'],['Seja star, tenha estilo, use...','All Star (tênis)'],['Feito para dividir.','BIS (chocolate)'],['O seu companheiro de aventuras.','Falcon (boneco)'],['O Brasil é Ninho desde pequenininho.','Ninho (leite)']];
+const slg=document.getElementById('slg');let slOk=0,slDone=0;
+slg.innerHTML=SLOG.map((s,i)=>`<div style="margin:8px 0"><b>"${s[0]}"</b><div class="opts" style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px" data-i="${i}">${shuffle([s[1],...shuffle(SLOG.filter(x=>x!==s)).slice(0,2).map(x=>x[1])]).map(o=>`<button style="min-height:38px;padding:4px 10px;font-size:15px">${o}</button>`).join('')}</div></div>`).join('');
+slg.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const box=b.parentElement;if(box.dataset.done)return;box.dataset.done=1;const right=SLOG[+box.dataset.i][1];slDone++;
+ box.querySelectorAll('button').forEach(x=>{if(x.textContent===right)x.style.cssText+=';background:var(--ok);border-color:var(--ok);color:#fff';else if(x===b)x.style.cssText+=';background:var(--no);border-color:var(--no);color:#fff'});if(b.textContent===right)slOk++;
+ document.getElementById('slres').textContent=`${slOk} de ${slDone} certos`});
+
+/* JOGO M ou N */
+const MN=[['ca_po','m','campo'],['so_bra','m','sombra'],['ta_pa','m','tampa'],['bo_ba','m','bomba'],['le_bre','m','lembre'],['li_po','m','limpo'],['lo_bo','m','lombo'],['tu_ba','m','tumba'],['co_prar','m','comprar'],['te_po','m','tempo'],['e_bora','m','embora'],['sa_ba','m','samba'],['a_ta','n','anta'],['se_ta','n','senta'],['po_te','n','ponte'],['qui_ta','n','quinta'],['mu_do','n','mundo'],['li_da','n','linda'],['ca_tar','n','cantar'],['mo_te','n','monte'],['ma_ca','n','manca'],['fre_te','n','frente'],['ju_tos','n','juntos'],['e_trada','n','entrada'],['ve_to','n','vento'],['pi_tura','n','pintura']];
+const mnz=document.getElementById('mn');let mnSet=[],mnOk=0,mnN=0;
+const drawMN=()=>{mnSet=shuffle([...MN]).slice(0,6);mnOk=0;mnN=0;document.getElementById('mnres').textContent='';
+ mnz.innerHTML=mnSet.map((w,i)=>`<div class="step" style="justify-content:space-between" data-i="${i}"><b style="font-size:20px;letter-spacing:1px">${w[0].replace('_','<span style="color:var(--mn)">_</span>')}</b><span><button data-l="m">M</button> <button data-l="n">N</button></span></div>`).join('')};
+mnz.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const row=b.closest('.step');if(row.dataset.done)return;row.dataset.done=1;const w=mnSet[+row.dataset.i],ok=b.dataset.l===w[1];mnN++;if(ok)mnOk++;
+ row.querySelector('b').innerHTML=`${w[2]} ${ok?'✅':'❌'}`;row.querySelector('span').innerHTML=`<small style="font-weight:800;color:var(--soft)">${w[1]==='m'?'M antes de '+w[2][w[2].indexOf('m')+1].toUpperCase():'N antes de '+w[2][w[2].search(/n(?!$)/)+1].toUpperCase()}</small>`;
+ document.getElementById('mnres').textContent=`${mnOk} de ${mnN}`});
+document.getElementById('mnnew').onclick=drawMN;drawMN();
+
+/* JOGO TIL */
+const TIL=[['bombom','bombom'],['hortela','hortelã'],['confuso','confuso'],['chumbo','chumbo'],['melao','melão'],['maes','mães'],['educaçao','educação'],['baloes','balões'],['empurrao','empurrão'],['bambu','bambu'],['órfa','órfã'],['poe','põe'],['anglo','anglo'],['leao','leão'],['leoes','leões'],['Joao','João']];
+const tz=document.getElementById('til');let tsel={};
+const drawT=c=>{tz.innerHTML=TIL.map((w,i)=>{const need=w[0]!==w[1],s=!!tsel[i];let cls='',st=s?'background:var(--mn);border-color:var(--mn);color:#fff':'';if(c)cls=s===need?'ok':'no';return `<button data-i="${i}" class="${cls}" style="${st}">${c&&need?w[1]:w[0]}</button>`}).join('')};
+tz.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;tsel[+b.dataset.i]=!tsel[+b.dataset.i];document.getElementById('tilres').textContent='';drawT(false)});
+document.getElementById('tilchk').onclick=()=>{const ok=TIL.filter((w,i)=>!!tsel[i]===(w[0]!==w[1])).length;document.getElementById('tilres').textContent=`${ok} de ${TIL.length} certas`;drawT(true)};
+document.getElementById('tilrst').onclick=()=>{tsel={};document.getElementById('tilres').textContent='';drawT(false)};drawT(false);
+
+/* JOGO E/I O/U (pág. 42 + quadro) */
+const EI=[['azeiti','azeite'],['últimu','último'],['abacaxi','abacaxi'],['sapu','sapo'],['compadri','compadre'],['Bauru','Bauru'],['macacu','macaco'],['leiti','leite'],['juriti','juriti'],['encantadu','encantado'],['foguete','foguete'],['peru','peru'],['tombu','tombo'],['sentimento','sentimento'],['urubu','urubu'],['Nanci','Nanci'],['caqui','caqui'],['caju','caju'],['bolu','bolo'],['levi','leve'],['pontu','ponto'],['segui','segue'],['tatu','tatu'],['saci','saci'],['gatu','gato'],['noiti','noite']];
+const eiz=document.getElementById('ei');let eiSet=[],eiOk=0,eiN=0;
+const drawEI=()=>{eiSet=shuffle([...EI]).slice(0,6);eiOk=0;eiN=0;document.getElementById('eires').textContent='';
+ eiz.innerHTML=eiSet.map((w,i)=>`<div class="step" style="justify-content:space-between;flex-wrap:wrap" data-i="${i}"><b style="font-size:20px">${w[0]}</b><span><button data-a="1">Certa</button> <button data-a="0">Trocada</button></span></div>`).join('')};
+eiz.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const row=b.closest('.step');if(row.dataset.done)return;row.dataset.done=1;const w=eiSet[+row.dataset.i],right=w[0]===w[1],ok=(b.dataset.a==='1')===right;eiN++;if(ok)eiOk++;
+ row.querySelector('span').innerHTML=`<span style="font-weight:800">${ok?'✅':'❌'} ${right?'Já está certa!':'Certo é: <span class="c-ei">'+w[1]+'</span>'}</span>`;document.getElementById('eires').textContent=`${eiOk} de ${eiN}`});
+document.getElementById('einew').onclick=drawEI;drawEI();
+
+/* JOGO ARTIGO */
+const NOUN=[['gato','o'],['lua','a'],['sol','o'],['noite','a'],['mosquito','o'],['dengue','a'],['formiga','a'],['cão','o'],['bola','a'],['craque','o'],['gatos','os'],['flores','as'],['luzes','as'],['meninos','os'],['amigas','as'],['relógio','o'],['mochila','a'],['bolo','o'],['fada','a'],['amor','o'],['pedras','as'],['lápis','o'],['ler','x'],['correr','x'],['bonito','x'],['jogar','x'],['depressa','x']];
+const ARTS=['o','a','os','as','nenhum'];const az=document.getElementById('art');let aSet=[],aOk=0,aN=0;
+const drawA=()=>{aSet=shuffle([...NOUN]).slice(0,5);aOk=0;aN=0;document.getElementById('artres').textContent='';
+ az.innerHTML=aSet.map((w,i)=>`<div class="step" style="justify-content:space-between;flex-wrap:wrap" data-i="${i}"><b style="font-size:20px">___ ${w[0]}</b><span>${ARTS.map(a=>`<button data-a="${a==='nenhum'?'x':a}" style="padding:6px 10px">${a}</button>`).join(' ')}</span></div>`).join('')};
+az.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const row=b.closest('.step');if(row.dataset.done)return;row.dataset.done=1;const w=aSet[+row.dataset.i],ok=b.dataset.a===w[1];aN++;if(ok)aOk++;
+ row.querySelector('b').textContent=w[1]==='x'?w[0]:`${w[1]} ${w[0]}`;
+ row.querySelector('span').innerHTML=`<span style="font-weight:800">${ok?'✅':'❌'} ${w[1]==='x'?'Não aceita artigo: não é substantivo.':'É substantivo '+({o:'masculino singular',a:'feminino singular',os:'masculino plural',as:'feminino plural'}[w[1]])+'.'}</span>`;document.getElementById('artres').textContent=`${aOk} de ${aN}`});
+document.getElementById('artnew').onclick=drawA;drawA();
+
+/* JOGO VERBO */
+const VB=[['O mosquito','traz','a dengue'],['O garoto','acariciou','o cão'],['O professor','apontou','o lápis'],['Os alunos','visitaram','Brasília'],['O beque','tranca','a bola'],['A bola','canta','o craque'],['O relógio','marca','as horas'],['A doceira','fez','um bolo'],['O professor','encontrou','uma mochila'],['O super-herói','derrotou','o vilão'],['O aniversariante','ganhou','um presente'],['As flores','perfumam','o jardim']];
+const vz=document.getElementById('vb');let vOrder=shuffle([...VB.keys()]),vi=0,vOk=0,vN=0;
+const drawV=()=>{const s=VB[vOrder[vi%VB.length]];const words=[...s[0].split(' ').map(w=>[w,'ag']),[s[1],'v'],...s[2].split(' ').map(w=>[w,'ob'])];
+ vz.innerHTML=`<p style="font-size:22px;font-weight:800;line-height:2">${words.map(w=>`<button class="vw" data-r="${w[1]}" style="margin:2px;padding:6px 10px;font-size:19px">${w[0]}</button>`).join(' ')}.</p><p id="vfb" style="font-weight:800"></p>`};
+vz.addEventListener('click',e=>{const b=e.target.closest('.vw');if(!b||vz.dataset.done==='1')return;vz.dataset.done='1';const ok=b.dataset.r==='v';vN++;if(ok)vOk++;
+ vz.querySelectorAll('.vw').forEach(x=>{const c={ag:'var(--ei)',v:'var(--ve)',ob:'var(--su)'}[x.dataset.r];x.style.cssText+=`;background:${c};border-color:${c};color:#fff`});
+ document.getElementById('vfb').innerHTML=`${ok?'✅ Isso!':'❌ Quase.'} <span class="c-ei">Azul = agente</span> · <span class="c-ve">amarelo = ação (verbo)</span> · <span class="c-su">vinho = objeto</span>`;document.getElementById('vbres').textContent=`${vOk} de ${vN}`});
+document.getElementById('vbnext').onclick=()=>{vi++;vz.dataset.done='';drawV()};drawV();
+
+/* FÁBULA EM PEDAÇOS */
+const FAB=['§1 Um sapo e um cordeiro se encontravam na lagoa todos os dias. Eram diferentes, mas se davam bem. O problema: o cordeiro se queixava muito da vida e não entendia o bom humor do sapo.','§2 O cordeiro achava o sapo livre: ele podia ficar na água ou na terra, no mato ou na pedra. Já o cordeiro vivia no rebanho e só conhecia onde a grama cresce.','§3 O sapo respondeu que os olhos do cordeiro enxergam melhor que os dele, que ficam afastados.','§4–5 O cordeiro continuou triste. O batráquio (o sapo) pensou num jeito de ajudar o amigo e sumiu por sete dias.','§6 O sapo tinha viajado com um plano: chamou uma ovelha bem alegre para beber na sua lagoa. Os três conversaram muitas tardes, alegres.','§7–11 O cordeiro, feliz, contou que aprendeu a olhar para muitas coisas e que ia se casar com a ovelha. Voltou ao rebanho, e o sapo mergulhou tranquilo na lagoa.'];
+let fk=1;const fz=document.getElementById('fab'),fn=document.getElementById('fnext');
+const drawF2=()=>{fz.innerHTML=FAB.slice(0,fk).map((s,i)=>`<div class="step"><b class="n" style="background:var(--fa)">${i+1}</b><span>${s}</span></div>`).join('');fn.disabled=fk>=FAB.length};
+fn.onclick=()=>{if(fk<FAB.length){fk++;drawF2()}};document.getElementById('freset').onclick=()=>{fk=1;drawF2()};drawF2();
+
+/* FLASHCARDS */
+const cards=[
+['sl','O que é um slogan?','Uma frase curta e criativa dos textos publicitários.'],
+['sl','Para que serve o slogan?','Para convencer os leitores a comprar um produto ou serviço.'],
+['sl','O que é um texto publicitário?','Um anúncio: texto feito para divulgar e vender um produto ou serviço.'],
+['sl','O que é o anunciante?','A empresa que faz o anúncio. No anúncio do Ninho, a Nestlé.'],
+['sl','O que é o veículo de um anúncio?','Onde ele é divulgado: revista, jornal, TV, internet. O do Ninho foi a revista Veja.'],
+['sl','Qual é o slogan do leite Ninho?','"O Brasil é Ninho desde pequenininho."'],
+['sl','Quais palavras rimam no slogan do Ninho?','Ninho e pequenininho.'],
+['sl','Que fato acontecia em junho de 2002?','A Copa do Mundo de Futebol.'],
+['sl','Que frase mostra que o Brasil ainda não tinha ganhado a Copa?','"Boa sorte, Brasil."'],
+['sl','Por que o anúncio do Ninho é verde, amarelo, azul e branco?','São as cores da bandeira do Brasil, por causa da Copa do Mundo.'],
+['sl','O que a palavra "ninho" lembra?','Berço, proteção e aconchego.'],
+['sl','Slogan: "Vale por um bifinho."','Danoninho.'],
+['sl','Slogan: "Tomou ___, a dor sumiu."','Doril.'],
+['sl','Slogan: "Feito para dividir."','BIS (chocolate da Lacta).'],
+['sl','Quem organiza a Copa do Mundo?','A FIFA, a cada 4 anos.'],
+['sl','Onde e quando foi a primeira Copa?','No Uruguai, em 1930.'],
+['sl','Quantas vezes o Brasil foi campeão?','5 vezes: 1958, 1962, 1970, 1994 e 2002.'],
+['mn','O que é uma vogal nasal?','A vogal em que o ar sai pela boca e pelo nariz ao mesmo tempo.'],
+['mn','Quais sinais marcam o som nasal?','O til, o m e o n.'],
+['mn','Em quais vogais vai o til?','Só no a e no o.'],
+['mn','Em que sílaba fica o til?','Na última sílaba (exceto diminutivos, como coraçãozinho).'],
+['mn','Quando usamos M?','Antes de P e B: tampa, bomba, sombra.'],
+['mn','Quando usamos N?','Antes das outras consoantes: ponte, cantar, mundo.'],
+['mn','Ca_po: M ou N?','Campo, com M (vem antes de P).'],
+['mn','Po_te: M ou N?','Ponte, com N.'],
+['mn','sobra x sombra: o que mudou?','O M deixou a vogal nasal e mudou o som, a escrita e o significado.'],
+['mn','Hortela ou hortelã?','Hortelã, com til.'],
+['ei','O que é sílaba tônica?','A sílaba mais forte da palavra.'],
+['ei','O que é sílaba átona?','A sílaba mais fraca da palavra.'],
+['ei','Falamos "bolu". Como se escreve?','Bolo: na sílaba fraca o o pode soar como u, mas escreve com o.'],
+['ei','Falamos "leiti". Como se escreve?','Leite.'],
+['ei','Quando a palavra termina em i ou u escritos?','Quando a última sílaba é a mais forte: caqui, caju, peru, urubu.'],
+['ei','Sapu ou sapo?','Sapo.'],
+['ei','Urubu ou urubo?','Urubu (a última sílaba é a mais forte).'],
+['ei','Macacu ou macaco?','Macaco.'],
+['ei','Abacaxe ou abacaxi?','Abacaxi (a última sílaba é a mais forte).'],
+['su','O que são substantivos?','Palavras que dão nome a seres reais e imaginários, objetos, lugares, ideias e sentimentos.'],
+['su','Amor é substantivo?','Sim! Sentimentos também têm nome.'],
+['su','O que é gênero do substantivo?','Masculino (gato) ou feminino (gata).'],
+['su','O que é número do substantivo?','Singular (gato) ou plural (gatos).'],
+['su','Diminutivo e aumentativo de gato','Gatinho e gatão.'],
+['su','Diminutivo e aumentativo de amigos','Amiguinhos e amigões.'],
+['su','Quais são os artigos?','o, a, os, as, um, uma, uns, umas.'],
+['su','Artigos que vão com masculinos','o, os, um, uns.'],
+['su','Artigos que vão com femininos','a, as, uma, umas.'],
+['su','Como saber se é substantivo?','Ver se aceita artigo: "a lua" sim; "o ler" não.'],
+['ve','O que são verbos?','Palavras que indicam as ações dos seres: correr, jogar, estudar.'],
+['ve','O que é o agente da ação?','Quem faz a ação. Em "O mosquito traz a dengue": o mosquito.'],
+['ve','O que é o objeto da ação?','O que recebe a ação. Em "O mosquito traz a dengue": a dengue.'],
+['ve','Qual é o verbo em "O garoto acariciou o cão"?','Acariciou.'],
+['ve','Por que muda: voa, voou, voam?','O verbo muda conforme quem faz a ação e quando.'],
+['ve','Verbos do poema "Duelo"','tranca, canta, taca, cata, ataca, acata.'],
+['ve','"O beque tranca a bola": a bola é agente ou objeto?','Objeto da ação.'],
+['ve','"A bola canta o craque": a bola é agente ou objeto?','Agente da ação.'],
+['fa','O que é uma fábula?','Uma história curta em que animais falam e agem como gente, e que termina com uma moral.'],
+['fa','O que é a moral da história?','A lição que a fábula ensina.'],
+['fa','Quem são os personagens de "O sapo e o cordeiro"?','O sapo, o cordeiro e a ovelha.'],
+['fa','Por que o cordeiro se queixava?','Achava que a natureza não foi generosa com ele e não entendia o bom humor do sapo.'],
+['fa','O que é batráquio?','O grupo de animais a que o sapo pertence. No texto, o batráquio é o sapo.'],
+['fa','Por que o sapo viajou?','Para encontrar uma companheira (a ovelha) para o cordeiro.'],
+['fa','Como a história termina?','O cordeiro fica feliz e vai se casar com a ovelha.'],
+['fa','Qual é a moral de "O sapo e o cordeiro"?','"Quem não tem bons olhos, faça amigos para tê-los em seu lugar."'],
+['fa','Ideia principal da fábula','Bons amigos podem ver o que nossos olhos não veem.'],
+['fa','Quem escreveu "O sapo e o cordeiro"?','Rachel Gazolla de Andrade.'],
+['fa','O que é um parágrafo?','Cada ideia do texto. Começa com letra maiúscula e com um recuo.'],
+['fa','O que é o recuo?','O espaço entre a margem da página e o começo da primeira linha do parágrafo.'],
+['fa','Partes da fábula: quais parágrafos?','Parte 1: §1 a §4. Parte 2: §5 e §6. Parte 3: §7 a §11.'],
+['fa','O que quer dizer "cabisbaixo"?','De cabeça baixa (triste).'],
+['fa','O que quer dizer "ponderava"?','Examinava com atenção.'],
+['fa','O que quer dizer "ágil"?','Ligeiro.'],
+['fa','Características do sapo na fábula','Bem-humorado, livre, ágil e generoso.'],
+['fa','Características do cordeiro na fábula','Triste e de rebanho.'],
+['fa','Na moral, "ter bons olhos" significa...','Entender mais (e não só enxergar bem).']];
+let fset='tudo',deck=[],fpos=0,okc=0;
+const fil=document.getElementById('ffil'),fc=document.getElementById('fc');
+const keys=['tudo','sl','mn','ei','su','ve','fa'];
+fil.innerHTML=keys.map(k=>`<button data-k="${k}">${k==='tudo'?'Tudo':G[k][0]}</button>`).join('');
+const startF=()=>{deck=shuffle(cards.filter(c=>fset==='tudo'||c[0]===fset));fpos=0;okc=0;fil.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.k===fset));drawF()};
+const drawF=()=>{fc.classList.remove('flip');const done=fpos>=deck.length;const c=done?null:deck[fpos];
+document.getElementById('ftag').textContent=done?'Fim!':G[c[0]][0];document.getElementById('ftag').style.background=done?'var(--ok)':G[c[0]][1];
+document.getElementById('ffront').textContent=done?`Você acertou ${okc} cartões!`:c[1];
+document.getElementById('fback').textContent=done?'Toque em "Embaralhar e recomeçar" para treinar de novo.':c[2];
+const total=cards.filter(c=>fset==='tudo'||c[0]===fset).length;
+document.getElementById('fcount').textContent=`${Math.min(okc,total)} de ${total} sabidos`;document.getElementById('fbar').style.width=(okc/total*100)+'%'};
+fc.addEventListener('click',()=>fc.classList.toggle('flip'));
+fc.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();fc.classList.toggle('flip')}});
+document.getElementById('fyes').addEventListener('click',()=>{if(fpos<deck.length){okc++;fpos++;drawF()}});
+document.getElementById('fno').addEventListener('click',()=>{if(fpos<deck.length){deck.push(deck[fpos]);fpos++;drawF()}});
+document.getElementById('fre').addEventListener('click',startF);
+fil.addEventListener('click',e=>{const b=e.target.closest('button');if(b){fset=b.dataset.k;startF()}});
+startF();
+
+/* SIMULADO */
+const Q=[
+['O slogan é...',['Uma frase longa que conta uma história','Uma frase curta e criativa que faz parte dos anúncios','O nome da empresa'],1,'Ele serve para convencer a comprar.'],
+['A finalidade do slogan é...',['Convencer os leitores a comprar um produto ou serviço','Ensinar uma lição de moral','Contar como foi a Copa'],0,'Por isso ele precisa ser fácil de lembrar.'],
+['No anúncio do leite Ninho, o anunciante é...',['A revista Veja','A Nestlé','A FIFA'],1,'Veja foi o veículo (onde o anúncio saiu).'],
+['O anúncio do Ninho saiu em junho de 2002, época...',['Da Copa do Mundo','Do Natal','Das Olimpíadas'],0,'Por isso ele fala da seleção e diz "Boa sorte, Brasil".'],
+['Que frase mostra que o Brasil ainda não tinha ganhado a Copa?',['Boa sorte, Brasil','Ninho é como todos nós','Leite em pó integral'],0,'Quem deseja boa sorte ainda está esperando o resultado.'],
+['As cores do anúncio do Ninho são as mesmas...',['Do uniforme da escola','Da bandeira do Brasil','Do arco-íris'],1,'Verde, amarelo, azul e branco.'],
+['No slogan "O Brasil é Ninho desde pequenininho", rimam...',['Brasil e desde','Ninho e pequenininho','É e Brasil'],1,'Ninho / pequenininho.'],
+['"Feito para dividir" é o slogan de...',['Um chocolate (BIS)','Um tênis','Uma bicicleta'],0,'É da Lacta.'],
+['A primeira Copa do Mundo foi...',['No Brasil, em 2014','No Uruguai, em 1930','Na França, em 2018'],1,'Quem organiza a Copa é a FIFA.'],
+['O Brasil foi pentacampeão em...',['1958','1970','2002'],2,'Na Copa do Japão e da Coreia do Sul.'],
+['Nas vogais nasais, o ar passa...',['Só pela boca','Pela boca e pelo nariz','Só pelo nariz'],1,'Marcamos com til, m ou n.'],
+['O til só aparece em cima das vogais...',['a e o','e e i','i e u'],0,'Ex.: mãe, leão.'],
+['Usamos M antes de...',['P e B','T e D','C e G'],0,'Ex.: tampa, bomba.'],
+['Qual palavra está escrita certo?',['canpo','campo','cãpo'],1,'M antes de P.'],
+['Qual palavra está escrita certo?',['pomte','ponte','põte'],1,'N antes de T.'],
+['Qual destas palavras precisa de til?',['bambu','leao','chumbo'],1,'Leão.'],
+['Qual destas palavras NÃO precisa de til?',['mae','bombom','balao'],1,'Mãe e balão levam til; bombom tem M.'],
+['Falamos "bolu", mas escrevemos...',['bolu','bolo','bollo'],1,'Na sílaba fraca o o pode soar como u.'],
+['Qual palavra está escrita certo?',['leiti','leite','leitchi'],1,'Leite.'],
+['Por que "urubu" termina com u?',['Porque a última sílaba é a mais forte','Porque é nome de ave','Porque tem 3 sílabas'],0,'Quando a última sílaba é forte e soa i ou u, escrevemos i ou u.'],
+['Substantivos são palavras que...',['Indicam ações','Dão nome aos seres, objetos, lugares e sentimentos','Vêm sempre no fim da frase'],1,'Ex.: gato, Maria, amor.'],
+['Qual destas palavras é um substantivo?',['correr','lua','depressa'],1,'"A lua" aceita artigo.'],
+['O aumentativo de gato é...',['gatinho','gatão','gatos'],1,'Gatinho é o diminutivo.'],
+['Qual artigo combina com "formigas"?',['os','as','o'],1,'Formigas é feminino plural.'],
+['Os artigos o, os, um, uns acompanham substantivos...',['Masculinos','Femininos','Só no plural'],0,'a, as, uma, umas acompanham femininos.'],
+['Verbos são palavras que indicam...',['Nomes','Ações','Lugares'],1,'Ex.: correr, jogar, estudar.'],
+['Em "O mosquito traz a dengue", o agente da ação é...',['o mosquito','traz','a dengue'],0,'Agente é quem faz a ação.'],
+['Em "O professor apontou o lápis", o objeto da ação é...',['o professor','apontou','o lápis'],2,'Objeto é o que recebe a ação.'],
+['Uma fábula é uma história em que...',['Animais falam e agem como gente e há uma moral','Só existem pessoas de verdade','Não há personagens'],0,'Como "O sapo e o cordeiro".'],
+['Na fábula, por que o sapo viajou?',['Para conhecer outras lagoas','Para encontrar uma companheira para o cordeiro','Porque estava cansado do cordeiro'],1,'Ele trouxe uma ovelha alegre.'],
+['No trecho "O batráquio pensava num modo de ajudar o amigo", o batráquio é...',['o sapo','o cordeiro','a ovelha'],0,'E o amigo é o cordeiro.'],
+['A moral de "O sapo e o cordeiro" é...',['Quem não tem bons olhos, faça amigos para tê-los em seu lugar','Devagar se vai ao longe','Quem ri por último ri melhor'],0,'Bons amigos enxergam o que a gente não vê.']];
+const OPEN=[
+['O que é um slogan e para que ele serve?','É uma frase curta e criativa dos anúncios. Serve para convencer as pessoas a comprar um produto ou serviço.'],
+['Que produto é anunciado no texto publicitário da pág. 20? Quem é o anunciante?','O leite Ninho. O anunciante é a Nestlé.'],
+['O que acontecia no futebol brasileiro em junho de 2002, quando o anúncio circulou?','A Copa do Mundo de Futebol. O Brasil disputava a Copa (e depois foi pentacampeão).'],
+['Que frase do anúncio mostra que a Copa ainda não tinha terminado?','"Boa sorte, Brasil."'],
+['As cores do anúncio estão em qual símbolo nacional?','Na bandeira do Brasil: verde, amarelo, azul e branco.'],
+['A palavra "ninho" lembra proteção e aconchego. O anúncio quer que o consumidor acredite em qual ideia?','Que o leite Ninho protege e cuida das crianças desde pequenininhas, como um ninho.'],
+['Explique a diferença entre "sobra" e "sombra".','Em "sombra" entrou o M, que deixa a vogal nasal. Mudaram a pronúncia, a escrita e o significado.'],
+['Quando usamos M antes de consoante? Dê dois exemplos.','Antes de P e B. Ex.: tampa, bomba, sombra, limpo.'],
+['Por que escrevemos "leite" e não "leiti", mas escrevemos "caqui" com i?','Em "leite" o e está na sílaba fraca e só soa como i. Em "caqui" a última sílaba é a mais forte, então se escreve com i.'],
+['Complete com um substantivo: "O aniversariante ganhou um ___."','Por exemplo: presente, bolo, carrinho.'],
+['No poema "Duelo", a palavra "bola" é agente ou objeto nos versos 1, 3 e 5? E nos versos 2, 4 e 6?','Nos versos 1, 3 e 5 é objeto da ação; nos versos 2, 4 e 6 é agente da ação. Nos dois casos é substantivo.'],
+['O que é uma fábula? Qual é a moral de "O sapo e o cordeiro"?','História curta com animais que falam e agem como gente, que termina com uma lição. Moral: "Quem não tem bons olhos, faça amigos para tê-los em seu lugar."']];
+/* Geradores de questões novas */
+const mk=(q,right,wrong,exp)=>{const o=shuffle([right,...wrong]);return [q,o,o.indexOf(right),exp]};
+const wrongMN=w=>w[2].replace(w[1]==='m'?'m':'n',w[1]==='m'?'n':'m');
+const GEN=[
+()=>{const w=pick(MN);return mk(`Qual palavra está escrita certo?`,w[2],[wrongMN(w)],w[1]==='m'?'M antes de P e B.':'N antes das outras consoantes.')},
+()=>{const w=pick(TIL.filter(x=>x[0]!==x[1]));const o=pick(TIL.filter(x=>x[0]===x[1]));return mk('Qual destas palavras precisa de til?',w[0],[o[0]],`Escreve-se ${w[1]}.`)},
+()=>{const w=pick(EI.filter(x=>x[0]!==x[1]));return mk(`Falamos "${w[0]}". Como se escreve?`,w[1],[w[0]],'Na sílaba fraca, e e o podem soar como i e u.')},
+()=>{const w=pick(EI.filter(x=>x[0]===x[1]&&/[iu]$/.test(x[0])));const alt=w[0].replace(/i$/,'e').replace(/u$/,'o');return mk('Qual palavra está escrita certo?',w[0],[alt],'A última sílaba é a mais forte e tem som de i ou u.')},
+()=>{const w=pick(NOUN.filter(x=>x[1]!=='x'));return mk(`Qual artigo combina com "${w[0]}"?`,w[1],shuffle(['o','a','os','as'].filter(x=>x!==w[1])).slice(0,2),`${cap(w[1])} ${w[0]}.`)},
+()=>{const w=pick(NOUN.filter(x=>x[1]==='x'));const s=pick(NOUN.filter(x=>x[1]!=='x'));return mk('Qual destas palavras é um substantivo?',s[0],[w[0]],`"${s[1]} ${s[0]}" aceita artigo.`)},
+()=>{const s=pick(VB);return mk(`Em "${s[0]} ${s[1]} ${s[2]}", qual é o verbo?`,s[1],[s[0].split(' ').pop(),s[2].split(' ').pop()],'O verbo indica a ação.')},
+()=>{const s=pick(VB),ag=Math.random()<.5;return mk(`Em "${s[0]} ${s[1]} ${s[2]}", qual é o ${ag?'agente':'objeto'} da ação?`,(ag?s[0]:s[2]).toLowerCase(),[(ag?s[2]:s[0]).toLowerCase(),s[1]],ag?'Agente é quem faz a ação.':'Objeto é o que recebe a ação.')},
+()=>{const s=pick(SLOG);return mk(`"${s[0]}" é o slogan de...`,s[1],shuffle(SLOG.filter(x=>x!==s)).slice(0,2).map(x=>x[1]),`É ${s[1]}.`)}];
+const fromC=()=>{const c=pick(C);if(Math.random()<.5)return mk(c.m[0],c.m[1],[c.m[2],c.m[3]],c.o[3]);return [`Verdadeiro ou falso: ${c.v[0]}`,['Verdadeiro','Falso'],c.v[1]?0:1,c.o[3]]};
+let SQ=Q,SO=OPEN,snum=1,ans={},only=null;
+const quiz=document.getElementById('quiz');
+const renderQ=()=>{const idx=only||SQ.map((_,i)=>i);
+document.getElementById('stitle').textContent=snum===1?'Simulado 1 · questões da apostila':`Simulado ${snum} · questões novas`;
+quiz.innerHTML=idx.map(i=>{const q=SQ[i];return `<div class="q card" data-i="${i}"><div class="num">Questão ${i+1}</div><b>${q[0]}</b><div class="opts">${q[1].map((o,j)=>`<button data-j="${j}">${'abcd'[j]}) ${o}</button>`).join('')}</div><div class="exp">${q[3]}</div></div>`}).join('');upd()};
+const upd=()=>{const idx=only||SQ.map((_,i)=>i),n=idx.filter(i=>i in ans).length,ok=idx.filter(i=>ans[i]===SQ[i][2]).length;
+document.getElementById('score').textContent=`${ok} certas de ${n} respondidas · ${idx.length} no total`;document.getElementById('qbar').style.width=(n?ok/idx.length*100:0)+'%'};
+quiz.addEventListener('click',e=>{const b=e.target.closest('.opts button');if(!b)return;const box=b.closest('.q'),i=+box.dataset.i;if(i in ans)return;
+const j=+b.dataset.j;ans[i]=j;box.querySelectorAll('.opts button').forEach((x,k)=>{if(k===SQ[i][2])x.classList.add('ok');else if(k===j)x.classList.add('no')});
+box.querySelector('.exp').classList.add('show');box.querySelector('.exp').insertAdjacentHTML('afterbegin',j===SQ[i][2]?'<b>Isso aí!</b> ':'<b>Quase!</b> ');upd()});
+document.getElementById('qagain').addEventListener('click',()=>{ans={};only=null;renderQ()});
+document.getElementById('qwrong').addEventListener('click',()=>{const w=Object.keys(ans).map(Number).filter(i=>ans[i]!==SQ[i][2]);if(!w.length)return;only=w;w.forEach(i=>delete ans[i]);renderQ()});
+const renderOpen=()=>{document.getElementById('open').innerHTML=SO.map((o,i)=>`<div class="q card"><div class="num">Pergunta ${i+1}</div><b>${o[0]}</b><div class="row" style="justify-content:flex-start"><button data-o="${i}">Ver resposta modelo</button></div><div class="ans" id="ans${i}">${o[1]}</div></div>`).join('')};
+document.getElementById('qnew').addEventListener('click',()=>{
+ const seen=new Set(),out=[];const add=q=>{if(q&&!seen.has(q[0]+q[1].join())){seen.add(q[0]+q[1].join());out.push(q)}};
+ let guard=0;while(out.length<12&&guard++<200)add(pick(GEN)());
+ guard=0;while(out.length<18&&guard++<200)add(fromC());
+ shuffle([...Q]).slice(0,7).forEach(q=>{const o=shuffle(q[1].map((t,j)=>[t,j===q[2]]));add([q[0],o.map(x=>x[0]),o.findIndex(x=>x[1]),q[3]])});
+ guard=0;while(out.length<25&&guard++<300)add(pick(GEN)());
+ SQ=shuffle(out).slice(0,25);
+ SO=shuffle([...OPEN,...C.map(c=>[c.o[0],c.o[3]])]).slice(0,8);
+ snum++;ans={};only=null;renderQ();renderOpen();window.scrollTo(0,document.getElementById('s-simulado').offsetTop)});
+document.getElementById('open').addEventListener('click',e=>{const b=e.target.closest('button[data-o]');if(b){document.getElementById('ans'+b.dataset.o).classList.toggle('show')}});
+
+/* PROVA
+   Cada conceito existe em 4 formatos: m = optativa (3 alternativas, a 1ª é a certa), v = verdadeiro ou falso,
+   o = pergunta aberta (vale para escrita e áudio). k = grupos de palavras-chave (sem acento); n = quantos grupos precisam aparecer. */
+const C=[
+{t:'sl',m:['O slogan é...','uma frase curta e criativa dos anúncios','um texto longo com uma moral','o nome da revista'],v:['O slogan serve para convencer as pessoas a comprar um produto ou serviço.',1],o:['O que é um slogan?',[['frase'],['curta','criativ','anuncio','propaganda','publicit','convenc','compr','vend']],2,'Uma frase curta e criativa dos textos publicitários, que serve para convencer a comprar.']},
+{t:'sl',m:['O anúncio do leite Ninho de 2002 fala de qual acontecimento?','a Copa do Mundo de Futebol','o Natal','o Carnaval'],v:['A frase "Boa sorte, Brasil" mostra que a Copa ainda não tinha terminado.',1],o:['Que acontecimento aparece no anúncio do leite Ninho de 2002?',[['copa','futebol','selecao']],1,'A Copa do Mundo de Futebol.']},
+{t:'sl',m:['As cores do anúncio do Ninho estão presentes...','na bandeira do Brasil','no uniforme da escola','no arco-íris'],v:['O anúncio do Ninho usa as cores verde, amarelo, azul e branco.',1],o:['Em qual símbolo nacional estão as cores do anúncio do Ninho?',[['bandeira']],1,'Na bandeira do Brasil.']},
+{t:'sl',m:['No slogan "O Brasil é Ninho desde pequenininho", as palavras que rimam são...','Ninho e pequenininho','Brasil e desde','é e Ninho'],v:['No anúncio do Ninho, a Nestlé é o anunciante.',1],o:['Qual é o slogan do anúncio do leite Ninho?',[['brasil'],['ninho'],['pequenininho']],3,'"O Brasil é Ninho desde pequenininho."']},
+{t:'mn',m:['Usamos M antes das letras...','P e B','T e D','S e R'],v:['Antes de P e B usamos N.',0],o:['Quando usamos M antes de consoante?',[[' p ',' p,','p e b',' b ','antes de p','antes do p']],1,'Antes de P e B, como em tampa e bomba.']},
+{t:'mn',m:['Qual palavra está escrita certo?','campo','canpo','cãpo'],v:['A palavra "ponte" se escreve com N.',1],o:['Escreva duas palavras com M antes de P ou B.',[['campo','tampa','bomba','sombra','limpo','lombo','tempo','comprar','samba','lembr','tumba','pomba','bambu','bombom','ambas','empurr','chumbo','sempre','compr','embora','lampada','pampa','bumbo','tombo']],1,'Por exemplo: campo, tampa, bomba, sombra, tempo.']},
+{t:'mn',m:['O til é usado somente sobre as vogais...','a e o','e e i','i e u'],v:['O til marca que o som da vogal é nasal.',1],o:['O que acontece com o ar quando falamos uma vogal nasal?',[['nariz']],1,'O ar passa pela boca e pelo nariz ao mesmo tempo.']},
+{t:'mn',m:['Qual destas palavras precisa de til?','leao','bambu','chumbo'],v:['A palavra "bombom" precisa de til.',0],o:['Escreva duas palavras com til.',[['ao ','oes','aes','mae','leao','mao','pao','cao','joao','melao','balao','hortela','orfa','poe','irma','coracao','educacao','limao','feijao','sabao']],1,'Por exemplo: leão, mãe, balões, João, hortelã.']},
+{t:'ei',m:['Falamos "bolu", mas escrevemos...','bolo','bolu','bollo'],v:['A palavra certa é "leiti".',0],o:['Como se escrevem as palavras que falamos "sapu" e "leiti"?',[['sapo'],['leite']],2,'Sapo e leite.']},
+{t:'ei',m:['Por que "caju" se escreve com u no final?','porque a última sílaba é a mais forte','porque é uma fruta','porque é curta'],v:['Urubu, peru e abacaxi já estão escritos corretamente.',1],o:['O que é a sílaba tônica?',[['forte']],1,'É a sílaba mais forte da palavra.']},
+{t:'su',m:['Substantivos são palavras que...','dão nome aos seres, objetos, lugares e sentimentos','indicam ações','ligam frases'],v:['"Amor" é um substantivo.',1],o:['O que são substantivos?',[['nome','nomei']],1,'Palavras que dão nome aos seres reais e imaginários, objetos, lugares, ideias e sentimentos.']},
+{t:'su',m:['O diminutivo de "menina" é...','menininha','meninona','meninas'],v:['O aumentativo de "gato" é "gatão".',1],o:['Escreva o diminutivo e o aumentativo de gato.',[['gatinho'],['gatao']],2,'Gatinho (diminutivo) e gatão (aumentativo).']},
+{t:'su',m:['Qual artigo combina com "luzes"?','as','os','o'],v:['Os artigos o, os, um e uns acompanham substantivos femininos.',0],o:['Quais são os artigos?',[[' o ',' os '],[' a ',' as '],[' um ',' uns '],[' uma ',' umas ']],3,'o, a, os, as, um, uma, uns, umas.']},
+{t:'su',m:['Como saber se uma palavra é substantivo?','ver se ela aceita artigo antes','ver se ela é comprida','ver se ela termina em r'],v:['"Ler" é substantivo, porque podemos dizer "o ler apareceu".',0],o:['A palavra "lua" é substantivo? Como você sabe?',[['sim','e substantivo','aceita'],['artigo',' a lua']],2,'Sim, porque aceita artigo: "a lua apareceu".']},
+{t:'ve',m:['Verbos são palavras que indicam...','ações','nomes','lugares'],v:['Correr, jogar e estudar são verbos.',1],o:['O que são verbos? Dê um exemplo.',[['acao','acoes','fazer','faz'],['correr','jogar','estudar','trazer','vencer','sorrir','construir','pular','comer','andar','voar','brincar','cantar','falar','ler','dancar','nadar','beber','dormir','escrever','ar ','er ','ir ']],2,'Palavras que indicam ações. Ex.: correr, jogar, estudar.']},
+{t:'ve',m:['Em "O mosquito traz a dengue", o verbo é...','traz','mosquito','dengue'],v:['Em "O mosquito traz a dengue", "a dengue" é o agente da ação.',0],o:['Em "O garoto acariciou o cão", quem é o agente e qual é o objeto da ação?',[['garoto'],['cao']],2,'Agente: o garoto. Objeto: o cão. A ação (verbo) é acariciou.']},
+{t:'ve',m:['No verso "a bola canta o craque", a bola é...','agente da ação','objeto da ação','um verbo'],v:['No verso "o beque tranca a bola", a bola é o objeto da ação.',1],o:['Cite dois verbos do poema "Duelo".',[['tranca'],['canta'],['taca'],['cata'],['ataca'],['acata']],2,'tranca, canta, taca, cata, ataca, acata.']},
+{t:'fa',m:['Uma fábula é...','uma história curta com animais que agem como gente e uma moral','uma notícia de jornal','um anúncio com slogan'],v:['Toda fábula termina com uma moral, a lição da história.',1],o:['O que é uma fábula?',[['histori','narrativ','conto'],['anima','bicho','sapo','moral','licao','ensina']],2,'Uma história curta em que animais falam e agem como gente, e que termina com uma moral.']},
+{t:'fa',m:['Por que o sapo viajou?','para encontrar uma companheira para o cordeiro','para conhecer outras lagoas','para fugir do cordeiro'],v:['O sapo viajou porque estava cansado da tristeza do cordeiro.',0],o:['O que o sapo fez para ajudar o cordeiro?',[['ovelha','companheira','namorada','esposa','amiga']],1,'Viajou e trouxe uma ovelha alegre para conversar com eles; o cordeiro ficou feliz e vai se casar com ela.']},
+{t:'fa',m:['"Cabisbaixo, despedia-se do sapo com tristeza." Cabisbaixo significa...','de cabeça baixa','de ponta-cabeça','de braços abertos'],v:['Na fábula, o sapo é bem-humorado, livre, ágil e generoso.',1],o:['Cite duas características do sapo e uma do cordeiro na fábula.',[['humor','livre','agil','generos','alegr','esperto'],['trist','rebanho','queix']],2,'Sapo: bem-humorado, livre, ágil, generoso. Cordeiro: triste, de rebanho.']},
+{t:'fa',m:['O que é o recuo do parágrafo?','o espaço entre a margem e o começo da primeira linha','o ponto-final','o título do texto'],v:['Todo parágrafo começa com letra minúscula.',0],o:['O que é um parágrafo?',[['ideia','trecho','parte'],['maiuscul','recuo','espaco','linha']],1,'Cada ideia do texto forma um parágrafo; ele começa com letra maiúscula e com um recuo.']},
+{t:'fa',m:['A moral de "O sapo e o cordeiro" é...','quem não tem bons olhos, faça amigos para tê-los em seu lugar','quem espera sempre alcança','devagar se vai ao longe'],v:['No trecho "O batráquio pensava num modo de ajudar o amigo", o batráquio é o cordeiro.',0],o:['Qual é a ideia principal da fábula "O sapo e o cordeiro"?',[['amig'],['olho','ve ','veem','enxerg','ajud']],2,'Bons amigos podem ver o que nossos olhos não veem.']}];
+renderQ();renderOpen();
+const FN={m:'Marcar alternativa',v:'Verdadeiro ou falso',o:'Escrever',a:'Falar'};
+const MODES={misto:['m','m','v','v','o','o','o','a','a','a'],optativa:['m','v','m','v','m','v','m','v','m','v'],escrita:Array(10).fill('o'),audio:Array(10).fill('a')};
+const MODEHINT={misto:'4 de marcar, 3 de escrever e 3 de falar.',optativa:'Alternativas e verdadeiro ou falso.',escrita:'Ela escreve as respostas com as próprias palavras.',audio:'Ela fala a resposta no microfone e o texto aparece sozinho. Funciona melhor no Chrome ou Safari.'};
+const ROT={m:'a',v:'o',o:'m',a:'v'};
+const PICK={sl:2,mn:2,ei:1,su:2,ve:1,fa:2};
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+const norm=s=>' '+(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9 -]/g,' ')+' ';
+const st={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let mode='misto',P=st.get('fio-pt-prova',null),hist=st.get('fio-pt-hist',[]),rec=null;
+const pexam=document.getElementById('pexam'),pres=document.getElementById('pres'),psend=document.getElementById('psend'),pstart=document.getElementById('pstart');
+const build=(fmts,force,num,label)=>{
+ const ids=[...force];
+ const pool=shuffle(C.map((_,i)=>i).filter(i=>!ids.includes(i)));
+ const need={...PICK};ids.forEach(i=>need[C[i].t]--);
+ pool.forEach(i=>{if(ids.length<10&&need[C[i].t]>0){ids.push(i);need[C[i].t]--}});
+ pool.forEach(i=>{if(ids.length<10&&!ids.includes(i))ids.push(i)});
+ shuffle(ids);
+ const f=typeof fmts==='function'?null:shuffle([...fmts]);
+ return {id:Date.now(),num,label,done:false,items:ids.map((c,j)=>{const fm=typeof fmts==='function'?fmts(c):f[j];return {c,f:fm,order:shuffle([0,1,2]),a:null,auto:null,ov:null}})};
+};
+const qScore=it=>it.ov!=null?it.ov:it.auto;
+const total=()=>Math.round(P.items.reduce((s,it)=>s+(qScore(it)||0),0)*10)/10;
+const gradeIt=it=>{const c=C[it.c];
+ if(it.f==='m')return it.a===0?1:0;
+ if(it.f==='v')return it.a===c.v[1]?1:0;
+ const t=norm(it.a);if(!t.trim())return 0;
+ const hit=c.o[1].filter(g=>g.some(w=>t.includes(w))).length;
+ return hit>=c.o[2]?1:hit>0?.5:0};
+const render=()=>{
+ if(!P){pexam.innerHTML='';pres.innerHTML='';psend.hidden=true;pstart.hidden=false;return}
+ pstart.hidden=true;
+ const head=`<h3 style="margin-top:18px">${esc(P.label)}</h3>`;
+ pexam.innerHTML=head+P.items.map((it,i)=>{const c=C[it.c],d=P.done;let body='',q='';
+  const cls=d?(qScore(it)>=1?'right':qScore(it)>0?'half':'wrong'):'';
+  if(it.f==='m'){q=c.m[0];body=`<div class="opts">${it.order.map(k=>{let x='';if(d){if(k===0)x='ok';else if(it.a===k)x='no'}else if(it.a===k)x='sel';return `<button data-i="${i}" data-k="${k}" class="${x}"${d?' disabled':''}>${esc(c.m[k+1])}</button>`}).join('')}</div>`}
+  else if(it.f==='v'){q=c.v[0];body=`<div class="opts" style="grid-template-columns:1fr 1fr">${[1,0].map(k=>{let x='';if(d){if(k===c.v[1])x='ok';else if(it.a===k)x='no'}else if(it.a===k)x='sel';return `<button data-i="${i}" data-k="${k}" class="${x}"${d?' disabled':''}>${k?'Verdadeiro':'Falso'}</button>`}).join('')}</div>`}
+  else{q=c.o[0];body=`<textarea data-i="${i}" placeholder="${it.f==='a'?'Aperte Falar e responda em voz alta. Dá para corrigir o texto aqui.':'Escreva sua resposta aqui.'}"${d?' readonly':''}>${esc(it.a||'')}</textarea>`;
+   if(it.f==='a'&&!d)body=`<div class="mic"><button data-say="${i}">Ouvir a pergunta</button><button class="primary" data-rec="${i}">Falar</button><span class="hint" id="h${i}">${SR?'':'Este navegador não ouve. Escreva a resposta.'}</span></div>`+body}
+  let fb='';
+  if(d){
+   fb=`<div class="fb"><b>${qScore(it)>=1?'Certo!':qScore(it)>0?'Meio certo.':'Não foi dessa vez.'}</b> Resposta: ${esc(it.f==='o'||it.f==='a'?c.o[3]:it.f==='m'?c.m[1]:(c.v[1]?'Verdadeiro':'Falso'))}</div>`;
+   if(it.f==='o'||it.f==='a')fb+=`<div class="ov">Correção do adulto: ${[[1,'Certa'],[.5,'Meio'],[0,'Errada']].map(([v,l])=>`<button data-ov="${i}" data-v="${v}" class="${qScore(it)===v?'on':''}">${l}</button>`).join('')}</div>`}
+  return `<div class="card pq ${cls}"><div class="num">Questão ${i+1}<span class="fmt">${FN[it.f]}</span></div><b>${esc(q)}</b>${body}${fb}</div>`}).join('');
+ psend.hidden=P.done;
+ if(P.done){const g=total(),ok=g>=8;
+  const miss=P.items.filter(it=>(qScore(it)||0)<1);
+  const tops=[...new Set(miss.map(it=>G[C[it.c].t][0]))];
+  pres.innerHTML=`<div class="result ${ok?'pass':'fail'}"><div class="grade">${g.toLocaleString('pt-BR')}</div><p style="color:#fff;font-weight:800;font-size:20px;margin:.3em 0">${ok?'Aprovada! Passou da nota 8.':'Ficou abaixo de 8. Vamos refazer em outro formato.'}</p>${tops.length?`<p style="color:#fff">Revisar na aba Entender: ${tops.join(', ')}.</p>`:''}<div class="row" style="justify-content:flex-start">${ok?'':'<button id="pretry">Fazer a recuperação</button>'}<button id="pnew">${ok?'Fazer outra prova':'Começar do zero'}</button></div></div>`;
+  document.getElementById('pnew').onclick=()=>{P=null;st.set('fio-pt-prova',null);render();window.scrollTo(0,document.getElementById('s-prova').offsetTop)};
+  const r=document.getElementById('pretry');if(r)r.onclick=()=>{
+   const missIdx=miss.map(it=>it.c),fm={};miss.forEach(it=>fm[it.c]=ROT[it.f]);
+   P=build(c=>fm[c]||MODES.misto[Math.floor(Math.random()*10)],missIdx,P.num+1,`Prova ${P.num+1} · Recuperação: as que errou voltam em outro formato`);
+   save();render();window.scrollTo(0,pres.offsetTop-80)};
+ }else pres.innerHTML='';
+};
+const save=()=>st.set('fio-pt-prova',P);
+const logHist=()=>{const i=hist.findIndex(h=>h.id===P.id);const row={id:P.id,when:new Date().toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}),label:'Prova '+P.num+(P.num>1?' (recuperação)':''),fmt:[...new Set(P.items.map(it=>FN[it.f]))].join(', '),nota:total()};if(i>=0)hist[i]=row;else hist.unshift(row);st.set('fio-pt-hist',hist);drawHist()};
+const drawHist=()=>{document.getElementById('phist').innerHTML=hist.length?hist.map(h=>`<tr><td>${esc(h.when)}</td><td>${esc(h.label)}</td><td>${esc(h.fmt)}</td><td style="text-align:right;font-weight:800;color:${h.nota>=8?'var(--ok)':'var(--no)'}">${h.nota.toLocaleString('pt-BR')}</td></tr>`).join(''):'<tr><td colspan="4" style="color:var(--soft)">Nenhuma prova feita ainda.</td></tr>'};
+document.getElementById('pmodes').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;mode=b.dataset.m;document.querySelectorAll('#pmodes button').forEach(x=>x.classList.toggle('on',x===b));document.getElementById('pmodehint').textContent=MODEHINT[mode]});
+document.getElementById('pmodehint').textContent=MODEHINT.misto;
+document.getElementById('pgo').addEventListener('click',()=>{const n=(hist.length?Math.max(...hist.map(h=>parseInt(h.label.split(' ')[1])||0)):0)+1;P=build(MODES[mode],[],n,`Prova ${n} · ${mode==='misto'?'Formatos misturados':FN[MODES[mode][0]]+(mode==='optativa'?' e verdadeiro ou falso':'')}`);save();render()});
+pexam.addEventListener('click',e=>{
+ const b=e.target.closest('button');if(!b||!P)return;
+ if(b.dataset.k!=null&&!P.done){P.items[+b.dataset.i].a=+b.dataset.k;save();render();return}
+ if(b.dataset.ov!=null){const it=P.items[+b.dataset.ov];it.ov=+b.dataset.v;save();render();logHist();return}
+ if(b.dataset.say!=null){try{const u=new SpeechSynthesisUtterance(C[P.items[+b.dataset.say].c].o[0]);u.lang='pt-BR';speechSynthesis.cancel();speechSynthesis.speak(u)}catch(err){}return}
+ if(b.dataset.rec!=null){const i=+b.dataset.rec,h=document.getElementById('h'+i),ta=pexam.querySelector(`textarea[data-i="${i}"]`);
+  if(!SR){h.textContent='Este navegador não ouve. Escreva a resposta.';ta.focus();return}
+  if(rec){rec.stop();return}
+  rec=new SR();rec.lang='pt-BR';rec.interimResults=true;rec.continuous=false;const base=ta.value?ta.value.trim()+' ':'';
+  rec.onresult=ev=>{let t='';for(const r of ev.results)t+=r[0].transcript;ta.value=base+t;P.items[i].a=ta.value;save()};
+  rec.onerror=ev=>{h.textContent=ev.error==='not-allowed'||ev.error==='service-not-allowed'?'O microfone foi bloqueado. Libere o microfone ou escreva.':'Não deu para ouvir. Tente de novo.'};
+  rec.onend=()=>{rec=null;b.textContent='Falar';b.classList.remove('rec');if(!h.textContent.startsWith('O mic')&&!h.textContent.startsWith('Não'))h.textContent=ta.value?'Pronto! Confira o texto.':''};
+  try{rec.start();b.textContent='Parar';b.classList.add('rec');h.textContent='Ouvindo...'}catch(err){rec=null;h.textContent='Não deu para usar o microfone aqui. Escreva a resposta.'}}
+});
+pexam.addEventListener('input',e=>{const t=e.target.closest('textarea');if(t&&P&&!P.done){P.items[+t.dataset.i].a=t.value;save()}});
+psend.addEventListener('click',()=>{
+ const blank=P.items.filter(it=>it.a==null||(typeof it.a==='string'&&!it.a.trim())).length;
+ if(blank&&psend.dataset.sure!=='1'){psend.dataset.sure='1';psend.textContent=`Faltam ${blank} sem resposta. Entregar mesmo assim?`;return}
+ psend.dataset.sure='';psend.textContent='Entregar a prova';
+ if(rec)rec.stop();
+ P.items.forEach(it=>it.auto=gradeIt(it));P.done=true;if(!P.id)P.id=Date.now();save();logHist();render();window.scrollTo(0,pres.offsetTop-80)});
+const pclear=document.getElementById('pclear');
+pclear.addEventListener('click',()=>{if(pclear.dataset.sure!=='1'){pclear.dataset.sure='1';pclear.textContent='Clique de novo para apagar';return}hist=[];st.set('fio-pt-hist',hist);drawHist();pclear.dataset.sure='';pclear.textContent='Apagar histórico'});
+drawHist();render();
+
+
+/* CONTAR (interpretação por áudio) */
+const TXT=[
+ {id:'fab',k:'fa',t:'O sapo e o cordeiro',w:'Apostila págs. 65 e 66',ask:'Quem são os personagens, o que aconteceu no começo, no meio e no fim, e qual é a moral?',
+  x:'Um sapo e um cordeiro se encontravam todo dia na lagoa. O cordeiro vivia triste e se queixava da vida; achava o sapo livre e ágil. O sapo disse que os olhos do cordeiro enxergavam melhor. Mesmo assim o cordeiro continuou triste. Então o sapo sumiu por sete dias: tinha viajado para buscar uma ovelha bem alegre e a chamou para beber na lagoa. Os três conversaram muitas tardes. O cordeiro ficou feliz, disse que aprendeu a olhar para muitas coisas e que ia se casar com a ovelha. Moral: "Quem não tem bons olhos, faça amigos para tê-los em seu lugar."',
+  ideas:[['Fala do sapo e do cordeiro',[['sapo'],['cordeiro','carneir','ovelhinh']],2],['O cordeiro estava triste ou se queixava',[['trist','queix','reclam','chatead','infeliz']],1],['O sapo viajou ou sumiu para ajudar',[['viaj','sumiu','foi embora','sete dias','7 dias','plano','ajud']],1],['O sapo trouxe uma ovelha',[['ovelha','companheira','namorada','esposa']],1],['No final o cordeiro ficou feliz ou vai casar',[['feliz','alegr','casar','casou','casament','festa']],1],['A moral: amigos veem o que a gente não vê',[['amig'],['olho','ve ','veem','enxerg','ajud','entend']],2]]},
+ {id:'ninho',k:'sl',t:'O anúncio do leite Ninho',w:'Apostila pág. 20',ask:'Que produto é anunciado, quando o anúncio saiu, por que tem aquelas cores e o que ele quer que a gente faça?',
+  x:'Anúncio da revista Veja, junho de 2002, época da Copa do Mundo. Sobre o verde e amarelo da bandeira, aparece a lata amarela do leite Ninho, da Nestlé. Em cima: "O Brasil é Ninho desde pequenininho". Embaixo: "Boa sorte, Brasil. De quem mais entende de leite para quem mais entende de futebol."',
+  ideas:[['Diz que o produto é o leite Ninho',[['leite','ninho']],1],['Fala da Copa do Mundo ou da seleção',[['copa','futebol','selecao','jogo']],1],['As cores são da bandeira do Brasil',[['bandeira','verde','amarelo','azul']],1],['Cita o slogan',[['pequenininho','slogan','brasil e ninho']],1],['O anúncio quer convencer a comprar',[['compr','convenc','vend','propaganda']],1],['Ninho lembra proteção, cuidado com as crianças',[['protec','proteg','cuid','aconcheg','berco','crianc']],1]]},
+ {id:'copa',k:'sl',t:'Você sabia? A Copa do Mundo',w:'Apostila pág. 19',ask:'O que é a Copa do Mundo, quem organiza, onde foi a primeira e quantas vezes o Brasil ganhou?',
+  x:'A Copa do Mundo é uma competição internacional de futebol, organizada pela FIFA a cada quatro anos. A primeira foi no Uruguai, em 1930. O Brasil foi campeão em 1958, 1962, 1970, 1994 e 2002 (pentacampeão). Em 2014 a Copa foi no Brasil, e em 2018, na Rússia, a França venceu.',
+  ideas:[['É uma competição de futebol entre países',[['futebol','competic','campeonato','torneio','paises','selec']],1],['Organizada pela FIFA',[['fifa']],1],['Acontece a cada 4 anos',[['quatro','4 anos']],1],['A primeira foi no Uruguai, em 1930',[['uruguai','1930']],1],['O Brasil ganhou 5 vezes (penta)',[['cinco','5 vezes','penta']],1],['Em 2018 a França ganhou',[['franca','russia','2018']],1]]},
+ {id:'duelo',k:'ve',t:'Poema "Duelo"',w:'Apostila pág. 57',ask:'Quem são os personagens do poema, o que acontece e o que muda entre os versos?',
+  x:'o beque tranca a bola / a bola canta o craque / o beque taca a bola / a bola cata o craque / o beque ataca a bola / a bola acata o craque. (Leo Cunha)',
+  ideas:[['Fala do beque (zagueiro) e do craque',[['beque','zagueiro','defens'],['craque','jogador','atacante']],2],['É sobre futebol, uma disputa',[['futebol','jogo','duelo','disput','briga','partida']],1],['A bola às vezes faz a ação (agente)',[['agente','a bola faz','bola canta','bola cata','bola acata','ela faz']],1],['A bola às vezes recebe a ação (objeto)',[['objeto','recebe','tranca a bola','taca a bola','ataca a bola']],1],['Cita verbos do poema',[['tranca','canta','taca','cata','ataca','acata']],1]]}];
+let ci=0,crec=null,cmr=null,cchunks=[],chist=st.get('fio-pt-contar',[]);
+const cta=document.getElementById('cta'),chint=document.getElementById('chint'),cbtn=document.getElementById('crec'),caud=document.getElementById('caudio'),cout=document.getElementById('cout');
+document.getElementById('cfil').innerHTML=TXT.map((t,i)=>`<button data-i="${i}">${t.t}</button>`).join('');
+const showC=i=>{ci=i;const t=TXT[i];document.querySelectorAll('#cfil button').forEach((b,j)=>b.classList.toggle('on',j===i));
+ const tg=document.getElementById('ctag');tg.textContent=G[t.k][0];tg.style.background=G[t.k][1];
+ document.getElementById('ctitle').textContent=t.t;document.getElementById('cwhere').textContent=t.w;document.getElementById('ctext').textContent=t.x;document.getElementById('cask').textContent=t.ask;
+ cta.value='';cout.innerHTML='';caud.hidden=true;chint.textContent=SR?'':'Este navegador não transcreve a voz: escreva a resposta.'};
+document.getElementById('cfil').addEventListener('click',e=>{const b=e.target.closest('button');if(b)showC(+b.dataset.i)});
+const stopC=()=>{if(crec)try{crec.stop()}catch(e){};if(cmr&&cmr.state!=='inactive')cmr.stop()};
+cbtn.addEventListener('click',async()=>{
+ if(crec||(cmr&&cmr.state==='recording')){stopC();return}
+ cbtn.textContent='⏹ Parar';cbtn.classList.add('rec');chint.textContent='Ouvindo... fale com calma.';
+ try{const stream=await navigator.mediaDevices.getUserMedia({audio:true});cchunks=[];cmr=new MediaRecorder(stream);cmr.ondataavailable=e=>cchunks.push(e.data);
+  cmr.onstop=()=>{stream.getTracks().forEach(t=>t.stop());caud.src=URL.createObjectURL(new Blob(cchunks,{type:cmr.mimeType||'audio/webm'}));caud.hidden=false};cmr.start()}catch(e){}
+ if(SR){crec=new SR();crec.lang='pt-BR';crec.interimResults=true;crec.continuous=true;const base=cta.value?cta.value.trim()+' ':'';
+  crec.onresult=ev=>{let t='';for(const r of ev.results)t+=r[0].transcript;cta.value=base+t};
+  crec.onerror=ev=>{chint.textContent=ev.error==='not-allowed'||ev.error==='service-not-allowed'?'O microfone foi bloqueado. Libere o microfone ou escreva.':'Não deu para ouvir. Tente de novo.'};
+  crec.onend=()=>{crec=null;if(cmr&&cmr.state==='recording')cmr.stop();cbtn.textContent='🎤 Gravar';cbtn.classList.remove('rec');if(chint.textContent.startsWith('Ouvindo'))chint.textContent=cta.value?'Pronto! Confira o texto e aperte Avaliar.':''};
+  try{crec.start()}catch(e){crec=null}}
+ else{chint.textContent='Gravando o áudio. Este navegador não transcreve: depois escreva um resumo.';cmr&&(cmr.onstop=((f)=>()=>{f();cbtn.textContent='🎤 Gravar';cbtn.classList.remove('rec')})(cmr.onstop))}
+});
+document.getElementById('csay').onclick=()=>{try{const u=new SpeechSynthesisUtterance(TXT[ci].ask);u.lang='pt-BR';speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}};
+document.getElementById('cclear').onclick=()=>{stopC();cta.value='';cout.innerHTML='';caud.hidden=true};
+let clast=null;
+const drawCout=(t,hits,nota)=>{cout.innerHTML=`<div class="result ${nota>=8?'pass':'fail'}" style="margin-top:14px"><div class="grade">${nota.toLocaleString('pt-BR')}</div><p style="color:#fff;font-weight:800;margin:.2em 0">${nota>=8?'Muito bem! Você entendeu o texto.':nota>=5?'Bom começo! Veja o que faltou contar.':'Vamos ler de novo e contar outra vez?'}</p></div>`+
+ t.ideas.map((d,j)=>`<div class="idea ${hits[j]?'hit':''}">${hits[j]?'✅':'⬜'} <span>${d[0]}</span></div>`).join('')+
+ `<div class="ov" style="margin-top:10px">Nota do adulto: ${[10,8,6,4,2,0].map(v=>`<button data-cv="${v}" class="${nota===v?'on':''}">${v}</button>`).join('')}</div>`};
+document.getElementById('ceval').onclick=()=>{stopC();const t=TXT[ci],x=norm(cta.value);if(!x.trim()){chint.textContent='Grave ou escreva o que entendeu primeiro.';return}
+ const hits=t.ideas.map(d=>d[1].filter(g=>g.some(w=>x.includes(w))).length>=d[2]);
+ const nota=Math.round(hits.filter(Boolean).length/t.ideas.length*100)/10;
+ clast={id:Date.now(),when:new Date().toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}),t:t.t,ideas:`${hits.filter(Boolean).length} de ${t.ideas.length}`,nota};
+ chist.unshift(clast);st.set('fio-pt-contar',chist);drawCH();drawCout(t,hits,nota);cout.dataset.hits=JSON.stringify(hits)};
+cout.addEventListener('click',e=>{const b=e.target.closest('button[data-cv]');if(!b||!clast)return;clast.nota=+b.dataset.cv;clast.ideas+=' (adulto)';st.set('fio-pt-contar',chist);drawCH();drawCout(TXT[ci],JSON.parse(cout.dataset.hits),clast.nota)});
+const drawCH=()=>{document.getElementById('chist').innerHTML=chist.length?chist.slice(0,30).map(h=>`<tr><td>${esc(h.when)}</td><td>${esc(h.t)}</td><td>${esc(h.ideas)}</td><td style="text-align:right;font-weight:800;color:${h.nota>=8?'var(--ok)':'var(--no)'}">${h.nota.toLocaleString('pt-BR')}</td></tr>`).join(''):'<tr><td colspan="4" style="color:var(--soft)">Nenhuma gravação ainda.</td></tr>'};
+drawCH();showC(0);
+
+/* ABAS */
+const tabs=['plano','entender','contar','flashcards','simulado','prova'];
+const route=()=>{const h=location.hash.slice(1),t=tabs.includes(h)?h:'plano';tabs.forEach(x=>document.getElementById('s-'+x).classList.toggle('on',x===t));document.querySelectorAll('#tabs a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+t))};
+window.addEventListener('hashchange',()=>{route();window.scrollTo(0,0)});route();
+}
+</script>
+</body>
+</html>
