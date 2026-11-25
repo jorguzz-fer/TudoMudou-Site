@@ -288,7 +288,7 @@ button.primary{background:var(--main);border-color:var(--main);color:#fff}
 <h3 id="stitle"></h3>
 <p><b>Parte 1 · Marque a alternativa certa.</b> A resposta aparece na hora, com a explicação.</p>
 <div class="card" style="margin-bottom:18px"><div class="score" id="score">0 de 0</div><div class="meter"><i id="qbar"></i></div>
-<div class="row" style="justify-content:flex-start"><button class="primary" id="qnew">Novo simulado (questões novas)</button><button id="qagain">Refazer tudo</button><button id="qwrong">Refazer as que errei</button></div></div>
+<div class="row" style="justify-content:flex-start"><button class="primary" id="qnew">Novo simulado (questões novas)</button></div></div>
 <div id="quiz"></div>
 <h2>Parte 2 · Perguntas para escrever</h2>
 <p>Iguais às da apostila. Ela responde no caderno ou em voz alta, depois confere a resposta modelo.</p>
@@ -485,8 +485,8 @@ document.getElementById('score').textContent=`${ok} certas de ${n} respondidas �
 quiz.addEventListener('click',e=>{const b=e.target.closest('.opts button');if(!b)return;const box=b.closest('.q'),i=+box.dataset.i;if(i in ans)return;
 const j=+b.dataset.j;ans[i]=j;box.querySelectorAll('.opts button').forEach((x,k)=>{if(k===SQ[i][2])x.classList.add('ok');else if(k===j)x.classList.add('no')});
 box.querySelector('.exp').classList.add('show');box.querySelector('.exp').insertAdjacentHTML('afterbegin',j===SQ[i][2]?'<b>Isso aí!</b> ':'<b>Quase!</b> ');upd()});
-document.getElementById('qagain').addEventListener('click',()=>{ans={};only=null;renderQ()});
-document.getElementById('qwrong').addEventListener('click',()=>{const w=Object.keys(ans).map(Number).filter(i=>ans[i]!==SQ[i][2]);if(!w.length)return;only=w;w.forEach(i=>delete ans[i]);renderQ()});
+document.getElementById('qagain')?.addEventListener('click',()=>{ans={};only=null;renderQ()});
+document.getElementById('qwrong')?.addEventListener('click',()=>{const w=Object.keys(ans).map(Number).filter(i=>ans[i]!==SQ[i][2]);if(!w.length)return;only=w;w.forEach(i=>delete ans[i]);renderQ()});
 const renderOpen=()=>{document.getElementById('open').innerHTML=SO.map((o,i)=>`<div class="q card"><div class="num">Pergunta ${i+1}</div><b>${o[0]}</b><div class="row" style="justify-content:flex-start"><button data-o="${i}">Ver resposta modelo</button></div><div class="ans" id="ans${i}">${o[1]}</div></div>`).join('')};
 document.getElementById('qnew').addEventListener('click',()=>{
  const seen=new Set(),out=[];const add=q=>{if(q&&!seen.has(q[0])){seen.add(q[0]);out.push(q)}};
