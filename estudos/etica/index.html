@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Prova de Ética</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+/* Ética: mesmo molde das outras matérias. */
+:root{color-scheme:light dark;
+--bg:light-dark(#ffffff,#11151d);--ink:light-dark(#1d2433,#eef1f6);--soft:light-dark(#5a6375,#a9b2c3);
+--line:light-dark(#e3e7ee,#2a3140);--card:light-dark(#f6f8fb,#1a202b);
+--in:#c9661a;--dd:#2f9a45;--mu:#1f78c1;--li:#a8384f;--sl:#c9661a;--mn:#2f9a45;--ei:#1f78c1;--su:#a8384f;--ve:#8a6200;--fa:#0e7c86;--av:#d99a00;--ok:#2f9a45;--no:#d0433a;--main:#5b3fd0}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 Nunito,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:"Baloo 2",Nunito,sans-serif;line-height:1.08;margin:0 0 .4em;text-wrap:balance}
+h1{font-size:clamp(32px,6vw,50px)}h2{font-size:clamp(26px,4vw,34px);margin-top:1.2em}h3{font-size:22px}
+p{margin:.3em 0 .8em;max-width:70ch}
+.wrap{max-width:1100px;margin:0 auto;padding:0 max(4vw,16px)}
+header{background:var(--main);color:#fff;padding:18px 0 0}
+header p{color:#e8e3ff;margin:0 0 18px}
+.back{display:inline-block;color:#fff;font-weight:800;text-decoration:none;margin-bottom:8px;padding:8px 0;min-height:44px}
+nav{display:flex;gap:6px;flex-wrap:wrap}
+nav a{flex:none;color:#fff;text-decoration:none;font:800 17px "Baloo 2",sans-serif;padding:10px 18px 8px;border-radius:14px 14px 0 0;background:rgba(255,255,255,.14);min-height:44px}
+nav a.on{background:var(--bg);color:var(--ink)}
+section{display:none;padding:26px 0 60px}section.on{display:block}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 18px}
+.tag{display:inline-block;font-weight:800;font-size:14px;padding:2px 10px;border-radius:99px;color:#fff;margin-bottom:6px}
+.day h3{margin-bottom:.1em}.day .when{color:var(--soft);font-weight:700;font-size:15px}
+.day ol{margin:.5em 0 0;padding-left:1.2em}.day li{margin:.25em 0}
+.warn{border-left:6px solid var(--av);background:light-dark(#fff7df,#2a2414);padding:12px 16px;border-radius:12px;margin:14px 0}
+.fig{position:relative}
+svg text{font-family:Nunito,sans-serif}
+.hub{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:20px;align-items:center}
+@media(max-width:700px){.hub{grid-template-columns:1fr}}
+.gbtn{cursor:pointer}.gbtn:focus{outline:none}.gbtn:focus circle,.gbtn:hover circle{stroke:var(--ink);stroke-width:4}
+#gcard{min-height:260px}
+#gcard ul{margin:.4em 0 0;padding-left:1.1em}#gcard li{margin:.2em 0}
+table{border-collapse:collapse;width:100%;font-size:15px}.scroll table{min-width:560px}
+th,td{border-bottom:1px solid var(--line);padding:8px 8px;text-align:left;vertical-align:top}
+th{font-family:"Baloo 2",sans-serif;font-size:17px}
+.scroll{overflow-x:auto}
+.c-in{color:var(--in)}.c-dd{color:var(--dd)}.c-mu{color:var(--mu)}.c-li{color:var(--li)}
+.b-in{background:var(--in)}.b-dd{background:var(--dd)}.b-mu{background:var(--mu)}.b-li{background:var(--li)}.b-cl{background:var(--main)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:18px;align-items:start}
+.pill{display:inline-block;border:2px solid var(--line);border-radius:99px;padding:2px 10px;margin:2px;font-weight:700;font-size:15px}
+button,select{font:800 16px Nunito,sans-serif;min-height:44px;padding:8px 16px;border-radius:12px;border:2px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+button:focus-visible,a:focus-visible,select:focus-visible{outline:3px solid var(--main);outline-offset:2px}
+button.primary{background:var(--main);border-color:var(--main);color:#fff}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 16px}
+.filters button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.flash{perspective:1200px;max-width:560px;margin:0 auto}
+.fc{position:relative;height:280px;transition:transform .5s;transform-style:preserve-3d;cursor:pointer}
+.fc.flip{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:22px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:24px;border:3px solid var(--line);background:var(--card)}
+.face.back{transform:rotateY(180deg);background:var(--bg)}
+.face .big{font:800 clamp(22px,4.5vw,30px)/1.2 "Baloo 2",sans-serif}
+.face small{color:var(--soft);font-weight:700;margin-top:10px}
+.row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:14px}
+.meter{height:12px;background:var(--line);border-radius:99px;overflow:hidden;margin:8px 0}
+.meter i{display:block;height:100%;background:var(--ok);width:0;transition:width .3s}
+.q{margin:0 0 18px}
+.q .num{font:800 15px Nunito;color:var(--soft)}
+.q .opts{display:grid;gap:8px;margin-top:8px}
+.q .opts button{text-align:left;font-weight:700}
+.q .opts button.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.q .opts button.no{background:var(--no);border-color:var(--no);color:#fff}
+.exp{display:none;margin-top:8px;padding:10px 14px;border-radius:12px;background:light-dark(#eef7f0,#16261b)}
+.exp.show{display:block}
+.score{font:800 clamp(30px,6vw,44px) "Baloo 2",sans-serif}
+.ans{display:none;margin-top:8px;padding:10px 14px;border-radius:12px;background:light-dark(#f1eefe,#211c35)}
+.ans.show{display:block}
+.rule{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.rule .eight{font:800 64px/1 "Baloo 2",sans-serif;color:var(--main)}
+.modes{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.modes button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.fmt{display:inline-block;font-weight:800;font-size:13px;padding:2px 9px;border-radius:99px;background:var(--line);margin-left:6px;vertical-align:2px}
+.pq{margin:0 0 16px}.pq.right{border-color:var(--ok);border-width:2px}.pq.half{border-color:var(--av);border-width:2px}.pq.wrong{border-color:var(--no);border-width:2px}
+.pq .opts{display:grid;gap:8px;margin-top:10px}
+.pq .opts button{text-align:left;font-weight:700}
+.pq .opts button.sel{background:var(--main);border-color:var(--main);color:#fff}
+.pq .opts button.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.pq .opts button.no{background:var(--no);border-color:var(--no);color:#fff}
+.pq textarea{width:100%;min-height:96px;font:16px/1.5 Nunito,sans-serif;padding:10px 12px;border-radius:12px;border:2px solid var(--line);background:var(--bg);color:var(--ink);margin-top:10px;resize:vertical}
+.mic{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.mic button.rec{background:var(--no);border-color:var(--no);color:#fff}
+.mic .hint{color:var(--soft);font-size:15px;font-weight:700}
+.fb{margin-top:10px;padding:10px 14px;border-radius:12px;background:light-dark(#f1eefe,#211c35)}
+.ov{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:8px;font-size:15px;font-weight:700}
+.ov button{min-height:38px;padding:4px 12px;font-size:15px}
+.ov button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.result{border-radius:22px;padding:22px;color:#fff;margin:6px 0 18px}
+.result.pass{background:var(--ok)}.result.fail{background:var(--in)}
+.result .grade{font:800 clamp(48px,10vw,76px)/1 "Baloo 2",sans-serif}
+.result button{background:#fff;color:#1d2433;border-color:#fff}
+.hist td,.hist th{font-size:15px}
+/* peças novas desta matéria */
+.word{display:inline-block;border:2px solid var(--line);border-radius:12px;padding:6px 10px;margin:3px;font-weight:800;font-size:15px;color:#fff}
+.peek{width:100%;text-align:left;font-weight:700;font-size:15px;min-height:44px;padding:6px 10px;border-style:dashed;color:var(--soft)}
+.peek.open{border-style:solid;color:var(--ink);background:var(--bg)}
+.paints{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.paints button{color:#fff;border-width:3px}
+.paints button.on{border-color:var(--ink);box-shadow:0 0 0 2px var(--bg) inset}
+.words{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px}
+.words button{font-size:15px;padding:8px 6px;text-align:center}
+.words button.ok{outline:3px solid var(--ok);outline-offset:1px}
+.words button.no{outline:3px dashed var(--no);outline-offset:1px}
+.steps{display:grid;gap:8px;margin:10px 0}
+.step{display:flex;gap:12px;align-items:center;border:2px solid var(--line);border-radius:14px;padding:10px 14px;background:var(--card)}
+.step b.n{flex:none;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:#fff;background:var(--mu);font-size:18px}
+.bars{display:grid;gap:6px}
+.bar{display:grid;grid-template-columns:110px 1fr 34px;gap:8px;align-items:center;font-weight:700;font-size:15px}
+.bar i{display:block;height:18px;border-radius:6px;background:var(--in)}
+.bar i.me{background:var(--main)}
+.quote{border-left:6px solid var(--li);padding:8px 16px;margin:10px 0;font-style:italic}
+.b-sl{background:var(--sl)}.b-mn{background:var(--mn)}.b-ei{background:var(--ei)}.b-su{background:var(--su)}.b-ve{background:var(--ve)}.b-fa{background:var(--fa)}
+.c-sl{color:var(--sl)}.c-mn{color:var(--mn)}.c-ei{color:var(--ei)}.c-su{color:var(--su)}.c-ve{color:var(--ve)}.c-fa{color:var(--fa)}
+.chips{display:flex;flex-wrap:wrap;gap:4px}
+.idea{display:flex;gap:8px;align-items:flex-start;padding:6px 0;border-bottom:1px solid var(--line);font-weight:700}
+.idea.hit{color:var(--ok)}
+.readbox{max-height:none;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin:8px 0}
+@media (prefers-reduced-motion:reduce){.fc{transition:none}}
+.msq{display:grid;grid-template-columns:repeat(3,72px);gap:6px;justify-content:center;margin:8px auto}.msc{height:72px;font:800 30px "Baloo 2",sans-serif;padding:0}.msc.fixed{background:var(--main);color:#fff;opacity:1}.lsel{font:700 16px Nunito,sans-serif;border:2px solid var(--line);border-radius:8px;padding:2px 4px;background:var(--bg);color:var(--ink)}
+button:disabled{opacity:.4;cursor:not-allowed}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<a class="back" href="../">← Todas as matérias</a>
+<h1>Prova de Ética</h1>
+<p>Bloco 8 · Aprendendo com os desafios e Bloco 9 · Persistência (págs. 116 a 139)</p>
+<nav class="scroll" id="tabs">
+<a href="#plano">Plano</a><a href="#entender">Entender</a><a href="#contar">Contar 🎤</a><a href="#flashcards">Flashcards</a><a href="#simulado">Simulado</a><a href="#prova">Prova</a>
+</nav></div></header>
+
+<main class="wrap">
+
+<!-- PLANO -->
+<section id="s-plano">
+<h2>Plano de estudos</h2>
+<div class="warn"><b>A prova é amanhã, sexta 27/11!</b> O plano de hoje cabe em uns 45 minutos.</div>
+<div class="grid">
+<div class="card day"><span class="tag b-sl">Bloco 1 · 20 min</span><h3>Entender</h3><div class="when">Págs. 116 a 125</div>
+<ol><li>Montar o <b>quadrado mágico</b>.</li><li>Ligar as tiras do triatlo aos balões.</li><li>Separar esforço <b>físico</b> e <b>mental</b>.</li><li>Completar o texto da pág. 125.</li><li>Bloco 9: persistência, Luli e o skate.</li></ol></div>
+<div class="card day"><span class="tag b-ei">Pausa · 5 min</span><h3>Respirar</h3><div class="when">Água e alongamento</div><ol><li>Até o cérebro precisa descansar para aprender melhor!</li></ol></div>
+<div class="card day"><span class="tag b-fa">Bloco 2 · 20 min</span><h3>Treinar</h3><div class="when">Contar, flashcards e prova</div>
+<ol><li>Aba <b>Contar 🎤</b>: contar a história do Tito.</li><li><b>Flashcards</b> no modo "Tudo".</li><li>Fazer a <b>Prova</b>: nota mínima 8.</li><li>Dormir cedo!</li></ol></div>
+</div>
+<h2>Dicas para quem ajuda</h2>
+<p>Ética é a matéria de <b>pensar e conversar</b>. Mais do que decorar, vale pedir que ela dê <b>exemplos da própria vida</b>: um desafio que achou difícil, um erro que a ensinou alguma coisa, algo que ela <b>ainda</b> não consegue fazer.</p>
+<p>Conferindo a apostila:</p>
+<ul>
+<li><b>Pág. 116, quadrado mágico:</b> certo (6 1 8 / 7 5 3 / 2 9 4). Todas as linhas, colunas e diagonais somam 15.</li>
+<li><b>Pág. 119, balões:</b> todos certos.</li>
+<li><b>Pág. 124:</b> "mental" está certo, mas os itens <b>a</b> e <b>b</b> ficaram em branco. a) A palavra <b>"ainda"</b> mostra que ela <b>vai conseguir</b>: é só questão de tempo, esforço e treino. b) É pessoal: algo que ela quer fazer e ainda não consegue (por exemplo, andar de skate, nadar, uma conta difícil).</li>
+<li><b>Pág. 125:</b> certo: desafio, cérebro, erros, diferente, esforço, sucesso. Só confira a escrita de <b>"sucesso"</b> (com ss e c).</li>
+</ul>
+</section>
+
+<!-- ENTENDER -->
+<section id="s-entender">
+<h2 style="margin-top:0">Aprendendo com os desafios</h2>
+<p>Toque em cada ideia para ver o resumo.</p>
+<div class="hub">
+<div class="fig"><svg viewBox="0 0 400 380" width="100%" role="img" aria-label="Mapa das ideias do bloco">
+<g stroke="var(--line)" stroke-width="5" id="hubl"></g>
+<circle cx="200" cy="190" r="54" fill="var(--main)"/><text x="200" y="186" text-anchor="middle" fill="#fff" font-weight="800" font-size="13">APRENDER</text><text x="200" y="204" text-anchor="middle" fill="#fff" font-weight="800" font-size="13">COM DESAFIOS</text>
+<g id="hubg"></g></svg></div>
+<div class="card" id="gcard"></div>
+</div>
+
+<div class="card" style="margin-top:14px"><h3>As competências do bloco</h3><div class="chips">
+<span class="pill">Foco</span><span class="pill">Organização</span><span class="pill">Determinação</span><span class="pill">Persistência</span><span class="pill">Curiosidade</span><span class="pill">Imaginação criativa</span><span class="pill">Iniciativa social</span></div></div>
+
+<h2 class="c-sl">Desafio: o quadrado mágico</h2>
+<div class="two">
+<div><p>Coloque os números <b>1, 2, 3, 4, 6, 7, 8 e 9</b> (sem repetir) para que <b>todas as linhas, colunas e diagonais somem 15</b>. O 5 já está no meio.</p>
+<p><b>Dica:</b> use os <b>números pares nos cantos</b>.</p>
+<p>Escolha um número embaixo e toque na casa. Tocar de novo numa casa apaga o número.</p>
+<p>Depois pense: foi <b>fácil, médio, difícil ou muito difícil</b>? Conseguiu na primeira tentativa? O que foi preciso? (Pág. 117)</p></div>
+<div class="card" style="text-align:center"><div id="msq" class="msq"></div><div class="paints" id="mpal" style="justify-content:center"></div><p id="mres" style="font-weight:800;min-height:1.4em"></p><div class="row"><button id="mclear">Limpar</button></div></div></div>
+
+<h2 class="c-mn">O cérebro sempre aprende</h2>
+<div class="two">
+<div><p>Todos os dias aprendemos algo novo. Algumas coisas aprendemos com <b>facilidade</b>, outras nem tanto.</p>
+<p>Quando aprendemos, o <b>cérebro trabalha muito e se modifica</b>. Lembre de quando você ainda não sabia ler!</p>
+<p><b>Para aprender coisas novas, precisamos de desafios.</b> Cada vez que você desafia o cérebro, ele fica <b>mais forte</b>. Quanto mais difícil o desafio, mais <b>persistência</b> e <b>determinação</b> são necessárias.</p></div>
+<div class="card"><h3>Triatlo (pág. 119)</h3><p><b>Natação</b> (1.500 m) + <b>ciclismo</b> (40 km) + <b>corrida</b> (10 km), nessa ordem e sem parar. Exige resistência, esforço, foco e boa forma.</p>
+<p style="margin-bottom:4px"><b>Jogo:</b> qual balão combina com cada tira?</p><div id="tri"></div><p id="trires" style="font-weight:800"></p></div></div>
+
+<h2 class="c-ei">Tito e a bicicleta</h2>
+<div class="two">
+<div><p>Tito está aprendendo a andar de bicicleta <b>sem rodinhas</b>. Pedala 2 ou 3 vezes e cai. O tio viu: a bicicleta <b>tremeu</b>, Tito <b>parou de pedalar</b>, gritou e caiu.</p>
+<p>Tito disse: <i>"Nunca vou aprender. É muito difícil. Eu não vou conseguir..."</i></p>
+<p><b>O problema de Tito:</b> ele <b>não acredita nele mesmo</b> e quer <b>desistir</b> na primeira dificuldade.</p></div>
+<div class="card"><h3>Motivo → solução</h3>
+<table><tbody>
+<tr><td>Parou de pedalar</td><td>Continuar pedalando</td></tr>
+<tr><td>Perdeu o equilíbrio</td><td>Olhar para a frente e manter o guidão firme</td></tr>
+<tr><td>Terreno esburacado</td><td>Treinar num lugar liso</td></tr>
+<tr><td>Ficou com medo</td><td>Treinar devagar, com ajuda, e não desistir</td></tr>
+</tbody></table></div></div>
+
+<h2 class="c-su">Só talento é suficiente?</h2>
+<div class="two">
+<div><p>As pessoas podem ter vários <b>talentos</b>: cantar, desenhar, jogar, estudar... Mas <b>o talento não vale muito se a pessoa não se esforçar</b>.</p>
+<p>Um nadador pode ter um grande talento, mas, se <b>não se dedicar aos treinos</b>, não terá bom desempenho. Para ser campeão ele precisa de <b>treino, dedicação e esforço</b>.</p></div>
+<div class="card"><h3>Esforço (pág. 123)</h3><p><b>Esforço</b> é a capacidade de <b>empregar mais empenho</b> numa ação, obtendo <b>melhores resultados</b>. Nem sempre conseguimos na <b>primeira tentativa</b>.</p>
+<p><span class="tag b-mn">Físico</span> treinar o corpo: o atleta ganha agilidade e melhora nas competições.</p>
+<p><span class="tag b-ei">Mental</span> treinar a mente com problemas desafiadores: o raciocínio fica cada vez melhor.</p></div></div>
+<div class="card" style="margin-top:14px"><h3>Jogo: esforço físico ou mental?</h3><div id="fm"></div><div class="row" style="justify-content:flex-start"><button id="fmnew">Outras situações</button><span id="fmres" style="font-weight:800;align-self:center"></span></div></div>
+
+<h2 class="c-fa">Os erros fazem parte de aprender</h2>
+<div class="two">
+<div><p><b>Mona</b> está aprendendo a ler e fica triste porque <b>ainda</b> não entende a história. Ela usa o esforço <b>mental</b>.</p>
+<p>A palavra <b>"ainda"</b> traz <b>esperança</b>: quer dizer que, com esforço e dedicação, ela <b>vai conseguir</b>.</p>
+<p><b>Os erros são uma etapa fundamental da aprendizagem.</b> Para aprender com eles é preciso <b>reconhecê-los</b> e <b>analisá-los de forma positiva</b>. Erros <b>não são o fim do caminho</b>: quando analisamos os erros, usamos a <b>imaginação</b> para encontrar <b>novas soluções</b>.</p>
+<p>No jogo da velha, olhar onde erramos ajuda a ganhar a próxima partida!</p></div>
+<div class="card"><h3>Complete o texto (pág. 125)</h3><div id="laca"></div><p id="lacres" style="font-weight:800"></p></div></div>
+
+<h2 class="c-ve">Bloco 9 · Persistência: é importante não desistir</h2>
+<div class="two">
+<div><p><b>Desafio das estrelas (pág. 128):</b> procurar e numerar as estrelas no meio de muitos desenhos. Foi fácil? Pensou em desistir? Quem continua procurando, encontra!</p>
+<p><b>Cada pessoa tem o seu tempo</b> para fazer uma tarefa. Umas fazem rápido, outras demoram mais para se concentrar e terminar.</p>
+<p>Quando não conseguimos, ficar <b>triste é normal</b>. Mas por que não <b>tentar novamente</b>? Assim corrigimos os erros e aprendemos. Com <b>imaginação e criatividade</b> achamos outras formas de agir.</p>
+<p><b>Tico e a pipa (pág. 127):</b> o primo dizia que era difícil, mas Tico decidiu aprender, "não importa quanto tempo demore". <b>Não há limite de tempo para aprender.</b></p></div>
+<div class="card" style="background:light-dark(#fff1e0,#2e2214)"><h3>O que é persistência?</h3><p style="font-size:19px"><b>Persistência</b> é a qualidade daquele que <b>não desiste diante das dificuldades</b>. Uma pessoa persistente <b>continua se esforçando</b> para conseguir o que quer.</p><p><b>Perseverança</b> quer dizer quase a mesma coisa: seguir em frente sem desistir.</p></div></div>
+
+<h3 style="margin-top:16px">A menina do skate (pág. 130)</h3>
+<p>Toque nas atitudes que mostram <b>persistência</b>:</p>
+<div id="sk"></div><p id="skres" style="font-weight:800"></p>
+
+<h2 class="c-ve">Luli e a corda: esforço + persistência</h2>
+<div class="two">
+<div><p>Luli não sabia pular corda. Tentou, pulou 1... 2... e a corda enroscou: <i>"Nunca vou aprender!"</i>, e desistiu.</p>
+<p><b>Rui</b>, que pula muito bem, convenceu Luli a <b>tentar outra vez</b>. Ela treinou no recreio, na entrada e na saída; a mãe deu uma corda e ela pulava sempre que sobrava um tempinho.</p>
+<p>Aos poucos pegou o jeito: <i>"Consegui! Iupi! Vou pular contando até 100!"</i> Ela se sentiu <b>feliz, alegre e confiante</b>.</p></div>
+<div class="card"><h3>Persistir em grupo é mais fácil</h3><p>Muitas coisas fazemos sozinhos; outras, <b>ainda</b> precisamos de ajuda. Fazer junto com outras pessoas é mais divertido e elas nos <b>incentivam</b> nas dificuldades, como o Rui fez com a Luli.</p><p>Quando nos esforçamos e conseguimos, ficamos <b>felizes e com vontade de continuar</b>, como ao achar cada estrela.</p></div></div>
+
+<h2 class="c-ve">Jogo das situações (págs. 134 e 135)</h2>
+<div class="grid">
+<div class="card"><span class="tag b-sl">1</span><p style="margin:0"><b>Luna</b> derrubou o robô. Não quebrou, mas desmontou todo. E agora?</p></div>
+<div class="card"><span class="tag b-ei">2</span><p style="margin:0"><b>Tito</b> quer participar da competição de natação da escola. Ele já sabe nadar. Como proceder?</p></div>
+<div class="card"><span class="tag b-fa">3</span><p style="margin:0"><b>Tico</b> tem uma tarefa de matemática que acha muito difícil e acha que está fazendo errado. O que fazer?</p></div>
+</div>
+<p style="margin-top:10px">Para cada atitude, toque no número da situação. Se a atitude <b>não</b> mostra persistência, toque em ✗.</p>
+<div id="sit"></div><div class="row" style="justify-content:flex-start"><span id="sitres" style="font-weight:800"></span></div>
+
+<h2 class="c-ve">Quando dá errado (pág. 136)</h2>
+<div class="two">
+<div><p><b>Chorar, bater os pés no chão, atirar objetos, gritar...</b> nenhuma dessas atitudes resolve as coisas.</p>
+<p>Errar ou não entender uma tarefa acontece com <b>todo mundo</b>. Nesses momentos, <b>não seja duro com você mesmo</b>.</p>
+<p>Podemos falhar e ficar chateados: é normal, faz parte da vida. Com <b>perseverança e persistência</b>, superamos as dificuldades. E podemos <b>pedir ajuda</b>!</p></div>
+<div class="card"><h3>De olho no que aprendemos</h3><ul style="padding-left:1.1em;margin:.3em 0">
+<li>O cérebro sempre aprende e se modifica.</li><li>Talento sozinho não basta: precisa de esforço físico e mental.</li><li>O erro é um caminho para encontrar novas soluções, sem desanimar.</li><li>Valorize o esforço, mesmo antes de atingir a meta.</li><li>"Errar é humano": enxergar o erro, corrigir, seguir em frente e pedir ajuda.</li><li>Com esforço e determinação alcançamos as metas, e isso traz uma sensação muito boa.</li></ul></div></div>
+</section>
+
+<!-- CONTAR -->
+<section id="s-contar">
+<h2 style="margin-top:0">Conte o que você entendeu 🎤</h2>
+<p>Leia o texto na apostila (ou o resumo aqui), aperte <b>Gravar</b> e conte <b>com suas palavras</b> o que entendeu. Depois aperte <b>Avaliar</b>: a página confere quais ideias importantes você falou e dá uma nota. Um adulto pode ouvir a gravação e ajustar a nota.</p>
+<div class="filters" id="cfil"></div>
+<div class="two">
+<div class="card"><span class="tag" id="ctag"></span><h3 id="ctitle"></h3><p id="cwhere" style="color:var(--soft);font-weight:700;margin:0"></p><div class="readbox" id="ctext"></div><p style="margin:0"><b>Para contar:</b> <span id="cask"></span></p></div>
+<div class="card">
+<div class="mic"><button class="primary" id="crec">🎤 Gravar</button><button id="csay">Ouvir a pergunta</button><span class="hint" id="chint"></span></div>
+<audio id="caudio" controls hidden style="width:100%;margin-top:10px"></audio>
+<textarea id="cta" placeholder="O que você falar aparece aqui. Dá para corrigir ou escrever também." style="width:100%;min-height:130px;font:16px/1.5 Nunito,sans-serif;padding:10px 12px;border-radius:12px;border:2px solid var(--line);background:var(--bg);color:var(--ink);margin-top:10px"></textarea>
+<div class="row" style="justify-content:flex-start"><button class="primary" id="ceval">Avaliar</button><button id="cclear">Apagar e gravar de novo</button></div>
+<div id="cout"></div>
+</div></div>
+<h2>Histórico das gravações</h2>
+<p style="color:var(--soft)">Fica salvo neste aparelho (só o texto e a nota; o áudio some ao sair da página).</p>
+<div class="scroll"><table class="hist"><thead><tr><th>Quando</th><th>Texto</th><th>Ideias</th><th style="text-align:right">Nota</th></tr></thead><tbody id="chist"></tbody></table></div>
+</section>
+
+<!-- FLASHCARDS -->
+<section id="s-flashcards">
+<h2 style="margin-top:0">Flashcards</h2>
+<p>Leia a pergunta, <b>escreva a resposta</b> e só então vire o cartão para conferir. Depois diga se acertou: os que errar voltam no final da pilha.</p>
+<div class="filters" id="ffil"></div>
+<div class="flash">
+<div class="meter"><i id="fbar"></i></div>
+<div style="text-align:center;font-weight:800;color:var(--soft)" id="fcount"></div>
+<div class="fc" id="fc" tabindex="0" role="button" aria-label="Virar cartão"><div class="face"><span class="tag" id="ftag"></span><div class="big" id="ffront"></div><small>escreva sua resposta embaixo para poder virar</small></div><div class="face back"><div class="big" id="fback" style="font-size:clamp(19px,3.6vw,24px)"></div><small id="fmine" style="margin-top:14px"></small></div></div>
+<textarea id="fans" placeholder="Escreva aqui a sua resposta antes de virar o cartão." style="width:100%;min-height:80px;font:17px/1.5 Nunito,sans-serif;padding:10px 12px;border-radius:12px;border:2px solid var(--line);background:var(--bg);color:var(--ink);margin-top:14px;resize:vertical"></textarea>
+<div class="row"><button class="primary" id="fshow">Virar e conferir</button></div>
+<p id="fhint" style="text-align:center;font-weight:800;color:var(--no);min-height:1.4em;margin:6px 0 0"></p>
+<div class="row"><button id="fno">Ainda não sei</button><button class="primary" id="fyes">Acertei!</button></div>
+<div class="row"><button id="fre">Embaralhar e recomeçar</button></div>
+</div>
+</section>
+
+<!-- SIMULADO -->
+<section id="s-simulado">
+<h2 style="margin-top:0">Simulado</h2>
+<h3 id="stitle"></h3>
+<p><b>Parte 1 · Marque a alternativa certa.</b> A resposta aparece na hora, com a explicação.</p>
+<div class="card" style="margin-bottom:18px"><div class="score" id="score">0 de 0</div><div class="meter"><i id="qbar"></i></div>
+<div class="row" style="justify-content:flex-start"><button class="primary" id="qnew">Novo simulado (questões novas)</button></div></div>
+<div id="quiz"></div>
+<h2>Parte 2 · Perguntas para escrever</h2>
+<p>Iguais às da apostila. Ela responde no caderno ou em voz alta, depois confere a resposta modelo.</p>
+<div id="open"></div>
+</section>
+
+<!-- PROVA -->
+<section id="s-prova">
+<div class="rule"><div class="eight">8</div><div><h2 style="margin:0">Prova de verdade</h2><p style="margin:0">10 questões, cada uma vale 1 ponto. A nota mínima é <b>8</b>. Se ficar abaixo, ela faz uma <b>prova de recuperação</b>: as questões que errou voltam <b>em outro formato</b>.</p></div></div>
+<div id="pstart" class="card" style="margin-top:16px">
+<h3>Como ela quer responder?</h3>
+<div class="modes" id="pmodes">
+<button data-m="misto" class="on">Misturado</button><button data-m="optativa">Marcar alternativa</button><button data-m="escrita">Escrever</button><button data-m="audio">Falar (áudio)</button></div>
+<p id="pmodehint" style="color:var(--soft);font-weight:700"></p>
+<button class="primary" id="pgo">Começar a prova</button>
+</div>
+<div id="pres"></div>
+<div id="pexam"></div>
+<div class="row" style="justify-content:flex-start"><button class="primary" id="psend" hidden>Entregar a prova</button></div>
+<h2>Histórico de provas</h2>
+<p style="color:var(--soft)">Fica salvo neste aparelho.</p>
+<div class="scroll"><table class="hist"><thead><tr><th>Quando</th><th>Prova</th><th>Formato</th><th style="text-align:right">Nota</th></tr></thead><tbody id="phist"></tbody></table></div>
+<div class="row" style="justify-content:flex-start"><button id="pclear">Apagar histórico</button></div>
+</section>
+</main>
+
+<script>
+{
+const G={de:['Desafios','var(--sl)'],ce:['Cérebro','var(--mn)'],es:['Esforço','var(--ei)'],er:['Erros','var(--su)'],pe:['Persistência','var(--ve)'],gr:['Em grupo','var(--fa)']};
+const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const cap=t=>t[0].toUpperCase()+t.slice(1);
+
+/* HUB */
+const topics=[
+ {k:'de',li:['Para aprender coisas novas, precisamos de desafios','Quadrado mágico: tudo soma 15','Triatlo: natação, ciclismo e corrida','Avaliar: fácil, médio, difícil ou muito difícil']},
+ {k:'ce',li:['O cérebro sempre aprende','Ele trabalha muito e se modifica','Cada desafio deixa o cérebro mais forte','Não há limite de tempo para aprender']},
+ {k:'es',li:['Esforço = mais empenho, melhores resultados','Esforço físico: treinar o corpo','Esforço mental: treinar a mente','Só talento não basta']},
+ {k:'er',li:['Os erros fazem parte de aprender','Reconhecer e analisar o erro de forma positiva','Erro não é o fim do caminho','A palavra "ainda": você vai conseguir']},
+ {k:'pe',li:['Persistência: não desistir diante das dificuldades','Continuar se esforçando para conseguir','Luli e a corda, a menina do skate','Cada pessoa tem o seu tempo']},
+ {k:'gr',li:['Persistir em grupo é mais fácil','Os amigos incentivam nas dificuldades','Podemos pedir ajuda','Chorar ou gritar não resolve']}];
+const ang=[-90,-30,30,90,150,210],hub=document.getElementById('hubg'),gc=document.getElementById('gcard');
+const pos=ang.map(a=>[200+132*Math.cos(a*Math.PI/180),190+128*Math.sin(a*Math.PI/180)]);
+document.getElementById('hubl').innerHTML=pos.map(p=>`<line x1="200" y1="190" x2="${p[0].toFixed(0)}" y2="${p[1].toFixed(0)}"/>`).join('');
+hub.innerHTML=topics.map((t,i)=>{const [x,y]=pos[i],n=G[t.k][0];return `<g class="gbtn" tabindex="0" role="button" data-i="${i}"><circle cx="${x}" cy="${y}" r="46" fill="${G[t.k][1]}"/><text x="${x}" y="${y+5}" text-anchor="middle" fill="#fff" font-weight="800" font-size="${n.length>9?12.5:15}">${n}</text></g>`}).join('');
+const showG=i=>{const t=topics[i];gc.innerHTML=`<span class="tag" style="background:${G[t.k][1]}">${G[t.k][0]}</span><h3>Resumo</h3><ul>${t.li.map(l=>`<li>${l}</li>`).join('')}</ul>`};
+hub.querySelectorAll('.gbtn').forEach(b=>{b.addEventListener('click',()=>showG(+b.dataset.i));b.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();showG(+b.dataset.i)}})});
+showG(0);
+
+/* QUADRADO MÁGICO */
+let sq=[null,null,null,null,5,null,null,null,null],sel=2;
+const msq=document.getElementById('msq'),mpal=document.getElementById('mpal'),mres=document.getElementById('mres');
+const L=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+const drawM=()=>{msq.innerHTML=sq.map((v,i)=>`<button class="msc${i===4?' fixed':''}" data-i="${i}"${i===4?' disabled':''}>${v??''}</button>`).join('');
+ mpal.innerHTML=[1,2,3,4,6,7,8,9].map(n=>`<button data-n="${n}" class="${n===sel?'on':''}" style="background:${sq.includes(n)?'var(--line)':'var(--main)'};border-color:var(--main);min-width:48px">${n}</button>`).join('');
+ if(sq.every(v=>v!=null)){const ok=L.every(l=>l.reduce((s,i)=>s+sq[i],0)===15);mres.textContent=ok?'🎉 Conseguiu! Todas as linhas, colunas e diagonais somam 15.':'Ainda não: alguma linha não soma 15. Tente trocar! (Dica: pares nos cantos)';mres.style.color=ok?'var(--ok)':'var(--no)'}else{mres.textContent='';}};
+msq.onclick=e=>{const b=e.target.closest('.msc');if(!b||b.disabled)return;const i=+b.dataset.i;if(sq[i]!=null){sq[i]=null}else{const j=sq.indexOf(sel);if(j>=0&&j!==4)sq[j]=null;sq[i]=sel}drawM()};
+mpal.onclick=e=>{const b=e.target.closest('button');if(b){sel=+b.dataset.n;drawM()}};
+document.getElementById('mclear').onclick=()=>{sq=[null,null,null,null,5,null,null,null,null];drawM()};drawM();
+
+/* TRIATLO */
+const TRI=[['É necessário muito esforço e dedicação. Quanto mais praticar, melhor será seu desempenho.','Treino','#1f9ad6'],['É normal encontrar dificuldades na primeira tentativa. O importante é não desistir.','Persistência','#e0457b'],['Ter foco e prestar atenção no tempo e na hora de mudar de modalidade.','Concentração','#2f9a45'],['Fazer treinos regulares, manter uma rotina saudável, dominar as técnicas de respiração.','Determinação','#b98200'],['Organizar a rotina diária para cumprir a programação e os horários de treinos.','Organização','#d9531e']];
+const BAL=['Persistência','Concentração','Treino','Determinação','Organização'];let tOk=0,tN=0;
+document.getElementById('tri').innerHTML=TRI.map((t,i)=>`<div style="border-left:6px solid ${t[2]};padding:6px 10px;margin:8px 0;background:var(--bg);border-radius:8px"><div style="font-size:15px">${t[0]}</div><div class="tr" data-i="${i}" style="display:flex;flex-wrap:wrap;gap:4px;margin-top:6px">${BAL.map(b=>`<button style="min-height:36px;padding:3px 9px;font-size:14px">${b}</button>`).join('')}</div></div>`).join('');
+document.getElementById('tri').onclick=e=>{const b=e.target.closest('.tr button');if(!b)return;const box=b.parentElement;if(box.dataset.done)return;box.dataset.done=1;const r=TRI[+box.dataset.i][1];tN++;if(b.textContent===r)tOk++;
+ box.querySelectorAll('button').forEach(x=>{if(x.textContent===r)x.style.cssText+=';background:var(--ok);border-color:var(--ok);color:#fff';else if(x===b)x.style.cssText+=';background:var(--no);border-color:var(--no);color:#fff'});document.getElementById('trires').textContent=`${tOk} de ${tN} certos`};
+
+/* FÍSICO OU MENTAL */
+const FM=[['Treinar natação todos os dias','f'],['Montar um quebra-cabeça difícil','m'],['Jogar xadrez','m'],['Aprender a andar de bicicleta','f'],['Fazer uma conta de divisão','m'],['Pular corda até 100','f'],['Aprender a ler uma história','m'],['Correr no triatlo','f'],['Resolver o quadrado mágico','m'],['Andar de skate','f'],['Decorar a tabuada','m'],['Subir no trepa-trepa','f'],['Procurar as estrelas no desenho','m'],['Empinar pipa','f']];
+const fmz=document.getElementById('fm');let fmSet=[],fmOk=0,fmN=0;
+const drawFM=()=>{fmSet=shuffle([...FM]).slice(0,5);fmOk=0;fmN=0;document.getElementById('fmres').textContent='';
+ fmz.innerHTML=fmSet.map((w,i)=>`<div class="step" style="justify-content:space-between;flex-wrap:wrap" data-i="${i}"><b>${w[0]}</b><span><button data-a="f">Físico</button> <button data-a="m">Mental</button></span></div>`).join('')};
+fmz.onclick=e=>{const b=e.target.closest('button');if(!b)return;const row=b.closest('.step');if(row.dataset.done)return;row.dataset.done=1;const w=fmSet[+row.dataset.i],ok=b.dataset.a===w[1];fmN++;if(ok)fmOk++;
+ row.querySelector('span').innerHTML=`<b>${ok?'✅':'❌'} Esforço ${w[1]==='f'?'físico (o corpo)':'mental (a mente)'}</b>`;document.getElementById('fmres').textContent=`${fmOk} de ${fmN}`};
+document.getElementById('fmnew').onclick=drawFM;drawFM();
+
+/* LACUNAS pág. 125 */
+const LAC=['Primeiro, escolha ou aceite o ',['desafio'],'. Tenha coragem e não se importe se ele é muito difícil. Seu ',['cérebro'],' gosta de ficar cada vez mais forte. Não se preocupe com os ',['erros'],'. Quando você erra, descobre como não deve fazer. E faz outra vez, só que de um jeito ',['diferente'],'. Não desanime! Seu ',['esforço'],' será recompensado pelo seu ',['sucesso'],'.'];
+const LW=['desafio','esforço','erros','sucesso','cérebro','diferente'];
+const lz=document.getElementById('laca');let lk=0;
+lz.innerHTML='<p style="line-height:2.2">'+LAC.map(p=>Array.isArray(p)?`<select class="lsel" data-a="${p[0]}" aria-label="Escolha a palavra"><option value="">______</option>${LW.map(w=>`<option>${w}</option>`).join('')}</select>`:p).join('')+'</p><div class="row" style="justify-content:flex-start"><button class="primary" id="lchk">Conferir</button></div>';
+document.getElementById('lchk').onclick=()=>{let ok=0;lz.querySelectorAll('.lsel').forEach(s=>{const r=s.value===s.dataset.a;if(r)ok++;s.style.borderColor=r?'var(--ok)':'var(--no)';s.style.borderWidth='3px'});document.getElementById('lacres').textContent=`${ok} de 6 certas`+(ok<6?'. As vermelhas estão no lugar errado.':' 🎉')};
+
+/* SKATE pág. 130 */
+const SK=[['Pediu para um vizinho que sabia andar de skate ajudá-la. Sempre que podia, ele treinava com ela.',1],['Levou muitos tombos. Às vezes achava que seria difícil, mas se levantava e tentava de novo.',1],['Numa tarde, chegou desanimada, jogou o skate no fundo do quintal e resolveu que não queria mais aprender.',0],['Sempre que podia, tentava andar na rua de casa. No começo se equilibrava; com o tempo, arriscou novos movimentos.',1]];
+const skz=document.getElementById('sk');let skOk=0,skN=0;
+skz.innerHTML=SK.map((s,i)=>`<div class="step" style="flex-wrap:wrap;justify-content:space-between" data-i="${i}"><span style="flex:1 1 260px">${s[0]}</span><span><button data-a="1">Persistência</button> <button data-a="0">Desistência</button></span></div>`).join('');
+skz.onclick=e=>{const b=e.target.closest('button');if(!b)return;const row=b.closest('.step');if(row.dataset.done)return;row.dataset.done=1;const r=SK[+row.dataset.i][1],ok=+b.dataset.a===r;skN++;if(ok)skOk++;b.closest('span').innerHTML=`<b>${ok?'✅':'❌'} ${r?'Mostra persistência':'É desistir: não liga com a menina'}</b>`;document.getElementById('skres').textContent=`${skOk} de ${skN} certos`};
+
+/* SITUAÇÕES pág. 135 */
+const SIT=[['Procurar alguém que possa explicar o assunto e tentar fazer a atividade.',3],['Mesmo que não esteja correto, tentar fazer como conseguir e pedir ajuda à professora no dia seguinte.',3],['Escutar música, brincar. Deixar a tarefa sem fazer.',0],['Não se desesperar. Tentar remontar o que foi desmontado. Se não conseguir na primeira vez, tentar novamente.',1],['Treinar com determinação. Se no começo os resultados não forem bons, não desistir.',2],['Se não conseguir encaixar as peças, pedir ajuda a um adulto para organizar e montar de novo.',1],['Chorar e desistir porque não consegue.',0],['Ter responsabilidade para não faltar aos treinos e melhorar cada vez mais.',2],['Procurar algum colega e pedir ajuda para entender o assunto da tarefa.',3]];
+const siz=document.getElementById('sit');let siOk=0,siN=0;const SN={0:'Não mostra persistência',1:'Luna e o robô',2:'Tito e a natação',3:'Tico e a matemática'};
+siz.innerHTML=SIT.map((s,i)=>`<div class="step" style="flex-wrap:wrap;justify-content:space-between" data-i="${i}"><span style="flex:1 1 260px">${s[0]}</span><span>${[1,2,3,0].map(n=>`<button data-a="${n}" style="min-width:44px">${n||'✗'}</button>`).join(' ')}</span></div>`).join('');
+siz.onclick=e=>{const b=e.target.closest('button');if(!b)return;const row=b.closest('.step');if(row.dataset.done)return;row.dataset.done=1;const r=SIT[+row.dataset.i][1],ok=+b.dataset.a===r;siN++;if(ok)siOk++;b.closest('span').innerHTML=`<b>${ok?'✅':'❌'} ${r?r+' · ':''}${SN[r]}</b>`;document.getElementById('sitres').textContent=`${siOk} de ${siN} certos`};
+
+/* FLASHCARDS */
+const cards=[
+['de','Por que precisamos de desafios?','Para aprender coisas novas. Cada desafio deixa o cérebro mais forte.'],
+['de','Quadrado mágico: quanto somam as linhas?','15, em todas as linhas, colunas e diagonais.'],
+['de','Dica do quadrado mágico','Colocar os números pares nos cantos e o 5 no meio.'],
+['de','O que é o triatlo?','Natação, ciclismo e corrida, nessa ordem e sem parar.'],
+['de','Distâncias do triatlo olímpico','1.500 m de natação, 40 km de ciclismo e 10 km de corrida.'],
+['de','O que o triatlo exige?','Resistência, esforço, foco e boa forma física.'],
+['de','Balão do "não desistir na primeira dificuldade"','Persistência.'],
+['de','Balão do "ter foco na hora de mudar de modalidade"','Concentração.'],
+['de','Balão do "organizar a rotina e os horários"','Organização.'],
+['de','Quanto mais difícil o desafio...','Mais persistência e determinação são necessárias.'],
+['ce','O que acontece com o cérebro quando aprendemos?','Ele trabalha muito e sofre modificações.'],
+['ce','O cérebro tem capacidade de...','Sempre aprender.'],
+['ce','Há limite de tempo para aprender?','Não! Cada pessoa tem o seu tempo.'],
+['ce','O que Tico quer aprender?','Empinar pipa sozinho, não importa quanto tempo demore.'],
+['es','O que é esforço?','A capacidade de empregar mais empenho numa ação, obtendo melhores resultados.'],
+['es','Quais são os dois tipos de esforço?','Esforço físico e esforço mental.'],
+['es','O que é esforço físico?','Treinar o corpo, como um atleta. Ele ganha agilidade e melhora nas competições.'],
+['es','O que é esforço mental?','Treinar a mente com problemas desafiadores. O raciocínio fica melhor.'],
+['es','Mona aprendendo a ler usa qual esforço?','Mental.'],
+['es','Só talento é suficiente?','Não. O talento não vale muito se a pessoa não se esforçar.'],
+['es','O que o nadador precisa para ser campeão?','Treino, dedicação e esforço, além do talento.'],
+['es','Seu esforço será recompensado pelo seu...','Sucesso.'],
+['er','Os erros são...','Uma etapa fundamental da aprendizagem.'],
+['er','Como aprender com os erros?','Reconhecer e analisar os erros de forma positiva.'],
+['er','Erro é o fim do caminho?','Não! Usamos a imaginação para encontrar novas soluções.'],
+['er','Quando você erra, descobre...','Como não deve fazer. E faz de novo de um jeito diferente.'],
+['er','O que a palavra "ainda" traz?','Esperança: você ainda não consegue, mas vai conseguir.'],
+['er','Qual era o problema de Tito na bicicleta?','Ele não acreditava nele mesmo e queria desistir.'],
+['er','Por que Tito caiu?','A bicicleta tremeu, ele parou de pedalar e perdeu o equilíbrio.'],
+['er','Chorar, gritar ou atirar objetos resolve?','Não. Precisamos nos acalmar e não ser duros com nós mesmos.'],
+['er','"Errar é humano." O que fazer com o erro?','Enxergar, corrigir, seguir em frente e pedir ajuda.'],
+['pe','O que é persistência?','A qualidade de quem não desiste diante das dificuldades.'],
+['pe','Uma pessoa persistente...','Continua se esforçando para conseguir o que quer.'],
+['pe','O que é perseverança?','Também é não desistir diante das dificuldades.'],
+['pe','O que Luli fez para aprender a pular corda?','Foi persistente: treinou muito e, mesmo errando, não desistiu.'],
+['pe','Como Luli se sentiu quando conseguiu?','Feliz, alegre e confiante.'],
+['pe','Atitude de desistência da menina do skate','Jogou o skate no quintal e disse que não queria mais aprender.'],
+['pe','Atitudes persistentes da menina do skate','Pediu ajuda ao vizinho, levantava depois dos tombos e treinava sempre.'],
+['pe','Esforço e persistência são...','Uma dupla importante!'],
+['pe','O que sentimos ao conseguir algo com esforço?','Felicidade e vontade de continuar e melhorar.'],
+['gr','Por que persistir em grupo é mais fácil?','É mais divertido e os outros nos incentivam nas dificuldades.'],
+['gr','O que Rui fez por Luli?','Convenceu Luli a tentar outra vez.'],
+['gr','Luna derrubou o robô. O que fazer?','Não se desesperar, tentar remontar e pedir ajuda a um adulto se precisar.'],
+['gr','Tico acha a tarefa difícil. O que fazer?','Tentar fazer, pedir ajuda à professora, a alguém ou a um colega.'],
+['gr','Tito quer competir na natação. Como agir?','Treinar com determinação, não faltar aos treinos e não desistir.']];
+let fset='tudo',deck=[],fpos=0,okc=0;
+const fil=document.getElementById('ffil'),fc=document.getElementById('fc');
+const keys=['tudo','de','ce','es','er','pe','gr'];
+fil.innerHTML=keys.map(k=>`<button data-k="${k}">${k==='tudo'?'Tudo':G[k][0]}</button>`).join('');
+const startF=()=>{deck=shuffle(cards.filter(c=>fset==='tudo'||c[0]===fset));fpos=0;okc=0;fil.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.k===fset));drawF()};
+const fans=document.getElementById('fans'),fhint=document.getElementById('fhint'),fmine=document.getElementById('fmine'),fyesB=document.getElementById('fyes'),fnoB=document.getElementById('fno'),fshow=document.getElementById('fshow');
+function resetAns(){fans.value='';fans.disabled=false;fhint.textContent='';fmine.textContent='';fyesB.disabled=true;fnoB.disabled=true;fshow.disabled=false}
+function flipF(){if(fc.classList.contains('flip'))return;const fim=document.getElementById('ftag').textContent==='Fim!';
+ if(!fim&&fans.value.trim().length<3){fhint.textContent='Primeiro escreva a sua resposta aqui embaixo.';fans.focus();return}
+ fmine.textContent=fim?'':'Você escreveu: '+fans.value.trim();fans.disabled=true;fshow.disabled=true;fhint.textContent='';fc.classList.add('flip');fyesB.disabled=false;fnoB.disabled=false}
+fans.addEventListener('input',()=>{if(fans.value.trim().length>=3)fhint.textContent=''});
+fans.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();flipF()}});
+fshow.addEventListener('click',flipF);
+const drawF=()=>{fc.classList.remove('flip');resetAns();const done=fpos>=deck.length;const c=done?null:deck[fpos];
+document.getElementById('ftag').textContent=done?'Fim!':G[c[0]][0];document.getElementById('ftag').style.background=done?'var(--ok)':G[c[0]][1];
+document.getElementById('ffront').textContent=done?`Você acertou ${okc} cartões!`:c[1];
+document.getElementById('fback').textContent=done?'Toque em "Embaralhar e recomeçar" para treinar de novo.':c[2];
+const total=cards.filter(c=>fset==='tudo'||c[0]===fset).length;
+document.getElementById('fcount').textContent=`${Math.min(okc,total)} de ${total} sabidos`;document.getElementById('fbar').style.width=(okc/total*100)+'%'};
+fc.addEventListener('click',flipF);
+fc.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();flipF()}});
+document.getElementById('fyes').addEventListener('click',()=>{if(fpos<deck.length){okc++;fpos++;drawF()}});
+document.getElementById('fno').addEventListener('click',()=>{if(fpos<deck.length){deck.push(deck[fpos]);fpos++;drawF()}});
+document.getElementById('fre').addEventListener('click',startF);
+fil.addEventListener('click',e=>{const b=e.target.closest('button');if(b){fset=b.dataset.k;startF()}});
+startF();
+
+/* SIMULADO */
+const Q=[
+['Para aprender coisas novas, precisamos de...',['Desafios','Sorte','Ficar parados'],0,'Cada desafio deixa o cérebro mais forte.'],
+['No quadrado mágico, cada linha, coluna e diagonal soma...',['10','15','20'],1,'Usando 1 a 9, com o 5 no meio.'],
+['O triatlo junta...',['Futebol, vôlei e basquete','Natação, ciclismo e corrida','Xadrez, dama e pipa'],1,'Nessa ordem e sem parar.'],
+['"Ter foco e prestar atenção no tempo" combina com o balão...',['Concentração','Organização','Treino'],0,'Foco = concentração.'],
+['Quando aprendemos algo novo, o cérebro...',['Fica igual','Trabalha e se modifica','Fica cansado para sempre'],1,'O cérebro sempre aprende.'],
+['Esforço é...',['Desistir quando fica difícil','Empregar mais empenho para ter melhores resultados','Ter talento'],1,'Definição da pág. 123.'],
+['Quando um atleta treina o corpo, usa o esforço...',['Mental','Físico','Nenhum'],1,'O corpo ganha agilidade.'],
+['Jogar xadrez e resolver problemas é esforço...',['Físico','Mental','De sorte'],1,'Treina a mente.'],
+['Mona está aprendendo a ler. Ela usa o esforço...',['Físico','Mental','Nenhum'],1,'Ler é treinar a mente.'],
+['Só ter talento é suficiente para ser campeão?',['Sim','Não, precisa de esforço e treino','Só se tiver sorte'],1,'Talento sem esforço não vale muito.'],
+['A palavra "ainda" em "ainda não consegue" traz...',['Esperança de conseguir','Tristeza para sempre','Medo'],0,'Quer dizer que vai conseguir com esforço.'],
+['Os erros são...',['O fim do caminho','Uma etapa fundamental da aprendizagem','Motivo para desistir'],1,'Com eles encontramos novas soluções.'],
+['Qual era o problema de Tito?',['A bicicleta era velha','Ele não acreditava nele mesmo e queria desistir','O tio não ajudou'],1,'Ele disse "eu não vou conseguir".'],
+['Persistência é...',['Desistir nas dificuldades','Não desistir diante das dificuldades','Fazer tudo rápido'],1,'Quem persiste continua se esforçando.'],
+['Cada pessoa tem...',['O mesmo tempo para tudo','O seu tempo para fazer uma tarefa','Que fazer tudo sozinha'],1,'Alguns fazem rápido, outros demoram mais.'],
+['O que Rui fez por Luli?',['Riu dela','Convenceu Luli a tentar outra vez','Pegou a corda dela'],1,'Os amigos incentivam.'],
+['Como Luli se sentiu quando conseguiu pular?',['Triste','Feliz e confiante','Com raiva'],1,'"Consegui! Iupi!"'],
+['Qual atitude da menina do skate NÃO mostra persistência?',['Pedir ajuda ao vizinho','Levantar depois dos tombos','Jogar o skate no quintal e desistir'],2,'Desistir é o contrário de persistir.'],
+['Persistir em grupo é mais fácil porque...',['Os outros fazem por nós','Os outros nos incentivam','Ninguém erra em grupo'],1,'E é mais divertido.'],
+['Tico acha a tarefa de matemática difícil. Uma boa atitude é...',['Escutar música e deixar sem fazer','Tentar fazer e pedir ajuda à professora','Chorar e desistir'],1,'Isso mostra persistência.'],
+['Luna derrubou o robô e ele desmontou. Ela deve...',['Jogar fora','Tentar remontar e pedir ajuda se precisar','Ficar gritando'],1,'Não se desesperar.'],
+['Chorar, bater os pés e gritar...',['Resolvem tudo','Não ajudam a resolver as coisas','São persistência'],1,'Precisamos nos acalmar.'],
+['Há limite de tempo para aprender alguma coisa?',['Sim, só até os 8 anos','Não','Só nas férias'],1,'Como o Tico e a pipa.'],
+['"Seu esforço será recompensado pelo seu..."',['Erro','Sucesso','Desafio'],1,'Pág. 125.']];
+const OPEN=[
+['Qual o problema de Tito? Qual pode ter sido o motivo da queda?','Ele não acreditava nele mesmo e queria desistir. Caiu porque a bicicleta tremeu, ele parou de pedalar e perdeu o equilíbrio.'],
+['Para ser um bom nadador, basta ter talento? O que ele precisa?','Não. Precisa treinar, se dedicar e se esforçar.'],
+['Explique a diferença entre esforço físico e esforço mental.','Físico é treinar o corpo, como um atleta. Mental é treinar a mente com problemas desafiadores, como no xadrez ou ao ler.'],
+['O que a palavra "ainda" traz de esperança para a Mona?','Que ela ainda não consegue, mas com esforço e dedicação vai conseguir ler e entender a história.'],
+['Por que os erros são importantes para aprender?','Porque quando erramos descobrimos como não fazer e tentamos de outro jeito; o erro é um caminho para novas soluções.'],
+['O que é persistência?','É a qualidade de quem não desiste diante das dificuldades e continua se esforçando para conseguir o que quer.'],
+['O que foi necessário para a menina aprender a andar de skate?','Não desistir: pedir ajuda ao vizinho, levantar depois dos tombos e treinar sempre que podia.'],
+['O que Rui poderia dizer para incentivar Luli?','Por exemplo: "Não desista! Você consegue. Eu te ajudo, vamos treinar juntos."'],
+['O que Luli fez para aprender a pular corda?','Foi persistente: treinou no recreio, na entrada e na saída e, mesmo errando, não desistiu.'],
+['Há limite de tempo para aprender alguma coisa? O que você faria no lugar do Tico?','Não há limite. Eu treinaria com calma, pediria ajuda e não desistiria até conseguir.'],
+['Conte uma situação em que você sentiu dificuldade, mas conseguiu por ter sido persistente.','Resposta pessoal: onde estava, quem estava junto, o que aconteceu e o que fez para não desistir.']];
+/* Geradores de questões novas */
+const mk=(q,right,wrong,exp)=>{const o=shuffle([right,...wrong]);return [q,o,o.indexOf(right),exp]};
+const wrongMN=w=>w[2].replace(w[1]==='m'?'m':'n',w[1]==='m'?'n':'m');
+const ATT=[['Pedir ajuda a um colega para entender a tarefa',1],['Treinar mesmo quando os resultados não são bons',1],['Tentar de novo depois de errar',1],['Levantar e tentar de novo depois de um tombo',1],['Pedir ajuda a um adulto para remontar o brinquedo',1],['Tentar fazer a tarefa e perguntar à professora no dia seguinte',1],['Chorar e desistir porque não consegue',0],['Jogar o skate no quintal e não querer mais aprender',0],['Deixar a tarefa sem fazer para ir brincar',0],['Gritar e atirar objetos quando algo dá errado',0],['Dizer "nunca vou conseguir" e parar de tentar',0]];
+const FMQ=FM;
+
+const GEN=[
+()=>{const a=pick(ATT);return [`Verdadeiro ou falso: "${a[0]}" é uma atitude de persistência.`,['Verdadeiro','Falso'],a[1]?0:1,a[1]?'É persistir: não desistir e continuar se esforçando.':'Isso é desistir, o contrário de persistência.']},
+()=>{const a=pick(ATT.filter(x=>x[1])),b=shuffle(ATT.filter(x=>!x[1])).slice(0,2);return mk('Qual atitude mostra persistência?',a[0],b.map(x=>x[0]),'Quem persiste não desiste e continua se esforçando.')},
+()=>{const f=pick(FMQ);return mk(`"${f[0]}" exige principalmente esforço...`,f[1]==='f'?'Físico':'Mental',[f[1]==='f'?'Mental':'Físico','Nenhum'],f[1]==='f'?'Treina o corpo.':'Treina a mente.')}];
+const fromC=()=>{const c=pick(C);if(Math.random()<.5)return mk(c.m[0],c.m[1],[c.m[2],c.m[3]],c.o[3]);return [`Verdadeiro ou falso: ${c.v[0]}`,['Verdadeiro','Falso'],c.v[1]?0:1,c.o[3]]};
+let SQ=Q,SO=OPEN,snum=1,ans={},only=null;
+const quiz=document.getElementById('quiz');
+const renderQ=()=>{const idx=only||SQ.map((_,i)=>i);
+document.getElementById('stitle').textContent=snum===1?'Simulado 1 · questões da apostila':`Simulado ${snum} · questões novas`;
+quiz.innerHTML=idx.map(i=>{const q=SQ[i];return `<div class="q card" data-i="${i}"><div class="num">Questão ${i+1}</div><b>${q[0]}</b><div class="opts">${q[1].map((o,j)=>`<button data-j="${j}">${'abcd'[j]}) ${o}</button>`).join('')}</div><div class="exp">${q[3]}</div></div>`}).join('');upd()};
+const upd=()=>{const idx=only||SQ.map((_,i)=>i),n=idx.filter(i=>i in ans).length,ok=idx.filter(i=>ans[i]===SQ[i][2]).length;
+document.getElementById('score').textContent=`${ok} certas de ${n} respondidas · ${idx.length} no total`;document.getElementById('qbar').style.width=(n?ok/idx.length*100:0)+'%'};
+quiz.addEventListener('click',e=>{const b=e.target.closest('.opts button');if(!b)return;const box=b.closest('.q'),i=+box.dataset.i;if(i in ans)return;
+const j=+b.dataset.j;ans[i]=j;box.querySelectorAll('.opts button').forEach((x,k)=>{if(k===SQ[i][2])x.classList.add('ok');else if(k===j)x.classList.add('no')});
+box.querySelector('.exp').classList.add('show');box.querySelector('.exp').insertAdjacentHTML('afterbegin',j===SQ[i][2]?'<b>Isso aí!</b> ':'<b>Quase!</b> ');upd()});
+document.getElementById('qagain')?.addEventListener('click',()=>{ans={};only=null;renderQ()});
+document.getElementById('qwrong')?.addEventListener('click',()=>{const w=Object.keys(ans).map(Number).filter(i=>ans[i]!==SQ[i][2]);if(!w.length)return;only=w;w.forEach(i=>delete ans[i]);renderQ()});
+const renderOpen=()=>{document.getElementById('open').innerHTML=SO.map((o,i)=>`<div class="q card"><div class="num">Pergunta ${i+1}</div><b>${o[0]}</b><div class="row" style="justify-content:flex-start"><button data-o="${i}">Ver resposta modelo</button></div><div class="ans" id="ans${i}">${o[1]}</div></div>`).join('')};
+document.getElementById('qnew').addEventListener('click',()=>{
+ const seen=new Set(),out=[];const add=q=>{if(q&&!seen.has(q[0]+q[1].join())){seen.add(q[0]+q[1].join());out.push(q)}};
+ let guard=0;while(out.length<12&&guard++<200)add(pick(GEN)());
+ guard=0;while(out.length<18&&guard++<200)add(fromC());
+ shuffle([...Q]).slice(0,7).forEach(q=>{const o=shuffle(q[1].map((t,j)=>[t,j===q[2]]));add([q[0],o.map(x=>x[0]),o.findIndex(x=>x[1]),q[3]])});
+ guard=0;while(out.length<25&&guard++<300)add(pick(GEN)());
+ SQ=shuffle(out).slice(0,25);
+ SO=shuffle([...OPEN,...C.map(c=>[c.o[0],c.o[3]])]).slice(0,8);
+ snum++;ans={};only=null;renderQ();renderOpen();window.scrollTo(0,document.getElementById('s-simulado').offsetTop)});
+document.getElementById('open').addEventListener('click',e=>{const b=e.target.closest('button[data-o]');if(b){document.getElementById('ans'+b.dataset.o).classList.toggle('show')}});
+
+/* PROVA
+   Cada conceito existe em 4 formatos: m = optativa (3 alternativas, a 1ª é a certa), v = verdadeiro ou falso,
+   o = pergunta aberta (vale para escrita e áudio). k = grupos de palavras-chave (sem acento); n = quantos grupos precisam aparecer. */
+const C=[
+{t:'de',m:['Para aprender coisas novas, precisamos de...','desafios','sorte','ficar parados'],v:['Cada vez que desafiamos o cérebro, ele fica mais forte.',1],o:['Por que os desafios são importantes?',[['aprend','cerebro','forte','novo','nova']],1,'Porque com eles aprendemos coisas novas e o cérebro fica mais forte.']},
+{t:'de',m:['O triatlo é a combinação de...','natação, ciclismo e corrida','futebol, vôlei e basquete','xadrez, dama e pipa'],v:['No quadrado mágico, todas as linhas, colunas e diagonais somam 15.',1],o:['O que é preciso para praticar o triatlo?',[['esforc','treino','treinar','persist','concentr','foco','determin','organiz','dedic']],2,'Treino, persistência, concentração, determinação e organização.']},
+{t:'ce',m:['Quando aprendemos, o cérebro...','trabalha e se modifica','não muda nada','fica fraco'],v:['Existe um limite de tempo para aprender as coisas.',0],o:['O que acontece com o cérebro quando aprendemos algo novo?',[['modific','muda','forte','trabalha','aprende']],1,'Ele trabalha muito e se modifica; fica mais forte.']},
+{t:'es',m:['Esforço é...','empregar mais empenho para ter melhores resultados','desistir quando é difícil','só ter talento'],v:['Só ter talento é suficiente para ser campeão.',0],o:['O que é esforço?',[['empenho','dedic','tentar','trabalh','forca','esforc','melhor']],1,'A capacidade de empregar mais empenho numa ação, obtendo melhores resultados.']},
+{t:'es',m:['Quando treinamos a mente com problemas difíceis, usamos o esforço...','mental','físico','de sorte'],v:['O atleta que treina o corpo usa o esforço físico.',1],o:['Quais são os dois tipos de esforço?',[['fisic'],['mental']],2,'Esforço físico (do corpo) e esforço mental (da mente).']},
+{t:'es',m:['Para ser campeão de natação, o nadador precisa de...','talento e muito treino','só talento','só sorte'],v:['Um atleta talentoso que não treina pode não ter bom desempenho.',1],o:['Para ser um bom nadador basta ter talento? Por quê?',[['nao','treino','trein','esforc','dedic']],1,'Não. Ele precisa treinar, se dedicar e se esforçar.']},
+{t:'er',m:['Os erros são...','uma etapa fundamental da aprendizagem','o fim do caminho','motivo para desistir'],v:['Quando erramos, descobrimos como não devemos fazer.',1],o:['Por que os erros são importantes?',[['aprend','solu','diferente','jeito','tentar','corrig','descobr']],1,'Porque com eles aprendemos e encontramos novas soluções, fazendo de um jeito diferente.']},
+{t:'er',m:['A palavra "ainda" em "ela ainda não consegue ler" traz...','esperança de conseguir','tristeza para sempre','medo'],v:['A palavra "ainda" mostra que a pessoa nunca vai conseguir.',0],o:['O que a palavra "ainda" traz de esperança?',[['consegu','vai','esperan','depois','futuro','aprender']],1,'Que, com esforço e dedicação, ela vai conseguir.']},
+{t:'er',m:['O problema de Tito na bicicleta era...','não acreditar nele mesmo','a bicicleta quebrada','o tio não ajudar'],v:['Tito disse que nunca ia aprender a andar sem rodinhas.',1],o:['Qual era o problema de Tito?',[['acredit','desist','medo','nao vou','confia']],1,'Ele não acreditava nele mesmo e queria desistir.']},
+{t:'pe',m:['Persistência é...','não desistir diante das dificuldades','fazer tudo rápido','não pedir ajuda'],v:['Uma pessoa persistente continua se esforçando para conseguir o que quer.',1],o:['O que é persistência?',[['desist'],['dificuld','esforc','continu','tentar','consegu']],1,'É a qualidade de quem não desiste diante das dificuldades.']},
+{t:'pe',m:['O que Luli fez para aprender a pular corda?','treinou muito e não desistiu','desistiu da brincadeira','pediu para outra pessoa pular'],v:['Luli se sentiu feliz e confiante quando conseguiu pular.',1],o:['O que Luli fez para aprender a pular corda?',[['trein','pratic','persist','tent','desist','pulav']],1,'Foi persistente: treinava sempre e, mesmo errando, não desistiu.']},
+{t:'pe',m:['Qual atitude da menina do skate mostra desistência?','jogar o skate no quintal','pedir ajuda ao vizinho','levantar depois do tombo'],v:['Cada pessoa tem o seu tempo para fazer uma tarefa.',1],o:['O que foi necessário para a menina aprender a andar de skate?',[['desist','persist','trein','ajuda','levant','tent']],1,'Não desistir: pedir ajuda, levantar depois dos tombos e treinar sempre.']},
+{t:'gr',m:['Persistir em grupo é mais fácil porque...','os outros nos incentivam','os outros fazem por nós','ninguém erra'],v:['Rui convenceu Luli a tentar outra vez.',1],o:['O que um amigo pode dizer para incentivar quem quer desistir?',[['desist','consegu','ajud','tent','junt','capaz','vamos']],1,'Por exemplo: "Não desista, você consegue! Eu te ajudo."']},
+{t:'gr',m:['Tico acha a tarefa difícil. Uma boa atitude é...','tentar fazer e pedir ajuda','deixar sem fazer','chorar e desistir'],v:['Chorar, gritar e atirar objetos ajudam a resolver os problemas.',0],o:['O que fazer quando não conseguimos fazer uma tarefa?',[['ajuda','tent','calm','de novo','novamente','pergunt','desist']],1,'Ter calma, tentar de novo, pedir ajuda e não desistir.']}];
+renderQ();renderOpen();
+const FN={m:'Marcar alternativa',v:'Verdadeiro ou falso',o:'Escrever',a:'Falar'};
+const MODES={misto:['m','m','v','v','o','o','o','a','a','a'],optativa:['m','v','m','v','m','v','m','v','m','v'],escrita:Array(10).fill('o'),audio:Array(10).fill('a')};
+const MODEHINT={misto:'4 de marcar, 3 de escrever e 3 de falar.',optativa:'Alternativas e verdadeiro ou falso.',escrita:'Ela escreve as respostas com as próprias palavras.',audio:'Ela fala a resposta no microfone e o texto aparece sozinho. Funciona melhor no Chrome ou Safari.'};
+const ROT={m:'a',v:'o',o:'m',a:'v'};
+const PICK={de:1,ce:1,es:2,er:2,pe:2,gr:2};
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+const norm=s=>' '+(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9 -]/g,' ')+' ';
+const st={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let mode='misto',P=st.get('fio-et-prova',null),hist=st.get('fio-et-hist',[]),rec=null;
+const pexam=document.getElementById('pexam'),pres=document.getElementById('pres'),psend=document.getElementById('psend'),pstart=document.getElementById('pstart');
+const build=(fmts,force,num,label)=>{
+ const ids=[...force];
+ const pool=shuffle(C.map((_,i)=>i).filter(i=>!ids.includes(i)));
+ const need={...PICK};ids.forEach(i=>need[C[i].t]--);
+ pool.forEach(i=>{if(ids.length<10&&need[C[i].t]>0){ids.push(i);need[C[i].t]--}});
+ pool.forEach(i=>{if(ids.length<10&&!ids.includes(i))ids.push(i)});
+ shuffle(ids);
+ const f=typeof fmts==='function'?null:shuffle([...fmts]);
+ return {id:Date.now(),num,label,done:false,items:ids.map((c,j)=>{const fm=typeof fmts==='function'?fmts(c):f[j];return {c,f:fm,order:shuffle([0,1,2]),a:null,auto:null,ov:null}})};
+};
+const qScore=it=>it.ov!=null?it.ov:it.auto;
+const total=()=>Math.round(P.items.reduce((s,it)=>s+(qScore(it)||0),0)*10)/10;
+const gradeIt=it=>{const c=C[it.c];
+ if(it.f==='m')return it.a===0?1:0;
+ if(it.f==='v')return it.a===c.v[1]?1:0;
+ const t=norm(it.a);if(!t.trim())return 0;
+ const hit=c.o[1].filter(g=>g.some(w=>t.includes(w))).length;
+ return hit>=c.o[2]?1:hit>0?.5:0};
+const render=()=>{
+ if(!P){pexam.innerHTML='';pres.innerHTML='';psend.hidden=true;pstart.hidden=false;return}
+ pstart.hidden=true;
+ const head=`<h3 style="margin-top:18px">${esc(P.label)}</h3>`;
+ pexam.innerHTML=head+P.items.map((it,i)=>{const c=C[it.c],d=P.done;let body='',q='';
+  const cls=d?(qScore(it)>=1?'right':qScore(it)>0?'half':'wrong'):'';
+  if(it.f==='m'){q=c.m[0];body=`<div class="opts">${it.order.map(k=>{let x='';if(d){if(k===0)x='ok';else if(it.a===k)x='no'}else if(it.a===k)x='sel';return `<button data-i="${i}" data-k="${k}" class="${x}"${d?' disabled':''}>${esc(c.m[k+1])}</button>`}).join('')}</div>`}
+  else if(it.f==='v'){q=c.v[0];body=`<div class="opts" style="grid-template-columns:1fr 1fr">${[1,0].map(k=>{let x='';if(d){if(k===c.v[1])x='ok';else if(it.a===k)x='no'}else if(it.a===k)x='sel';return `<button data-i="${i}" data-k="${k}" class="${x}"${d?' disabled':''}>${k?'Verdadeiro':'Falso'}</button>`}).join('')}</div>`}
+  else{q=c.o[0];body=`<textarea data-i="${i}" placeholder="${it.f==='a'?'Aperte Falar e responda em voz alta. Dá para corrigir o texto aqui.':'Escreva sua resposta aqui.'}"${d?' readonly':''}>${esc(it.a||'')}</textarea>`;
+   if(it.f==='a'&&!d)body=`<div class="mic"><button data-say="${i}">Ouvir a pergunta</button><button class="primary" data-rec="${i}">Falar</button><span class="hint" id="h${i}">${SR?'':'Este navegador não ouve. Escreva a resposta.'}</span></div>`+body}
+  let fb='';
+  if(d){
+   fb=`<div class="fb"><b>${qScore(it)>=1?'Certo!':qScore(it)>0?'Meio certo.':'Não foi dessa vez.'}</b> Resposta: ${esc(it.f==='o'||it.f==='a'?c.o[3]:it.f==='m'?c.m[1]:(c.v[1]?'Verdadeiro':'Falso'))}</div>`;
+   if(it.f==='o'||it.f==='a')fb+=`<div class="ov">Correção do adulto: ${[[1,'Certa'],[.5,'Meio'],[0,'Errada']].map(([v,l])=>`<button data-ov="${i}" data-v="${v}" class="${qScore(it)===v?'on':''}">${l}</button>`).join('')}</div>`}
+  return `<div class="card pq ${cls}"><div class="num">Questão ${i+1}<span class="fmt">${FN[it.f]}</span></div><b>${esc(q)}</b>${body}${fb}</div>`}).join('');
+ psend.hidden=P.done;
+ if(P.done){const g=total(),ok=g>=8;
+  const miss=P.items.filter(it=>(qScore(it)||0)<1);
+  const tops=[...new Set(miss.map(it=>G[C[it.c].t][0]))];
+  pres.innerHTML=`<div class="result ${ok?'pass':'fail'}"><div class="grade">${g.toLocaleString('pt-BR')}</div><p style="color:#fff;font-weight:800;font-size:20px;margin:.3em 0">${ok?'Aprovada! Passou da nota 8.':'Ficou abaixo de 8. Vamos refazer em outro formato.'}</p>${tops.length?`<p style="color:#fff">Revisar na aba Entender: ${tops.join(', ')}.</p>`:''}<div class="row" style="justify-content:flex-start">${ok?'':'<button id="pretry">Fazer a recuperação</button>'}<button id="pnew">${ok?'Fazer outra prova':'Começar do zero'}</button></div></div>`;
+  document.getElementById('pnew').onclick=()=>{P=null;st.set('fio-et-prova',null);render();window.scrollTo(0,document.getElementById('s-prova').offsetTop)};
+  const r=document.getElementById('pretry');if(r)r.onclick=()=>{
+   const missIdx=miss.map(it=>it.c),fm={};miss.forEach(it=>fm[it.c]=ROT[it.f]);
+   P=build(c=>fm[c]||MODES.misto[Math.floor(Math.random()*10)],missIdx,P.num+1,`Prova ${P.num+1} · Recuperação: as que errou voltam em outro formato`);
+   save();render();window.scrollTo(0,pres.offsetTop-80)};
+ }else pres.innerHTML='';
+};
+const save=()=>st.set('fio-et-prova',P);
+const logHist=()=>{const i=hist.findIndex(h=>h.id===P.id);const row={id:P.id,when:new Date().toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}),label:'Prova '+P.num+(P.num>1?' (recuperação)':''),fmt:[...new Set(P.items.map(it=>FN[it.f]))].join(', '),nota:total()};if(i>=0)hist[i]=row;else hist.unshift(row);st.set('fio-et-hist',hist);drawHist()};
+const drawHist=()=>{document.getElementById('phist').innerHTML=hist.length?hist.map(h=>`<tr><td>${esc(h.when)}</td><td>${esc(h.label)}</td><td>${esc(h.fmt)}</td><td style="text-align:right;font-weight:800;color:${h.nota>=8?'var(--ok)':'var(--no)'}">${h.nota.toLocaleString('pt-BR')}</td></tr>`).join(''):'<tr><td colspan="4" style="color:var(--soft)">Nenhuma prova feita ainda.</td></tr>'};
+document.getElementById('pmodes').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;mode=b.dataset.m;document.querySelectorAll('#pmodes button').forEach(x=>x.classList.toggle('on',x===b));document.getElementById('pmodehint').textContent=MODEHINT[mode]});
+document.getElementById('pmodehint').textContent=MODEHINT.misto;
+document.getElementById('pgo').addEventListener('click',()=>{const n=(hist.length?Math.max(...hist.map(h=>parseInt(h.label.split(' ')[1])||0)):0)+1;P=build(MODES[mode],[],n,`Prova ${n} · ${mode==='misto'?'Formatos misturados':FN[MODES[mode][0]]+(mode==='optativa'?' e verdadeiro ou falso':'')}`);save();render()});
+pexam.addEventListener('click',e=>{
+ const b=e.target.closest('button');if(!b||!P)return;
+ if(b.dataset.k!=null&&!P.done){P.items[+b.dataset.i].a=+b.dataset.k;save();render();return}
+ if(b.dataset.ov!=null){const it=P.items[+b.dataset.ov];it.ov=+b.dataset.v;save();render();logHist();return}
+ if(b.dataset.say!=null){try{const u=new SpeechSynthesisUtterance(C[P.items[+b.dataset.say].c].o[0]);u.lang='pt-BR';speechSynthesis.cancel();speechSynthesis.speak(u)}catch(err){}return}
+ if(b.dataset.rec!=null){const i=+b.dataset.rec,h=document.getElementById('h'+i),ta=pexam.querySelector(`textarea[data-i="${i}"]`);
+  if(!SR){h.textContent='Este navegador não ouve. Escreva a resposta.';ta.focus();return}
+  if(rec){rec.stop();return}
+  rec=new SR();rec.lang='pt-BR';rec.interimResults=true;rec.continuous=false;const base=ta.value?ta.value.trim()+' ':'';
+  rec.onresult=ev=>{let t='';for(const r of ev.results)t+=r[0].transcript;ta.value=base+t;P.items[i].a=ta.value;save()};
+  rec.onerror=ev=>{h.textContent=ev.error==='not-allowed'||ev.error==='service-not-allowed'?'O microfone foi bloqueado. Libere o microfone ou escreva.':'Não deu para ouvir. Tente de novo.'};
+  rec.onend=()=>{rec=null;b.textContent='Falar';b.classList.remove('rec');if(!h.textContent.startsWith('O mic')&&!h.textContent.startsWith('Não'))h.textContent=ta.value?'Pronto! Confira o texto.':''};
+  try{rec.start();b.textContent='Parar';b.classList.add('rec');h.textContent='Ouvindo...'}catch(err){rec=null;h.textContent='Não deu para usar o microfone aqui. Escreva a resposta.'}}
+});
+pexam.addEventListener('input',e=>{const t=e.target.closest('textarea');if(t&&P&&!P.done){P.items[+t.dataset.i].a=t.value;save()}});
+psend.addEventListener('click',()=>{
+ const blank=P.items.filter(it=>it.a==null||(typeof it.a==='string'&&!it.a.trim())).length;
+ if(blank&&psend.dataset.sure!=='1'){psend.dataset.sure='1';psend.textContent=`Faltam ${blank} sem resposta. Entregar mesmo assim?`;return}
+ psend.dataset.sure='';psend.textContent='Entregar a prova';
+ if(rec)rec.stop();
+ P.items.forEach(it=>it.auto=gradeIt(it));P.done=true;if(!P.id)P.id=Date.now();save();logHist();render();window.scrollTo(0,pres.offsetTop-80)});
+const pclear=document.getElementById('pclear');
+pclear.addEventListener('click',()=>{if(pclear.dataset.sure!=='1'){pclear.dataset.sure='1';pclear.textContent='Clique de novo para apagar';return}hist=[];st.set('fio-et-hist',hist);drawHist();pclear.dataset.sure='';pclear.textContent='Apagar histórico'});
+drawHist();render();
+
+
+/* CONTAR (interpretação por áudio) */
+const TXT=[
+ {id:'tito',k:'er',t:'Tito e a bicicleta',w:'Apostila págs. 120 e 121',ask:'O que aconteceu com Tito, qual era o problema dele e o que ele poderia fazer?',
+  x:'Tito está aprendendo a andar de bicicleta sem rodinhas. Pedala 2 ou 3 vezes e cai. O tio viu que a bicicleta tremeu, Tito parou de pedalar, gritou e caiu. Tito disse: "Nunca vou aprender. É muito difícil. Eu não vou conseguir..."',
+  ideas:[['Tito aprendia a andar de bicicleta sem rodinhas',[['bicicleta','bike','rodinha']],1],['Ele caiu',[['caiu','cai','tombo','queda']],1],['Parou de pedalar ou perdeu o equilíbrio',[['pedal','equilibr','tremeu']],1],['Ele queria desistir / não acreditava nele',[['desist','acredit','nao vou','nunca','dificil']],1],['A solução: continuar tentando, não desistir',[['tent','trein','continu','de novo','persist','nao desist']],1]]},
+ {id:'luli',k:'pe',t:'Luli e a corda',w:'Apostila págs. 131 e 132',ask:'O que aconteceu com a Luli no começo, quem ajudou, o que ela fez e como se sentiu no fim?',
+  x:'Luli não sabia pular corda. Tentou, a corda enroscou e ela desistiu: "Nunca vou aprender!". Rui convenceu Luli a tentar outra vez. Ela treinou no recreio, na entrada e na saída, e a mãe deu uma corda. Aos poucos pegou o jeito: "Consegui! Iupi! Vou pular até 100!"',
+  ideas:[['Luli não sabia pular corda',[['corda']],1],['No começo errou e quis desistir',[['desist','enrosc','errou','nunca']],1],['Rui incentivou',[['rui','amigo','colega','incentiv','convenc']],1],['Ela treinou muito',[['trein','pratic','recreio','todo dia','sempre']],1],['No fim conseguiu e ficou feliz',[['consegu','feliz','alegr','iupi','100']],1],['Isso é persistência',[['persist','nao desist','esforc']],1]]},
+ {id:'skate',k:'pe',t:'A menina do skate',w:'Apostila pág. 130',ask:'Como a menina aprendeu a andar de skate? Quais atitudes mostram persistência?',
+  x:'Ela pediu para um vizinho que sabia andar de skate ajudá-la. Levou muitos tombos, mas se levantava e tentava de novo. Sempre que podia, treinava na rua de casa: no começo se equilibrava e, com o tempo, arriscou novos movimentos. (Jogar o skate no quintal e desistir não é persistência.)',
+  ideas:[['Pediu ajuda ao vizinho',[['vizinh','ajuda']],1],['Levou tombos mas levantou',[['tombo','caiu','levant']],1],['Tentou de novo / não desistiu',[['tent','desist','de novo']],1],['Treinou sempre que podia',[['trein','pratic','sempre','rua']],1],['Isso é persistência',[['persist','esforc']],1]]},
+ {id:'erros',k:'er',t:'Os erros e a palavra "ainda"',w:'Apostila págs. 124 e 125',ask:'Por que os erros são importantes e o que a palavra "ainda" ensina?',
+  x:'Mona está aprendendo a ler e ainda não entende a história. A palavra "ainda" traz esperança: com esforço e dedicação ela vai conseguir. Os erros são uma etapa fundamental da aprendizagem: quando erramos, descobrimos como não fazer e tentamos de um jeito diferente. Erro não é o fim do caminho.',
+  ideas:[['Erros fazem parte de aprender',[['aprend']],1],['Quando erra, tenta de um jeito diferente',[['diferente','outro jeito','de novo','novamente','tentar']],1],['Erro não é o fim / não desanimar',[['fim','desanim','desist']],1],['"Ainda" quer dizer que vai conseguir',[['ainda'],['consegu','vai','esperan']],2],['Com esforço e dedicação',[['esforc','dedic','trein']],1]]}];
+let ci=0,crec=null,cmr=null,cchunks=[],chist=st.get('fio-et-contar',[]);
+const cta=document.getElementById('cta'),chint=document.getElementById('chint'),cbtn=document.getElementById('crec'),caud=document.getElementById('caudio'),cout=document.getElementById('cout');
+document.getElementById('cfil').innerHTML=TXT.map((t,i)=>`<button data-i="${i}">${t.t}</button>`).join('');
+const showC=i=>{ci=i;const t=TXT[i];document.querySelectorAll('#cfil button').forEach((b,j)=>b.classList.toggle('on',j===i));
+ const tg=document.getElementById('ctag');tg.textContent=G[t.k][0];tg.style.background=G[t.k][1];
+ document.getElementById('ctitle').textContent=t.t;document.getElementById('cwhere').textContent=t.w;document.getElementById('ctext').textContent=t.x;document.getElementById('cask').textContent=t.ask;
+ cta.value='';cout.innerHTML='';caud.hidden=true;chint.textContent=SR?'':'Este navegador não transcreve a voz: escreva a resposta.'};
+document.getElementById('cfil').addEventListener('click',e=>{const b=e.target.closest('button');if(b)showC(+b.dataset.i)});
+const stopC=()=>{if(crec)try{crec.stop()}catch(e){};if(cmr&&cmr.state!=='inactive')cmr.stop()};
+cbtn.addEventListener('click',async()=>{
+ if(crec||(cmr&&cmr.state==='recording')){stopC();return}
+ cbtn.textContent='⏹ Parar';cbtn.classList.add('rec');chint.textContent='Ouvindo... fale com calma.';
+ try{const stream=await navigator.mediaDevices.getUserMedia({audio:true});cchunks=[];cmr=new MediaRecorder(stream);cmr.ondataavailable=e=>cchunks.push(e.data);
+  cmr.onstop=()=>{stream.getTracks().forEach(t=>t.stop());caud.src=URL.createObjectURL(new Blob(cchunks,{type:cmr.mimeType||'audio/webm'}));caud.hidden=false};cmr.start()}catch(e){}
+ if(SR){crec=new SR();crec.lang='pt-BR';crec.interimResults=true;crec.continuous=true;const base=cta.value?cta.value.trim()+' ':'';
+  crec.onresult=ev=>{let t='';for(const r of ev.results)t+=r[0].transcript;cta.value=base+t};
+  crec.onerror=ev=>{chint.textContent=ev.error==='not-allowed'||ev.error==='service-not-allowed'?'O microfone foi bloqueado. Libere o microfone ou escreva.':'Não deu para ouvir. Tente de novo.'};
+  crec.onend=()=>{crec=null;if(cmr&&cmr.state==='recording')cmr.stop();cbtn.textContent='🎤 Gravar';cbtn.classList.remove('rec');if(chint.textContent.startsWith('Ouvindo'))chint.textContent=cta.value?'Pronto! Confira o texto e aperte Avaliar.':''};
+  try{crec.start()}catch(e){crec=null}}
+ else{chint.textContent='Gravando o áudio. Este navegador não transcreve: depois escreva um resumo.';cmr&&(cmr.onstop=((f)=>()=>{f();cbtn.textContent='🎤 Gravar';cbtn.classList.remove('rec')})(cmr.onstop))}
+});
+document.getElementById('csay').onclick=()=>{try{const u=new SpeechSynthesisUtterance(TXT[ci].ask);u.lang='pt-BR';speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}};
+document.getElementById('cclear').onclick=()=>{stopC();cta.value='';cout.innerHTML='';caud.hidden=true};
+let clast=null;
+const drawCout=(t,hits,nota)=>{cout.innerHTML=`<div class="result ${nota>=8?'pass':'fail'}" style="margin-top:14px"><div class="grade">${nota.toLocaleString('pt-BR')}</div><p style="color:#fff;font-weight:800;margin:.2em 0">${nota>=8?'Muito bem! Você entendeu o texto.':nota>=5?'Bom começo! Veja o que faltou contar.':'Vamos ler de novo e contar outra vez?'}</p></div>`+
+ t.ideas.map((d,j)=>`<div class="idea ${hits[j]?'hit':''}">${hits[j]?'✅':'⬜'} <span>${d[0]}</span></div>`).join('')+
+ `<div class="ov" style="margin-top:10px">Nota do adulto: ${[10,8,6,4,2,0].map(v=>`<button data-cv="${v}" class="${nota===v?'on':''}">${v}</button>`).join('')}</div>`};
+document.getElementById('ceval').onclick=()=>{stopC();const t=TXT[ci],x=norm(cta.value);if(!x.trim()){chint.textContent='Grave ou escreva o que entendeu primeiro.';return}
+ const hits=t.ideas.map(d=>d[1].filter(g=>g.some(w=>x.includes(w))).length>=d[2]);
+ const nota=Math.round(hits.filter(Boolean).length/t.ideas.length*100)/10;
+ clast={id:Date.now(),when:new Date().toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}),t:t.t,ideas:`${hits.filter(Boolean).length} de ${t.ideas.length}`,nota};
+ chist.unshift(clast);st.set('fio-et-contar',chist);drawCH();drawCout(t,hits,nota);cout.dataset.hits=JSON.stringify(hits)};
+cout.addEventListener('click',e=>{const b=e.target.closest('button[data-cv]');if(!b||!clast)return;clast.nota=+b.dataset.cv;clast.ideas+=' (adulto)';st.set('fio-et-contar',chist);drawCH();drawCout(TXT[ci],JSON.parse(cout.dataset.hits),clast.nota)});
+const drawCH=()=>{document.getElementById('chist').innerHTML=chist.length?chist.slice(0,30).map(h=>`<tr><td>${esc(h.when)}</td><td>${esc(h.t)}</td><td>${esc(h.ideas)}</td><td style="text-align:right;font-weight:800;color:${h.nota>=8?'var(--ok)':'var(--no)'}">${h.nota.toLocaleString('pt-BR')}</td></tr>`).join(''):'<tr><td colspan="4" style="color:var(--soft)">Nenhuma gravação ainda.</td></tr>'};
+drawCH();showC(0);
+
+/* ABAS */
+const tabs=['plano','entender','contar','flashcards','simulado','prova'];
+const route=()=>{const h=location.hash.slice(1),t=tabs.includes(h)?h:'plano';tabs.forEach(x=>document.getElementById('s-'+x).classList.toggle('on',x===t));document.querySelectorAll('#tabs a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+t))};
+window.addEventListener('hashchange',()=>{route();window.scrollTo(0,0)});route();
+}
+</script>
+</body>
+</html>
